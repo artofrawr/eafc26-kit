@@ -10,11 +10,13 @@
 ## Initial Setup
 
 1. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 2. **Set up Python environment**
+
    ```bash
    cd apps/sbc-solver
    python -m venv venv
@@ -23,11 +25,13 @@
    ```
 
 3. **Start PostgreSQL**
+
    ```bash
    docker-compose -f infrastructure/docker/docker-compose.yml up -d
    ```
 
 4. **Set up environment variables**
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
@@ -143,4 +147,3 @@ npx shadcn-ui@latest add [component-name]
 - PostgreSQL: 5432
 
 Change ports in `.env` if conflicts occur.
-

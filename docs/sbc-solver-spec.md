@@ -9,23 +9,27 @@ The SBC (Squad Building Challenge) Solver uses Google OR-Tools to solve constrai
 ### Problem Definition
 
 Given:
+
 - Challenge requirements (rating, chemistry, league, nation, club, positions)
 - Available players with attributes (rating, position, price, chemistry links)
 - Budget constraints
 
 Find:
+
 - A valid squad that satisfies all requirements
 - Optionally: minimize cost or maximize rating
 
 ### Constraint Programming Model
 
 #### Variables
+
 - `player[i][j]`: Boolean variable indicating if player `i` is in position `j`
 - `total_rating`: Integer variable for squad rating
 - `total_chemistry`: Integer variable for squad chemistry
 - `total_cost`: Integer variable for squad cost
 
 #### Constraints
+
 1. **Position Constraints**: Each position must have exactly one player
 2. **Rating Constraints**: Squad rating must meet min/max requirements
 3. **Chemistry Constraints**: Squad chemistry must meet minimum requirement
@@ -33,6 +37,7 @@ Find:
 5. **Budget Constraint**: Total cost must not exceed budget (if specified)
 
 #### Objectives
+
 - Minimize cost (primary)
 - Maximize rating (secondary, if cost is equal)
 
@@ -45,6 +50,7 @@ POST /solve
 ```
 
 **Request Body:**
+
 ```json
 {
   "requirements": {
@@ -55,17 +61,17 @@ POST /solve
     "nation": null,
     "club": null,
     "positions": [
-      {"position": "GK", "rating": null},
-      {"position": "CB", "rating": 82},
-      {"position": "CB", "rating": 82},
-      {"position": "LB", "rating": null},
-      {"position": "RB", "rating": null},
-      {"position": "CM", "rating": null},
-      {"position": "CM", "rating": null},
-      {"position": "CM", "rating": null},
-      {"position": "LW", "rating": null},
-      {"position": "ST", "rating": 85},
-      {"position": "RW", "rating": null}
+      { "position": "GK", "rating": null },
+      { "position": "CB", "rating": 82 },
+      { "position": "CB", "rating": 82 },
+      { "position": "LB", "rating": null },
+      { "position": "RB", "rating": null },
+      { "position": "CM", "rating": null },
+      { "position": "CM", "rating": null },
+      { "position": "CM", "rating": null },
+      { "position": "LW", "rating": null },
+      { "position": "ST", "rating": 85 },
+      { "position": "RW", "rating": null }
     ]
   },
   "players": [
@@ -85,6 +91,7 @@ POST /solve
 ```
 
 **Response:**
+
 ```json
 {
   "status": "solved",
@@ -115,4 +122,3 @@ POST /solve
 - Chemistry link optimization
 - Player price prediction
 - Historical solution caching
-

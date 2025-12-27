@@ -37,6 +37,7 @@ This directory contains tool-agnostic agent definitions for the EA FC 26 Kit pro
 ## Usage
 
 When working on a specific area of the codebase, refer to the relevant agent definition for:
+
 - Technology stack knowledge
 - Code patterns and conventions
 - Interaction protocols with other agents
@@ -45,8 +46,8 @@ When working on a specific area of the codebase, refer to the relevant agent def
 ## Tool Compatibility
 
 These definitions are designed to be tool-agnostic. They work with:
+
 - Cursor IDE
 - GitHub Copilot / Codex
 - Claude Code
 - Any other agentic coding tool that can read markdown
-

@@ -39,4 +39,3 @@ export interface Player {
   rating: number;
   price?: number;
 }
-

@@ -7,12 +7,14 @@ The EA FC Agent uses Selenium WebDriver to interact with the EA FC 26 companion 
 ## Setup
 
 ### Prerequisites
+
 - Chrome/Chromium browser installed
 - ChromeDriver (can be managed via webdriver-manager or installed separately)
 
 ### Configuration
 
 Environment variables:
+
 - `SELENIUM_BROWSER`: Browser to use (default: `chrome`)
 - `SELENIUM_HEADLESS`: Run in headless mode (default: `false`)
 
@@ -35,12 +37,12 @@ Main service for browser automation:
 @Injectable()
 export class SeleniumService {
   private driver: WebDriver;
-  
-  async initialize(): Promise<void>
-  async navigateToCompanionApp(): Promise<void>
-  async extractSbcChallenge(challengeId: string): Promise<SbcChallenge>
-  async login(email: string, password: string): Promise<void>
-  async close(): Promise<void>
+
+  async initialize(): Promise<void>;
+  async navigateToCompanionApp(): Promise<void>;
+  async extractSbcChallenge(challengeId: string): Promise<SbcChallenge>;
+  async login(email: string, password: string): Promise<void>;
+  async close(): Promise<void>;
 }
 ```
 
@@ -68,13 +70,13 @@ export const CompanionAppSelectors = {
 ```typescript
 async extractSbcChallenge(challengeId: string): Promise<SbcChallenge> {
   await this.waitForElement(CompanionAppSelectors.sbcChallenge(challengeId));
-  
+
   const name = await this.driver.findElement(
     By.css(CompanionAppSelectors.challengeName)
   ).getText();
-  
+
   const requirements = await this.extractRequirements();
-  
+
   return { id: challengeId, name, requirements };
 }
 ```
@@ -148,7 +150,7 @@ const mockDriver = {
 ### Integration Tests
 
 Use real browser for integration tests (optional, can be flaky):
+
 - Run in headless mode
 - Use test accounts
 - Clean up after tests
-

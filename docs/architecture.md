@@ -43,23 +43,27 @@ The EA FC 26 Kit is a monorepo application built with Nx, consisting of three ma
 ## Components
 
 ### Control Panel (Frontend)
+
 - **Technology**: Next.js 14+ with App Router
 - **UI Framework**: shadcn/ui + Tailwind CSS
 - **State Management**: React hooks, Zustand (if needed)
 - **API Communication**: Uses `@eafc26-kit/api-client` library
 
 ### API Service (Backend)
+
 - **Technology**: NestJS
 - **Database**: PostgreSQL with Prisma ORM
 - **Automation**: Selenium WebDriver (direct)
 - **External Services**: Communicates with SBC Solver via HTTP
 
 ### SBC Solver
+
 - **Technology**: FastAPI (Python 3.11+)
 - **Solver**: Google OR-Tools
 - **Interface**: REST API
 
 ### Database
+
 - **Technology**: PostgreSQL
 - **ORM**: Prisma
 - **Location**: Docker container (local development)
@@ -95,4 +99,3 @@ The EA FC 26 Kit is a monorepo application built with Nx, consisting of three ma
 ## Deployment
 
 Currently designed for local development only. No deployment configuration included.
-

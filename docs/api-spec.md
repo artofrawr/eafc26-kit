@@ -15,6 +15,7 @@ GET /health
 Returns API health status.
 
 **Response:**
+
 ```json
 {
   "status": "ok"
@@ -30,6 +31,7 @@ GET /sbc/challenges
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -57,6 +59,7 @@ POST /sbc/challenges
 ```
 
 **Request Body:**
+
 ```json
 {
   "challengeId": "string",
@@ -74,6 +77,7 @@ POST /sbc/challenges/:id/solve
 Initiates solving process for a challenge.
 
 **Response:**
+
 ```json
 {
   "status": "solving",
@@ -90,6 +94,7 @@ GET /sbc/challenges/:id/solutions
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -113,6 +118,7 @@ POST /ea-fc/extract-challenge
 ```
 
 **Request Body:**
+
 ```json
 {
   "challengeId": "string"
@@ -120,6 +126,7 @@ POST /ea-fc/extract-challenge
 ```
 
 **Response:**
+
 ```json
 {
   "challenge": {
@@ -149,4 +156,3 @@ All errors follow this format:
 - `400` - Bad Request
 - `404` - Not Found
 - `500` - Internal Server Error
-

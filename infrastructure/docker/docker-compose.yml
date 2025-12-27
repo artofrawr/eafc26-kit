@@ -9,16 +9,15 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-eafc26}
       POSTGRES_DB: ${POSTGRES_DB:-eafc26}
     ports:
-      - "${POSTGRES_PORT:-5432}:5432"
+      - '${POSTGRES_PORT:-5432}:5432'
     volumes:
       - postgres_data:/var/lib/postgresql/data
       - ../postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-eafc26}"]
+      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER:-eafc26}']
       interval: 10s
       timeout: 5s
       retries: 5
 
 volumes:
   postgres_data:
-
