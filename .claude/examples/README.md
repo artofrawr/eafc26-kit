@@ -225,10 +225,10 @@ This header serves as a reminder that the file is for reference only.
 
 These examples complement the documentation:
 
-- **docs/code-organization.md** - Explains WHERE to put new code
-- **docs/import-patterns.md** - Explains HOW to import dependencies
-- **docs/agent-code-mapping.md** - Explains WHO owns what code
-- **docs/testing-guide.md** - Explains testing strategies
+- **../docs/code-organization.md** - Explains WHERE to put new code
+- **../docs/import-patterns.md** - Explains HOW to import dependencies
+- **../docs/agent-code-mapping.md** - Explains WHO owns what code
+- **../docs/testing-guide.md** - Explains testing strategies
 - **examples/** (this directory) - Shows WHAT the code should look like
 
 ---
@@ -248,7 +248,7 @@ When updating code patterns in the project:
 
 The module generator script (`tools/scripts/generate-module.sh`) uses these examples as templates when scaffolding new code.
 
-See: [Module Generator Usage](../CLAUDE.md#code-generation)
+See: [Module Generator Usage](../README.md#code-generation)
 
 ---
 
@@ -275,9 +275,9 @@ See: [Module Generator Usage](../CLAUDE.md#code-generation)
 
 If you're unsure which example to reference:
 
-1. Check `docs/agent-code-mapping.md` to identify which agent owns your task
-2. Check `docs/code-organization.md` to determine where your code goes
+1. Check `../docs/agent-code-mapping.md` to identify which agent owns your task
+2. Check `../docs/code-organization.md` to determine where your code goes
 3. Find the example that matches your code type
 4. Adapt the example to your needs
 
-For more information, see [CLAUDE.md](../CLAUDE.md) or [Development Guide](../docs/development-guide.md).
+For more information, see [Claude Code Guide](../README.md) or [Development Guide](../../docs/development-guide.md).

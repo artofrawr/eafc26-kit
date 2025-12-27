@@ -1,11 +1,11 @@
-# EA FC 26 Kit - Agentic Coding Rules
+# EA FC 26 Kit - Cursor Rules
 
-This project uses agentic coding with tool-agnostic agent definitions. 
-Refer to the `agents/` directory for detailed agent specifications.
+This project is optimized for Claude Code with agent definitions for focused development.
+Refer to the `.claude/agents/` directory for agent specifications.
 
 ## General Principles
 
-- Follow the agent definitions in `agents/` directory
+- Follow the agent definitions in `.claude/agents/` directory
 - Maintain consistency with existing code patterns
 - Write comprehensive tests (unit + e2e)
 - Use TypeScript for all JavaScript/TypeScript code
@@ -31,7 +31,7 @@ Refer to the `agents/` directory for detailed agent specifications.
 
 - `apps/` - Applications (control-panel, api, sbc-solver)
 - `libs/` - Shared libraries (shared-types, api-client, database)
-- `agents/` - Agent definitions (tool-agnostic markdown)
+- `.claude/` - Claude Code configuration, agent definitions, AI docs, and code examples
 - `docs/` - Project documentation
 - `infrastructure/` - Docker and infrastructure configs
 

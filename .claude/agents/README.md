@@ -1,6 +1,6 @@
 # Agent Definitions
 
-This directory contains tool-agnostic agent definitions for the EA FC 26 Kit project. These definitions are written in markdown format and can be used with any agentic coding tool (Cursor, Codex, Claude Code, etc.).
+This directory contains agent role definitions for Claude Code when working on the EA FC 26 Kit project.
 
 ## Agent Roles
 
@@ -43,11 +43,7 @@ When working on a specific area of the codebase, refer to the relevant agent def
 - Interaction protocols with other agents
 - Best practices and guidelines
 
-## Tool Compatibility
+## Additional Resources
 
-These definitions are designed to be tool-agnostic. They work with:
-
-- Cursor IDE
-- GitHub Copilot / Codex
-- Claude Code
-- Any other agentic coding tool that can read markdown
+- See `../docs/agent-code-mapping.md` for detailed code ownership mapping
+- See `../examples/` for code patterns matching each agent's responsibilities

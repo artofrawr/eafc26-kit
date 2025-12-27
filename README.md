@@ -34,26 +34,29 @@ See [Development Guide](./docs/development-guide.md) for detailed setup instruct
 
 ```
 eafc26-kit/
+├── .claude/           # Claude Code configuration & guides
+│   ├── agents/        # Agent role definitions
+│   ├── docs/          # AI-specific documentation
+│   └── examples/      # Code pattern examples
 ├── apps/              # Applications
 │   ├── control-panel/ # Next.js frontend
 │   ├── api/           # NestJS backend
 │   └── sbc-solver/    # Python FastAPI solver
 ├── libs/              # Shared libraries
-├── agents/            # Agent definitions (tool-agnostic)
 ├── docs/              # Documentation
 └── infrastructure/    # Docker and infrastructure configs
 ```
 
-## Agentic Coding
+## Claude Code
 
-This project uses agentic coding with tool-agnostic agent definitions. See the [agents/](./agents/) directory for agent specifications.
+This project is optimized for Claude Code. See [`.claude/README.md`](./.claude/README.md) for the complete guide including agent definitions, code examples, and workflow guidelines.
 
 ## Documentation
 
+- [Claude Code Guide](./.claude/README.md) - Complete guide for AI coding with this project
 - [Architecture](./docs/architecture.md) - System architecture overview
 - [API Specification](./docs/api-spec.md) - API endpoint documentation
 - [Development Guide](./docs/development-guide.md) - Setup and development instructions
-- [Setup Plan](./SETUP_PLAN.md) - Initial repository setup plan
 
 ## Development
 
