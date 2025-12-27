@@ -6,25 +6,24 @@
   "tags": ["type:app", "scope:backend"],
   "targets": {
     "build": {
-      "executor": "@nx/node:build",
+      "executor": "@nx/webpack:webpack",
       "outputs": ["{options.outputPath}"],
       "options": {
+        "target": "node",
+        "compiler": "tsc",
         "outputPath": "dist/apps/api",
         "main": "apps/api/src/main.ts",
         "tsConfig": "apps/api/tsconfig.app.json",
-        "assets": ["apps/api/src/assets"]
+        "generatePackageJson": true,
+        "webpackConfig": "apps/api/webpack.config.js"
       }
     },
     "serve": {
-      "executor": "@nx/node:serve",
+      "executor": "nx:run-commands",
       "options": {
-        "buildTarget": "api:build"
+        "command": "node dist/apps/api/main.js"
       },
-      "configurations": {
-        "production": {
-          "buildTarget": "api:build:production"
-        }
-      }
+      "dependsOn": ["build"]
     },
     "lint": {
       "executor": "@nx/eslint:lint",
