@@ -1,0 +1,37 @@
+# EA FC 26 Kit - Agentic Coding Rules
+
+This project uses agentic coding with tool-agnostic agent definitions. 
+Refer to the `agents/` directory for detailed agent specifications.
+
+## General Principles
+
+- Follow the agent definitions in `agents/` directory
+- Maintain consistency with existing code patterns
+- Write comprehensive tests (unit + e2e)
+- Use TypeScript for all JavaScript/TypeScript code
+- Follow the monorepo structure and use Nx for task orchestration
+
+## Technology Stack
+
+- **Frontend**: Next.js (App Router), React, TypeScript, shadcn/ui, Tailwind CSS
+- **Backend**: NestJS, TypeScript, Prisma, Selenium WebDriver
+- **Solver**: Python 3.11+, FastAPI, Google OR-Tools
+- **Database**: PostgreSQL with Prisma ORM
+- **Package Manager**: npm
+- **Monorepo**: Nx integrated workspace
+
+## Code Quality
+
+- All code must be tested (unit + e2e where applicable)
+- Use ESLint and Prettier for code formatting
+- Follow TypeScript strict mode
+- Write self-documenting code with clear naming
+
+## Project Structure
+
+- `apps/` - Applications (control-panel, api, sbc-solver)
+- `libs/` - Shared libraries (shared-types, api-client, database)
+- `agents/` - Agent definitions (tool-agnostic markdown)
+- `docs/` - Project documentation
+- `infrastructure/` - Docker and infrastructure configs
+

@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "sbc-solver"
+version = "0.0.1"
+description = "SBC Solver using Google OR-Tools"
+authors = ["EA FC 26 Kit"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+

@@ -1,0 +1,51 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model UserSession {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  sessionId String   @unique
+  data      Json?
+}
+
+model SbcChallenge {
+  id          String   @id @default(cuid())
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  challengeId String   @unique
+  name        String
+  requirements Json
+  status      String   @default("pending") // pending, solving, solved, failed
+  solutions   SbcSolution[]
+}
+
+model SbcSolution {
+  id          String      @id @default(cuid())
+  createdAt   DateTime    @default(now())
+  challengeId String
+  challenge   SbcChallenge @relation(fields: [challengeId], references: [id])
+  players     Json        // Array of player IDs/positions
+  cost        Float?
+  rating      Int?
+  isValid     Boolean     @default(false)
+}
+
+model CompanionAppState {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  state     Json     // Current state of the companion app
+  sessionId String?
+}
+

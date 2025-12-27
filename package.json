@@ -1,0 +1,30 @@
+{
+  "name": "eafc26-kit",
+  "version": "0.0.1",
+  "license": "MIT",
+  "scripts": {
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "nx lint",
+    "dev": "nx run-many --target=serve --projects=control-panel,api --parallel",
+    "dev:control-panel": "nx serve control-panel",
+    "dev:api": "nx serve api",
+    "dev:solver": "nx run sbc-solver:serve",
+    "db:migrate": "nx run database:migrate",
+    "db:generate": "nx run database:generate",
+    "db:studio": "nx run database:studio"
+  },
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "@nx/next": "^20.0.0",
+    "@nx/js": "^20.0.0",
+    "@nx/node": "^20.0.0",
+    "@nx/workspace": "^20.0.0",
+    "@nx/eslint": "^20.0.0",
+    "@nx/eslint-plugin": "^20.0.0",
+    "nx": "^20.0.0",
+    "typescript": "^5.3.0"
+  }
+}
+

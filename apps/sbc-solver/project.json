@@ -1,0 +1,28 @@
+{
+  "name": "sbc-solver",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/sbc-solver/src",
+  "projectType": "application",
+  "tags": ["type:app", "scope:solver"],
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/sbc-solver && uvicorn src.main:app --reload --host 0.0.0.0 --port 8000"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/sbc-solver && pytest"
+      }
+    },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd apps/sbc-solver && ruff check ."
+      }
+    }
+  }
+}
+
