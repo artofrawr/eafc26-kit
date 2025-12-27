@@ -70,3 +70,7 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# Claude Code - exclude sensitive local settings
+.claude/settings.local.json
+.claude/**/*.local.*
