@@ -35,11 +35,8 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
   }
 
   async onModuleInit() {
-    // Initialize on module startup (only if not using persistent Chrome)
-    if (!process.env.SELENIUM_DEBUGGER_ADDRESS) {
-      this.logger.log('Initializing Selenium on module startup...');
-      await this.initialize();
-    }
+    // Don't auto-initialize on startup - let the user start Chrome via the UI
+    this.logger.log('Selenium service ready. Use /selenium/start to launch Chrome.');
   }
 
   async onModuleDestroy() {
@@ -56,9 +53,37 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
     }
 
     this.logger.log('Initializing Selenium WebDriver...');
+
+    // Create a fresh automation instance
+    const debuggerAddress = process.env.SELENIUM_DEBUGGER_ADDRESS;
+
+    if (debuggerAddress) {
+      this.logger.log(`Using persistent Chrome at ${debuggerAddress}`);
+      this.automation = new SeleniumAutomation({
+        debuggerAddress,
+      });
+    } else {
+      const profileDir =
+        process.env.SELENIUM_CHROME_PROFILE_DIR ||
+        path.join(os.tmpdir(), 'eafc26-selenium-profile');
+
+      this.logger.log(`Using Chrome profile at ${profileDir}`);
+      this.automation = new SeleniumAutomation({
+        headless: process.env.SELENIUM_HEADLESS === 'true',
+        userDataDir: profileDir,
+        profileDirectory: 'Default',
+        windowSize: { width: 1920, height: 1080 },
+      });
+    }
+
     await this.automation.initialize();
     this.isInitialized = true;
     this.logger.log('Selenium initialized successfully');
+
+    // Navigate to EA FC app by default
+    const driver = await this.automation.getDriver();
+    await driver.get('https://www.ea.com/fifa/ultimate-team/web-app/');
+    this.logger.log('Navigated to EA FC Companion App');
   }
 
   async checkLoginStatus(): Promise<{ loggedIn: boolean }> {
@@ -131,5 +156,18 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
 
   isReady(): boolean {
     return this.isInitialized;
+  }
+
+  resetInitialization(): void {
+    this.isInitialized = false;
+  }
+
+  async close(): Promise<void> {
+    if (this.isInitialized) {
+      this.logger.log('Closing Selenium and Chrome...');
+      await this.automation.close();
+      this.isInitialized = false;
+      this.logger.log('Chrome closed successfully');
+    }
   }
 }

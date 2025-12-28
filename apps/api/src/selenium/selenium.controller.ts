@@ -7,17 +7,47 @@ export class SeleniumController {
 
   constructor(private readonly seleniumService: SeleniumService) {}
 
+  @Post('start')
+  async start() {
+    try {
+      await this.seleniumService.initialize();
+      this.logger.log('Selenium started successfully');
+      return {
+        success: true,
+        message: 'Selenium Chrome started successfully',
+      };
+    } catch (error) {
+      this.logger.error('Failed to start Selenium', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Failed to start Selenium',
+      };
+    }
+  }
+
   @Get('status')
   async getStatus() {
-    const isReady = this.seleniumService.isReady();
-    const loginStatus = isReady
-      ? await this.seleniumService.checkLoginStatus()
-      : { loggedIn: false };
-    const urlInfo = isReady ? await this.seleniumService.getCurrentUrl() : { url: 'N/A' };
+    let isReady = this.seleniumService.isReady();
+
+    let urlInfo = { url: 'N/A' };
+
+    if (isReady) {
+      try {
+        const currentUrlResult = await this.seleniumService.getCurrentUrl();
+        urlInfo = currentUrlResult;
+      } catch (error) {
+        this.logger.warn(
+          'Chrome window appears to be closed or unavailable',
+          error instanceof Error ? error.message : error
+        );
+        // Reset initialization state since Chrome window is no longer available
+        this.seleniumService.resetInitialization();
+        isReady = false;
+      }
+    }
 
     return {
       ready: isReady,
-      loggedIn: loginStatus.loggedIn,
       currentUrl: urlInfo.url,
       timestamp: new Date().toISOString(),
     };
@@ -49,5 +79,23 @@ export class SeleniumController {
   @Get('url')
   async getCurrentUrl() {
     return await this.seleniumService.getCurrentUrl();
+  }
+
+  @Post('close')
+  async close() {
+    try {
+      await this.seleniumService.close();
+      this.logger.log('Selenium closed successfully');
+      return {
+        success: true,
+        message: 'Chrome closed successfully',
+      };
+    } catch (error) {
+      this.logger.error('Failed to close Selenium', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Failed to close Chrome',
+      };
+    }
   }
 }
