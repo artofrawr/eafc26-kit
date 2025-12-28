@@ -4,7 +4,8 @@ import { Options as ChromeOptions } from 'selenium-webdriver/chrome';
 export interface DriverConfig {
   browser?: 'chrome' | 'firefox';
   headless?: boolean;
-  userDataDir?: string;
+  userDataDir?: string; // Path to Chrome user data directory
+  profileDirectory?: string; // Chrome profile name (e.g., 'Default', 'Profile 1')
   windowSize?: { width: number; height: number };
 }
 
@@ -68,6 +69,10 @@ export class DriverService {
 
     if (this.config.userDataDir) {
       options.addArguments(`--user-data-dir=${this.config.userDataDir}`);
+
+      if (this.config.profileDirectory) {
+        options.addArguments(`--profile-directory=${this.config.profileDirectory}`);
+      }
     }
 
     // Common options for stability

@@ -3,15 +3,23 @@
  *
  * Note: These selectors are subject to change when EA updates their web app.
  * Update this file when selectors break.
+ *
+ * Last updated: 2025-12-27 (Tested against EA FC Web App)
  */
 
 export const CompanionAppSelectors = {
+  // Already logged in state
+  loggedIn: {
+    tabBar: '.ut-tab-bar', // If present, user is already logged in
+  },
+
   // Login page
   login: {
+    loginContent: '.ut-login-content', // Container for login area
+    showLoginButton: 'button.primary', // Button to show login form
     emailInput: '#email',
     passwordInput: '#password',
-    submitButton: '#btnLogin',
-    loginForm: '#login-form',
+    submitButton: '.otkbtn-primary', // Clicked twice: after email, then after password
     errorMessage: '.error-message',
   },
 
@@ -20,6 +28,12 @@ export const CompanionAppSelectors = {
     codeInput: '#twoFactorCode',
     submitButton: '#btnSubmit',
     verificationForm: '#verification-form',
+  },
+
+  // Loading state
+  loading: {
+    clickShield: '.ut-click-shield', // Loading overlay
+    loaderIcon: 'img.loaderIcon', // Loading spinner
   },
 
   // Navigation
