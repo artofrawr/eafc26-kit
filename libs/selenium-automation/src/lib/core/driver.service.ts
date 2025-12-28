@@ -7,6 +7,7 @@ export interface DriverConfig {
   userDataDir?: string; // Path to Chrome user data directory
   profileDirectory?: string; // Chrome profile name (e.g., 'Default', 'Profile 1')
   windowSize?: { width: number; height: number };
+  debuggerAddress?: string; // Connect to existing Chrome instance (e.g., 'localhost:9222')
 }
 
 export class DriverService {
@@ -33,11 +34,13 @@ export class DriverService {
       .setChromeOptions(options)
       .build();
 
-    // Set window size
-    await this.driver.manage().window().setRect({
-      width: this.config.windowSize!.width,
-      height: this.config.windowSize!.height,
-    });
+    // Set window size (only if not connecting to existing instance)
+    if (!this.config.debuggerAddress) {
+      await this.driver.manage().window().setRect({
+        width: this.config.windowSize!.width,
+        height: this.config.windowSize!.height,
+      });
+    }
 
     return this.driver;
   }
@@ -63,6 +66,13 @@ export class DriverService {
   private buildChromeOptions(): ChromeOptions {
     const options = new ChromeOptions();
 
+    // If connecting to existing instance via debugger
+    if (this.config.debuggerAddress) {
+      options.debuggerAddress(this.config.debuggerAddress);
+      return options;
+    }
+
+    // Otherwise, configure new instance
     if (this.config.headless) {
       options.addArguments('--headless=new');
     }
