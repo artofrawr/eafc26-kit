@@ -38,14 +38,16 @@ export const CompanionAppSelectors = {
 
   // Navigation
   navigation: {
-    sbcTab: '[data-nav="sbc"]',
-    transferMarketTab: '[data-nav="transfer-market"]',
-    clubTab: '[data-nav="club"]',
+    tabBar: '.ut-tab-bar',
+    sbcTab: 'button.icon-sbc', // In .ut-tab-bar
+    transferMarketTab: 'button.icon-transfer',
+    clubTab: 'button.icon-club',
     menuButton: '.menu-button',
   },
 
   // SBC section
   sbc: {
+    pageTitle: 'h1.title', // Should contain "SBC" when on SBC page
     challengeList: '.sbc-challenge-list',
     challengeCard: (id: string) => `[data-challenge-id="${id}"]`,
     challengeName: '.challenge-name',

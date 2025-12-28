@@ -13,14 +13,27 @@ export class NavigationRoutine {
    * Navigate to the SBC section
    */
   async navigateToSBC(): Promise<void> {
+    // First ensure we're on the tab bar (logged in)
+    await this.waitUtils.waitForElement(CompanionAppSelectors.navigation.tabBar, 10000);
+
+    // Click the SBC tab button
     const sbcTab = await this.waitUtils.waitForElementClickable(
       CompanionAppSelectors.navigation.sbcTab,
       15000
     );
     await sbcTab.click();
 
-    // Wait for SBC page to load
-    await this.waitUtils.waitForElement(CompanionAppSelectors.sbc.challengeList, 10000);
+    // Wait for SBC page to load and verify by checking title
+    await this.waitUtils.sleep(2000);
+    const pageTitle = await this.waitUtils.waitForElement(
+      CompanionAppSelectors.sbc.pageTitle,
+      10000
+    );
+    const titleText = await pageTitle.getText();
+
+    if (!titleText.includes('SBC')) {
+      throw new Error(`Expected to be on SBC page but title is: ${titleText}`);
+    }
   }
 
   /**
