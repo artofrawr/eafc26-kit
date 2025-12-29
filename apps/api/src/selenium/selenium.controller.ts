@@ -76,6 +76,12 @@ export class SeleniumController {
     return await this.seleniumService.navigateToSBC();
   }
 
+  @Post('navigate/club-players')
+  async navigateToClubPlayers() {
+    this.logger.log('Navigating to Club Players');
+    return await this.seleniumService.navigateToClubPlayers();
+  }
+
   @Get('url')
   async getCurrentUrl() {
     return await this.seleniumService.getCurrentUrl();
@@ -97,5 +103,17 @@ export class SeleniumController {
         message: error instanceof Error ? error.message : 'Failed to close Chrome',
       };
     }
+  }
+
+  @Post('test/player-extraction')
+  async testPlayerExtraction() {
+    this.logger.log('Testing player extraction routine');
+    return await this.seleniumService.testPlayerExtraction();
+  }
+
+  @Post('test/player-extraction-single-page')
+  async testPlayerExtractionSinglePage() {
+    this.logger.log('Testing player extraction routine (single page only)');
+    return await this.seleniumService.testPlayerExtractionSinglePage();
   }
 }

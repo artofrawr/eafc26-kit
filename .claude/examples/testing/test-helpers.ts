@@ -71,39 +71,19 @@ export class DatabaseTestUtils {
    */
   async cleanDatabase() {
     // Order matters due to foreign key constraints
-    await this.prisma.sbcSolution.deleteMany();
-    await this.prisma.sbcChallenge.deleteMany();
-    await this.prisma.player.deleteMany();
-    // Add other tables as needed
+    // Add table cleanup as models are defined
+    // Example: await this.prisma.model.deleteMany();
   }
 
   /**
    * Seed database with test data
    */
   async seedTestData() {
-    // Create test challenges
-    await this.prisma.sbcChallenge.createMany({
-      data: [
-        {
-          name: 'Test SBC 1',
-          description: 'First test challenge',
-          requirements: { minRating: 85 },
-        },
-        {
-          name: 'Test SBC 2',
-          description: 'Second test challenge',
-          requirements: { minRating: 90 },
-        },
-      ],
-    });
-
-    // Create test players
-    await this.prisma.player.createMany({
-      data: [
-        { name: 'Messi', rating: 93, position: 'RW', price: 100000 },
-        { name: 'Ronaldo', rating: 91, position: 'ST', price: 80000 },
-      ],
-    });
+    // Add seed data as models are defined
+    // Example:
+    // await this.prisma.model.createMany({
+    //   data: [{ /* ... */ }],
+    // });
   }
 
   /**

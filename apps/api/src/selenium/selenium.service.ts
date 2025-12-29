@@ -139,6 +139,42 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
+  async navigateToClubPlayers(): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      await this.automation.navigation.navigateToClubPlayers();
+      this.logger.log('Navigated to Club -> Players');
+      return { success: true, message: 'Navigated to Club -> Players' };
+    } catch (error) {
+      this.logger.error('Navigation to Club -> Players failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Navigation failed',
+      };
+    }
+  }
+
+  async navigateToSBCStorage(): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      await this.automation.navigation.navigateToSBCStorage();
+      this.logger.log('Navigated to Club -> SBC Storage');
+      return { success: true, message: 'Navigated to Club -> SBC Storage' };
+    } catch (error) {
+      this.logger.error('Navigation to Club -> SBC Storage failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Navigation failed',
+      };
+    }
+  }
+
   async getCurrentUrl(): Promise<{ url: string }> {
     if (!this.isInitialized) {
       await this.initialize();
@@ -168,6 +204,84 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
       await this.automation.close();
       this.isInitialized = false;
       this.logger.log('Chrome closed successfully');
+    }
+  }
+
+  async testPlayerExtraction(): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      const driver = await this.automation.getDriver();
+      const { PlayerExtractionRoutine } = await import('@eafc26-kit/selenium-automation');
+      const { PrismaClient } = await import('@eafc26-kit/database');
+
+      const prisma = new PrismaClient();
+
+      // ===== Clear existing ClubPlayer entries =====
+      this.logger.log('Clearing existing ClubPlayer entries...');
+      await prisma.clubPlayer.deleteMany({});
+      this.logger.log('ClubPlayer table cleared');
+
+      // ===== Extract from Club Players =====
+      this.logger.log('Starting extraction from Club Players...');
+      const clubRoutine = new PlayerExtractionRoutine(driver, prisma, false);
+      await clubRoutine.processPlayersFromCurrentPage();
+      this.logger.log('Club Players extraction completed');
+
+      // ===== Navigate to SBC Storage =====
+      this.logger.log('Navigating to SBC Storage...');
+      await this.automation.navigation.navigateToSBCStorage();
+
+      // Wait a bit for navigation to complete
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // ===== Extract from SBC Storage =====
+      this.logger.log('Starting extraction from SBC Storage...');
+      const sbcRoutine = new PlayerExtractionRoutine(driver, prisma, true);
+      await sbcRoutine.processPlayersFromCurrentPage();
+      this.logger.log('SBC Storage extraction completed');
+
+      return {
+        success: true,
+        message: 'Full player extraction completed (Club + SBC). Check console for details.',
+      };
+    } catch (error) {
+      this.logger.error('Player extraction test failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Player extraction test failed',
+      };
+    }
+  }
+
+  async testPlayerExtractionSinglePage(): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      const driver = await this.automation.getDriver();
+      const { PlayerExtractionRoutine } = await import('@eafc26-kit/selenium-automation');
+      const { PrismaClient } = await import('@eafc26-kit/database');
+
+      const prisma = new PrismaClient();
+      const routine = new PlayerExtractionRoutine(driver, prisma);
+
+      this.logger.log('Starting single page player extraction test...');
+      await routine.processSinglePage();
+
+      return {
+        success: true,
+        message: 'Single page extraction completed. Check console for details.',
+      };
+    } catch (error) {
+      this.logger.error('Single page extraction test failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Single page extraction test failed',
+      };
     }
   }
 }

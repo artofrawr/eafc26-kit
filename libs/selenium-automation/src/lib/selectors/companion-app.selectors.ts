@@ -41,8 +41,39 @@ export const CompanionAppSelectors = {
     tabBar: '.ut-tab-bar',
     sbcTab: 'button.icon-sbc', // In .ut-tab-bar
     transferMarketTab: 'button.icon-transfer',
-    clubTab: 'button.icon-club',
+    clubTab: 'button.icon-club', // In .ut-tab-bar
     menuButton: '.menu-button',
+  },
+
+  // Club section
+  club: {
+    playersTile: 'div.players-tile', // Click to go to players page
+    sbcStorageTile: 'div.sbc-storage-tile', // Click to go to SBC storage page
+
+    // Player list
+    playerList: 'ul.paginated', // Container for paginated player list
+    playerCard: 'li.listFUTItem', // Individual player card within ul.paginated
+
+    // Player card data
+    playerName: 'div.name',
+    playerRating: 'div.rating',
+    playerPosition: 'div.position',
+    playerStatsContainer: 'div.player-stats-data-component',
+    playerStatValue: 'span.value', // Within stats container ul
+    squadIcon: 'span.icon_squad', // Indicates player is in active squad
+
+    // Player detail view (drawer)
+    detailView: 'div.DetailView',
+    playerBioButton: 'span.btn-text', // Button with text "Player Bio"
+
+    // Player bio list
+    bioList: '.ut-item-bio-list-view',
+    bioListItem: 'li',
+    bioFieldLabel: 'h1', // Field name (e.g., "Full Name", "Rarity")
+    bioFieldValue: 'h2', // Field value
+
+    // Pagination
+    nextPageButton: '.pagingContainer button.next',
   },
 
   // SBC section

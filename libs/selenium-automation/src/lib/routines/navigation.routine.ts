@@ -54,13 +54,54 @@ export class NavigationRoutine {
    * Navigate to the Club section
    */
   async navigateToClub(): Promise<void> {
+    // First ensure we're on the tab bar (logged in)
+    await this.waitUtils.waitForElement(CompanionAppSelectors.navigation.tabBar, 10000);
+
+    // Click the Club tab button
     const clubTab = await this.waitUtils.waitForElementClickable(
       CompanionAppSelectors.navigation.clubTab,
       15000
     );
     await clubTab.click();
 
-    // Wait for club page to load
+    // Wait for club page to load - verify by checking for either players tile or sbc storage tile
+    await this.waitUtils.sleep(2000);
+    await this.waitUtils.waitForElement(CompanionAppSelectors.club.playersTile, 10000);
+  }
+
+  /**
+   * Navigate to Club -> Players
+   */
+  async navigateToClubPlayers(): Promise<void> {
+    // First navigate to Club if not already there
+    await this.navigateToClub();
+
+    // Click on the Players tile
+    const playersTile = await this.waitUtils.waitForElementClickable(
+      CompanionAppSelectors.club.playersTile,
+      15000
+    );
+    await playersTile.click();
+
+    // Wait for players page to load
+    await this.waitUtils.sleep(2000);
+  }
+
+  /**
+   * Navigate to Club -> SBC Storage
+   */
+  async navigateToSBCStorage(): Promise<void> {
+    // First navigate to Club if not already there
+    await this.navigateToClub();
+
+    // Click on the SBC Storage tile
+    const sbcStorageTile = await this.waitUtils.waitForElementClickable(
+      CompanionAppSelectors.club.sbcStorageTile,
+      15000
+    );
+    await sbcStorageTile.click();
+
+    // Wait for SBC storage page to load
     await this.waitUtils.sleep(2000);
   }
 

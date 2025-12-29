@@ -2,6 +2,7 @@ import { WebDriver } from 'selenium-webdriver';
 import { DriverService, DriverConfig } from './core/driver.service';
 import { AuthRoutine, LoginCredentials, SessionData } from './routines/auth.routine';
 import { NavigationRoutine } from './routines/navigation.routine';
+import { PlayerExtractionRoutine } from './routines/player-extraction.routine';
 
 /**
  * Main facade for Selenium automation
@@ -12,6 +13,7 @@ export class SeleniumAutomation {
   private driverService: DriverService;
   private authRoutine: AuthRoutine | null = null;
   private navigationRoutine: NavigationRoutine | null = null;
+  private playerExtractionRoutine: PlayerExtractionRoutine | null = null;
 
   constructor(config: DriverConfig = {}) {
     this.driverService = new DriverService(config);
@@ -24,6 +26,7 @@ export class SeleniumAutomation {
     const driver = await this.driverService.initialize();
     this.authRoutine = new AuthRoutine(driver);
     this.navigationRoutine = new NavigationRoutine(driver);
+    this.playerExtractionRoutine = new PlayerExtractionRoutine(driver);
   }
 
   /**
@@ -55,6 +58,16 @@ export class SeleniumAutomation {
   }
 
   /**
+   * Access player extraction routines
+   */
+  get playerExtraction(): PlayerExtractionRoutine {
+    if (!this.playerExtractionRoutine) {
+      throw new Error('SeleniumAutomation not initialized. Call initialize() first.');
+    }
+    return this.playerExtractionRoutine;
+  }
+
+  /**
    * Perform complete login flow
    */
   async login(
@@ -78,6 +91,7 @@ export class SeleniumAutomation {
     await this.driverService.close();
     this.authRoutine = null;
     this.navigationRoutine = null;
+    this.playerExtractionRoutine = null;
   }
 
   /**

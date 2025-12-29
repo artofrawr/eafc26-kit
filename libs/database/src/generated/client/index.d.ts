@@ -12,25 +12,50 @@ import $Result = runtime.Types.Result;
 export type PrismaPromise<T> = $Public.PrismaPromise<T>;
 
 /**
- * Model UserSession
+ * Model Quality
  *
  */
-export type UserSession = $Result.DefaultSelection<Prisma.$UserSessionPayload>;
+export type Quality = $Result.DefaultSelection<Prisma.$QualityPayload>;
 /**
- * Model SbcChallenge
+ * Model Rarity
  *
  */
-export type SbcChallenge = $Result.DefaultSelection<Prisma.$SbcChallengePayload>;
+export type Rarity = $Result.DefaultSelection<Prisma.$RarityPayload>;
 /**
- * Model SbcSolution
+ * Model Country
  *
  */
-export type SbcSolution = $Result.DefaultSelection<Prisma.$SbcSolutionPayload>;
+export type Country = $Result.DefaultSelection<Prisma.$CountryPayload>;
 /**
- * Model CompanionAppState
+ * Model Position
  *
  */
-export type CompanionAppState = $Result.DefaultSelection<Prisma.$CompanionAppStatePayload>;
+export type Position = $Result.DefaultSelection<Prisma.$PositionPayload>;
+/**
+ * Model PlayerPosition
+ *
+ */
+export type PlayerPosition = $Result.DefaultSelection<Prisma.$PlayerPositionPayload>;
+/**
+ * Model League
+ *
+ */
+export type League = $Result.DefaultSelection<Prisma.$LeaguePayload>;
+/**
+ * Model Club
+ *
+ */
+export type Club = $Result.DefaultSelection<Prisma.$ClubPayload>;
+/**
+ * Model Player
+ *
+ */
+export type Player = $Result.DefaultSelection<Prisma.$PlayerPayload>;
+/**
+ * Model ClubPlayer
+ *
+ */
+export type ClubPlayer = $Result.DefaultSelection<Prisma.$ClubPlayerPayload>;
 
 /**
  * ##  Prisma Client ʲˢ
@@ -39,8 +64,8 @@ export type CompanionAppState = $Result.DefaultSelection<Prisma.$CompanionAppSta
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more UserSessions
- * const userSessions = await prisma.userSession.findMany()
+ * // Fetch zero or more Qualities
+ * const qualities = await prisma.quality.findMany()
  * ```
  *
  *
@@ -64,8 +89,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more UserSessions
-   * const userSessions = await prisma.userSession.findMany()
+   * // Fetch zero or more Qualities
+   * const qualities = await prisma.quality.findMany()
    * ```
    *
    *
@@ -177,44 +202,94 @@ export class PrismaClient<
   $extends: $Extensions.ExtendsHook<'extends', Prisma.TypeMapCb, ExtArgs>;
 
   /**
-   * `prisma.userSession`: Exposes CRUD operations for the **UserSession** model.
+   * `prisma.quality`: Exposes CRUD operations for the **Quality** model.
    * Example usage:
    * ```ts
-   * // Fetch zero or more UserSessions
-   * const userSessions = await prisma.userSession.findMany()
+   * // Fetch zero or more Qualities
+   * const qualities = await prisma.quality.findMany()
    * ```
    */
-  get userSession(): Prisma.UserSessionDelegate<ExtArgs>;
+  get quality(): Prisma.QualityDelegate<ExtArgs>;
 
   /**
-   * `prisma.sbcChallenge`: Exposes CRUD operations for the **SbcChallenge** model.
+   * `prisma.rarity`: Exposes CRUD operations for the **Rarity** model.
    * Example usage:
    * ```ts
-   * // Fetch zero or more SbcChallenges
-   * const sbcChallenges = await prisma.sbcChallenge.findMany()
+   * // Fetch zero or more Rarities
+   * const rarities = await prisma.rarity.findMany()
    * ```
    */
-  get sbcChallenge(): Prisma.SbcChallengeDelegate<ExtArgs>;
+  get rarity(): Prisma.RarityDelegate<ExtArgs>;
 
   /**
-   * `prisma.sbcSolution`: Exposes CRUD operations for the **SbcSolution** model.
+   * `prisma.country`: Exposes CRUD operations for the **Country** model.
    * Example usage:
    * ```ts
-   * // Fetch zero or more SbcSolutions
-   * const sbcSolutions = await prisma.sbcSolution.findMany()
+   * // Fetch zero or more Countries
+   * const countries = await prisma.country.findMany()
    * ```
    */
-  get sbcSolution(): Prisma.SbcSolutionDelegate<ExtArgs>;
+  get country(): Prisma.CountryDelegate<ExtArgs>;
 
   /**
-   * `prisma.companionAppState`: Exposes CRUD operations for the **CompanionAppState** model.
+   * `prisma.position`: Exposes CRUD operations for the **Position** model.
    * Example usage:
    * ```ts
-   * // Fetch zero or more CompanionAppStates
-   * const companionAppStates = await prisma.companionAppState.findMany()
+   * // Fetch zero or more Positions
+   * const positions = await prisma.position.findMany()
    * ```
    */
-  get companionAppState(): Prisma.CompanionAppStateDelegate<ExtArgs>;
+  get position(): Prisma.PositionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.playerPosition`: Exposes CRUD operations for the **PlayerPosition** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more PlayerPositions
+   * const playerPositions = await prisma.playerPosition.findMany()
+   * ```
+   */
+  get playerPosition(): Prisma.PlayerPositionDelegate<ExtArgs>;
+
+  /**
+   * `prisma.league`: Exposes CRUD operations for the **League** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Leagues
+   * const leagues = await prisma.league.findMany()
+   * ```
+   */
+  get league(): Prisma.LeagueDelegate<ExtArgs>;
+
+  /**
+   * `prisma.club`: Exposes CRUD operations for the **Club** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Clubs
+   * const clubs = await prisma.club.findMany()
+   * ```
+   */
+  get club(): Prisma.ClubDelegate<ExtArgs>;
+
+  /**
+   * `prisma.player`: Exposes CRUD operations for the **Player** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more Players
+   * const players = await prisma.player.findMany()
+   * ```
+   */
+  get player(): Prisma.PlayerDelegate<ExtArgs>;
+
+  /**
+   * `prisma.clubPlayer`: Exposes CRUD operations for the **ClubPlayer** model.
+   * Example usage:
+   * ```ts
+   * // Fetch zero or more ClubPlayers
+   * const clubPlayers = await prisma.clubPlayer.findMany()
+   * ```
+   */
+  get clubPlayer(): Prisma.ClubPlayerDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -650,10 +725,15 @@ export namespace Prisma {
     : FieldRef<Model, FieldType>;
 
   export const ModelName: {
-    UserSession: 'UserSession';
-    SbcChallenge: 'SbcChallenge';
-    SbcSolution: 'SbcSolution';
-    CompanionAppState: 'CompanionAppState';
+    Quality: 'Quality';
+    Rarity: 'Rarity';
+    Country: 'Country';
+    Position: 'Position';
+    PlayerPosition: 'PlayerPosition';
+    League: 'League';
+    Club: 'Club';
+    Player: 'Player';
+    ClubPlayer: 'ClubPlayer';
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName];
@@ -674,287 +754,646 @@ export namespace Prisma {
     ClientOptions = {},
   > = {
     meta: {
-      modelProps: 'userSession' | 'sbcChallenge' | 'sbcSolution' | 'companionAppState';
+      modelProps:
+        | 'quality'
+        | 'rarity'
+        | 'country'
+        | 'position'
+        | 'playerPosition'
+        | 'league'
+        | 'club'
+        | 'player'
+        | 'clubPlayer';
       txIsolationLevel: Prisma.TransactionIsolationLevel;
     };
     model: {
-      UserSession: {
-        payload: Prisma.$UserSessionPayload<ExtArgs>;
-        fields: Prisma.UserSessionFieldRefs;
+      Quality: {
+        payload: Prisma.$QualityPayload<ExtArgs>;
+        fields: Prisma.QualityFieldRefs;
         operations: {
           findUnique: {
-            args: Prisma.UserSessionFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload> | null;
+            args: Prisma.QualityFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload> | null;
           };
           findUniqueOrThrow: {
-            args: Prisma.UserSessionFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           findFirst: {
-            args: Prisma.UserSessionFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload> | null;
+            args: Prisma.QualityFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload> | null;
           };
           findFirstOrThrow: {
-            args: Prisma.UserSessionFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           findMany: {
-            args: Prisma.UserSessionFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>[];
+            args: Prisma.QualityFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>[];
           };
           create: {
-            args: Prisma.UserSessionCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           createMany: {
-            args: Prisma.UserSessionCreateManyArgs<ExtArgs>;
+            args: Prisma.QualityCreateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           createManyAndReturn: {
-            args: Prisma.UserSessionCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>[];
+            args: Prisma.QualityCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>[];
           };
           delete: {
-            args: Prisma.UserSessionDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           update: {
-            args: Prisma.UserSessionUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           deleteMany: {
-            args: Prisma.UserSessionDeleteManyArgs<ExtArgs>;
+            args: Prisma.QualityDeleteManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateMany: {
-            args: Prisma.UserSessionUpdateManyArgs<ExtArgs>;
+            args: Prisma.QualityUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           upsert: {
-            args: Prisma.UserSessionUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$UserSessionPayload>;
+            args: Prisma.QualityUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$QualityPayload>;
           };
           aggregate: {
-            args: Prisma.UserSessionAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateUserSession>;
+            args: Prisma.QualityAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateQuality>;
           };
           groupBy: {
-            args: Prisma.UserSessionGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<UserSessionGroupByOutputType>[];
+            args: Prisma.QualityGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<QualityGroupByOutputType>[];
           };
           count: {
-            args: Prisma.UserSessionCountArgs<ExtArgs>;
-            result: $Utils.Optional<UserSessionCountAggregateOutputType> | number;
+            args: Prisma.QualityCountArgs<ExtArgs>;
+            result: $Utils.Optional<QualityCountAggregateOutputType> | number;
           };
         };
       };
-      SbcChallenge: {
-        payload: Prisma.$SbcChallengePayload<ExtArgs>;
-        fields: Prisma.SbcChallengeFieldRefs;
+      Rarity: {
+        payload: Prisma.$RarityPayload<ExtArgs>;
+        fields: Prisma.RarityFieldRefs;
         operations: {
           findUnique: {
-            args: Prisma.SbcChallengeFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload> | null;
+            args: Prisma.RarityFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload> | null;
           };
           findUniqueOrThrow: {
-            args: Prisma.SbcChallengeFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           findFirst: {
-            args: Prisma.SbcChallengeFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload> | null;
+            args: Prisma.RarityFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload> | null;
           };
           findFirstOrThrow: {
-            args: Prisma.SbcChallengeFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           findMany: {
-            args: Prisma.SbcChallengeFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>[];
+            args: Prisma.RarityFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>[];
           };
           create: {
-            args: Prisma.SbcChallengeCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           createMany: {
-            args: Prisma.SbcChallengeCreateManyArgs<ExtArgs>;
+            args: Prisma.RarityCreateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           createManyAndReturn: {
-            args: Prisma.SbcChallengeCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>[];
+            args: Prisma.RarityCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>[];
           };
           delete: {
-            args: Prisma.SbcChallengeDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           update: {
-            args: Prisma.SbcChallengeUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           deleteMany: {
-            args: Prisma.SbcChallengeDeleteManyArgs<ExtArgs>;
+            args: Prisma.RarityDeleteManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateMany: {
-            args: Prisma.SbcChallengeUpdateManyArgs<ExtArgs>;
+            args: Prisma.RarityUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           upsert: {
-            args: Prisma.SbcChallengeUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcChallengePayload>;
+            args: Prisma.RarityUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$RarityPayload>;
           };
           aggregate: {
-            args: Prisma.SbcChallengeAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateSbcChallenge>;
+            args: Prisma.RarityAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateRarity>;
           };
           groupBy: {
-            args: Prisma.SbcChallengeGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<SbcChallengeGroupByOutputType>[];
+            args: Prisma.RarityGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<RarityGroupByOutputType>[];
           };
           count: {
-            args: Prisma.SbcChallengeCountArgs<ExtArgs>;
-            result: $Utils.Optional<SbcChallengeCountAggregateOutputType> | number;
+            args: Prisma.RarityCountArgs<ExtArgs>;
+            result: $Utils.Optional<RarityCountAggregateOutputType> | number;
           };
         };
       };
-      SbcSolution: {
-        payload: Prisma.$SbcSolutionPayload<ExtArgs>;
-        fields: Prisma.SbcSolutionFieldRefs;
+      Country: {
+        payload: Prisma.$CountryPayload<ExtArgs>;
+        fields: Prisma.CountryFieldRefs;
         operations: {
           findUnique: {
-            args: Prisma.SbcSolutionFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload> | null;
+            args: Prisma.CountryFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null;
           };
           findUniqueOrThrow: {
-            args: Prisma.SbcSolutionFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           findFirst: {
-            args: Prisma.SbcSolutionFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload> | null;
+            args: Prisma.CountryFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload> | null;
           };
           findFirstOrThrow: {
-            args: Prisma.SbcSolutionFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           findMany: {
-            args: Prisma.SbcSolutionFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>[];
+            args: Prisma.CountryFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[];
           };
           create: {
-            args: Prisma.SbcSolutionCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           createMany: {
-            args: Prisma.SbcSolutionCreateManyArgs<ExtArgs>;
+            args: Prisma.CountryCreateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           createManyAndReturn: {
-            args: Prisma.SbcSolutionCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>[];
+            args: Prisma.CountryCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>[];
           };
           delete: {
-            args: Prisma.SbcSolutionDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           update: {
-            args: Prisma.SbcSolutionUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           deleteMany: {
-            args: Prisma.SbcSolutionDeleteManyArgs<ExtArgs>;
+            args: Prisma.CountryDeleteManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateMany: {
-            args: Prisma.SbcSolutionUpdateManyArgs<ExtArgs>;
+            args: Prisma.CountryUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           upsert: {
-            args: Prisma.SbcSolutionUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$SbcSolutionPayload>;
+            args: Prisma.CountryUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$CountryPayload>;
           };
           aggregate: {
-            args: Prisma.SbcSolutionAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateSbcSolution>;
+            args: Prisma.CountryAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateCountry>;
           };
           groupBy: {
-            args: Prisma.SbcSolutionGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<SbcSolutionGroupByOutputType>[];
+            args: Prisma.CountryGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<CountryGroupByOutputType>[];
           };
           count: {
-            args: Prisma.SbcSolutionCountArgs<ExtArgs>;
-            result: $Utils.Optional<SbcSolutionCountAggregateOutputType> | number;
+            args: Prisma.CountryCountArgs<ExtArgs>;
+            result: $Utils.Optional<CountryCountAggregateOutputType> | number;
           };
         };
       };
-      CompanionAppState: {
-        payload: Prisma.$CompanionAppStatePayload<ExtArgs>;
-        fields: Prisma.CompanionAppStateFieldRefs;
+      Position: {
+        payload: Prisma.$PositionPayload<ExtArgs>;
+        fields: Prisma.PositionFieldRefs;
         operations: {
           findUnique: {
-            args: Prisma.CompanionAppStateFindUniqueArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload> | null;
+            args: Prisma.PositionFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload> | null;
           };
           findUniqueOrThrow: {
-            args: Prisma.CompanionAppStateFindUniqueOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           findFirst: {
-            args: Prisma.CompanionAppStateFindFirstArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload> | null;
+            args: Prisma.PositionFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload> | null;
           };
           findFirstOrThrow: {
-            args: Prisma.CompanionAppStateFindFirstOrThrowArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           findMany: {
-            args: Prisma.CompanionAppStateFindManyArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>[];
+            args: Prisma.PositionFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>[];
           };
           create: {
-            args: Prisma.CompanionAppStateCreateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           createMany: {
-            args: Prisma.CompanionAppStateCreateManyArgs<ExtArgs>;
+            args: Prisma.PositionCreateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           createManyAndReturn: {
-            args: Prisma.CompanionAppStateCreateManyAndReturnArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>[];
+            args: Prisma.PositionCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>[];
           };
           delete: {
-            args: Prisma.CompanionAppStateDeleteArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           update: {
-            args: Prisma.CompanionAppStateUpdateArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           deleteMany: {
-            args: Prisma.CompanionAppStateDeleteManyArgs<ExtArgs>;
+            args: Prisma.PositionDeleteManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           updateMany: {
-            args: Prisma.CompanionAppStateUpdateManyArgs<ExtArgs>;
+            args: Prisma.PositionUpdateManyArgs<ExtArgs>;
             result: BatchPayload;
           };
           upsert: {
-            args: Prisma.CompanionAppStateUpsertArgs<ExtArgs>;
-            result: $Utils.PayloadToResult<Prisma.$CompanionAppStatePayload>;
+            args: Prisma.PositionUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PositionPayload>;
           };
           aggregate: {
-            args: Prisma.CompanionAppStateAggregateArgs<ExtArgs>;
-            result: $Utils.Optional<AggregateCompanionAppState>;
+            args: Prisma.PositionAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregatePosition>;
           };
           groupBy: {
-            args: Prisma.CompanionAppStateGroupByArgs<ExtArgs>;
-            result: $Utils.Optional<CompanionAppStateGroupByOutputType>[];
+            args: Prisma.PositionGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<PositionGroupByOutputType>[];
           };
           count: {
-            args: Prisma.CompanionAppStateCountArgs<ExtArgs>;
-            result: $Utils.Optional<CompanionAppStateCountAggregateOutputType> | number;
+            args: Prisma.PositionCountArgs<ExtArgs>;
+            result: $Utils.Optional<PositionCountAggregateOutputType> | number;
+          };
+        };
+      };
+      PlayerPosition: {
+        payload: Prisma.$PlayerPositionPayload<ExtArgs>;
+        fields: Prisma.PlayerPositionFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.PlayerPositionFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.PlayerPositionFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          findFirst: {
+            args: Prisma.PlayerPositionFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.PlayerPositionFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          findMany: {
+            args: Prisma.PlayerPositionFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>[];
+          };
+          create: {
+            args: Prisma.PlayerPositionCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          createMany: {
+            args: Prisma.PlayerPositionCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.PlayerPositionCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>[];
+          };
+          delete: {
+            args: Prisma.PlayerPositionDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          update: {
+            args: Prisma.PlayerPositionUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          deleteMany: {
+            args: Prisma.PlayerPositionDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.PlayerPositionUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.PlayerPositionUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPositionPayload>;
+          };
+          aggregate: {
+            args: Prisma.PlayerPositionAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregatePlayerPosition>;
+          };
+          groupBy: {
+            args: Prisma.PlayerPositionGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<PlayerPositionGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.PlayerPositionCountArgs<ExtArgs>;
+            result: $Utils.Optional<PlayerPositionCountAggregateOutputType> | number;
+          };
+        };
+      };
+      League: {
+        payload: Prisma.$LeaguePayload<ExtArgs>;
+        fields: Prisma.LeagueFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.LeagueFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.LeagueFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          findFirst: {
+            args: Prisma.LeagueFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.LeagueFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          findMany: {
+            args: Prisma.LeagueFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>[];
+          };
+          create: {
+            args: Prisma.LeagueCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          createMany: {
+            args: Prisma.LeagueCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.LeagueCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>[];
+          };
+          delete: {
+            args: Prisma.LeagueDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          update: {
+            args: Prisma.LeagueUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          deleteMany: {
+            args: Prisma.LeagueDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.LeagueUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.LeagueUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$LeaguePayload>;
+          };
+          aggregate: {
+            args: Prisma.LeagueAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateLeague>;
+          };
+          groupBy: {
+            args: Prisma.LeagueGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<LeagueGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.LeagueCountArgs<ExtArgs>;
+            result: $Utils.Optional<LeagueCountAggregateOutputType> | number;
+          };
+        };
+      };
+      Club: {
+        payload: Prisma.$ClubPayload<ExtArgs>;
+        fields: Prisma.ClubFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.ClubFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.ClubFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          findFirst: {
+            args: Prisma.ClubFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.ClubFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          findMany: {
+            args: Prisma.ClubFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>[];
+          };
+          create: {
+            args: Prisma.ClubCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          createMany: {
+            args: Prisma.ClubCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.ClubCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>[];
+          };
+          delete: {
+            args: Prisma.ClubDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          update: {
+            args: Prisma.ClubUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          deleteMany: {
+            args: Prisma.ClubDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.ClubUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.ClubUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPayload>;
+          };
+          aggregate: {
+            args: Prisma.ClubAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateClub>;
+          };
+          groupBy: {
+            args: Prisma.ClubGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<ClubGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.ClubCountArgs<ExtArgs>;
+            result: $Utils.Optional<ClubCountAggregateOutputType> | number;
+          };
+        };
+      };
+      Player: {
+        payload: Prisma.$PlayerPayload<ExtArgs>;
+        fields: Prisma.PlayerFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.PlayerFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.PlayerFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          findFirst: {
+            args: Prisma.PlayerFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.PlayerFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          findMany: {
+            args: Prisma.PlayerFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>[];
+          };
+          create: {
+            args: Prisma.PlayerCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          createMany: {
+            args: Prisma.PlayerCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.PlayerCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>[];
+          };
+          delete: {
+            args: Prisma.PlayerDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          update: {
+            args: Prisma.PlayerUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          deleteMany: {
+            args: Prisma.PlayerDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.PlayerUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.PlayerUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$PlayerPayload>;
+          };
+          aggregate: {
+            args: Prisma.PlayerAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregatePlayer>;
+          };
+          groupBy: {
+            args: Prisma.PlayerGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<PlayerGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.PlayerCountArgs<ExtArgs>;
+            result: $Utils.Optional<PlayerCountAggregateOutputType> | number;
+          };
+        };
+      };
+      ClubPlayer: {
+        payload: Prisma.$ClubPlayerPayload<ExtArgs>;
+        fields: Prisma.ClubPlayerFieldRefs;
+        operations: {
+          findUnique: {
+            args: Prisma.ClubPlayerFindUniqueArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload> | null;
+          };
+          findUniqueOrThrow: {
+            args: Prisma.ClubPlayerFindUniqueOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          findFirst: {
+            args: Prisma.ClubPlayerFindFirstArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload> | null;
+          };
+          findFirstOrThrow: {
+            args: Prisma.ClubPlayerFindFirstOrThrowArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          findMany: {
+            args: Prisma.ClubPlayerFindManyArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>[];
+          };
+          create: {
+            args: Prisma.ClubPlayerCreateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          createMany: {
+            args: Prisma.ClubPlayerCreateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          createManyAndReturn: {
+            args: Prisma.ClubPlayerCreateManyAndReturnArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>[];
+          };
+          delete: {
+            args: Prisma.ClubPlayerDeleteArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          update: {
+            args: Prisma.ClubPlayerUpdateArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          deleteMany: {
+            args: Prisma.ClubPlayerDeleteManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          updateMany: {
+            args: Prisma.ClubPlayerUpdateManyArgs<ExtArgs>;
+            result: BatchPayload;
+          };
+          upsert: {
+            args: Prisma.ClubPlayerUpsertArgs<ExtArgs>;
+            result: $Utils.PayloadToResult<Prisma.$ClubPlayerPayload>;
+          };
+          aggregate: {
+            args: Prisma.ClubPlayerAggregateArgs<ExtArgs>;
+            result: $Utils.Optional<AggregateClubPlayer>;
+          };
+          groupBy: {
+            args: Prisma.ClubPlayerGroupByArgs<ExtArgs>;
+            result: $Utils.Optional<ClubPlayerGroupByOutputType>[];
+          };
+          count: {
+            args: Prisma.ClubPlayerCountArgs<ExtArgs>;
+            result: $Utils.Optional<ClubPlayerCountAggregateOutputType> | number;
           };
         };
       };
@@ -1121,39 +1560,299 @@ export namespace Prisma {
    */
 
   /**
-   * Count Type SbcChallengeCountOutputType
+   * Count Type QualityCountOutputType
    */
 
-  export type SbcChallengeCountOutputType = {
-    solutions: number;
+  export type QualityCountOutputType = {
+    players: number;
   };
 
-  export type SbcChallengeCountOutputTypeSelect<
+  export type QualityCountOutputTypeSelect<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
-    solutions?: boolean | SbcChallengeCountOutputTypeCountSolutionsArgs;
+    players?: boolean | QualityCountOutputTypeCountPlayersArgs;
   };
 
   // Custom InputTypes
   /**
-   * SbcChallengeCountOutputType without action
+   * QualityCountOutputType without action
    */
-  export type SbcChallengeCountOutputTypeDefaultArgs<
+  export type QualityCountOutputTypeDefaultArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcChallengeCountOutputType
+     * Select specific fields to fetch from the QualityCountOutputType
      */
-    select?: SbcChallengeCountOutputTypeSelect<ExtArgs> | null;
+    select?: QualityCountOutputTypeSelect<ExtArgs> | null;
   };
 
   /**
-   * SbcChallengeCountOutputType without action
+   * QualityCountOutputType without action
    */
-  export type SbcChallengeCountOutputTypeCountSolutionsArgs<
+  export type QualityCountOutputTypeCountPlayersArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
-    where?: SbcSolutionWhereInput;
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Count Type RarityCountOutputType
+   */
+
+  export type RarityCountOutputType = {
+    players: number;
+  };
+
+  export type RarityCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    players?: boolean | RarityCountOutputTypeCountPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * RarityCountOutputType without action
+   */
+  export type RarityCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the RarityCountOutputType
+     */
+    select?: RarityCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * RarityCountOutputType without action
+   */
+  export type RarityCountOutputTypeCountPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Count Type CountryCountOutputType
+   */
+
+  export type CountryCountOutputType = {
+    clubs: number;
+    leagues: number;
+    players: number;
+  };
+
+  export type CountryCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    clubs?: boolean | CountryCountOutputTypeCountClubsArgs;
+    leagues?: boolean | CountryCountOutputTypeCountLeaguesArgs;
+    players?: boolean | CountryCountOutputTypeCountPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the CountryCountOutputType
+     */
+    select?: CountryCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeCountClubsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: ClubWhereInput;
+  };
+
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeCountLeaguesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: LeagueWhereInput;
+  };
+
+  /**
+   * CountryCountOutputType without action
+   */
+  export type CountryCountOutputTypeCountPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Count Type PositionCountOutputType
+   */
+
+  export type PositionCountOutputType = {
+    players: number;
+  };
+
+  export type PositionCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    players?: boolean | PositionCountOutputTypeCountPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * PositionCountOutputType without action
+   */
+  export type PositionCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the PositionCountOutputType
+     */
+    select?: PositionCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * PositionCountOutputType without action
+   */
+  export type PositionCountOutputTypeCountPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerPositionWhereInput;
+  };
+
+  /**
+   * Count Type LeagueCountOutputType
+   */
+
+  export type LeagueCountOutputType = {
+    clubs: number;
+    players: number;
+  };
+
+  export type LeagueCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    clubs?: boolean | LeagueCountOutputTypeCountClubsArgs;
+    players?: boolean | LeagueCountOutputTypeCountPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * LeagueCountOutputType without action
+   */
+  export type LeagueCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the LeagueCountOutputType
+     */
+    select?: LeagueCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * LeagueCountOutputType without action
+   */
+  export type LeagueCountOutputTypeCountClubsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: ClubWhereInput;
+  };
+
+  /**
+   * LeagueCountOutputType without action
+   */
+  export type LeagueCountOutputTypeCountPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Count Type ClubCountOutputType
+   */
+
+  export type ClubCountOutputType = {
+    players: number;
+  };
+
+  export type ClubCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    players?: boolean | ClubCountOutputTypeCountPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * ClubCountOutputType without action
+   */
+  export type ClubCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubCountOutputType
+     */
+    select?: ClubCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * ClubCountOutputType without action
+   */
+  export type ClubCountOutputTypeCountPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Count Type PlayerCountOutputType
+   */
+
+  export type PlayerCountOutputType = {
+    positions: number;
+    clubPlayers: number;
+  };
+
+  export type PlayerCountOutputTypeSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    positions?: boolean | PlayerCountOutputTypeCountPositionsArgs;
+    clubPlayers?: boolean | PlayerCountOutputTypeCountClubPlayersArgs;
+  };
+
+  // Custom InputTypes
+  /**
+   * PlayerCountOutputType without action
+   */
+  export type PlayerCountOutputTypeDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the PlayerCountOutputType
+     */
+    select?: PlayerCountOutputTypeSelect<ExtArgs> | null;
+  };
+
+  /**
+   * PlayerCountOutputType without action
+   */
+  export type PlayerCountOutputTypeCountPositionsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerPositionWhereInput;
+  };
+
+  /**
+   * PlayerCountOutputType without action
+   */
+  export type PlayerCountOutputTypeCountClubPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: ClubPlayerWhereInput;
   };
 
   /**
@@ -1161,2515 +1860,389 @@ export namespace Prisma {
    */
 
   /**
-   * Model UserSession
+   * Model Quality
    */
 
-  export type AggregateUserSession = {
-    _count: UserSessionCountAggregateOutputType | null;
-    _min: UserSessionMinAggregateOutputType | null;
-    _max: UserSessionMaxAggregateOutputType | null;
+  export type AggregateQuality = {
+    _count: QualityCountAggregateOutputType | null;
+    _avg: QualityAvgAggregateOutputType | null;
+    _sum: QualitySumAggregateOutputType | null;
+    _min: QualityMinAggregateOutputType | null;
+    _max: QualityMaxAggregateOutputType | null;
   };
 
-  export type UserSessionMinAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    sessionId: string | null;
+  export type QualityAvgAggregateOutputType = {
+    id: number | null;
   };
 
-  export type UserSessionMaxAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    sessionId: string | null;
+  export type QualitySumAggregateOutputType = {
+    id: number | null;
   };
 
-  export type UserSessionCountAggregateOutputType = {
-    id: number;
-    createdAt: number;
-    updatedAt: number;
-    sessionId: number;
-    data: number;
-    _all: number;
-  };
-
-  export type UserSessionMinAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    sessionId?: true;
-  };
-
-  export type UserSessionMaxAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    sessionId?: true;
-  };
-
-  export type UserSessionCountAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    sessionId?: true;
-    data?: true;
-    _all?: true;
-  };
-
-  export type UserSessionAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Filter which UserSession to aggregate.
-     */
-    where?: UserSessionWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of UserSessions to fetch.
-     */
-    orderBy?: UserSessionOrderByWithRelationInput | UserSessionOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: UserSessionWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` UserSessions from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` UserSessions.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned UserSessions
-     **/
-    _count?: true | UserSessionCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: UserSessionMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: UserSessionMaxAggregateInputType;
-  };
-
-  export type GetUserSessionAggregateType<T extends UserSessionAggregateArgs> = {
-    [P in keyof T & keyof AggregateUserSession]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateUserSession[P]>
-      : GetScalarType<T[P], AggregateUserSession[P]>;
-  };
-
-  export type UserSessionGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    where?: UserSessionWhereInput;
-    orderBy?: UserSessionOrderByWithAggregationInput | UserSessionOrderByWithAggregationInput[];
-    by: UserSessionScalarFieldEnum[] | UserSessionScalarFieldEnum;
-    having?: UserSessionScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: UserSessionCountAggregateInputType | true;
-    _min?: UserSessionMinAggregateInputType;
-    _max?: UserSessionMaxAggregateInputType;
-  };
-
-  export type UserSessionGroupByOutputType = {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    sessionId: string;
-    data: JsonValue | null;
-    _count: UserSessionCountAggregateOutputType | null;
-    _min: UserSessionMinAggregateOutputType | null;
-    _max: UserSessionMaxAggregateOutputType | null;
-  };
-
-  type GetUserSessionGroupByPayload<T extends UserSessionGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<UserSessionGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof UserSessionGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : GetScalarType<T[P], UserSessionGroupByOutputType[P]>
-          : GetScalarType<T[P], UserSessionGroupByOutputType[P]>;
-      }
-    >
-  >;
-
-  export type UserSessionSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      sessionId?: boolean;
-      data?: boolean;
-    },
-    ExtArgs['result']['userSession']
-  >;
-
-  export type UserSessionSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      sessionId?: boolean;
-      data?: boolean;
-    },
-    ExtArgs['result']['userSession']
-  >;
-
-  export type UserSessionSelectScalar = {
-    id?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
-    sessionId?: boolean;
-    data?: boolean;
-  };
-
-  export type $UserSessionPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    name: 'UserSession';
-    objects: {};
-    scalars: $Extensions.GetPayloadResult<
-      {
-        id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        sessionId: string;
-        data: Prisma.JsonValue | null;
-      },
-      ExtArgs['result']['userSession']
-    >;
-    composites: {};
-  };
-
-  type UserSessionGetPayload<S extends boolean | null | undefined | UserSessionDefaultArgs> =
-    $Result.GetResult<Prisma.$UserSessionPayload, S>;
-
-  type UserSessionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<UserSessionFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: UserSessionCountAggregateInputType | true;
-    };
-
-  export interface UserSessionDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['UserSession'];
-      meta: { name: 'UserSession' };
-    };
-    /**
-     * Find zero or one UserSession that matches the filter.
-     * @param {UserSessionFindUniqueArgs} args - Arguments to find a UserSession
-     * @example
-     * // Get one UserSession
-     * const userSession = await prisma.userSession.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends UserSessionFindUniqueArgs>(
-      args: SelectSubset<T, UserSessionFindUniqueArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'findUnique'> | null,
-      null,
-      ExtArgs
-    >;
-
-    /**
-     * Find one UserSession that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {UserSessionFindUniqueOrThrowArgs} args - Arguments to find a UserSession
-     * @example
-     * // Get one UserSession
-     * const userSession = await prisma.userSession.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends UserSessionFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, UserSessionFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Find the first UserSession that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionFindFirstArgs} args - Arguments to find a UserSession
-     * @example
-     * // Get one UserSession
-     * const userSession = await prisma.userSession.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends UserSessionFindFirstArgs>(
-      args?: SelectSubset<T, UserSessionFindFirstArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'findFirst'> | null,
-      null,
-      ExtArgs
-    >;
-
-    /**
-     * Find the first UserSession that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionFindFirstOrThrowArgs} args - Arguments to find a UserSession
-     * @example
-     * // Get one UserSession
-     * const userSession = await prisma.userSession.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends UserSessionFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, UserSessionFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'findFirstOrThrow'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Find zero or more UserSessions that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all UserSessions
-     * const userSessions = await prisma.userSession.findMany()
-     *
-     * // Get first 10 UserSessions
-     * const userSessions = await prisma.userSession.findMany({ take: 10 })
-     *
-     * // Only select the `id`
-     * const userSessionWithIdOnly = await prisma.userSession.findMany({ select: { id: true } })
-     *
-     */
-    findMany<T extends UserSessionFindManyArgs>(
-      args?: SelectSubset<T, UserSessionFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'findMany'>>;
-
-    /**
-     * Create a UserSession.
-     * @param {UserSessionCreateArgs} args - Arguments to create a UserSession.
-     * @example
-     * // Create one UserSession
-     * const UserSession = await prisma.userSession.create({
-     *   data: {
-     *     // ... data to create a UserSession
-     *   }
-     * })
-     *
-     */
-    create<T extends UserSessionCreateArgs>(
-      args: SelectSubset<T, UserSessionCreateArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'create'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Create many UserSessions.
-     * @param {UserSessionCreateManyArgs} args - Arguments to create many UserSessions.
-     * @example
-     * // Create many UserSessions
-     * const userSession = await prisma.userSession.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends UserSessionCreateManyArgs>(
-      args?: SelectSubset<T, UserSessionCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many UserSessions and returns the data saved in the database.
-     * @param {UserSessionCreateManyAndReturnArgs} args - Arguments to create many UserSessions.
-     * @example
-     * // Create many UserSessions
-     * const userSession = await prisma.userSession.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many UserSessions and only return the `id`
-     * const userSessionWithIdOnly = await prisma.userSession.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends UserSessionCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, UserSessionCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'createManyAndReturn'>
-    >;
-
-    /**
-     * Delete a UserSession.
-     * @param {UserSessionDeleteArgs} args - Arguments to delete one UserSession.
-     * @example
-     * // Delete one UserSession
-     * const UserSession = await prisma.userSession.delete({
-     *   where: {
-     *     // ... filter to delete one UserSession
-     *   }
-     * })
-     *
-     */
-    delete<T extends UserSessionDeleteArgs>(
-      args: SelectSubset<T, UserSessionDeleteArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'delete'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Update one UserSession.
-     * @param {UserSessionUpdateArgs} args - Arguments to update one UserSession.
-     * @example
-     * // Update one UserSession
-     * const userSession = await prisma.userSession.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends UserSessionUpdateArgs>(
-      args: SelectSubset<T, UserSessionUpdateArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'update'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Delete zero or more UserSessions.
-     * @param {UserSessionDeleteManyArgs} args - Arguments to filter UserSessions to delete.
-     * @example
-     * // Delete a few UserSessions
-     * const { count } = await prisma.userSession.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends UserSessionDeleteManyArgs>(
-      args?: SelectSubset<T, UserSessionDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more UserSessions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many UserSessions
-     * const userSession = await prisma.userSession.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends UserSessionUpdateManyArgs>(
-      args: SelectSubset<T, UserSessionUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create or update one UserSession.
-     * @param {UserSessionUpsertArgs} args - Arguments to update or create a UserSession.
-     * @example
-     * // Update or create a UserSession
-     * const userSession = await prisma.userSession.upsert({
-     *   create: {
-     *     // ... data to create a UserSession
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the UserSession we want to update
-     *   }
-     * })
-     */
-    upsert<T extends UserSessionUpsertArgs>(
-      args: SelectSubset<T, UserSessionUpsertArgs<ExtArgs>>
-    ): Prisma__UserSessionClient<
-      $Result.GetResult<Prisma.$UserSessionPayload<ExtArgs>, T, 'upsert'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Count the number of UserSessions.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionCountArgs} args - Arguments to filter UserSessions to count.
-     * @example
-     * // Count the number of UserSessions
-     * const count = await prisma.userSession.count({
-     *   where: {
-     *     // ... the filter for the UserSessions we want to count
-     *   }
-     * })
-     **/
-    count<T extends UserSessionCountArgs>(
-      args?: Subset<T, UserSessionCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], UserSessionCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a UserSession.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends UserSessionAggregateArgs>(
-      args: Subset<T, UserSessionAggregateArgs>
-    ): Prisma.PrismaPromise<GetUserSessionAggregateType<T>>;
-
-    /**
-     * Group by UserSession.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {UserSessionGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends UserSessionGroupByArgs,
-      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: UserSessionGroupByArgs['orderBy'] }
-        : { orderBy?: UserSessionGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-          ? {
-              [P in HavingFields]: P extends ByFields
-                ? never
-                : P extends string
-                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
-            }[HavingFields]
-          : 'take' extends Keys<T>
-            ? 'orderBy' extends Keys<T>
-              ? ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-              : 'Error: If you provide "take", you also need to provide "orderBy"'
-            : 'skip' extends Keys<T>
-              ? 'orderBy' extends Keys<T>
-                ? ByValid extends True
-                  ? {}
-                  : {
-                      [P in OrderFields]: P extends ByFields
-                        ? never
-                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                    }[OrderFields]
-                : 'Error: If you provide "skip", you also need to provide "orderBy"'
-              : ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields],
-    >(
-      args: SubsetIntersection<T, UserSessionGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors ? GetUserSessionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the UserSession model
-     */
-    readonly fields: UserSessionFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for UserSession.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__UserSessionClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the UserSession model
-   */
-  interface UserSessionFieldRefs {
-    readonly id: FieldRef<'UserSession', 'String'>;
-    readonly createdAt: FieldRef<'UserSession', 'DateTime'>;
-    readonly updatedAt: FieldRef<'UserSession', 'DateTime'>;
-    readonly sessionId: FieldRef<'UserSession', 'String'>;
-    readonly data: FieldRef<'UserSession', 'Json'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * UserSession findUnique
-   */
-  export type UserSessionFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter, which UserSession to fetch.
-     */
-    where: UserSessionWhereUniqueInput;
-  };
-
-  /**
-   * UserSession findUniqueOrThrow
-   */
-  export type UserSessionFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter, which UserSession to fetch.
-     */
-    where: UserSessionWhereUniqueInput;
-  };
-
-  /**
-   * UserSession findFirst
-   */
-  export type UserSessionFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter, which UserSession to fetch.
-     */
-    where?: UserSessionWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of UserSessions to fetch.
-     */
-    orderBy?: UserSessionOrderByWithRelationInput | UserSessionOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for UserSessions.
-     */
-    cursor?: UserSessionWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` UserSessions from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` UserSessions.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of UserSessions.
-     */
-    distinct?: UserSessionScalarFieldEnum | UserSessionScalarFieldEnum[];
-  };
-
-  /**
-   * UserSession findFirstOrThrow
-   */
-  export type UserSessionFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter, which UserSession to fetch.
-     */
-    where?: UserSessionWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of UserSessions to fetch.
-     */
-    orderBy?: UserSessionOrderByWithRelationInput | UserSessionOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for UserSessions.
-     */
-    cursor?: UserSessionWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` UserSessions from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` UserSessions.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of UserSessions.
-     */
-    distinct?: UserSessionScalarFieldEnum | UserSessionScalarFieldEnum[];
-  };
-
-  /**
-   * UserSession findMany
-   */
-  export type UserSessionFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter, which UserSessions to fetch.
-     */
-    where?: UserSessionWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of UserSessions to fetch.
-     */
-    orderBy?: UserSessionOrderByWithRelationInput | UserSessionOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing UserSessions.
-     */
-    cursor?: UserSessionWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` UserSessions from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` UserSessions.
-     */
-    skip?: number;
-    distinct?: UserSessionScalarFieldEnum | UserSessionScalarFieldEnum[];
-  };
-
-  /**
-   * UserSession create
-   */
-  export type UserSessionCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * The data needed to create a UserSession.
-     */
-    data: XOR<UserSessionCreateInput, UserSessionUncheckedCreateInput>;
-  };
-
-  /**
-   * UserSession createMany
-   */
-  export type UserSessionCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * The data used to create many UserSessions.
-     */
-    data: UserSessionCreateManyInput | UserSessionCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * UserSession createManyAndReturn
-   */
-  export type UserSessionCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * The data used to create many UserSessions.
-     */
-    data: UserSessionCreateManyInput | UserSessionCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * UserSession update
-   */
-  export type UserSessionUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * The data needed to update a UserSession.
-     */
-    data: XOR<UserSessionUpdateInput, UserSessionUncheckedUpdateInput>;
-    /**
-     * Choose, which UserSession to update.
-     */
-    where: UserSessionWhereUniqueInput;
-  };
-
-  /**
-   * UserSession updateMany
-   */
-  export type UserSessionUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * The data used to update UserSessions.
-     */
-    data: XOR<UserSessionUpdateManyMutationInput, UserSessionUncheckedUpdateManyInput>;
-    /**
-     * Filter which UserSessions to update
-     */
-    where?: UserSessionWhereInput;
-  };
-
-  /**
-   * UserSession upsert
-   */
-  export type UserSessionUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * The filter to search for the UserSession to update in case it exists.
-     */
-    where: UserSessionWhereUniqueInput;
-    /**
-     * In case the UserSession found by the `where` argument doesn't exist, create a new UserSession with this data.
-     */
-    create: XOR<UserSessionCreateInput, UserSessionUncheckedCreateInput>;
-    /**
-     * In case the UserSession was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<UserSessionUpdateInput, UserSessionUncheckedUpdateInput>;
-  };
-
-  /**
-   * UserSession delete
-   */
-  export type UserSessionDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-    /**
-     * Filter which UserSession to delete.
-     */
-    where: UserSessionWhereUniqueInput;
-  };
-
-  /**
-   * UserSession deleteMany
-   */
-  export type UserSessionDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Filter which UserSessions to delete
-     */
-    where?: UserSessionWhereInput;
-  };
-
-  /**
-   * UserSession without action
-   */
-  export type UserSessionDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the UserSession
-     */
-    select?: UserSessionSelect<ExtArgs> | null;
-  };
-
-  /**
-   * Model SbcChallenge
-   */
-
-  export type AggregateSbcChallenge = {
-    _count: SbcChallengeCountAggregateOutputType | null;
-    _min: SbcChallengeMinAggregateOutputType | null;
-    _max: SbcChallengeMaxAggregateOutputType | null;
-  };
-
-  export type SbcChallengeMinAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    challengeId: string | null;
+  export type QualityMinAggregateOutputType = {
+    id: number | null;
     name: string | null;
-    status: string | null;
   };
 
-  export type SbcChallengeMaxAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    challengeId: string | null;
+  export type QualityMaxAggregateOutputType = {
+    id: number | null;
     name: string | null;
-    status: string | null;
   };
 
-  export type SbcChallengeCountAggregateOutputType = {
+  export type QualityCountAggregateOutputType = {
     id: number;
-    createdAt: number;
-    updatedAt: number;
-    challengeId: number;
     name: number;
-    requirements: number;
-    status: number;
     _all: number;
   };
 
-  export type SbcChallengeMinAggregateInputType = {
+  export type QualityAvgAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    challengeId?: true;
-    name?: true;
-    status?: true;
   };
 
-  export type SbcChallengeMaxAggregateInputType = {
+  export type QualitySumAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    challengeId?: true;
-    name?: true;
-    status?: true;
   };
 
-  export type SbcChallengeCountAggregateInputType = {
+  export type QualityMinAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    challengeId?: true;
     name?: true;
-    requirements?: true;
-    status?: true;
+  };
+
+  export type QualityMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type QualityCountAggregateInputType = {
+    id?: true;
+    name?: true;
     _all?: true;
   };
 
-  export type SbcChallengeAggregateArgs<
+  export type QualityAggregateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Filter which SbcChallenge to aggregate.
+     * Filter which Quality to aggregate.
      */
-    where?: SbcChallengeWhereInput;
+    where?: QualityWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of SbcChallenges to fetch.
+     * Determine the order of Qualities to fetch.
      */
-    orderBy?: SbcChallengeOrderByWithRelationInput | SbcChallengeOrderByWithRelationInput[];
+    orderBy?: QualityOrderByWithRelationInput | QualityOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
      * Sets the start position
      */
-    cursor?: SbcChallengeWhereUniqueInput;
+    cursor?: QualityWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` SbcChallenges from the position of the cursor.
+     * Take `±n` Qualities from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` SbcChallenges.
+     * Skip the first `n` Qualities.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
-     * Count returned SbcChallenges
+     * Count returned Qualities
      **/
-    _count?: true | SbcChallengeCountAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the minimum value
-     **/
-    _min?: SbcChallengeMinAggregateInputType;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Select which fields to find the maximum value
-     **/
-    _max?: SbcChallengeMaxAggregateInputType;
-  };
-
-  export type GetSbcChallengeAggregateType<T extends SbcChallengeAggregateArgs> = {
-    [P in keyof T & keyof AggregateSbcChallenge]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSbcChallenge[P]>
-      : GetScalarType<T[P], AggregateSbcChallenge[P]>;
-  };
-
-  export type SbcChallengeGroupByArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    where?: SbcChallengeWhereInput;
-    orderBy?: SbcChallengeOrderByWithAggregationInput | SbcChallengeOrderByWithAggregationInput[];
-    by: SbcChallengeScalarFieldEnum[] | SbcChallengeScalarFieldEnum;
-    having?: SbcChallengeScalarWhereWithAggregatesInput;
-    take?: number;
-    skip?: number;
-    _count?: SbcChallengeCountAggregateInputType | true;
-    _min?: SbcChallengeMinAggregateInputType;
-    _max?: SbcChallengeMaxAggregateInputType;
-  };
-
-  export type SbcChallengeGroupByOutputType = {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    challengeId: string;
-    name: string;
-    requirements: JsonValue;
-    status: string;
-    _count: SbcChallengeCountAggregateOutputType | null;
-    _min: SbcChallengeMinAggregateOutputType | null;
-    _max: SbcChallengeMaxAggregateOutputType | null;
-  };
-
-  type GetSbcChallengeGroupByPayload<T extends SbcChallengeGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SbcChallengeGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof SbcChallengeGroupByOutputType]: P extends '_count'
-          ? T[P] extends boolean
-            ? number
-            : GetScalarType<T[P], SbcChallengeGroupByOutputType[P]>
-          : GetScalarType<T[P], SbcChallengeGroupByOutputType[P]>;
-      }
-    >
-  >;
-
-  export type SbcChallengeSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      challengeId?: boolean;
-      name?: boolean;
-      requirements?: boolean;
-      status?: boolean;
-      solutions?: boolean | SbcChallenge$solutionsArgs<ExtArgs>;
-      _count?: boolean | SbcChallengeCountOutputTypeDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['sbcChallenge']
-  >;
-
-  export type SbcChallengeSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      challengeId?: boolean;
-      name?: boolean;
-      requirements?: boolean;
-      status?: boolean;
-    },
-    ExtArgs['result']['sbcChallenge']
-  >;
-
-  export type SbcChallengeSelectScalar = {
-    id?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
-    challengeId?: boolean;
-    name?: boolean;
-    requirements?: boolean;
-    status?: boolean;
-  };
-
-  export type SbcChallengeInclude<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    solutions?: boolean | SbcChallenge$solutionsArgs<ExtArgs>;
-    _count?: boolean | SbcChallengeCountOutputTypeDefaultArgs<ExtArgs>;
-  };
-  export type SbcChallengeIncludeCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {};
-
-  export type $SbcChallengePayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    name: 'SbcChallenge';
-    objects: {
-      solutions: Prisma.$SbcSolutionPayload<ExtArgs>[];
-    };
-    scalars: $Extensions.GetPayloadResult<
-      {
-        id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        challengeId: string;
-        name: string;
-        requirements: Prisma.JsonValue;
-        status: string;
-      },
-      ExtArgs['result']['sbcChallenge']
-    >;
-    composites: {};
-  };
-
-  type SbcChallengeGetPayload<S extends boolean | null | undefined | SbcChallengeDefaultArgs> =
-    $Result.GetResult<Prisma.$SbcChallengePayload, S>;
-
-  type SbcChallengeCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SbcChallengeFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: SbcChallengeCountAggregateInputType | true;
-    };
-
-  export interface SbcChallengeDelegate<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['SbcChallenge'];
-      meta: { name: 'SbcChallenge' };
-    };
-    /**
-     * Find zero or one SbcChallenge that matches the filter.
-     * @param {SbcChallengeFindUniqueArgs} args - Arguments to find a SbcChallenge
-     * @example
-     * // Get one SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends SbcChallengeFindUniqueArgs>(
-      args: SelectSubset<T, SbcChallengeFindUniqueArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findUnique'> | null,
-      null,
-      ExtArgs
-    >;
-
-    /**
-     * Find one SbcChallenge that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {SbcChallengeFindUniqueOrThrowArgs} args - Arguments to find a SbcChallenge
-     * @example
-     * // Get one SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends SbcChallengeFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, SbcChallengeFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findUniqueOrThrow'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Find the first SbcChallenge that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeFindFirstArgs} args - Arguments to find a SbcChallenge
-     * @example
-     * // Get one SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends SbcChallengeFindFirstArgs>(
-      args?: SelectSubset<T, SbcChallengeFindFirstArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findFirst'> | null,
-      null,
-      ExtArgs
-    >;
-
-    /**
-     * Find the first SbcChallenge that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeFindFirstOrThrowArgs} args - Arguments to find a SbcChallenge
-     * @example
-     * // Get one SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends SbcChallengeFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, SbcChallengeFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findFirstOrThrow'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Find zero or more SbcChallenges that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all SbcChallenges
-     * const sbcChallenges = await prisma.sbcChallenge.findMany()
-     *
-     * // Get first 10 SbcChallenges
-     * const sbcChallenges = await prisma.sbcChallenge.findMany({ take: 10 })
-     *
-     * // Only select the `id`
-     * const sbcChallengeWithIdOnly = await prisma.sbcChallenge.findMany({ select: { id: true } })
-     *
-     */
-    findMany<T extends SbcChallengeFindManyArgs>(
-      args?: SelectSubset<T, SbcChallengeFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findMany'>>;
-
-    /**
-     * Create a SbcChallenge.
-     * @param {SbcChallengeCreateArgs} args - Arguments to create a SbcChallenge.
-     * @example
-     * // Create one SbcChallenge
-     * const SbcChallenge = await prisma.sbcChallenge.create({
-     *   data: {
-     *     // ... data to create a SbcChallenge
-     *   }
-     * })
-     *
-     */
-    create<T extends SbcChallengeCreateArgs>(
-      args: SelectSubset<T, SbcChallengeCreateArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'create'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Create many SbcChallenges.
-     * @param {SbcChallengeCreateManyArgs} args - Arguments to create many SbcChallenges.
-     * @example
-     * // Create many SbcChallenges
-     * const sbcChallenge = await prisma.sbcChallenge.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     */
-    createMany<T extends SbcChallengeCreateManyArgs>(
-      args?: SelectSubset<T, SbcChallengeCreateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create many SbcChallenges and returns the data saved in the database.
-     * @param {SbcChallengeCreateManyAndReturnArgs} args - Arguments to create many SbcChallenges.
-     * @example
-     * // Create many SbcChallenges
-     * const sbcChallenge = await prisma.sbcChallenge.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *
-     * // Create many SbcChallenges and only return the `id`
-     * const sbcChallengeWithIdOnly = await prisma.sbcChallenge.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     *
-     */
-    createManyAndReturn<T extends SbcChallengeCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, SbcChallengeCreateManyAndReturnArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'createManyAndReturn'>
-    >;
-
-    /**
-     * Delete a SbcChallenge.
-     * @param {SbcChallengeDeleteArgs} args - Arguments to delete one SbcChallenge.
-     * @example
-     * // Delete one SbcChallenge
-     * const SbcChallenge = await prisma.sbcChallenge.delete({
-     *   where: {
-     *     // ... filter to delete one SbcChallenge
-     *   }
-     * })
-     *
-     */
-    delete<T extends SbcChallengeDeleteArgs>(
-      args: SelectSubset<T, SbcChallengeDeleteArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'delete'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Update one SbcChallenge.
-     * @param {SbcChallengeUpdateArgs} args - Arguments to update one SbcChallenge.
-     * @example
-     * // Update one SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    update<T extends SbcChallengeUpdateArgs>(
-      args: SelectSubset<T, SbcChallengeUpdateArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'update'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Delete zero or more SbcChallenges.
-     * @param {SbcChallengeDeleteManyArgs} args - Arguments to filter SbcChallenges to delete.
-     * @example
-     * // Delete a few SbcChallenges
-     * const { count } = await prisma.sbcChallenge.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     *
-     */
-    deleteMany<T extends SbcChallengeDeleteManyArgs>(
-      args?: SelectSubset<T, SbcChallengeDeleteManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Update zero or more SbcChallenges.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many SbcChallenges
-     * const sbcChallenge = await prisma.sbcChallenge.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     *
-     */
-    updateMany<T extends SbcChallengeUpdateManyArgs>(
-      args: SelectSubset<T, SbcChallengeUpdateManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<BatchPayload>;
-
-    /**
-     * Create or update one SbcChallenge.
-     * @param {SbcChallengeUpsertArgs} args - Arguments to update or create a SbcChallenge.
-     * @example
-     * // Update or create a SbcChallenge
-     * const sbcChallenge = await prisma.sbcChallenge.upsert({
-     *   create: {
-     *     // ... data to create a SbcChallenge
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the SbcChallenge we want to update
-     *   }
-     * })
-     */
-    upsert<T extends SbcChallengeUpsertArgs>(
-      args: SelectSubset<T, SbcChallengeUpsertArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'upsert'>,
-      never,
-      ExtArgs
-    >;
-
-    /**
-     * Count the number of SbcChallenges.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeCountArgs} args - Arguments to filter SbcChallenges to count.
-     * @example
-     * // Count the number of SbcChallenges
-     * const count = await prisma.sbcChallenge.count({
-     *   where: {
-     *     // ... the filter for the SbcChallenges we want to count
-     *   }
-     * })
-     **/
-    count<T extends SbcChallengeCountArgs>(
-      args?: Subset<T, SbcChallengeCountArgs>
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SbcChallengeCountAggregateOutputType>
-        : number
-    >;
-
-    /**
-     * Allows you to perform aggregations operations on a SbcChallenge.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-     **/
-    aggregate<T extends SbcChallengeAggregateArgs>(
-      args: Subset<T, SbcChallengeAggregateArgs>
-    ): Prisma.PrismaPromise<GetSbcChallengeAggregateType<T>>;
-
-    /**
-     * Group by SbcChallenge.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcChallengeGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     *
-     **/
-    groupBy<
-      T extends SbcChallengeGroupByArgs,
-      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SbcChallengeGroupByArgs['orderBy'] }
-        : { orderBy?: SbcChallengeGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-        ? `Error: "by" must not be empty.`
-        : HavingValid extends False
-          ? {
-              [P in HavingFields]: P extends ByFields
-                ? never
-                : P extends string
-                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
-            }[HavingFields]
-          : 'take' extends Keys<T>
-            ? 'orderBy' extends Keys<T>
-              ? ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields]
-              : 'Error: If you provide "take", you also need to provide "orderBy"'
-            : 'skip' extends Keys<T>
-              ? 'orderBy' extends Keys<T>
-                ? ByValid extends True
-                  ? {}
-                  : {
-                      [P in OrderFields]: P extends ByFields
-                        ? never
-                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                    }[OrderFields]
-                : 'Error: If you provide "skip", you also need to provide "orderBy"'
-              : ByValid extends True
-                ? {}
-                : {
-                    [P in OrderFields]: P extends ByFields
-                      ? never
-                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
-                  }[OrderFields],
-    >(
-      args: SubsetIntersection<T, SbcChallengeGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors
-      ? GetSbcChallengeGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
-    /**
-     * Fields of the SbcChallenge model
-     */
-    readonly fields: SbcChallengeFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for SbcChallenge.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__SbcChallengeClient<
-    T,
-    Null = never,
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: 'PrismaPromise';
-    solutions<T extends SbcChallenge$solutionsArgs<ExtArgs> = {}>(
-      args?: Subset<T, SbcChallenge$solutionsArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findMany'> | Null
-    >;
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(
-      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
-      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
-    ): $Utils.JsPromise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(
-      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
-    ): $Utils.JsPromise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
-  }
-
-  /**
-   * Fields of the SbcChallenge model
-   */
-  interface SbcChallengeFieldRefs {
-    readonly id: FieldRef<'SbcChallenge', 'String'>;
-    readonly createdAt: FieldRef<'SbcChallenge', 'DateTime'>;
-    readonly updatedAt: FieldRef<'SbcChallenge', 'DateTime'>;
-    readonly challengeId: FieldRef<'SbcChallenge', 'String'>;
-    readonly name: FieldRef<'SbcChallenge', 'String'>;
-    readonly requirements: FieldRef<'SbcChallenge', 'Json'>;
-    readonly status: FieldRef<'SbcChallenge', 'String'>;
-  }
-
-  // Custom InputTypes
-  /**
-   * SbcChallenge findUnique
-   */
-  export type SbcChallengeFindUniqueArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter, which SbcChallenge to fetch.
-     */
-    where: SbcChallengeWhereUniqueInput;
-  };
-
-  /**
-   * SbcChallenge findUniqueOrThrow
-   */
-  export type SbcChallengeFindUniqueOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter, which SbcChallenge to fetch.
-     */
-    where: SbcChallengeWhereUniqueInput;
-  };
-
-  /**
-   * SbcChallenge findFirst
-   */
-  export type SbcChallengeFindFirstArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter, which SbcChallenge to fetch.
-     */
-    where?: SbcChallengeWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of SbcChallenges to fetch.
-     */
-    orderBy?: SbcChallengeOrderByWithRelationInput | SbcChallengeOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for SbcChallenges.
-     */
-    cursor?: SbcChallengeWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` SbcChallenges from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` SbcChallenges.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of SbcChallenges.
-     */
-    distinct?: SbcChallengeScalarFieldEnum | SbcChallengeScalarFieldEnum[];
-  };
-
-  /**
-   * SbcChallenge findFirstOrThrow
-   */
-  export type SbcChallengeFindFirstOrThrowArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter, which SbcChallenge to fetch.
-     */
-    where?: SbcChallengeWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of SbcChallenges to fetch.
-     */
-    orderBy?: SbcChallengeOrderByWithRelationInput | SbcChallengeOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for searching for SbcChallenges.
-     */
-    cursor?: SbcChallengeWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` SbcChallenges from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` SbcChallenges.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     *
-     * Filter by unique combinations of SbcChallenges.
-     */
-    distinct?: SbcChallengeScalarFieldEnum | SbcChallengeScalarFieldEnum[];
-  };
-
-  /**
-   * SbcChallenge findMany
-   */
-  export type SbcChallengeFindManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter, which SbcChallenges to fetch.
-     */
-    where?: SbcChallengeWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of SbcChallenges to fetch.
-     */
-    orderBy?: SbcChallengeOrderByWithRelationInput | SbcChallengeOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the position for listing SbcChallenges.
-     */
-    cursor?: SbcChallengeWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` SbcChallenges from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` SbcChallenges.
-     */
-    skip?: number;
-    distinct?: SbcChallengeScalarFieldEnum | SbcChallengeScalarFieldEnum[];
-  };
-
-  /**
-   * SbcChallenge create
-   */
-  export type SbcChallengeCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * The data needed to create a SbcChallenge.
-     */
-    data: XOR<SbcChallengeCreateInput, SbcChallengeUncheckedCreateInput>;
-  };
-
-  /**
-   * SbcChallenge createMany
-   */
-  export type SbcChallengeCreateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * The data used to create many SbcChallenges.
-     */
-    data: SbcChallengeCreateManyInput | SbcChallengeCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * SbcChallenge createManyAndReturn
-   */
-  export type SbcChallengeCreateManyAndReturnArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelectCreateManyAndReturn<ExtArgs> | null;
-    /**
-     * The data used to create many SbcChallenges.
-     */
-    data: SbcChallengeCreateManyInput | SbcChallengeCreateManyInput[];
-    skipDuplicates?: boolean;
-  };
-
-  /**
-   * SbcChallenge update
-   */
-  export type SbcChallengeUpdateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * The data needed to update a SbcChallenge.
-     */
-    data: XOR<SbcChallengeUpdateInput, SbcChallengeUncheckedUpdateInput>;
-    /**
-     * Choose, which SbcChallenge to update.
-     */
-    where: SbcChallengeWhereUniqueInput;
-  };
-
-  /**
-   * SbcChallenge updateMany
-   */
-  export type SbcChallengeUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * The data used to update SbcChallenges.
-     */
-    data: XOR<SbcChallengeUpdateManyMutationInput, SbcChallengeUncheckedUpdateManyInput>;
-    /**
-     * Filter which SbcChallenges to update
-     */
-    where?: SbcChallengeWhereInput;
-  };
-
-  /**
-   * SbcChallenge upsert
-   */
-  export type SbcChallengeUpsertArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * The filter to search for the SbcChallenge to update in case it exists.
-     */
-    where: SbcChallengeWhereUniqueInput;
-    /**
-     * In case the SbcChallenge found by the `where` argument doesn't exist, create a new SbcChallenge with this data.
-     */
-    create: XOR<SbcChallengeCreateInput, SbcChallengeUncheckedCreateInput>;
-    /**
-     * In case the SbcChallenge was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SbcChallengeUpdateInput, SbcChallengeUncheckedUpdateInput>;
-  };
-
-  /**
-   * SbcChallenge delete
-   */
-  export type SbcChallengeDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-    /**
-     * Filter which SbcChallenge to delete.
-     */
-    where: SbcChallengeWhereUniqueInput;
-  };
-
-  /**
-   * SbcChallenge deleteMany
-   */
-  export type SbcChallengeDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Filter which SbcChallenges to delete
-     */
-    where?: SbcChallengeWhereInput;
-  };
-
-  /**
-   * SbcChallenge.solutions
-   */
-  export type SbcChallenge$solutionsArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcSolution
-     */
-    select?: SbcSolutionSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcSolutionInclude<ExtArgs> | null;
-    where?: SbcSolutionWhereInput;
-    orderBy?: SbcSolutionOrderByWithRelationInput | SbcSolutionOrderByWithRelationInput[];
-    cursor?: SbcSolutionWhereUniqueInput;
-    take?: number;
-    skip?: number;
-    distinct?: SbcSolutionScalarFieldEnum | SbcSolutionScalarFieldEnum[];
-  };
-
-  /**
-   * SbcChallenge without action
-   */
-  export type SbcChallengeDefaultArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the SbcChallenge
-     */
-    select?: SbcChallengeSelect<ExtArgs> | null;
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: SbcChallengeInclude<ExtArgs> | null;
-  };
-
-  /**
-   * Model SbcSolution
-   */
-
-  export type AggregateSbcSolution = {
-    _count: SbcSolutionCountAggregateOutputType | null;
-    _avg: SbcSolutionAvgAggregateOutputType | null;
-    _sum: SbcSolutionSumAggregateOutputType | null;
-    _min: SbcSolutionMinAggregateOutputType | null;
-    _max: SbcSolutionMaxAggregateOutputType | null;
-  };
-
-  export type SbcSolutionAvgAggregateOutputType = {
-    cost: number | null;
-    rating: number | null;
-  };
-
-  export type SbcSolutionSumAggregateOutputType = {
-    cost: number | null;
-    rating: number | null;
-  };
-
-  export type SbcSolutionMinAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    challengeId: string | null;
-    cost: number | null;
-    rating: number | null;
-    isValid: boolean | null;
-  };
-
-  export type SbcSolutionMaxAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    challengeId: string | null;
-    cost: number | null;
-    rating: number | null;
-    isValid: boolean | null;
-  };
-
-  export type SbcSolutionCountAggregateOutputType = {
-    id: number;
-    createdAt: number;
-    challengeId: number;
-    players: number;
-    cost: number;
-    rating: number;
-    isValid: number;
-    _all: number;
-  };
-
-  export type SbcSolutionAvgAggregateInputType = {
-    cost?: true;
-    rating?: true;
-  };
-
-  export type SbcSolutionSumAggregateInputType = {
-    cost?: true;
-    rating?: true;
-  };
-
-  export type SbcSolutionMinAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    challengeId?: true;
-    cost?: true;
-    rating?: true;
-    isValid?: true;
-  };
-
-  export type SbcSolutionMaxAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    challengeId?: true;
-    cost?: true;
-    rating?: true;
-    isValid?: true;
-  };
-
-  export type SbcSolutionCountAggregateInputType = {
-    id?: true;
-    createdAt?: true;
-    challengeId?: true;
-    players?: true;
-    cost?: true;
-    rating?: true;
-    isValid?: true;
-    _all?: true;
-  };
-
-  export type SbcSolutionAggregateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Filter which SbcSolution to aggregate.
-     */
-    where?: SbcSolutionWhereInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     *
-     * Determine the order of SbcSolutions to fetch.
-     */
-    orderBy?: SbcSolutionOrderByWithRelationInput | SbcSolutionOrderByWithRelationInput[];
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     *
-     * Sets the start position
-     */
-    cursor?: SbcSolutionWhereUniqueInput;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Take `±n` SbcSolutions from the position of the cursor.
-     */
-    take?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     *
-     * Skip the first `n` SbcSolutions.
-     */
-    skip?: number;
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     *
-     * Count returned SbcSolutions
-     **/
-    _count?: true | SbcSolutionCountAggregateInputType;
+    _count?: true | QualityCountAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to average
      **/
-    _avg?: SbcSolutionAvgAggregateInputType;
+    _avg?: QualityAvgAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to sum
      **/
-    _sum?: SbcSolutionSumAggregateInputType;
+    _sum?: QualitySumAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the minimum value
      **/
-    _min?: SbcSolutionMinAggregateInputType;
+    _min?: QualityMinAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the maximum value
      **/
-    _max?: SbcSolutionMaxAggregateInputType;
+    _max?: QualityMaxAggregateInputType;
   };
 
-  export type GetSbcSolutionAggregateType<T extends SbcSolutionAggregateArgs> = {
-    [P in keyof T & keyof AggregateSbcSolution]: P extends '_count' | 'count'
+  export type GetQualityAggregateType<T extends QualityAggregateArgs> = {
+    [P in keyof T & keyof AggregateQuality]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateSbcSolution[P]>
-      : GetScalarType<T[P], AggregateSbcSolution[P]>;
+        : GetScalarType<T[P], AggregateQuality[P]>
+      : GetScalarType<T[P], AggregateQuality[P]>;
   };
 
-  export type SbcSolutionGroupByArgs<
+  export type QualityGroupByArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
-    where?: SbcSolutionWhereInput;
-    orderBy?: SbcSolutionOrderByWithAggregationInput | SbcSolutionOrderByWithAggregationInput[];
-    by: SbcSolutionScalarFieldEnum[] | SbcSolutionScalarFieldEnum;
-    having?: SbcSolutionScalarWhereWithAggregatesInput;
+    where?: QualityWhereInput;
+    orderBy?: QualityOrderByWithAggregationInput | QualityOrderByWithAggregationInput[];
+    by: QualityScalarFieldEnum[] | QualityScalarFieldEnum;
+    having?: QualityScalarWhereWithAggregatesInput;
     take?: number;
     skip?: number;
-    _count?: SbcSolutionCountAggregateInputType | true;
-    _avg?: SbcSolutionAvgAggregateInputType;
-    _sum?: SbcSolutionSumAggregateInputType;
-    _min?: SbcSolutionMinAggregateInputType;
-    _max?: SbcSolutionMaxAggregateInputType;
+    _count?: QualityCountAggregateInputType | true;
+    _avg?: QualityAvgAggregateInputType;
+    _sum?: QualitySumAggregateInputType;
+    _min?: QualityMinAggregateInputType;
+    _max?: QualityMaxAggregateInputType;
   };
 
-  export type SbcSolutionGroupByOutputType = {
-    id: string;
-    createdAt: Date;
-    challengeId: string;
-    players: JsonValue;
-    cost: number | null;
-    rating: number | null;
-    isValid: boolean;
-    _count: SbcSolutionCountAggregateOutputType | null;
-    _avg: SbcSolutionAvgAggregateOutputType | null;
-    _sum: SbcSolutionSumAggregateOutputType | null;
-    _min: SbcSolutionMinAggregateOutputType | null;
-    _max: SbcSolutionMaxAggregateOutputType | null;
+  export type QualityGroupByOutputType = {
+    id: number;
+    name: string;
+    _count: QualityCountAggregateOutputType | null;
+    _avg: QualityAvgAggregateOutputType | null;
+    _sum: QualitySumAggregateOutputType | null;
+    _min: QualityMinAggregateOutputType | null;
+    _max: QualityMaxAggregateOutputType | null;
   };
 
-  type GetSbcSolutionGroupByPayload<T extends SbcSolutionGroupByArgs> = Prisma.PrismaPromise<
+  type GetQualityGroupByPayload<T extends QualityGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<SbcSolutionGroupByOutputType, T['by']> & {
-        [P in keyof T & keyof SbcSolutionGroupByOutputType]: P extends '_count'
+      PickEnumerable<QualityGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof QualityGroupByOutputType]: P extends '_count'
           ? T[P] extends boolean
             ? number
-            : GetScalarType<T[P], SbcSolutionGroupByOutputType[P]>
-          : GetScalarType<T[P], SbcSolutionGroupByOutputType[P]>;
+            : GetScalarType<T[P], QualityGroupByOutputType[P]>
+          : GetScalarType<T[P], QualityGroupByOutputType[P]>;
       }
     >
   >;
 
-  export type SbcSolutionSelect<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      challengeId?: boolean;
-      players?: boolean;
-      cost?: boolean;
-      rating?: boolean;
-      isValid?: boolean;
-      challenge?: boolean | SbcChallengeDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['sbcSolution']
-  >;
-
-  export type SbcSolutionSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      challengeId?: boolean;
-      players?: boolean;
-      cost?: boolean;
-      rating?: boolean;
-      isValid?: boolean;
-      challenge?: boolean | SbcChallengeDefaultArgs<ExtArgs>;
-    },
-    ExtArgs['result']['sbcSolution']
-  >;
-
-  export type SbcSolutionSelectScalar = {
-    id?: boolean;
-    createdAt?: boolean;
-    challengeId?: boolean;
-    players?: boolean;
-    cost?: boolean;
-    rating?: boolean;
-    isValid?: boolean;
-  };
-
-  export type SbcSolutionInclude<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    challenge?: boolean | SbcChallengeDefaultArgs<ExtArgs>;
-  };
-  export type SbcSolutionIncludeCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    challenge?: boolean | SbcChallengeDefaultArgs<ExtArgs>;
-  };
-
-  export type $SbcSolutionPayload<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    name: 'SbcSolution';
-    objects: {
-      challenge: Prisma.$SbcChallengePayload<ExtArgs>;
-    };
-    scalars: $Extensions.GetPayloadResult<
+  export type QualitySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
       {
-        id: string;
-        createdAt: Date;
-        challengeId: string;
-        players: Prisma.JsonValue;
-        cost: number | null;
-        rating: number | null;
-        isValid: boolean;
+        id?: boolean;
+        name?: boolean;
+        players?: boolean | Quality$playersArgs<ExtArgs>;
+        _count?: boolean | QualityCountOutputTypeDefaultArgs<ExtArgs>;
       },
-      ExtArgs['result']['sbcSolution']
+      ExtArgs['result']['quality']
     >;
-    composites: {};
+
+  export type QualitySelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      name?: boolean;
+    },
+    ExtArgs['result']['quality']
+  >;
+
+  export type QualitySelectScalar = {
+    id?: boolean;
+    name?: boolean;
   };
 
-  type SbcSolutionGetPayload<S extends boolean | null | undefined | SbcSolutionDefaultArgs> =
-    $Result.GetResult<Prisma.$SbcSolutionPayload, S>;
+  export type QualityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    players?: boolean | Quality$playersArgs<ExtArgs>;
+    _count?: boolean | QualityCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type QualityIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {};
 
-  type SbcSolutionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SbcSolutionFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: SbcSolutionCountAggregateInputType | true;
+  export type $QualityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      name: 'Quality';
+      objects: {
+        players: Prisma.$PlayerPayload<ExtArgs>[];
+      };
+      scalars: $Extensions.GetPayloadResult<
+        {
+          id: number;
+          name: string;
+        },
+        ExtArgs['result']['quality']
+      >;
+      composites: {};
     };
 
-  export interface SbcSolutionDelegate<
+  type QualityGetPayload<S extends boolean | null | undefined | QualityDefaultArgs> =
+    $Result.GetResult<Prisma.$QualityPayload, S>;
+
+  type QualityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    QualityFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: QualityCountAggregateInputType | true;
+  };
+
+  export interface QualityDelegate<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['SbcSolution'];
-      meta: { name: 'SbcSolution' };
-    };
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Quality']; meta: { name: 'Quality' } };
     /**
-     * Find zero or one SbcSolution that matches the filter.
-     * @param {SbcSolutionFindUniqueArgs} args - Arguments to find a SbcSolution
+     * Find zero or one Quality that matches the filter.
+     * @param {QualityFindUniqueArgs} args - Arguments to find a Quality
      * @example
-     * // Get one SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.findUnique({
+     * // Get one Quality
+     * const quality = await prisma.quality.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends SbcSolutionFindUniqueArgs>(
-      args: SelectSubset<T, SbcSolutionFindUniqueArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findUnique'> | null,
+    findUnique<T extends QualityFindUniqueArgs>(
+      args: SelectSubset<T, QualityFindUniqueArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findUnique'> | null,
       null,
       ExtArgs
     >;
 
     /**
-     * Find one SbcSolution that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Quality that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {SbcSolutionFindUniqueOrThrowArgs} args - Arguments to find a SbcSolution
+     * @param {QualityFindUniqueOrThrowArgs} args - Arguments to find a Quality
      * @example
-     * // Get one SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.findUniqueOrThrow({
+     * // Get one Quality
+     * const quality = await prisma.quality.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends SbcSolutionFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, SbcSolutionFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+    findUniqueOrThrow<T extends QualityFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, QualityFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Find the first SbcSolution that matches the filter.
+     * Find the first Quality that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionFindFirstArgs} args - Arguments to find a SbcSolution
+     * @param {QualityFindFirstArgs} args - Arguments to find a Quality
      * @example
-     * // Get one SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.findFirst({
+     * // Get one Quality
+     * const quality = await prisma.quality.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends SbcSolutionFindFirstArgs>(
-      args?: SelectSubset<T, SbcSolutionFindFirstArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findFirst'> | null,
+    findFirst<T extends QualityFindFirstArgs>(
+      args?: SelectSubset<T, QualityFindFirstArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findFirst'> | null,
       null,
       ExtArgs
     >;
 
     /**
-     * Find the first SbcSolution that matches the filter or
+     * Find the first Quality that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionFindFirstOrThrowArgs} args - Arguments to find a SbcSolution
+     * @param {QualityFindFirstOrThrowArgs} args - Arguments to find a Quality
      * @example
-     * // Get one SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.findFirstOrThrow({
+     * // Get one Quality
+     * const quality = await prisma.quality.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends SbcSolutionFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, SbcSolutionFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+    findFirstOrThrow<T extends QualityFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, QualityFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findFirstOrThrow'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Find zero or more SbcSolutions that matches the filter.
+     * Find zero or more Qualities that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {QualityFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all SbcSolutions
-     * const sbcSolutions = await prisma.sbcSolution.findMany()
+     * // Get all Qualities
+     * const qualities = await prisma.quality.findMany()
      *
-     * // Get first 10 SbcSolutions
-     * const sbcSolutions = await prisma.sbcSolution.findMany({ take: 10 })
+     * // Get first 10 Qualities
+     * const qualities = await prisma.quality.findMany({ take: 10 })
      *
      * // Only select the `id`
-     * const sbcSolutionWithIdOnly = await prisma.sbcSolution.findMany({ select: { id: true } })
+     * const qualityWithIdOnly = await prisma.quality.findMany({ select: { id: true } })
      *
      */
-    findMany<T extends SbcSolutionFindManyArgs>(
-      args?: SelectSubset<T, SbcSolutionFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'findMany'>>;
+    findMany<T extends QualityFindManyArgs>(
+      args?: SelectSubset<T, QualityFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findMany'>>;
 
     /**
-     * Create a SbcSolution.
-     * @param {SbcSolutionCreateArgs} args - Arguments to create a SbcSolution.
+     * Create a Quality.
+     * @param {QualityCreateArgs} args - Arguments to create a Quality.
      * @example
-     * // Create one SbcSolution
-     * const SbcSolution = await prisma.sbcSolution.create({
+     * // Create one Quality
+     * const Quality = await prisma.quality.create({
      *   data: {
-     *     // ... data to create a SbcSolution
+     *     // ... data to create a Quality
      *   }
      * })
      *
      */
-    create<T extends SbcSolutionCreateArgs>(
-      args: SelectSubset<T, SbcSolutionCreateArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'create'>,
+    create<T extends QualityCreateArgs>(
+      args: SelectSubset<T, QualityCreateArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'create'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Create many SbcSolutions.
-     * @param {SbcSolutionCreateManyArgs} args - Arguments to create many SbcSolutions.
+     * Create many Qualities.
+     * @param {QualityCreateManyArgs} args - Arguments to create many Qualities.
      * @example
-     * // Create many SbcSolutions
-     * const sbcSolution = await prisma.sbcSolution.createMany({
+     * // Create many Qualities
+     * const quality = await prisma.quality.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
      */
-    createMany<T extends SbcSolutionCreateManyArgs>(
-      args?: SelectSubset<T, SbcSolutionCreateManyArgs<ExtArgs>>
+    createMany<T extends QualityCreateManyArgs>(
+      args?: SelectSubset<T, QualityCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Create many SbcSolutions and returns the data saved in the database.
-     * @param {SbcSolutionCreateManyAndReturnArgs} args - Arguments to create many SbcSolutions.
+     * Create many Qualities and returns the data saved in the database.
+     * @param {QualityCreateManyAndReturnArgs} args - Arguments to create many Qualities.
      * @example
-     * // Create many SbcSolutions
-     * const sbcSolution = await prisma.sbcSolution.createManyAndReturn({
+     * // Create many Qualities
+     * const quality = await prisma.quality.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
-     * // Create many SbcSolutions and only return the `id`
-     * const sbcSolutionWithIdOnly = await prisma.sbcSolution.createManyAndReturn({
+     * // Create many Qualities and only return the `id`
+     * const qualityWithIdOnly = await prisma.quality.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -3679,38 +2252,38 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      *
      */
-    createManyAndReturn<T extends SbcSolutionCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, SbcSolutionCreateManyAndReturnArgs<ExtArgs>>
+    createManyAndReturn<T extends QualityCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, QualityCreateManyAndReturnArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'createManyAndReturn'>
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'createManyAndReturn'>
     >;
 
     /**
-     * Delete a SbcSolution.
-     * @param {SbcSolutionDeleteArgs} args - Arguments to delete one SbcSolution.
+     * Delete a Quality.
+     * @param {QualityDeleteArgs} args - Arguments to delete one Quality.
      * @example
-     * // Delete one SbcSolution
-     * const SbcSolution = await prisma.sbcSolution.delete({
+     * // Delete one Quality
+     * const Quality = await prisma.quality.delete({
      *   where: {
-     *     // ... filter to delete one SbcSolution
+     *     // ... filter to delete one Quality
      *   }
      * })
      *
      */
-    delete<T extends SbcSolutionDeleteArgs>(
-      args: SelectSubset<T, SbcSolutionDeleteArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'delete'>,
+    delete<T extends QualityDeleteArgs>(
+      args: SelectSubset<T, QualityDeleteArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'delete'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Update one SbcSolution.
-     * @param {SbcSolutionUpdateArgs} args - Arguments to update one SbcSolution.
+     * Update one Quality.
+     * @param {QualityUpdateArgs} args - Arguments to update one Quality.
      * @example
-     * // Update one SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.update({
+     * // Update one Quality
+     * const quality = await prisma.quality.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3720,38 +2293,38 @@ export namespace Prisma {
      * })
      *
      */
-    update<T extends SbcSolutionUpdateArgs>(
-      args: SelectSubset<T, SbcSolutionUpdateArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'update'>,
+    update<T extends QualityUpdateArgs>(
+      args: SelectSubset<T, QualityUpdateArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'update'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Delete zero or more SbcSolutions.
-     * @param {SbcSolutionDeleteManyArgs} args - Arguments to filter SbcSolutions to delete.
+     * Delete zero or more Qualities.
+     * @param {QualityDeleteManyArgs} args - Arguments to filter Qualities to delete.
      * @example
-     * // Delete a few SbcSolutions
-     * const { count } = await prisma.sbcSolution.deleteMany({
+     * // Delete a few Qualities
+     * const { count } = await prisma.quality.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      *
      */
-    deleteMany<T extends SbcSolutionDeleteManyArgs>(
-      args?: SelectSubset<T, SbcSolutionDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends QualityDeleteManyArgs>(
+      args?: SelectSubset<T, QualityDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Update zero or more SbcSolutions.
+     * Update zero or more Qualities.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {QualityUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many SbcSolutions
-     * const sbcSolution = await prisma.sbcSolution.updateMany({
+     * // Update many Qualities
+     * const quality = await prisma.quality.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3761,63 +2334,63 @@ export namespace Prisma {
      * })
      *
      */
-    updateMany<T extends SbcSolutionUpdateManyArgs>(
-      args: SelectSubset<T, SbcSolutionUpdateManyArgs<ExtArgs>>
+    updateMany<T extends QualityUpdateManyArgs>(
+      args: SelectSubset<T, QualityUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Create or update one SbcSolution.
-     * @param {SbcSolutionUpsertArgs} args - Arguments to update or create a SbcSolution.
+     * Create or update one Quality.
+     * @param {QualityUpsertArgs} args - Arguments to update or create a Quality.
      * @example
-     * // Update or create a SbcSolution
-     * const sbcSolution = await prisma.sbcSolution.upsert({
+     * // Update or create a Quality
+     * const quality = await prisma.quality.upsert({
      *   create: {
-     *     // ... data to create a SbcSolution
+     *     // ... data to create a Quality
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the SbcSolution we want to update
+     *     // ... the filter for the Quality we want to update
      *   }
      * })
      */
-    upsert<T extends SbcSolutionUpsertArgs>(
-      args: SelectSubset<T, SbcSolutionUpsertArgs<ExtArgs>>
-    ): Prisma__SbcSolutionClient<
-      $Result.GetResult<Prisma.$SbcSolutionPayload<ExtArgs>, T, 'upsert'>,
+    upsert<T extends QualityUpsertArgs>(
+      args: SelectSubset<T, QualityUpsertArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'upsert'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Count the number of SbcSolutions.
+     * Count the number of Qualities.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionCountArgs} args - Arguments to filter SbcSolutions to count.
+     * @param {QualityCountArgs} args - Arguments to filter Qualities to count.
      * @example
-     * // Count the number of SbcSolutions
-     * const count = await prisma.sbcSolution.count({
+     * // Count the number of Qualities
+     * const count = await prisma.quality.count({
      *   where: {
-     *     // ... the filter for the SbcSolutions we want to count
+     *     // ... the filter for the Qualities we want to count
      *   }
      * })
      **/
-    count<T extends SbcSolutionCountArgs>(
-      args?: Subset<T, SbcSolutionCountArgs>
+    count<T extends QualityCountArgs>(
+      args?: Subset<T, QualityCountArgs>
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], SbcSolutionCountAggregateOutputType>
+          : GetScalarType<T['select'], QualityCountAggregateOutputType>
         : number
     >;
 
     /**
-     * Allows you to perform aggregations operations on a SbcSolution.
+     * Allows you to perform aggregations operations on a Quality.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {QualityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3837,15 +2410,15 @@ export namespace Prisma {
      *   take: 10,
      * })
      **/
-    aggregate<T extends SbcSolutionAggregateArgs>(
-      args: Subset<T, SbcSolutionAggregateArgs>
-    ): Prisma.PrismaPromise<GetSbcSolutionAggregateType<T>>;
+    aggregate<T extends QualityAggregateArgs>(
+      args: Subset<T, QualityAggregateArgs>
+    ): Prisma.PrismaPromise<GetQualityAggregateType<T>>;
 
     /**
-     * Group by SbcSolution.
+     * Group by Quality.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {SbcSolutionGroupByArgs} args - Group by arguments.
+     * @param {QualityGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3860,11 +2433,11 @@ export namespace Prisma {
      *
      **/
     groupBy<
-      T extends SbcSolutionGroupByArgs,
+      T extends QualityGroupByArgs,
       HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SbcSolutionGroupByArgs['orderBy'] }
-        : { orderBy?: SbcSolutionGroupByArgs['orderBy'] },
+        ? { orderBy: QualityGroupByArgs['orderBy'] }
+        : { orderBy?: QualityGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3909,30 +2482,4358 @@ export namespace Prisma {
                       : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                   }[OrderFields],
     >(
-      args: SubsetIntersection<T, SbcSolutionGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors ? GetSbcSolutionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+      args: SubsetIntersection<T, QualityGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetQualityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
     /**
-     * Fields of the SbcSolution model
+     * Fields of the Quality model
      */
-    readonly fields: SbcSolutionFieldRefs;
+    readonly fields: QualityFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for SbcSolution.
+   * The delegate class that acts as a "Promise-like" for Quality.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__SbcSolutionClient<
+  export interface Prisma__QualityClient<
     T,
     Null = never,
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
-    challenge<T extends SbcChallengeDefaultArgs<ExtArgs> = {}>(
-      args?: Subset<T, SbcChallengeDefaultArgs<ExtArgs>>
-    ): Prisma__SbcChallengeClient<
-      $Result.GetResult<Prisma.$SbcChallengePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+    players<T extends Quality$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Quality$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Quality model
+   */
+  interface QualityFieldRefs {
+    readonly id: FieldRef<'Quality', 'Int'>;
+    readonly name: FieldRef<'Quality', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Quality findUnique
+   */
+  export type QualityFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Quality to fetch.
+     */
+    where: QualityWhereUniqueInput;
+  };
+
+  /**
+   * Quality findUniqueOrThrow
+   */
+  export type QualityFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Quality to fetch.
+     */
+    where: QualityWhereUniqueInput;
+  };
+
+  /**
+   * Quality findFirst
+   */
+  export type QualityFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Quality to fetch.
+     */
+    where?: QualityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Qualities to fetch.
+     */
+    orderBy?: QualityOrderByWithRelationInput | QualityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Qualities.
+     */
+    cursor?: QualityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Qualities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Qualities.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Qualities.
+     */
+    distinct?: QualityScalarFieldEnum | QualityScalarFieldEnum[];
+  };
+
+  /**
+   * Quality findFirstOrThrow
+   */
+  export type QualityFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Quality to fetch.
+     */
+    where?: QualityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Qualities to fetch.
+     */
+    orderBy?: QualityOrderByWithRelationInput | QualityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Qualities.
+     */
+    cursor?: QualityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Qualities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Qualities.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Qualities.
+     */
+    distinct?: QualityScalarFieldEnum | QualityScalarFieldEnum[];
+  };
+
+  /**
+   * Quality findMany
+   */
+  export type QualityFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Qualities to fetch.
+     */
+    where?: QualityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Qualities to fetch.
+     */
+    orderBy?: QualityOrderByWithRelationInput | QualityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Qualities.
+     */
+    cursor?: QualityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Qualities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Qualities.
+     */
+    skip?: number;
+    distinct?: QualityScalarFieldEnum | QualityScalarFieldEnum[];
+  };
+
+  /**
+   * Quality create
+   */
+  export type QualityCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Quality.
+     */
+    data: XOR<QualityCreateInput, QualityUncheckedCreateInput>;
+  };
+
+  /**
+   * Quality createMany
+   */
+  export type QualityCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Qualities.
+     */
+    data: QualityCreateManyInput | QualityCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Quality createManyAndReturn
+   */
+  export type QualityCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many Qualities.
+     */
+    data: QualityCreateManyInput | QualityCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Quality update
+   */
+  export type QualityUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Quality.
+     */
+    data: XOR<QualityUpdateInput, QualityUncheckedUpdateInput>;
+    /**
+     * Choose, which Quality to update.
+     */
+    where: QualityWhereUniqueInput;
+  };
+
+  /**
+   * Quality updateMany
+   */
+  export type QualityUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Qualities.
+     */
+    data: XOR<QualityUpdateManyMutationInput, QualityUncheckedUpdateManyInput>;
+    /**
+     * Filter which Qualities to update
+     */
+    where?: QualityWhereInput;
+  };
+
+  /**
+   * Quality upsert
+   */
+  export type QualityUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Quality to update in case it exists.
+     */
+    where: QualityWhereUniqueInput;
+    /**
+     * In case the Quality found by the `where` argument doesn't exist, create a new Quality with this data.
+     */
+    create: XOR<QualityCreateInput, QualityUncheckedCreateInput>;
+    /**
+     * In case the Quality was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QualityUpdateInput, QualityUncheckedUpdateInput>;
+  };
+
+  /**
+   * Quality delete
+   */
+  export type QualityDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+    /**
+     * Filter which Quality to delete.
+     */
+    where: QualityWhereUniqueInput;
+  };
+
+  /**
+   * Quality deleteMany
+   */
+  export type QualityDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Qualities to delete
+     */
+    where?: QualityWhereInput;
+  };
+
+  /**
+   * Quality.players
+   */
+  export type Quality$playersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    where?: PlayerWhereInput;
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    cursor?: PlayerWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Quality without action
+   */
+  export type QualityDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Quality
+     */
+    select?: QualitySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QualityInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model Rarity
+   */
+
+  export type AggregateRarity = {
+    _count: RarityCountAggregateOutputType | null;
+    _avg: RarityAvgAggregateOutputType | null;
+    _sum: RaritySumAggregateOutputType | null;
+    _min: RarityMinAggregateOutputType | null;
+    _max: RarityMaxAggregateOutputType | null;
+  };
+
+  export type RarityAvgAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type RaritySumAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type RarityMinAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type RarityMaxAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type RarityCountAggregateOutputType = {
+    id: number;
+    name: number;
+    _all: number;
+  };
+
+  export type RarityAvgAggregateInputType = {
+    id?: true;
+  };
+
+  export type RaritySumAggregateInputType = {
+    id?: true;
+  };
+
+  export type RarityMinAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type RarityMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type RarityCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    _all?: true;
+  };
+
+  export type RarityAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Rarity to aggregate.
+     */
+    where?: RarityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Rarities to fetch.
+     */
+    orderBy?: RarityOrderByWithRelationInput | RarityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: RarityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Rarities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Rarities.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Rarities
+     **/
+    _count?: true | RarityCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: RarityAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: RaritySumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: RarityMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: RarityMaxAggregateInputType;
+  };
+
+  export type GetRarityAggregateType<T extends RarityAggregateArgs> = {
+    [P in keyof T & keyof AggregateRarity]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRarity[P]>
+      : GetScalarType<T[P], AggregateRarity[P]>;
+  };
+
+  export type RarityGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: RarityWhereInput;
+    orderBy?: RarityOrderByWithAggregationInput | RarityOrderByWithAggregationInput[];
+    by: RarityScalarFieldEnum[] | RarityScalarFieldEnum;
+    having?: RarityScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: RarityCountAggregateInputType | true;
+    _avg?: RarityAvgAggregateInputType;
+    _sum?: RaritySumAggregateInputType;
+    _min?: RarityMinAggregateInputType;
+    _max?: RarityMaxAggregateInputType;
+  };
+
+  export type RarityGroupByOutputType = {
+    id: number;
+    name: string;
+    _count: RarityCountAggregateOutputType | null;
+    _avg: RarityAvgAggregateOutputType | null;
+    _sum: RaritySumAggregateOutputType | null;
+    _min: RarityMinAggregateOutputType | null;
+    _max: RarityMaxAggregateOutputType | null;
+  };
+
+  type GetRarityGroupByPayload<T extends RarityGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<RarityGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof RarityGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], RarityGroupByOutputType[P]>
+          : GetScalarType<T[P], RarityGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type RaritySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        name?: boolean;
+        players?: boolean | Rarity$playersArgs<ExtArgs>;
+        _count?: boolean | RarityCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['rarity']
+    >;
+
+  export type RaritySelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      name?: boolean;
+    },
+    ExtArgs['result']['rarity']
+  >;
+
+  export type RaritySelectScalar = {
+    id?: boolean;
+    name?: boolean;
+  };
+
+  export type RarityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    players?: boolean | Rarity$playersArgs<ExtArgs>;
+    _count?: boolean | RarityCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type RarityIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {};
+
+  export type $RarityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: 'Rarity';
+    objects: {
+      players: Prisma.$PlayerPayload<ExtArgs>[];
+    };
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number;
+        name: string;
+      },
+      ExtArgs['result']['rarity']
+    >;
+    composites: {};
+  };
+
+  type RarityGetPayload<S extends boolean | null | undefined | RarityDefaultArgs> =
+    $Result.GetResult<Prisma.$RarityPayload, S>;
+
+  type RarityCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    RarityFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: RarityCountAggregateInputType | true;
+  };
+
+  export interface RarityDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Rarity']; meta: { name: 'Rarity' } };
+    /**
+     * Find zero or one Rarity that matches the filter.
+     * @param {RarityFindUniqueArgs} args - Arguments to find a Rarity
+     * @example
+     * // Get one Rarity
+     * const rarity = await prisma.rarity.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends RarityFindUniqueArgs>(
+      args: SelectSubset<T, RarityFindUniqueArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Rarity that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {RarityFindUniqueOrThrowArgs} args - Arguments to find a Rarity
+     * @example
+     * // Get one Rarity
+     * const rarity = await prisma.rarity.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends RarityFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, RarityFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Rarity that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityFindFirstArgs} args - Arguments to find a Rarity
+     * @example
+     * // Get one Rarity
+     * const rarity = await prisma.rarity.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends RarityFindFirstArgs>(
+      args?: SelectSubset<T, RarityFindFirstArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Rarity that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityFindFirstOrThrowArgs} args - Arguments to find a Rarity
+     * @example
+     * // Get one Rarity
+     * const rarity = await prisma.rarity.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends RarityFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, RarityFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Rarities that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Rarities
+     * const rarities = await prisma.rarity.findMany()
+     *
+     * // Get first 10 Rarities
+     * const rarities = await prisma.rarity.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const rarityWithIdOnly = await prisma.rarity.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends RarityFindManyArgs>(
+      args?: SelectSubset<T, RarityFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a Rarity.
+     * @param {RarityCreateArgs} args - Arguments to create a Rarity.
+     * @example
+     * // Create one Rarity
+     * const Rarity = await prisma.rarity.create({
+     *   data: {
+     *     // ... data to create a Rarity
+     *   }
+     * })
+     *
+     */
+    create<T extends RarityCreateArgs>(
+      args: SelectSubset<T, RarityCreateArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Rarities.
+     * @param {RarityCreateManyArgs} args - Arguments to create many Rarities.
+     * @example
+     * // Create many Rarities
+     * const rarity = await prisma.rarity.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends RarityCreateManyArgs>(
+      args?: SelectSubset<T, RarityCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Rarities and returns the data saved in the database.
+     * @param {RarityCreateManyAndReturnArgs} args - Arguments to create many Rarities.
+     * @example
+     * // Create many Rarities
+     * const rarity = await prisma.rarity.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Rarities and only return the `id`
+     * const rarityWithIdOnly = await prisma.rarity.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends RarityCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, RarityCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a Rarity.
+     * @param {RarityDeleteArgs} args - Arguments to delete one Rarity.
+     * @example
+     * // Delete one Rarity
+     * const Rarity = await prisma.rarity.delete({
+     *   where: {
+     *     // ... filter to delete one Rarity
+     *   }
+     * })
+     *
+     */
+    delete<T extends RarityDeleteArgs>(
+      args: SelectSubset<T, RarityDeleteArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Rarity.
+     * @param {RarityUpdateArgs} args - Arguments to update one Rarity.
+     * @example
+     * // Update one Rarity
+     * const rarity = await prisma.rarity.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends RarityUpdateArgs>(
+      args: SelectSubset<T, RarityUpdateArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Rarities.
+     * @param {RarityDeleteManyArgs} args - Arguments to filter Rarities to delete.
+     * @example
+     * // Delete a few Rarities
+     * const { count } = await prisma.rarity.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends RarityDeleteManyArgs>(
+      args?: SelectSubset<T, RarityDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Rarities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Rarities
+     * const rarity = await prisma.rarity.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends RarityUpdateManyArgs>(
+      args: SelectSubset<T, RarityUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Rarity.
+     * @param {RarityUpsertArgs} args - Arguments to update or create a Rarity.
+     * @example
+     * // Update or create a Rarity
+     * const rarity = await prisma.rarity.upsert({
+     *   create: {
+     *     // ... data to create a Rarity
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Rarity we want to update
+     *   }
+     * })
+     */
+    upsert<T extends RarityUpsertArgs>(
+      args: SelectSubset<T, RarityUpsertArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Rarities.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityCountArgs} args - Arguments to filter Rarities to count.
+     * @example
+     * // Count the number of Rarities
+     * const count = await prisma.rarity.count({
+     *   where: {
+     *     // ... the filter for the Rarities we want to count
+     *   }
+     * })
+     **/
+    count<T extends RarityCountArgs>(
+      args?: Subset<T, RarityCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], RarityCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Rarity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends RarityAggregateArgs>(
+      args: Subset<T, RarityAggregateArgs>
+    ): Prisma.PrismaPromise<GetRarityAggregateType<T>>;
+
+    /**
+     * Group by Rarity.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {RarityGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends RarityGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: RarityGroupByArgs['orderBy'] }
+        : { orderBy?: RarityGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, RarityGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetRarityGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Rarity model
+     */
+    readonly fields: RarityFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Rarity.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__RarityClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    players<T extends Rarity$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Rarity$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Rarity model
+   */
+  interface RarityFieldRefs {
+    readonly id: FieldRef<'Rarity', 'Int'>;
+    readonly name: FieldRef<'Rarity', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Rarity findUnique
+   */
+  export type RarityFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Rarity to fetch.
+     */
+    where: RarityWhereUniqueInput;
+  };
+
+  /**
+   * Rarity findUniqueOrThrow
+   */
+  export type RarityFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Rarity to fetch.
+     */
+    where: RarityWhereUniqueInput;
+  };
+
+  /**
+   * Rarity findFirst
+   */
+  export type RarityFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Rarity to fetch.
+     */
+    where?: RarityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Rarities to fetch.
+     */
+    orderBy?: RarityOrderByWithRelationInput | RarityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Rarities.
+     */
+    cursor?: RarityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Rarities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Rarities.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Rarities.
+     */
+    distinct?: RarityScalarFieldEnum | RarityScalarFieldEnum[];
+  };
+
+  /**
+   * Rarity findFirstOrThrow
+   */
+  export type RarityFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Rarity to fetch.
+     */
+    where?: RarityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Rarities to fetch.
+     */
+    orderBy?: RarityOrderByWithRelationInput | RarityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Rarities.
+     */
+    cursor?: RarityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Rarities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Rarities.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Rarities.
+     */
+    distinct?: RarityScalarFieldEnum | RarityScalarFieldEnum[];
+  };
+
+  /**
+   * Rarity findMany
+   */
+  export type RarityFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+    /**
+     * Filter, which Rarities to fetch.
+     */
+    where?: RarityWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Rarities to fetch.
+     */
+    orderBy?: RarityOrderByWithRelationInput | RarityOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Rarities.
+     */
+    cursor?: RarityWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Rarities from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Rarities.
+     */
+    skip?: number;
+    distinct?: RarityScalarFieldEnum | RarityScalarFieldEnum[];
+  };
+
+  /**
+   * Rarity create
+   */
+  export type RarityCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Rarity
+       */
+      select?: RaritySelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: RarityInclude<ExtArgs> | null;
+      /**
+       * The data needed to create a Rarity.
+       */
+      data: XOR<RarityCreateInput, RarityUncheckedCreateInput>;
+    };
+
+  /**
+   * Rarity createMany
+   */
+  export type RarityCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Rarities.
+     */
+    data: RarityCreateManyInput | RarityCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Rarity createManyAndReturn
+   */
+  export type RarityCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many Rarities.
+     */
+    data: RarityCreateManyInput | RarityCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Rarity update
+   */
+  export type RarityUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Rarity
+       */
+      select?: RaritySelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: RarityInclude<ExtArgs> | null;
+      /**
+       * The data needed to update a Rarity.
+       */
+      data: XOR<RarityUpdateInput, RarityUncheckedUpdateInput>;
+      /**
+       * Choose, which Rarity to update.
+       */
+      where: RarityWhereUniqueInput;
+    };
+
+  /**
+   * Rarity updateMany
+   */
+  export type RarityUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Rarities.
+     */
+    data: XOR<RarityUpdateManyMutationInput, RarityUncheckedUpdateManyInput>;
+    /**
+     * Filter which Rarities to update
+     */
+    where?: RarityWhereInput;
+  };
+
+  /**
+   * Rarity upsert
+   */
+  export type RarityUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Rarity
+       */
+      select?: RaritySelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: RarityInclude<ExtArgs> | null;
+      /**
+       * The filter to search for the Rarity to update in case it exists.
+       */
+      where: RarityWhereUniqueInput;
+      /**
+       * In case the Rarity found by the `where` argument doesn't exist, create a new Rarity with this data.
+       */
+      create: XOR<RarityCreateInput, RarityUncheckedCreateInput>;
+      /**
+       * In case the Rarity was found with the provided `where` argument, update it with this data.
+       */
+      update: XOR<RarityUpdateInput, RarityUncheckedUpdateInput>;
+    };
+
+  /**
+   * Rarity delete
+   */
+  export type RarityDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Rarity
+       */
+      select?: RaritySelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: RarityInclude<ExtArgs> | null;
+      /**
+       * Filter which Rarity to delete.
+       */
+      where: RarityWhereUniqueInput;
+    };
+
+  /**
+   * Rarity deleteMany
+   */
+  export type RarityDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Rarities to delete
+     */
+    where?: RarityWhereInput;
+  };
+
+  /**
+   * Rarity.players
+   */
+  export type Rarity$playersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    where?: PlayerWhereInput;
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    cursor?: PlayerWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Rarity without action
+   */
+  export type RarityDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Rarity
+     */
+    select?: RaritySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: RarityInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model Country
+   */
+
+  export type AggregateCountry = {
+    _count: CountryCountAggregateOutputType | null;
+    _avg: CountryAvgAggregateOutputType | null;
+    _sum: CountrySumAggregateOutputType | null;
+    _min: CountryMinAggregateOutputType | null;
+    _max: CountryMaxAggregateOutputType | null;
+  };
+
+  export type CountryAvgAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type CountrySumAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type CountryMinAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type CountryMaxAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type CountryCountAggregateOutputType = {
+    id: number;
+    name: number;
+    _all: number;
+  };
+
+  export type CountryAvgAggregateInputType = {
+    id?: true;
+  };
+
+  export type CountrySumAggregateInputType = {
+    id?: true;
+  };
+
+  export type CountryMinAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type CountryMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type CountryCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    _all?: true;
+  };
+
+  export type CountryAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Country to aggregate.
+     */
+    where?: CountryWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: CountryWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Countries.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Countries
+     **/
+    _count?: true | CountryCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: CountryAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: CountrySumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: CountryMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: CountryMaxAggregateInputType;
+  };
+
+  export type GetCountryAggregateType<T extends CountryAggregateArgs> = {
+    [P in keyof T & keyof AggregateCountry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCountry[P]>
+      : GetScalarType<T[P], AggregateCountry[P]>;
+  };
+
+  export type CountryGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: CountryWhereInput;
+    orderBy?: CountryOrderByWithAggregationInput | CountryOrderByWithAggregationInput[];
+    by: CountryScalarFieldEnum[] | CountryScalarFieldEnum;
+    having?: CountryScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: CountryCountAggregateInputType | true;
+    _avg?: CountryAvgAggregateInputType;
+    _sum?: CountrySumAggregateInputType;
+    _min?: CountryMinAggregateInputType;
+    _max?: CountryMaxAggregateInputType;
+  };
+
+  export type CountryGroupByOutputType = {
+    id: number;
+    name: string;
+    _count: CountryCountAggregateOutputType | null;
+    _avg: CountryAvgAggregateOutputType | null;
+    _sum: CountrySumAggregateOutputType | null;
+    _min: CountryMinAggregateOutputType | null;
+    _max: CountryMaxAggregateOutputType | null;
+  };
+
+  type GetCountryGroupByPayload<T extends CountryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CountryGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof CountryGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], CountryGroupByOutputType[P]>
+          : GetScalarType<T[P], CountryGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type CountrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        name?: boolean;
+        clubs?: boolean | Country$clubsArgs<ExtArgs>;
+        leagues?: boolean | Country$leaguesArgs<ExtArgs>;
+        players?: boolean | Country$playersArgs<ExtArgs>;
+        _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['country']
+    >;
+
+  export type CountrySelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      name?: boolean;
+    },
+    ExtArgs['result']['country']
+  >;
+
+  export type CountrySelectScalar = {
+    id?: boolean;
+    name?: boolean;
+  };
+
+  export type CountryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    clubs?: boolean | Country$clubsArgs<ExtArgs>;
+    leagues?: boolean | Country$leaguesArgs<ExtArgs>;
+    players?: boolean | Country$playersArgs<ExtArgs>;
+    _count?: boolean | CountryCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type CountryIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {};
+
+  export type $CountryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      name: 'Country';
+      objects: {
+        clubs: Prisma.$ClubPayload<ExtArgs>[];
+        leagues: Prisma.$LeaguePayload<ExtArgs>[];
+        players: Prisma.$PlayerPayload<ExtArgs>[];
+      };
+      scalars: $Extensions.GetPayloadResult<
+        {
+          id: number;
+          name: string;
+        },
+        ExtArgs['result']['country']
+      >;
+      composites: {};
+    };
+
+  type CountryGetPayload<S extends boolean | null | undefined | CountryDefaultArgs> =
+    $Result.GetResult<Prisma.$CountryPayload, S>;
+
+  type CountryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    CountryFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: CountryCountAggregateInputType | true;
+  };
+
+  export interface CountryDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Country']; meta: { name: 'Country' } };
+    /**
+     * Find zero or one Country that matches the filter.
+     * @param {CountryFindUniqueArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CountryFindUniqueArgs>(
+      args: SelectSubset<T, CountryFindUniqueArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Country that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CountryFindUniqueOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CountryFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, CountryFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Country that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CountryFindFirstArgs>(
+      args?: SelectSubset<T, CountryFindFirstArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Country that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindFirstOrThrowArgs} args - Arguments to find a Country
+     * @example
+     * // Get one Country
+     * const country = await prisma.country.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CountryFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, CountryFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Countries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Countries
+     * const countries = await prisma.country.findMany()
+     *
+     * // Get first 10 Countries
+     * const countries = await prisma.country.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const countryWithIdOnly = await prisma.country.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends CountryFindManyArgs>(
+      args?: SelectSubset<T, CountryFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a Country.
+     * @param {CountryCreateArgs} args - Arguments to create a Country.
+     * @example
+     * // Create one Country
+     * const Country = await prisma.country.create({
+     *   data: {
+     *     // ... data to create a Country
+     *   }
+     * })
+     *
+     */
+    create<T extends CountryCreateArgs>(
+      args: SelectSubset<T, CountryCreateArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Countries.
+     * @param {CountryCreateManyArgs} args - Arguments to create many Countries.
+     * @example
+     * // Create many Countries
+     * const country = await prisma.country.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends CountryCreateManyArgs>(
+      args?: SelectSubset<T, CountryCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Countries and returns the data saved in the database.
+     * @param {CountryCreateManyAndReturnArgs} args - Arguments to create many Countries.
+     * @example
+     * // Create many Countries
+     * const country = await prisma.country.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Countries and only return the `id`
+     * const countryWithIdOnly = await prisma.country.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends CountryCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, CountryCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a Country.
+     * @param {CountryDeleteArgs} args - Arguments to delete one Country.
+     * @example
+     * // Delete one Country
+     * const Country = await prisma.country.delete({
+     *   where: {
+     *     // ... filter to delete one Country
+     *   }
+     * })
+     *
+     */
+    delete<T extends CountryDeleteArgs>(
+      args: SelectSubset<T, CountryDeleteArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Country.
+     * @param {CountryUpdateArgs} args - Arguments to update one Country.
+     * @example
+     * // Update one Country
+     * const country = await prisma.country.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends CountryUpdateArgs>(
+      args: SelectSubset<T, CountryUpdateArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Countries.
+     * @param {CountryDeleteManyArgs} args - Arguments to filter Countries to delete.
+     * @example
+     * // Delete a few Countries
+     * const { count } = await prisma.country.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends CountryDeleteManyArgs>(
+      args?: SelectSubset<T, CountryDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Countries
+     * const country = await prisma.country.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends CountryUpdateManyArgs>(
+      args: SelectSubset<T, CountryUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Country.
+     * @param {CountryUpsertArgs} args - Arguments to update or create a Country.
+     * @example
+     * // Update or create a Country
+     * const country = await prisma.country.upsert({
+     *   create: {
+     *     // ... data to create a Country
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Country we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CountryUpsertArgs>(
+      args: SelectSubset<T, CountryUpsertArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Countries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryCountArgs} args - Arguments to filter Countries to count.
+     * @example
+     * // Count the number of Countries
+     * const count = await prisma.country.count({
+     *   where: {
+     *     // ... the filter for the Countries we want to count
+     *   }
+     * })
+     **/
+    count<T extends CountryCountArgs>(
+      args?: Subset<T, CountryCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CountryCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends CountryAggregateArgs>(
+      args: Subset<T, CountryAggregateArgs>
+    ): Prisma.PrismaPromise<GetCountryAggregateType<T>>;
+
+    /**
+     * Group by Country.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CountryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends CountryGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CountryGroupByArgs['orderBy'] }
+        : { orderBy?: CountryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, CountryGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetCountryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Country model
+     */
+    readonly fields: CountryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Country.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CountryClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    clubs<T extends Country$clubsArgs<ExtArgs> = {}>(
+      args?: Subset<T, Country$clubsArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findMany'> | Null>;
+    leagues<T extends Country$leaguesArgs<ExtArgs> = {}>(
+      args?: Subset<T, Country$leaguesArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    players<T extends Country$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Country$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Country model
+   */
+  interface CountryFieldRefs {
+    readonly id: FieldRef<'Country', 'Int'>;
+    readonly name: FieldRef<'Country', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Country findUnique
+   */
+  export type CountryFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput;
+  };
+
+  /**
+   * Country findUniqueOrThrow
+   */
+  export type CountryFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter, which Country to fetch.
+     */
+    where: CountryWhereUniqueInput;
+  };
+
+  /**
+   * Country findFirst
+   */
+  export type CountryFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Countries.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[];
+  };
+
+  /**
+   * Country findFirstOrThrow
+   */
+  export type CountryFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter, which Country to fetch.
+     */
+    where?: CountryWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Countries.
+     */
+    cursor?: CountryWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Countries.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Countries.
+     */
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[];
+  };
+
+  /**
+   * Country findMany
+   */
+  export type CountryFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter, which Countries to fetch.
+     */
+    where?: CountryWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Countries to fetch.
+     */
+    orderBy?: CountryOrderByWithRelationInput | CountryOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Countries.
+     */
+    cursor?: CountryWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Countries from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Countries.
+     */
+    skip?: number;
+    distinct?: CountryScalarFieldEnum | CountryScalarFieldEnum[];
+  };
+
+  /**
+   * Country create
+   */
+  export type CountryCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Country.
+     */
+    data: XOR<CountryCreateInput, CountryUncheckedCreateInput>;
+  };
+
+  /**
+   * Country createMany
+   */
+  export type CountryCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Countries.
+     */
+    data: CountryCreateManyInput | CountryCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Country createManyAndReturn
+   */
+  export type CountryCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many Countries.
+     */
+    data: CountryCreateManyInput | CountryCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Country update
+   */
+  export type CountryUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Country.
+     */
+    data: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>;
+    /**
+     * Choose, which Country to update.
+     */
+    where: CountryWhereUniqueInput;
+  };
+
+  /**
+   * Country updateMany
+   */
+  export type CountryUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Countries.
+     */
+    data: XOR<CountryUpdateManyMutationInput, CountryUncheckedUpdateManyInput>;
+    /**
+     * Filter which Countries to update
+     */
+    where?: CountryWhereInput;
+  };
+
+  /**
+   * Country upsert
+   */
+  export type CountryUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Country to update in case it exists.
+     */
+    where: CountryWhereUniqueInput;
+    /**
+     * In case the Country found by the `where` argument doesn't exist, create a new Country with this data.
+     */
+    create: XOR<CountryCreateInput, CountryUncheckedCreateInput>;
+    /**
+     * In case the Country was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CountryUpdateInput, CountryUncheckedUpdateInput>;
+  };
+
+  /**
+   * Country delete
+   */
+  export type CountryDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+    /**
+     * Filter which Country to delete.
+     */
+    where: CountryWhereUniqueInput;
+  };
+
+  /**
+   * Country deleteMany
+   */
+  export type CountryDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Countries to delete
+     */
+    where?: CountryWhereInput;
+  };
+
+  /**
+   * Country.clubs
+   */
+  export type Country$clubsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    where?: ClubWhereInput;
+    orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+    cursor?: ClubWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: ClubScalarFieldEnum | ClubScalarFieldEnum[];
+  };
+
+  /**
+   * Country.leagues
+   */
+  export type Country$leaguesArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the League
+     */
+    select?: LeagueSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LeagueInclude<ExtArgs> | null;
+    where?: LeagueWhereInput;
+    orderBy?: LeagueOrderByWithRelationInput | LeagueOrderByWithRelationInput[];
+    cursor?: LeagueWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: LeagueScalarFieldEnum | LeagueScalarFieldEnum[];
+  };
+
+  /**
+   * Country.players
+   */
+  export type Country$playersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    where?: PlayerWhereInput;
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    cursor?: PlayerWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Country without action
+   */
+  export type CountryDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Country
+     */
+    select?: CountrySelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CountryInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model Position
+   */
+
+  export type AggregatePosition = {
+    _count: PositionCountAggregateOutputType | null;
+    _avg: PositionAvgAggregateOutputType | null;
+    _sum: PositionSumAggregateOutputType | null;
+    _min: PositionMinAggregateOutputType | null;
+    _max: PositionMaxAggregateOutputType | null;
+  };
+
+  export type PositionAvgAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type PositionSumAggregateOutputType = {
+    id: number | null;
+  };
+
+  export type PositionMinAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type PositionMaxAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+  };
+
+  export type PositionCountAggregateOutputType = {
+    id: number;
+    name: number;
+    _all: number;
+  };
+
+  export type PositionAvgAggregateInputType = {
+    id?: true;
+  };
+
+  export type PositionSumAggregateInputType = {
+    id?: true;
+  };
+
+  export type PositionMinAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type PositionMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+  };
+
+  export type PositionCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    _all?: true;
+  };
+
+  export type PositionAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Position to aggregate.
+     */
+    where?: PositionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Positions to fetch.
+     */
+    orderBy?: PositionOrderByWithRelationInput | PositionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: PositionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Positions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Positions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Positions
+     **/
+    _count?: true | PositionCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: PositionAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: PositionSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: PositionMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: PositionMaxAggregateInputType;
+  };
+
+  export type GetPositionAggregateType<T extends PositionAggregateArgs> = {
+    [P in keyof T & keyof AggregatePosition]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePosition[P]>
+      : GetScalarType<T[P], AggregatePosition[P]>;
+  };
+
+  export type PositionGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PositionWhereInput;
+    orderBy?: PositionOrderByWithAggregationInput | PositionOrderByWithAggregationInput[];
+    by: PositionScalarFieldEnum[] | PositionScalarFieldEnum;
+    having?: PositionScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: PositionCountAggregateInputType | true;
+    _avg?: PositionAvgAggregateInputType;
+    _sum?: PositionSumAggregateInputType;
+    _min?: PositionMinAggregateInputType;
+    _max?: PositionMaxAggregateInputType;
+  };
+
+  export type PositionGroupByOutputType = {
+    id: number;
+    name: string;
+    _count: PositionCountAggregateOutputType | null;
+    _avg: PositionAvgAggregateOutputType | null;
+    _sum: PositionSumAggregateOutputType | null;
+    _min: PositionMinAggregateOutputType | null;
+    _max: PositionMaxAggregateOutputType | null;
+  };
+
+  type GetPositionGroupByPayload<T extends PositionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PositionGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof PositionGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], PositionGroupByOutputType[P]>
+          : GetScalarType<T[P], PositionGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type PositionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        name?: boolean;
+        players?: boolean | Position$playersArgs<ExtArgs>;
+        _count?: boolean | PositionCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['position']
+    >;
+
+  export type PositionSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      name?: boolean;
+    },
+    ExtArgs['result']['position']
+  >;
+
+  export type PositionSelectScalar = {
+    id?: boolean;
+    name?: boolean;
+  };
+
+  export type PositionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      players?: boolean | Position$playersArgs<ExtArgs>;
+      _count?: boolean | PositionCountOutputTypeDefaultArgs<ExtArgs>;
+    };
+  export type PositionIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {};
+
+  export type $PositionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      name: 'Position';
+      objects: {
+        players: Prisma.$PlayerPositionPayload<ExtArgs>[];
+      };
+      scalars: $Extensions.GetPayloadResult<
+        {
+          id: number;
+          name: string;
+        },
+        ExtArgs['result']['position']
+      >;
+      composites: {};
+    };
+
+  type PositionGetPayload<S extends boolean | null | undefined | PositionDefaultArgs> =
+    $Result.GetResult<Prisma.$PositionPayload, S>;
+
+  type PositionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    PositionFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: PositionCountAggregateInputType | true;
+  };
+
+  export interface PositionDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['Position'];
+      meta: { name: 'Position' };
+    };
+    /**
+     * Find zero or one Position that matches the filter.
+     * @param {PositionFindUniqueArgs} args - Arguments to find a Position
+     * @example
+     * // Get one Position
+     * const position = await prisma.position.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PositionFindUniqueArgs>(
+      args: SelectSubset<T, PositionFindUniqueArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Position that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PositionFindUniqueOrThrowArgs} args - Arguments to find a Position
+     * @example
+     * // Get one Position
+     * const position = await prisma.position.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PositionFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, PositionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Position that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionFindFirstArgs} args - Arguments to find a Position
+     * @example
+     * // Get one Position
+     * const position = await prisma.position.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PositionFindFirstArgs>(
+      args?: SelectSubset<T, PositionFindFirstArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Position that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionFindFirstOrThrowArgs} args - Arguments to find a Position
+     * @example
+     * // Get one Position
+     * const position = await prisma.position.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PositionFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, PositionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Positions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Positions
+     * const positions = await prisma.position.findMany()
+     *
+     * // Get first 10 Positions
+     * const positions = await prisma.position.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const positionWithIdOnly = await prisma.position.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends PositionFindManyArgs>(
+      args?: SelectSubset<T, PositionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a Position.
+     * @param {PositionCreateArgs} args - Arguments to create a Position.
+     * @example
+     * // Create one Position
+     * const Position = await prisma.position.create({
+     *   data: {
+     *     // ... data to create a Position
+     *   }
+     * })
+     *
+     */
+    create<T extends PositionCreateArgs>(
+      args: SelectSubset<T, PositionCreateArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Positions.
+     * @param {PositionCreateManyArgs} args - Arguments to create many Positions.
+     * @example
+     * // Create many Positions
+     * const position = await prisma.position.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends PositionCreateManyArgs>(
+      args?: SelectSubset<T, PositionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Positions and returns the data saved in the database.
+     * @param {PositionCreateManyAndReturnArgs} args - Arguments to create many Positions.
+     * @example
+     * // Create many Positions
+     * const position = await prisma.position.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Positions and only return the `id`
+     * const positionWithIdOnly = await prisma.position.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends PositionCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, PositionCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a Position.
+     * @param {PositionDeleteArgs} args - Arguments to delete one Position.
+     * @example
+     * // Delete one Position
+     * const Position = await prisma.position.delete({
+     *   where: {
+     *     // ... filter to delete one Position
+     *   }
+     * })
+     *
+     */
+    delete<T extends PositionDeleteArgs>(
+      args: SelectSubset<T, PositionDeleteArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Position.
+     * @param {PositionUpdateArgs} args - Arguments to update one Position.
+     * @example
+     * // Update one Position
+     * const position = await prisma.position.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends PositionUpdateArgs>(
+      args: SelectSubset<T, PositionUpdateArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Positions.
+     * @param {PositionDeleteManyArgs} args - Arguments to filter Positions to delete.
+     * @example
+     * // Delete a few Positions
+     * const { count } = await prisma.position.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends PositionDeleteManyArgs>(
+      args?: SelectSubset<T, PositionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Positions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Positions
+     * const position = await prisma.position.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends PositionUpdateManyArgs>(
+      args: SelectSubset<T, PositionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Position.
+     * @param {PositionUpsertArgs} args - Arguments to update or create a Position.
+     * @example
+     * // Update or create a Position
+     * const position = await prisma.position.upsert({
+     *   create: {
+     *     // ... data to create a Position
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Position we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PositionUpsertArgs>(
+      args: SelectSubset<T, PositionUpsertArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Positions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionCountArgs} args - Arguments to filter Positions to count.
+     * @example
+     * // Count the number of Positions
+     * const count = await prisma.position.count({
+     *   where: {
+     *     // ... the filter for the Positions we want to count
+     *   }
+     * })
+     **/
+    count<T extends PositionCountArgs>(
+      args?: Subset<T, PositionCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PositionCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Position.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends PositionAggregateArgs>(
+      args: Subset<T, PositionAggregateArgs>
+    ): Prisma.PrismaPromise<GetPositionAggregateType<T>>;
+
+    /**
+     * Group by Position.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends PositionGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PositionGroupByArgs['orderBy'] }
+        : { orderBy?: PositionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, PositionGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetPositionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Position model
+     */
+    readonly fields: PositionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Position.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PositionClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    players<T extends Position$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Position$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Position model
+   */
+  interface PositionFieldRefs {
+    readonly id: FieldRef<'Position', 'Int'>;
+    readonly name: FieldRef<'Position', 'String'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Position findUnique
+   */
+  export type PositionFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Position to fetch.
+     */
+    where: PositionWhereUniqueInput;
+  };
+
+  /**
+   * Position findUniqueOrThrow
+   */
+  export type PositionFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Position to fetch.
+     */
+    where: PositionWhereUniqueInput;
+  };
+
+  /**
+   * Position findFirst
+   */
+  export type PositionFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Position to fetch.
+     */
+    where?: PositionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Positions to fetch.
+     */
+    orderBy?: PositionOrderByWithRelationInput | PositionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Positions.
+     */
+    cursor?: PositionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Positions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Positions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Positions.
+     */
+    distinct?: PositionScalarFieldEnum | PositionScalarFieldEnum[];
+  };
+
+  /**
+   * Position findFirstOrThrow
+   */
+  export type PositionFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Position to fetch.
+     */
+    where?: PositionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Positions to fetch.
+     */
+    orderBy?: PositionOrderByWithRelationInput | PositionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Positions.
+     */
+    cursor?: PositionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Positions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Positions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Positions.
+     */
+    distinct?: PositionScalarFieldEnum | PositionScalarFieldEnum[];
+  };
+
+  /**
+   * Position findMany
+   */
+  export type PositionFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter, which Positions to fetch.
+     */
+    where?: PositionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Positions to fetch.
+     */
+    orderBy?: PositionOrderByWithRelationInput | PositionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Positions.
+     */
+    cursor?: PositionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Positions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Positions.
+     */
+    skip?: number;
+    distinct?: PositionScalarFieldEnum | PositionScalarFieldEnum[];
+  };
+
+  /**
+   * Position create
+   */
+  export type PositionCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Position.
+     */
+    data: XOR<PositionCreateInput, PositionUncheckedCreateInput>;
+  };
+
+  /**
+   * Position createMany
+   */
+  export type PositionCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Positions.
+     */
+    data: PositionCreateManyInput | PositionCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Position createManyAndReturn
+   */
+  export type PositionCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many Positions.
+     */
+    data: PositionCreateManyInput | PositionCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Position update
+   */
+  export type PositionUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Position.
+     */
+    data: XOR<PositionUpdateInput, PositionUncheckedUpdateInput>;
+    /**
+     * Choose, which Position to update.
+     */
+    where: PositionWhereUniqueInput;
+  };
+
+  /**
+   * Position updateMany
+   */
+  export type PositionUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Positions.
+     */
+    data: XOR<PositionUpdateManyMutationInput, PositionUncheckedUpdateManyInput>;
+    /**
+     * Filter which Positions to update
+     */
+    where?: PositionWhereInput;
+  };
+
+  /**
+   * Position upsert
+   */
+  export type PositionUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Position to update in case it exists.
+     */
+    where: PositionWhereUniqueInput;
+    /**
+     * In case the Position found by the `where` argument doesn't exist, create a new Position with this data.
+     */
+    create: XOR<PositionCreateInput, PositionUncheckedCreateInput>;
+    /**
+     * In case the Position was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PositionUpdateInput, PositionUncheckedUpdateInput>;
+  };
+
+  /**
+   * Position delete
+   */
+  export type PositionDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+    /**
+     * Filter which Position to delete.
+     */
+    where: PositionWhereUniqueInput;
+  };
+
+  /**
+   * Position deleteMany
+   */
+  export type PositionDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Positions to delete
+     */
+    where?: PositionWhereInput;
+  };
+
+  /**
+   * Position.players
+   */
+  export type Position$playersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the PlayerPosition
+     */
+    select?: PlayerPositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerPositionInclude<ExtArgs> | null;
+    where?: PlayerPositionWhereInput;
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
+    cursor?: PlayerPositionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerPositionScalarFieldEnum | PlayerPositionScalarFieldEnum[];
+  };
+
+  /**
+   * Position without action
+   */
+  export type PositionDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Position
+     */
+    select?: PositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PositionInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model PlayerPosition
+   */
+
+  export type AggregatePlayerPosition = {
+    _count: PlayerPositionCountAggregateOutputType | null;
+    _avg: PlayerPositionAvgAggregateOutputType | null;
+    _sum: PlayerPositionSumAggregateOutputType | null;
+    _min: PlayerPositionMinAggregateOutputType | null;
+    _max: PlayerPositionMaxAggregateOutputType | null;
+  };
+
+  export type PlayerPositionAvgAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    positionId: number | null;
+  };
+
+  export type PlayerPositionSumAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    positionId: number | null;
+  };
+
+  export type PlayerPositionMinAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    positionId: number | null;
+  };
+
+  export type PlayerPositionMaxAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    positionId: number | null;
+  };
+
+  export type PlayerPositionCountAggregateOutputType = {
+    id: number;
+    playerId: number;
+    positionId: number;
+    _all: number;
+  };
+
+  export type PlayerPositionAvgAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    positionId?: true;
+  };
+
+  export type PlayerPositionSumAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    positionId?: true;
+  };
+
+  export type PlayerPositionMinAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    positionId?: true;
+  };
+
+  export type PlayerPositionMaxAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    positionId?: true;
+  };
+
+  export type PlayerPositionCountAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    positionId?: true;
+    _all?: true;
+  };
+
+  export type PlayerPositionAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which PlayerPosition to aggregate.
+     */
+    where?: PlayerPositionWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of PlayerPositions to fetch.
+     */
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: PlayerPositionWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` PlayerPositions from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` PlayerPositions.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned PlayerPositions
+     **/
+    _count?: true | PlayerPositionCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: PlayerPositionAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: PlayerPositionSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: PlayerPositionMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: PlayerPositionMaxAggregateInputType;
+  };
+
+  export type GetPlayerPositionAggregateType<T extends PlayerPositionAggregateArgs> = {
+    [P in keyof T & keyof AggregatePlayerPosition]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePlayerPosition[P]>
+      : GetScalarType<T[P], AggregatePlayerPosition[P]>;
+  };
+
+  export type PlayerPositionGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerPositionWhereInput;
+    orderBy?:
+      | PlayerPositionOrderByWithAggregationInput
+      | PlayerPositionOrderByWithAggregationInput[];
+    by: PlayerPositionScalarFieldEnum[] | PlayerPositionScalarFieldEnum;
+    having?: PlayerPositionScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: PlayerPositionCountAggregateInputType | true;
+    _avg?: PlayerPositionAvgAggregateInputType;
+    _sum?: PlayerPositionSumAggregateInputType;
+    _min?: PlayerPositionMinAggregateInputType;
+    _max?: PlayerPositionMaxAggregateInputType;
+  };
+
+  export type PlayerPositionGroupByOutputType = {
+    id: number;
+    playerId: number;
+    positionId: number;
+    _count: PlayerPositionCountAggregateOutputType | null;
+    _avg: PlayerPositionAvgAggregateOutputType | null;
+    _sum: PlayerPositionSumAggregateOutputType | null;
+    _min: PlayerPositionMinAggregateOutputType | null;
+    _max: PlayerPositionMaxAggregateOutputType | null;
+  };
+
+  type GetPlayerPositionGroupByPayload<T extends PlayerPositionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PlayerPositionGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof PlayerPositionGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], PlayerPositionGroupByOutputType[P]>
+          : GetScalarType<T[P], PlayerPositionGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type PlayerPositionSelect<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      playerId?: boolean;
+      positionId?: boolean;
+      player?: boolean | PlayerDefaultArgs<ExtArgs>;
+      position?: boolean | PositionDefaultArgs<ExtArgs>;
+    },
+    ExtArgs['result']['playerPosition']
+  >;
+
+  export type PlayerPositionSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      playerId?: boolean;
+      positionId?: boolean;
+      player?: boolean | PlayerDefaultArgs<ExtArgs>;
+      position?: boolean | PositionDefaultArgs<ExtArgs>;
+    },
+    ExtArgs['result']['playerPosition']
+  >;
+
+  export type PlayerPositionSelectScalar = {
+    id?: boolean;
+    playerId?: boolean;
+    positionId?: boolean;
+  };
+
+  export type PlayerPositionInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    player?: boolean | PlayerDefaultArgs<ExtArgs>;
+    position?: boolean | PositionDefaultArgs<ExtArgs>;
+  };
+  export type PlayerPositionIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    player?: boolean | PlayerDefaultArgs<ExtArgs>;
+    position?: boolean | PositionDefaultArgs<ExtArgs>;
+  };
+
+  export type $PlayerPositionPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'PlayerPosition';
+    objects: {
+      player: Prisma.$PlayerPayload<ExtArgs>;
+      position: Prisma.$PositionPayload<ExtArgs>;
+    };
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number;
+        playerId: number;
+        positionId: number;
+      },
+      ExtArgs['result']['playerPosition']
+    >;
+    composites: {};
+  };
+
+  type PlayerPositionGetPayload<S extends boolean | null | undefined | PlayerPositionDefaultArgs> =
+    $Result.GetResult<Prisma.$PlayerPositionPayload, S>;
+
+  type PlayerPositionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PlayerPositionFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: PlayerPositionCountAggregateInputType | true;
+    };
+
+  export interface PlayerPositionDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['PlayerPosition'];
+      meta: { name: 'PlayerPosition' };
+    };
+    /**
+     * Find zero or one PlayerPosition that matches the filter.
+     * @param {PlayerPositionFindUniqueArgs} args - Arguments to find a PlayerPosition
+     * @example
+     * // Get one PlayerPosition
+     * const playerPosition = await prisma.playerPosition.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PlayerPositionFindUniqueArgs>(
+      args: SelectSubset<T, PlayerPositionFindUniqueArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one PlayerPosition that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PlayerPositionFindUniqueOrThrowArgs} args - Arguments to find a PlayerPosition
+     * @example
+     * // Get one PlayerPosition
+     * const playerPosition = await prisma.playerPosition.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PlayerPositionFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, PlayerPositionFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first PlayerPosition that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionFindFirstArgs} args - Arguments to find a PlayerPosition
+     * @example
+     * // Get one PlayerPosition
+     * const playerPosition = await prisma.playerPosition.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PlayerPositionFindFirstArgs>(
+      args?: SelectSubset<T, PlayerPositionFindFirstArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first PlayerPosition that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionFindFirstOrThrowArgs} args - Arguments to find a PlayerPosition
+     * @example
+     * // Get one PlayerPosition
+     * const playerPosition = await prisma.playerPosition.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PlayerPositionFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, PlayerPositionFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more PlayerPositions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PlayerPositions
+     * const playerPositions = await prisma.playerPosition.findMany()
+     *
+     * // Get first 10 PlayerPositions
+     * const playerPositions = await prisma.playerPosition.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const playerPositionWithIdOnly = await prisma.playerPosition.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends PlayerPositionFindManyArgs>(
+      args?: SelectSubset<T, PlayerPositionFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findMany'>
+    >;
+
+    /**
+     * Create a PlayerPosition.
+     * @param {PlayerPositionCreateArgs} args - Arguments to create a PlayerPosition.
+     * @example
+     * // Create one PlayerPosition
+     * const PlayerPosition = await prisma.playerPosition.create({
+     *   data: {
+     *     // ... data to create a PlayerPosition
+     *   }
+     * })
+     *
+     */
+    create<T extends PlayerPositionCreateArgs>(
+      args: SelectSubset<T, PlayerPositionCreateArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many PlayerPositions.
+     * @param {PlayerPositionCreateManyArgs} args - Arguments to create many PlayerPositions.
+     * @example
+     * // Create many PlayerPositions
+     * const playerPosition = await prisma.playerPosition.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends PlayerPositionCreateManyArgs>(
+      args?: SelectSubset<T, PlayerPositionCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many PlayerPositions and returns the data saved in the database.
+     * @param {PlayerPositionCreateManyAndReturnArgs} args - Arguments to create many PlayerPositions.
+     * @example
+     * // Create many PlayerPositions
+     * const playerPosition = await prisma.playerPosition.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many PlayerPositions and only return the `id`
+     * const playerPositionWithIdOnly = await prisma.playerPosition.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends PlayerPositionCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, PlayerPositionCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a PlayerPosition.
+     * @param {PlayerPositionDeleteArgs} args - Arguments to delete one PlayerPosition.
+     * @example
+     * // Delete one PlayerPosition
+     * const PlayerPosition = await prisma.playerPosition.delete({
+     *   where: {
+     *     // ... filter to delete one PlayerPosition
+     *   }
+     * })
+     *
+     */
+    delete<T extends PlayerPositionDeleteArgs>(
+      args: SelectSubset<T, PlayerPositionDeleteArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one PlayerPosition.
+     * @param {PlayerPositionUpdateArgs} args - Arguments to update one PlayerPosition.
+     * @example
+     * // Update one PlayerPosition
+     * const playerPosition = await prisma.playerPosition.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends PlayerPositionUpdateArgs>(
+      args: SelectSubset<T, PlayerPositionUpdateArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more PlayerPositions.
+     * @param {PlayerPositionDeleteManyArgs} args - Arguments to filter PlayerPositions to delete.
+     * @example
+     * // Delete a few PlayerPositions
+     * const { count } = await prisma.playerPosition.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends PlayerPositionDeleteManyArgs>(
+      args?: SelectSubset<T, PlayerPositionDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more PlayerPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PlayerPositions
+     * const playerPosition = await prisma.playerPosition.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends PlayerPositionUpdateManyArgs>(
+      args: SelectSubset<T, PlayerPositionUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one PlayerPosition.
+     * @param {PlayerPositionUpsertArgs} args - Arguments to update or create a PlayerPosition.
+     * @example
+     * // Update or create a PlayerPosition
+     * const playerPosition = await prisma.playerPosition.upsert({
+     *   create: {
+     *     // ... data to create a PlayerPosition
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PlayerPosition we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PlayerPositionUpsertArgs>(
+      args: SelectSubset<T, PlayerPositionUpsertArgs<ExtArgs>>
+    ): Prisma__PlayerPositionClient<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of PlayerPositions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionCountArgs} args - Arguments to filter PlayerPositions to count.
+     * @example
+     * // Count the number of PlayerPositions
+     * const count = await prisma.playerPosition.count({
+     *   where: {
+     *     // ... the filter for the PlayerPositions we want to count
+     *   }
+     * })
+     **/
+    count<T extends PlayerPositionCountArgs>(
+      args?: Subset<T, PlayerPositionCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PlayerPositionCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a PlayerPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends PlayerPositionAggregateArgs>(
+      args: Subset<T, PlayerPositionAggregateArgs>
+    ): Prisma.PrismaPromise<GetPlayerPositionAggregateType<T>>;
+
+    /**
+     * Group by PlayerPosition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerPositionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends PlayerPositionGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PlayerPositionGroupByArgs['orderBy'] }
+        : { orderBy?: PlayerPositionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, PlayerPositionGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors
+      ? GetPlayerPositionGroupByPayload<T>
+      : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the PlayerPosition model
+     */
+    readonly fields: PlayerPositionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PlayerPosition.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PlayerPositionClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    player<T extends PlayerDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, PlayerDefaultArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    position<T extends PositionDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, PositionDefaultArgs<ExtArgs>>
+    ): Prisma__PositionClient<
+      $Result.GetResult<Prisma.$PositionPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
       Null,
       ExtArgs
     >;
@@ -3964,753 +6865,777 @@ export namespace Prisma {
   }
 
   /**
-   * Fields of the SbcSolution model
+   * Fields of the PlayerPosition model
    */
-  interface SbcSolutionFieldRefs {
-    readonly id: FieldRef<'SbcSolution', 'String'>;
-    readonly createdAt: FieldRef<'SbcSolution', 'DateTime'>;
-    readonly challengeId: FieldRef<'SbcSolution', 'String'>;
-    readonly players: FieldRef<'SbcSolution', 'Json'>;
-    readonly cost: FieldRef<'SbcSolution', 'Float'>;
-    readonly rating: FieldRef<'SbcSolution', 'Int'>;
-    readonly isValid: FieldRef<'SbcSolution', 'Boolean'>;
+  interface PlayerPositionFieldRefs {
+    readonly id: FieldRef<'PlayerPosition', 'Int'>;
+    readonly playerId: FieldRef<'PlayerPosition', 'Int'>;
+    readonly positionId: FieldRef<'PlayerPosition', 'Int'>;
   }
 
   // Custom InputTypes
   /**
-   * SbcSolution findUnique
+   * PlayerPosition findUnique
    */
-  export type SbcSolutionFindUniqueArgs<
+  export type PlayerPositionFindUniqueArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter, which SbcSolution to fetch.
+     * Filter, which PlayerPosition to fetch.
      */
-    where: SbcSolutionWhereUniqueInput;
+    where: PlayerPositionWhereUniqueInput;
   };
 
   /**
-   * SbcSolution findUniqueOrThrow
+   * PlayerPosition findUniqueOrThrow
    */
-  export type SbcSolutionFindUniqueOrThrowArgs<
+  export type PlayerPositionFindUniqueOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter, which SbcSolution to fetch.
+     * Filter, which PlayerPosition to fetch.
      */
-    where: SbcSolutionWhereUniqueInput;
+    where: PlayerPositionWhereUniqueInput;
   };
 
   /**
-   * SbcSolution findFirst
+   * PlayerPosition findFirst
    */
-  export type SbcSolutionFindFirstArgs<
+  export type PlayerPositionFindFirstArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter, which SbcSolution to fetch.
+     * Filter, which PlayerPosition to fetch.
      */
-    where?: SbcSolutionWhereInput;
+    where?: PlayerPositionWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of SbcSolutions to fetch.
+     * Determine the order of PlayerPositions to fetch.
      */
-    orderBy?: SbcSolutionOrderByWithRelationInput | SbcSolutionOrderByWithRelationInput[];
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for SbcSolutions.
+     * Sets the position for searching for PlayerPositions.
      */
-    cursor?: SbcSolutionWhereUniqueInput;
+    cursor?: PlayerPositionWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` SbcSolutions from the position of the cursor.
+     * Take `±n` PlayerPositions from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` SbcSolutions.
+     * Skip the first `n` PlayerPositions.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of SbcSolutions.
+     * Filter by unique combinations of PlayerPositions.
      */
-    distinct?: SbcSolutionScalarFieldEnum | SbcSolutionScalarFieldEnum[];
+    distinct?: PlayerPositionScalarFieldEnum | PlayerPositionScalarFieldEnum[];
   };
 
   /**
-   * SbcSolution findFirstOrThrow
+   * PlayerPosition findFirstOrThrow
    */
-  export type SbcSolutionFindFirstOrThrowArgs<
+  export type PlayerPositionFindFirstOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter, which SbcSolution to fetch.
+     * Filter, which PlayerPosition to fetch.
      */
-    where?: SbcSolutionWhereInput;
+    where?: PlayerPositionWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of SbcSolutions to fetch.
+     * Determine the order of PlayerPositions to fetch.
      */
-    orderBy?: SbcSolutionOrderByWithRelationInput | SbcSolutionOrderByWithRelationInput[];
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for SbcSolutions.
+     * Sets the position for searching for PlayerPositions.
      */
-    cursor?: SbcSolutionWhereUniqueInput;
+    cursor?: PlayerPositionWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` SbcSolutions from the position of the cursor.
+     * Take `±n` PlayerPositions from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` SbcSolutions.
+     * Skip the first `n` PlayerPositions.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of SbcSolutions.
+     * Filter by unique combinations of PlayerPositions.
      */
-    distinct?: SbcSolutionScalarFieldEnum | SbcSolutionScalarFieldEnum[];
+    distinct?: PlayerPositionScalarFieldEnum | PlayerPositionScalarFieldEnum[];
   };
 
   /**
-   * SbcSolution findMany
+   * PlayerPosition findMany
    */
-  export type SbcSolutionFindManyArgs<
+  export type PlayerPositionFindManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter, which SbcSolutions to fetch.
+     * Filter, which PlayerPositions to fetch.
      */
-    where?: SbcSolutionWhereInput;
+    where?: PlayerPositionWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of SbcSolutions to fetch.
+     * Determine the order of PlayerPositions to fetch.
      */
-    orderBy?: SbcSolutionOrderByWithRelationInput | SbcSolutionOrderByWithRelationInput[];
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for listing SbcSolutions.
+     * Sets the position for listing PlayerPositions.
      */
-    cursor?: SbcSolutionWhereUniqueInput;
+    cursor?: PlayerPositionWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` SbcSolutions from the position of the cursor.
+     * Take `±n` PlayerPositions from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` SbcSolutions.
+     * Skip the first `n` PlayerPositions.
      */
     skip?: number;
-    distinct?: SbcSolutionScalarFieldEnum | SbcSolutionScalarFieldEnum[];
+    distinct?: PlayerPositionScalarFieldEnum | PlayerPositionScalarFieldEnum[];
   };
 
   /**
-   * SbcSolution create
+   * PlayerPosition create
    */
-  export type SbcSolutionCreateArgs<
+  export type PlayerPositionCreateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * The data needed to create a SbcSolution.
+     * The data needed to create a PlayerPosition.
      */
-    data: XOR<SbcSolutionCreateInput, SbcSolutionUncheckedCreateInput>;
+    data: XOR<PlayerPositionCreateInput, PlayerPositionUncheckedCreateInput>;
   };
 
   /**
-   * SbcSolution createMany
+   * PlayerPosition createMany
    */
-  export type SbcSolutionCreateManyArgs<
+  export type PlayerPositionCreateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * The data used to create many SbcSolutions.
+     * The data used to create many PlayerPositions.
      */
-    data: SbcSolutionCreateManyInput | SbcSolutionCreateManyInput[];
+    data: PlayerPositionCreateManyInput | PlayerPositionCreateManyInput[];
     skipDuplicates?: boolean;
   };
 
   /**
-   * SbcSolution createManyAndReturn
+   * PlayerPosition createManyAndReturn
    */
-  export type SbcSolutionCreateManyAndReturnArgs<
+  export type PlayerPositionCreateManyAndReturnArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelectCreateManyAndReturn<ExtArgs> | null;
+    select?: PlayerPositionSelectCreateManyAndReturn<ExtArgs> | null;
     /**
-     * The data used to create many SbcSolutions.
+     * The data used to create many PlayerPositions.
      */
-    data: SbcSolutionCreateManyInput | SbcSolutionCreateManyInput[];
+    data: PlayerPositionCreateManyInput | PlayerPositionCreateManyInput[];
     skipDuplicates?: boolean;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionIncludeCreateManyAndReturn<ExtArgs> | null;
+    include?: PlayerPositionIncludeCreateManyAndReturn<ExtArgs> | null;
   };
 
   /**
-   * SbcSolution update
+   * PlayerPosition update
    */
-  export type SbcSolutionUpdateArgs<
+  export type PlayerPositionUpdateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * The data needed to update a SbcSolution.
+     * The data needed to update a PlayerPosition.
      */
-    data: XOR<SbcSolutionUpdateInput, SbcSolutionUncheckedUpdateInput>;
+    data: XOR<PlayerPositionUpdateInput, PlayerPositionUncheckedUpdateInput>;
     /**
-     * Choose, which SbcSolution to update.
+     * Choose, which PlayerPosition to update.
      */
-    where: SbcSolutionWhereUniqueInput;
+    where: PlayerPositionWhereUniqueInput;
   };
 
   /**
-   * SbcSolution updateMany
+   * PlayerPosition updateMany
    */
-  export type SbcSolutionUpdateManyArgs<
+  export type PlayerPositionUpdateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * The data used to update SbcSolutions.
+     * The data used to update PlayerPositions.
      */
-    data: XOR<SbcSolutionUpdateManyMutationInput, SbcSolutionUncheckedUpdateManyInput>;
+    data: XOR<PlayerPositionUpdateManyMutationInput, PlayerPositionUncheckedUpdateManyInput>;
     /**
-     * Filter which SbcSolutions to update
+     * Filter which PlayerPositions to update
      */
-    where?: SbcSolutionWhereInput;
+    where?: PlayerPositionWhereInput;
   };
 
   /**
-   * SbcSolution upsert
+   * PlayerPosition upsert
    */
-  export type SbcSolutionUpsertArgs<
+  export type PlayerPositionUpsertArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * The filter to search for the SbcSolution to update in case it exists.
+     * The filter to search for the PlayerPosition to update in case it exists.
      */
-    where: SbcSolutionWhereUniqueInput;
+    where: PlayerPositionWhereUniqueInput;
     /**
-     * In case the SbcSolution found by the `where` argument doesn't exist, create a new SbcSolution with this data.
+     * In case the PlayerPosition found by the `where` argument doesn't exist, create a new PlayerPosition with this data.
      */
-    create: XOR<SbcSolutionCreateInput, SbcSolutionUncheckedCreateInput>;
+    create: XOR<PlayerPositionCreateInput, PlayerPositionUncheckedCreateInput>;
     /**
-     * In case the SbcSolution was found with the provided `where` argument, update it with this data.
+     * In case the PlayerPosition was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<SbcSolutionUpdateInput, SbcSolutionUncheckedUpdateInput>;
+    update: XOR<PlayerPositionUpdateInput, PlayerPositionUncheckedUpdateInput>;
   };
 
   /**
-   * SbcSolution delete
+   * PlayerPosition delete
    */
-  export type SbcSolutionDeleteArgs<
+  export type PlayerPositionDeleteArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
     /**
-     * Filter which SbcSolution to delete.
+     * Filter which PlayerPosition to delete.
      */
-    where: SbcSolutionWhereUniqueInput;
+    where: PlayerPositionWhereUniqueInput;
   };
 
   /**
-   * SbcSolution deleteMany
+   * PlayerPosition deleteMany
    */
-  export type SbcSolutionDeleteManyArgs<
+  export type PlayerPositionDeleteManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Filter which SbcSolutions to delete
+     * Filter which PlayerPositions to delete
      */
-    where?: SbcSolutionWhereInput;
+    where?: PlayerPositionWhereInput;
   };
 
   /**
-   * SbcSolution without action
+   * PlayerPosition without action
    */
-  export type SbcSolutionDefaultArgs<
+  export type PlayerPositionDefaultArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the SbcSolution
+     * Select specific fields to fetch from the PlayerPosition
      */
-    select?: SbcSolutionSelect<ExtArgs> | null;
+    select?: PlayerPositionSelect<ExtArgs> | null;
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: SbcSolutionInclude<ExtArgs> | null;
+    include?: PlayerPositionInclude<ExtArgs> | null;
   };
 
   /**
-   * Model CompanionAppState
+   * Model League
    */
 
-  export type AggregateCompanionAppState = {
-    _count: CompanionAppStateCountAggregateOutputType | null;
-    _min: CompanionAppStateMinAggregateOutputType | null;
-    _max: CompanionAppStateMaxAggregateOutputType | null;
+  export type AggregateLeague = {
+    _count: LeagueCountAggregateOutputType | null;
+    _avg: LeagueAvgAggregateOutputType | null;
+    _sum: LeagueSumAggregateOutputType | null;
+    _min: LeagueMinAggregateOutputType | null;
+    _max: LeagueMaxAggregateOutputType | null;
   };
 
-  export type CompanionAppStateMinAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    sessionId: string | null;
+  export type LeagueAvgAggregateOutputType = {
+    id: number | null;
+    countryId: number | null;
   };
 
-  export type CompanionAppStateMaxAggregateOutputType = {
-    id: string | null;
-    createdAt: Date | null;
-    updatedAt: Date | null;
-    sessionId: string | null;
+  export type LeagueSumAggregateOutputType = {
+    id: number | null;
+    countryId: number | null;
   };
 
-  export type CompanionAppStateCountAggregateOutputType = {
+  export type LeagueMinAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+    countryId: number | null;
+  };
+
+  export type LeagueMaxAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+    countryId: number | null;
+  };
+
+  export type LeagueCountAggregateOutputType = {
     id: number;
-    createdAt: number;
-    updatedAt: number;
-    state: number;
-    sessionId: number;
+    name: number;
+    countryId: number;
     _all: number;
   };
 
-  export type CompanionAppStateMinAggregateInputType = {
+  export type LeagueAvgAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    sessionId?: true;
+    countryId?: true;
   };
 
-  export type CompanionAppStateMaxAggregateInputType = {
+  export type LeagueSumAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    sessionId?: true;
+    countryId?: true;
   };
 
-  export type CompanionAppStateCountAggregateInputType = {
+  export type LeagueMinAggregateInputType = {
     id?: true;
-    createdAt?: true;
-    updatedAt?: true;
-    state?: true;
-    sessionId?: true;
+    name?: true;
+    countryId?: true;
+  };
+
+  export type LeagueMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+    countryId?: true;
+  };
+
+  export type LeagueCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    countryId?: true;
     _all?: true;
   };
 
-  export type CompanionAppStateAggregateArgs<
+  export type LeagueAggregateArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Filter which CompanionAppState to aggregate.
+     * Filter which League to aggregate.
      */
-    where?: CompanionAppStateWhereInput;
+    where?: LeagueWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of CompanionAppStates to fetch.
+     * Determine the order of Leagues to fetch.
      */
-    orderBy?:
-      | CompanionAppStateOrderByWithRelationInput
-      | CompanionAppStateOrderByWithRelationInput[];
+    orderBy?: LeagueOrderByWithRelationInput | LeagueOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
      * Sets the start position
      */
-    cursor?: CompanionAppStateWhereUniqueInput;
+    cursor?: LeagueWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` CompanionAppStates from the position of the cursor.
+     * Take `±n` Leagues from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` CompanionAppStates.
+     * Skip the first `n` Leagues.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
-     * Count returned CompanionAppStates
+     * Count returned Leagues
      **/
-    _count?: true | CompanionAppStateCountAggregateInputType;
+    _count?: true | LeagueCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: LeagueAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: LeagueSumAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the minimum value
      **/
-    _min?: CompanionAppStateMinAggregateInputType;
+    _min?: LeagueMinAggregateInputType;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      *
      * Select which fields to find the maximum value
      **/
-    _max?: CompanionAppStateMaxAggregateInputType;
+    _max?: LeagueMaxAggregateInputType;
   };
 
-  export type GetCompanionAppStateAggregateType<T extends CompanionAppStateAggregateArgs> = {
-    [P in keyof T & keyof AggregateCompanionAppState]: P extends '_count' | 'count'
+  export type GetLeagueAggregateType<T extends LeagueAggregateArgs> = {
+    [P in keyof T & keyof AggregateLeague]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateCompanionAppState[P]>
-      : GetScalarType<T[P], AggregateCompanionAppState[P]>;
+        : GetScalarType<T[P], AggregateLeague[P]>
+      : GetScalarType<T[P], AggregateLeague[P]>;
   };
 
-  export type CompanionAppStateGroupByArgs<
+  export type LeagueGroupByArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
-    where?: CompanionAppStateWhereInput;
-    orderBy?:
-      | CompanionAppStateOrderByWithAggregationInput
-      | CompanionAppStateOrderByWithAggregationInput[];
-    by: CompanionAppStateScalarFieldEnum[] | CompanionAppStateScalarFieldEnum;
-    having?: CompanionAppStateScalarWhereWithAggregatesInput;
+    where?: LeagueWhereInput;
+    orderBy?: LeagueOrderByWithAggregationInput | LeagueOrderByWithAggregationInput[];
+    by: LeagueScalarFieldEnum[] | LeagueScalarFieldEnum;
+    having?: LeagueScalarWhereWithAggregatesInput;
     take?: number;
     skip?: number;
-    _count?: CompanionAppStateCountAggregateInputType | true;
-    _min?: CompanionAppStateMinAggregateInputType;
-    _max?: CompanionAppStateMaxAggregateInputType;
+    _count?: LeagueCountAggregateInputType | true;
+    _avg?: LeagueAvgAggregateInputType;
+    _sum?: LeagueSumAggregateInputType;
+    _min?: LeagueMinAggregateInputType;
+    _max?: LeagueMaxAggregateInputType;
   };
 
-  export type CompanionAppStateGroupByOutputType = {
-    id: string;
-    createdAt: Date;
-    updatedAt: Date;
-    state: JsonValue;
-    sessionId: string | null;
-    _count: CompanionAppStateCountAggregateOutputType | null;
-    _min: CompanionAppStateMinAggregateOutputType | null;
-    _max: CompanionAppStateMaxAggregateOutputType | null;
+  export type LeagueGroupByOutputType = {
+    id: number;
+    name: string;
+    countryId: number;
+    _count: LeagueCountAggregateOutputType | null;
+    _avg: LeagueAvgAggregateOutputType | null;
+    _sum: LeagueSumAggregateOutputType | null;
+    _min: LeagueMinAggregateOutputType | null;
+    _max: LeagueMaxAggregateOutputType | null;
   };
 
-  type GetCompanionAppStateGroupByPayload<T extends CompanionAppStateGroupByArgs> =
-    Prisma.PrismaPromise<
-      Array<
-        PickEnumerable<CompanionAppStateGroupByOutputType, T['by']> & {
-          [P in keyof T & keyof CompanionAppStateGroupByOutputType]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], CompanionAppStateGroupByOutputType[P]>
-            : GetScalarType<T[P], CompanionAppStateGroupByOutputType[P]>;
-        }
-      >
+  type GetLeagueGroupByPayload<T extends LeagueGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LeagueGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof LeagueGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], LeagueGroupByOutputType[P]>
+          : GetScalarType<T[P], LeagueGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type LeagueSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        name?: boolean;
+        countryId?: boolean;
+        country?: boolean | CountryDefaultArgs<ExtArgs>;
+        clubs?: boolean | League$clubsArgs<ExtArgs>;
+        players?: boolean | League$playersArgs<ExtArgs>;
+        _count?: boolean | LeagueCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['league']
     >;
 
-  export type CompanionAppStateSelect<
+  export type LeagueSelectCreateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = $Extensions.GetSelect<
     {
       id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      state?: boolean;
-      sessionId?: boolean;
+      name?: boolean;
+      countryId?: boolean;
+      country?: boolean | CountryDefaultArgs<ExtArgs>;
     },
-    ExtArgs['result']['companionAppState']
+    ExtArgs['result']['league']
   >;
 
-  export type CompanionAppStateSelectCreateManyAndReturn<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = $Extensions.GetSelect<
-    {
-      id?: boolean;
-      createdAt?: boolean;
-      updatedAt?: boolean;
-      state?: boolean;
-      sessionId?: boolean;
-    },
-    ExtArgs['result']['companionAppState']
-  >;
-
-  export type CompanionAppStateSelectScalar = {
+  export type LeagueSelectScalar = {
     id?: boolean;
-    createdAt?: boolean;
-    updatedAt?: boolean;
-    state?: boolean;
-    sessionId?: boolean;
+    name?: boolean;
+    countryId?: boolean;
   };
 
-  export type $CompanionAppStatePayload<
+  export type LeagueInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+    clubs?: boolean | League$clubsArgs<ExtArgs>;
+    players?: boolean | League$playersArgs<ExtArgs>;
+    _count?: boolean | LeagueCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type LeagueIncludeCreateManyAndReturn<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
-    name: 'CompanionAppState';
-    objects: {};
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+  };
+
+  export type $LeaguePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: 'League';
+    objects: {
+      country: Prisma.$CountryPayload<ExtArgs>;
+      clubs: Prisma.$ClubPayload<ExtArgs>[];
+      players: Prisma.$PlayerPayload<ExtArgs>[];
+    };
     scalars: $Extensions.GetPayloadResult<
       {
-        id: string;
-        createdAt: Date;
-        updatedAt: Date;
-        state: Prisma.JsonValue;
-        sessionId: string | null;
+        id: number;
+        name: string;
+        countryId: number;
       },
-      ExtArgs['result']['companionAppState']
+      ExtArgs['result']['league']
     >;
     composites: {};
   };
 
-  type CompanionAppStateGetPayload<
-    S extends boolean | null | undefined | CompanionAppStateDefaultArgs,
-  > = $Result.GetResult<Prisma.$CompanionAppStatePayload, S>;
+  type LeagueGetPayload<S extends boolean | null | undefined | LeagueDefaultArgs> =
+    $Result.GetResult<Prisma.$LeaguePayload, S>;
 
-  type CompanionAppStateCountArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = Omit<CompanionAppStateFindManyArgs, 'select' | 'include' | 'distinct'> & {
-    select?: CompanionAppStateCountAggregateInputType | true;
+  type LeagueCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    LeagueFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: LeagueCountAggregateInputType | true;
   };
 
-  export interface CompanionAppStateDelegate<
+  export interface LeagueDelegate<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > {
-    [K: symbol]: {
-      types: Prisma.TypeMap<ExtArgs>['model']['CompanionAppState'];
-      meta: { name: 'CompanionAppState' };
-    };
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['League']; meta: { name: 'League' } };
     /**
-     * Find zero or one CompanionAppState that matches the filter.
-     * @param {CompanionAppStateFindUniqueArgs} args - Arguments to find a CompanionAppState
+     * Find zero or one League that matches the filter.
+     * @param {LeagueFindUniqueArgs} args - Arguments to find a League
      * @example
-     * // Get one CompanionAppState
-     * const companionAppState = await prisma.companionAppState.findUnique({
+     * // Get one League
+     * const league = await prisma.league.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends CompanionAppStateFindUniqueArgs>(
-      args: SelectSubset<T, CompanionAppStateFindUniqueArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'findUnique'> | null,
+    findUnique<T extends LeagueFindUniqueArgs>(
+      args: SelectSubset<T, LeagueFindUniqueArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findUnique'> | null,
       null,
       ExtArgs
     >;
 
     /**
-     * Find one CompanionAppState that matches the filter or throw an error with `error.code='P2025'`
+     * Find one League that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {CompanionAppStateFindUniqueOrThrowArgs} args - Arguments to find a CompanionAppState
+     * @param {LeagueFindUniqueOrThrowArgs} args - Arguments to find a League
      * @example
-     * // Get one CompanionAppState
-     * const companionAppState = await prisma.companionAppState.findUniqueOrThrow({
+     * // Get one League
+     * const league = await prisma.league.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends CompanionAppStateFindUniqueOrThrowArgs>(
-      args: SelectSubset<T, CompanionAppStateFindUniqueOrThrowArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+    findUniqueOrThrow<T extends LeagueFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, LeagueFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findUniqueOrThrow'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Find the first CompanionAppState that matches the filter.
+     * Find the first League that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateFindFirstArgs} args - Arguments to find a CompanionAppState
+     * @param {LeagueFindFirstArgs} args - Arguments to find a League
      * @example
-     * // Get one CompanionAppState
-     * const companionAppState = await prisma.companionAppState.findFirst({
+     * // Get one League
+     * const league = await prisma.league.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends CompanionAppStateFindFirstArgs>(
-      args?: SelectSubset<T, CompanionAppStateFindFirstArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'findFirst'> | null,
+    findFirst<T extends LeagueFindFirstArgs>(
+      args?: SelectSubset<T, LeagueFindFirstArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findFirst'> | null,
       null,
       ExtArgs
     >;
 
     /**
-     * Find the first CompanionAppState that matches the filter or
+     * Find the first League that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateFindFirstOrThrowArgs} args - Arguments to find a CompanionAppState
+     * @param {LeagueFindFirstOrThrowArgs} args - Arguments to find a League
      * @example
-     * // Get one CompanionAppState
-     * const companionAppState = await prisma.companionAppState.findFirstOrThrow({
+     * // Get one League
+     * const league = await prisma.league.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends CompanionAppStateFindFirstOrThrowArgs>(
-      args?: SelectSubset<T, CompanionAppStateFindFirstOrThrowArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'findFirstOrThrow'>,
+    findFirstOrThrow<T extends LeagueFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, LeagueFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findFirstOrThrow'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Find zero or more CompanionAppStates that matches the filter.
+     * Find zero or more Leagues that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {LeagueFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all CompanionAppStates
-     * const companionAppStates = await prisma.companionAppState.findMany()
+     * // Get all Leagues
+     * const leagues = await prisma.league.findMany()
      *
-     * // Get first 10 CompanionAppStates
-     * const companionAppStates = await prisma.companionAppState.findMany({ take: 10 })
+     * // Get first 10 Leagues
+     * const leagues = await prisma.league.findMany({ take: 10 })
      *
      * // Only select the `id`
-     * const companionAppStateWithIdOnly = await prisma.companionAppState.findMany({ select: { id: true } })
+     * const leagueWithIdOnly = await prisma.league.findMany({ select: { id: true } })
      *
      */
-    findMany<T extends CompanionAppStateFindManyArgs>(
-      args?: SelectSubset<T, CompanionAppStateFindManyArgs<ExtArgs>>
-    ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'findMany'>
-    >;
+    findMany<T extends LeagueFindManyArgs>(
+      args?: SelectSubset<T, LeagueFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findMany'>>;
 
     /**
-     * Create a CompanionAppState.
-     * @param {CompanionAppStateCreateArgs} args - Arguments to create a CompanionAppState.
+     * Create a League.
+     * @param {LeagueCreateArgs} args - Arguments to create a League.
      * @example
-     * // Create one CompanionAppState
-     * const CompanionAppState = await prisma.companionAppState.create({
+     * // Create one League
+     * const League = await prisma.league.create({
      *   data: {
-     *     // ... data to create a CompanionAppState
+     *     // ... data to create a League
      *   }
      * })
      *
      */
-    create<T extends CompanionAppStateCreateArgs>(
-      args: SelectSubset<T, CompanionAppStateCreateArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'create'>,
+    create<T extends LeagueCreateArgs>(
+      args: SelectSubset<T, LeagueCreateArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'create'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Create many CompanionAppStates.
-     * @param {CompanionAppStateCreateManyArgs} args - Arguments to create many CompanionAppStates.
+     * Create many Leagues.
+     * @param {LeagueCreateManyArgs} args - Arguments to create many Leagues.
      * @example
-     * // Create many CompanionAppStates
-     * const companionAppState = await prisma.companionAppState.createMany({
+     * // Create many Leagues
+     * const league = await prisma.league.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
      */
-    createMany<T extends CompanionAppStateCreateManyArgs>(
-      args?: SelectSubset<T, CompanionAppStateCreateManyArgs<ExtArgs>>
+    createMany<T extends LeagueCreateManyArgs>(
+      args?: SelectSubset<T, LeagueCreateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Create many CompanionAppStates and returns the data saved in the database.
-     * @param {CompanionAppStateCreateManyAndReturnArgs} args - Arguments to create many CompanionAppStates.
+     * Create many Leagues and returns the data saved in the database.
+     * @param {LeagueCreateManyAndReturnArgs} args - Arguments to create many Leagues.
      * @example
-     * // Create many CompanionAppStates
-     * const companionAppState = await prisma.companionAppState.createManyAndReturn({
+     * // Create many Leagues
+     * const league = await prisma.league.createManyAndReturn({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *
-     * // Create many CompanionAppStates and only return the `id`
-     * const companionAppStateWithIdOnly = await prisma.companionAppState.createManyAndReturn({
+     * // Create many Leagues and only return the `id`
+     * const leagueWithIdOnly = await prisma.league.createManyAndReturn({
      *   select: { id: true },
      *   data: [
      *     // ... provide data here
@@ -4720,38 +7645,38 @@ export namespace Prisma {
      * Read more here: https://pris.ly/d/null-undefined
      *
      */
-    createManyAndReturn<T extends CompanionAppStateCreateManyAndReturnArgs>(
-      args?: SelectSubset<T, CompanionAppStateCreateManyAndReturnArgs<ExtArgs>>
+    createManyAndReturn<T extends LeagueCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, LeagueCreateManyAndReturnArgs<ExtArgs>>
     ): Prisma.PrismaPromise<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'createManyAndReturn'>
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'createManyAndReturn'>
     >;
 
     /**
-     * Delete a CompanionAppState.
-     * @param {CompanionAppStateDeleteArgs} args - Arguments to delete one CompanionAppState.
+     * Delete a League.
+     * @param {LeagueDeleteArgs} args - Arguments to delete one League.
      * @example
-     * // Delete one CompanionAppState
-     * const CompanionAppState = await prisma.companionAppState.delete({
+     * // Delete one League
+     * const League = await prisma.league.delete({
      *   where: {
-     *     // ... filter to delete one CompanionAppState
+     *     // ... filter to delete one League
      *   }
      * })
      *
      */
-    delete<T extends CompanionAppStateDeleteArgs>(
-      args: SelectSubset<T, CompanionAppStateDeleteArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'delete'>,
+    delete<T extends LeagueDeleteArgs>(
+      args: SelectSubset<T, LeagueDeleteArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'delete'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Update one CompanionAppState.
-     * @param {CompanionAppStateUpdateArgs} args - Arguments to update one CompanionAppState.
+     * Update one League.
+     * @param {LeagueUpdateArgs} args - Arguments to update one League.
      * @example
-     * // Update one CompanionAppState
-     * const companionAppState = await prisma.companionAppState.update({
+     * // Update one League
+     * const league = await prisma.league.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4761,38 +7686,38 @@ export namespace Prisma {
      * })
      *
      */
-    update<T extends CompanionAppStateUpdateArgs>(
-      args: SelectSubset<T, CompanionAppStateUpdateArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'update'>,
+    update<T extends LeagueUpdateArgs>(
+      args: SelectSubset<T, LeagueUpdateArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'update'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Delete zero or more CompanionAppStates.
-     * @param {CompanionAppStateDeleteManyArgs} args - Arguments to filter CompanionAppStates to delete.
+     * Delete zero or more Leagues.
+     * @param {LeagueDeleteManyArgs} args - Arguments to filter Leagues to delete.
      * @example
-     * // Delete a few CompanionAppStates
-     * const { count } = await prisma.companionAppState.deleteMany({
+     * // Delete a few Leagues
+     * const { count } = await prisma.league.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      *
      */
-    deleteMany<T extends CompanionAppStateDeleteManyArgs>(
-      args?: SelectSubset<T, CompanionAppStateDeleteManyArgs<ExtArgs>>
+    deleteMany<T extends LeagueDeleteManyArgs>(
+      args?: SelectSubset<T, LeagueDeleteManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Update zero or more CompanionAppStates.
+     * Update zero or more Leagues.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {LeagueUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many CompanionAppStates
-     * const companionAppState = await prisma.companionAppState.updateMany({
+     * // Update many Leagues
+     * const league = await prisma.league.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -4802,63 +7727,63 @@ export namespace Prisma {
      * })
      *
      */
-    updateMany<T extends CompanionAppStateUpdateManyArgs>(
-      args: SelectSubset<T, CompanionAppStateUpdateManyArgs<ExtArgs>>
+    updateMany<T extends LeagueUpdateManyArgs>(
+      args: SelectSubset<T, LeagueUpdateManyArgs<ExtArgs>>
     ): Prisma.PrismaPromise<BatchPayload>;
 
     /**
-     * Create or update one CompanionAppState.
-     * @param {CompanionAppStateUpsertArgs} args - Arguments to update or create a CompanionAppState.
+     * Create or update one League.
+     * @param {LeagueUpsertArgs} args - Arguments to update or create a League.
      * @example
-     * // Update or create a CompanionAppState
-     * const companionAppState = await prisma.companionAppState.upsert({
+     * // Update or create a League
+     * const league = await prisma.league.upsert({
      *   create: {
-     *     // ... data to create a CompanionAppState
+     *     // ... data to create a League
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the CompanionAppState we want to update
+     *     // ... the filter for the League we want to update
      *   }
      * })
      */
-    upsert<T extends CompanionAppStateUpsertArgs>(
-      args: SelectSubset<T, CompanionAppStateUpsertArgs<ExtArgs>>
-    ): Prisma__CompanionAppStateClient<
-      $Result.GetResult<Prisma.$CompanionAppStatePayload<ExtArgs>, T, 'upsert'>,
+    upsert<T extends LeagueUpsertArgs>(
+      args: SelectSubset<T, LeagueUpsertArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'upsert'>,
       never,
       ExtArgs
     >;
 
     /**
-     * Count the number of CompanionAppStates.
+     * Count the number of Leagues.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateCountArgs} args - Arguments to filter CompanionAppStates to count.
+     * @param {LeagueCountArgs} args - Arguments to filter Leagues to count.
      * @example
-     * // Count the number of CompanionAppStates
-     * const count = await prisma.companionAppState.count({
+     * // Count the number of Leagues
+     * const count = await prisma.league.count({
      *   where: {
-     *     // ... the filter for the CompanionAppStates we want to count
+     *     // ... the filter for the Leagues we want to count
      *   }
      * })
      **/
-    count<T extends CompanionAppStateCountArgs>(
-      args?: Subset<T, CompanionAppStateCountArgs>
+    count<T extends LeagueCountArgs>(
+      args?: Subset<T, LeagueCountArgs>
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], CompanionAppStateCountAggregateOutputType>
+          : GetScalarType<T['select'], LeagueCountAggregateOutputType>
         : number
     >;
 
     /**
-     * Allows you to perform aggregations operations on a CompanionAppState.
+     * Allows you to perform aggregations operations on a League.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {LeagueAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -4878,15 +7803,15 @@ export namespace Prisma {
      *   take: 10,
      * })
      **/
-    aggregate<T extends CompanionAppStateAggregateArgs>(
-      args: Subset<T, CompanionAppStateAggregateArgs>
-    ): Prisma.PrismaPromise<GetCompanionAppStateAggregateType<T>>;
+    aggregate<T extends LeagueAggregateArgs>(
+      args: Subset<T, LeagueAggregateArgs>
+    ): Prisma.PrismaPromise<GetLeagueAggregateType<T>>;
 
     /**
-     * Group by CompanionAppState.
+     * Group by League.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {CompanionAppStateGroupByArgs} args - Group by arguments.
+     * @param {LeagueGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -4901,11 +7826,11 @@ export namespace Prisma {
      *
      **/
     groupBy<
-      T extends CompanionAppStateGroupByArgs,
+      T extends LeagueGroupByArgs,
       HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: CompanionAppStateGroupByArgs['orderBy'] }
-        : { orderBy?: CompanionAppStateGroupByArgs['orderBy'] },
+        ? { orderBy: LeagueGroupByArgs['orderBy'] }
+        : { orderBy?: LeagueGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -4950,28 +7875,41 @@ export namespace Prisma {
                       : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
                   }[OrderFields],
     >(
-      args: SubsetIntersection<T, CompanionAppStateGroupByArgs, OrderByArg> & InputErrors
-    ): {} extends InputErrors
-      ? GetCompanionAppStateGroupByPayload<T>
-      : Prisma.PrismaPromise<InputErrors>;
+      args: SubsetIntersection<T, LeagueGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetLeagueGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
     /**
-     * Fields of the CompanionAppState model
+     * Fields of the League model
      */
-    readonly fields: CompanionAppStateFieldRefs;
+    readonly fields: LeagueFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for CompanionAppState.
+   * The delegate class that acts as a "Promise-like" for League.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__CompanionAppStateClient<
+  export interface Prisma__LeagueClient<
     T,
     Null = never,
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: 'PrismaPromise';
+    country<T extends CountryDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, CountryDefaultArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    clubs<T extends League$clubsArgs<ExtArgs> = {}>(
+      args?: Subset<T, League$clubsArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findMany'> | Null>;
+    players<T extends League$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, League$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5000,332 +7938,3939 @@ export namespace Prisma {
   }
 
   /**
-   * Fields of the CompanionAppState model
+   * Fields of the League model
    */
-  interface CompanionAppStateFieldRefs {
-    readonly id: FieldRef<'CompanionAppState', 'String'>;
-    readonly createdAt: FieldRef<'CompanionAppState', 'DateTime'>;
-    readonly updatedAt: FieldRef<'CompanionAppState', 'DateTime'>;
-    readonly state: FieldRef<'CompanionAppState', 'Json'>;
-    readonly sessionId: FieldRef<'CompanionAppState', 'String'>;
+  interface LeagueFieldRefs {
+    readonly id: FieldRef<'League', 'Int'>;
+    readonly name: FieldRef<'League', 'String'>;
+    readonly countryId: FieldRef<'League', 'Int'>;
   }
 
   // Custom InputTypes
   /**
-   * CompanionAppState findUnique
+   * League findUnique
    */
-  export type CompanionAppStateFindUniqueArgs<
+  export type LeagueFindUniqueArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: LeagueSelect<ExtArgs> | null;
     /**
-     * Filter, which CompanionAppState to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: CompanionAppStateWhereUniqueInput;
+    include?: LeagueInclude<ExtArgs> | null;
+    /**
+     * Filter, which League to fetch.
+     */
+    where: LeagueWhereUniqueInput;
   };
 
   /**
-   * CompanionAppState findUniqueOrThrow
+   * League findUniqueOrThrow
    */
-  export type CompanionAppStateFindUniqueOrThrowArgs<
+  export type LeagueFindUniqueOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: LeagueSelect<ExtArgs> | null;
     /**
-     * Filter, which CompanionAppState to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where: CompanionAppStateWhereUniqueInput;
+    include?: LeagueInclude<ExtArgs> | null;
+    /**
+     * Filter, which League to fetch.
+     */
+    where: LeagueWhereUniqueInput;
   };
 
   /**
-   * CompanionAppState findFirst
+   * League findFirst
    */
-  export type CompanionAppStateFindFirstArgs<
+  export type LeagueFindFirstArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: LeagueSelect<ExtArgs> | null;
     /**
-     * Filter, which CompanionAppState to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: CompanionAppStateWhereInput;
+    include?: LeagueInclude<ExtArgs> | null;
+    /**
+     * Filter, which League to fetch.
+     */
+    where?: LeagueWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of CompanionAppStates to fetch.
+     * Determine the order of Leagues to fetch.
      */
-    orderBy?:
-      | CompanionAppStateOrderByWithRelationInput
-      | CompanionAppStateOrderByWithRelationInput[];
+    orderBy?: LeagueOrderByWithRelationInput | LeagueOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for CompanionAppStates.
+     * Sets the position for searching for Leagues.
      */
-    cursor?: CompanionAppStateWhereUniqueInput;
+    cursor?: LeagueWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` CompanionAppStates from the position of the cursor.
+     * Take `±n` Leagues from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` CompanionAppStates.
+     * Skip the first `n` Leagues.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of CompanionAppStates.
+     * Filter by unique combinations of Leagues.
      */
-    distinct?: CompanionAppStateScalarFieldEnum | CompanionAppStateScalarFieldEnum[];
+    distinct?: LeagueScalarFieldEnum | LeagueScalarFieldEnum[];
   };
 
   /**
-   * CompanionAppState findFirstOrThrow
+   * League findFirstOrThrow
    */
-  export type CompanionAppStateFindFirstOrThrowArgs<
+  export type LeagueFindFirstOrThrowArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: LeagueSelect<ExtArgs> | null;
     /**
-     * Filter, which CompanionAppState to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: CompanionAppStateWhereInput;
+    include?: LeagueInclude<ExtArgs> | null;
+    /**
+     * Filter, which League to fetch.
+     */
+    where?: LeagueWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of CompanionAppStates to fetch.
+     * Determine the order of Leagues to fetch.
      */
-    orderBy?:
-      | CompanionAppStateOrderByWithRelationInput
-      | CompanionAppStateOrderByWithRelationInput[];
+    orderBy?: LeagueOrderByWithRelationInput | LeagueOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for searching for CompanionAppStates.
+     * Sets the position for searching for Leagues.
      */
-    cursor?: CompanionAppStateWhereUniqueInput;
+    cursor?: LeagueWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` CompanionAppStates from the position of the cursor.
+     * Take `±n` Leagues from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` CompanionAppStates.
+     * Skip the first `n` Leagues.
      */
     skip?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      *
-     * Filter by unique combinations of CompanionAppStates.
+     * Filter by unique combinations of Leagues.
      */
-    distinct?: CompanionAppStateScalarFieldEnum | CompanionAppStateScalarFieldEnum[];
+    distinct?: LeagueScalarFieldEnum | LeagueScalarFieldEnum[];
   };
 
   /**
-   * CompanionAppState findMany
+   * League findMany
    */
-  export type CompanionAppStateFindManyArgs<
+  export type LeagueFindManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: LeagueSelect<ExtArgs> | null;
     /**
-     * Filter, which CompanionAppStates to fetch.
+     * Choose, which related nodes to fetch as well
      */
-    where?: CompanionAppStateWhereInput;
+    include?: LeagueInclude<ExtArgs> | null;
+    /**
+     * Filter, which Leagues to fetch.
+     */
+    where?: LeagueWhereInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      *
-     * Determine the order of CompanionAppStates to fetch.
+     * Determine the order of Leagues to fetch.
      */
-    orderBy?:
-      | CompanionAppStateOrderByWithRelationInput
-      | CompanionAppStateOrderByWithRelationInput[];
+    orderBy?: LeagueOrderByWithRelationInput | LeagueOrderByWithRelationInput[];
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      *
-     * Sets the position for listing CompanionAppStates.
+     * Sets the position for listing Leagues.
      */
-    cursor?: CompanionAppStateWhereUniqueInput;
+    cursor?: LeagueWhereUniqueInput;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Take `±n` CompanionAppStates from the position of the cursor.
+     * Take `±n` Leagues from the position of the cursor.
      */
     take?: number;
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      *
-     * Skip the first `n` CompanionAppStates.
+     * Skip the first `n` Leagues.
      */
     skip?: number;
-    distinct?: CompanionAppStateScalarFieldEnum | CompanionAppStateScalarFieldEnum[];
+    distinct?: LeagueScalarFieldEnum | LeagueScalarFieldEnum[];
   };
 
   /**
-   * CompanionAppState create
+   * League create
    */
-  export type CompanionAppStateCreateArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
-    /**
-     * Select specific fields to fetch from the CompanionAppState
-     */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
-    /**
-     * The data needed to create a CompanionAppState.
-     */
-    data: XOR<CompanionAppStateCreateInput, CompanionAppStateUncheckedCreateInput>;
-  };
+  export type LeagueCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the League
+       */
+      select?: LeagueSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: LeagueInclude<ExtArgs> | null;
+      /**
+       * The data needed to create a League.
+       */
+      data: XOR<LeagueCreateInput, LeagueUncheckedCreateInput>;
+    };
 
   /**
-   * CompanionAppState createMany
+   * League createMany
    */
-  export type CompanionAppStateCreateManyArgs<
+  export type LeagueCreateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * The data used to create many CompanionAppStates.
+     * The data used to create many Leagues.
      */
-    data: CompanionAppStateCreateManyInput | CompanionAppStateCreateManyInput[];
+    data: LeagueCreateManyInput | LeagueCreateManyInput[];
     skipDuplicates?: boolean;
   };
 
   /**
-   * CompanionAppState createManyAndReturn
+   * League createManyAndReturn
    */
-  export type CompanionAppStateCreateManyAndReturnArgs<
+  export type LeagueCreateManyAndReturnArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the League
      */
-    select?: CompanionAppStateSelectCreateManyAndReturn<ExtArgs> | null;
+    select?: LeagueSelectCreateManyAndReturn<ExtArgs> | null;
     /**
-     * The data used to create many CompanionAppStates.
+     * The data used to create many Leagues.
      */
-    data: CompanionAppStateCreateManyInput | CompanionAppStateCreateManyInput[];
+    data: LeagueCreateManyInput | LeagueCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LeagueIncludeCreateManyAndReturn<ExtArgs> | null;
+  };
+
+  /**
+   * League update
+   */
+  export type LeagueUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the League
+       */
+      select?: LeagueSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: LeagueInclude<ExtArgs> | null;
+      /**
+       * The data needed to update a League.
+       */
+      data: XOR<LeagueUpdateInput, LeagueUncheckedUpdateInput>;
+      /**
+       * Choose, which League to update.
+       */
+      where: LeagueWhereUniqueInput;
+    };
+
+  /**
+   * League updateMany
+   */
+  export type LeagueUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Leagues.
+     */
+    data: XOR<LeagueUpdateManyMutationInput, LeagueUncheckedUpdateManyInput>;
+    /**
+     * Filter which Leagues to update
+     */
+    where?: LeagueWhereInput;
+  };
+
+  /**
+   * League upsert
+   */
+  export type LeagueUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the League
+       */
+      select?: LeagueSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: LeagueInclude<ExtArgs> | null;
+      /**
+       * The filter to search for the League to update in case it exists.
+       */
+      where: LeagueWhereUniqueInput;
+      /**
+       * In case the League found by the `where` argument doesn't exist, create a new League with this data.
+       */
+      create: XOR<LeagueCreateInput, LeagueUncheckedCreateInput>;
+      /**
+       * In case the League was found with the provided `where` argument, update it with this data.
+       */
+      update: XOR<LeagueUpdateInput, LeagueUncheckedUpdateInput>;
+    };
+
+  /**
+   * League delete
+   */
+  export type LeagueDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the League
+       */
+      select?: LeagueSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: LeagueInclude<ExtArgs> | null;
+      /**
+       * Filter which League to delete.
+       */
+      where: LeagueWhereUniqueInput;
+    };
+
+  /**
+   * League deleteMany
+   */
+  export type LeagueDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Leagues to delete
+     */
+    where?: LeagueWhereInput;
+  };
+
+  /**
+   * League.clubs
+   */
+  export type League$clubsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Club
+       */
+      select?: ClubSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: ClubInclude<ExtArgs> | null;
+      where?: ClubWhereInput;
+      orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+      cursor?: ClubWhereUniqueInput;
+      take?: number;
+      skip?: number;
+      distinct?: ClubScalarFieldEnum | ClubScalarFieldEnum[];
+    };
+
+  /**
+   * League.players
+   */
+  export type League$playersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    where?: PlayerWhereInput;
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    cursor?: PlayerWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * League without action
+   */
+  export type LeagueDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the League
+     */
+    select?: LeagueSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: LeagueInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model Club
+   */
+
+  export type AggregateClub = {
+    _count: ClubCountAggregateOutputType | null;
+    _avg: ClubAvgAggregateOutputType | null;
+    _sum: ClubSumAggregateOutputType | null;
+    _min: ClubMinAggregateOutputType | null;
+    _max: ClubMaxAggregateOutputType | null;
+  };
+
+  export type ClubAvgAggregateOutputType = {
+    id: number | null;
+    countryId: number | null;
+    leagueId: number | null;
+  };
+
+  export type ClubSumAggregateOutputType = {
+    id: number | null;
+    countryId: number | null;
+    leagueId: number | null;
+  };
+
+  export type ClubMinAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+    countryId: number | null;
+    leagueId: number | null;
+  };
+
+  export type ClubMaxAggregateOutputType = {
+    id: number | null;
+    name: string | null;
+    countryId: number | null;
+    leagueId: number | null;
+  };
+
+  export type ClubCountAggregateOutputType = {
+    id: number;
+    name: number;
+    countryId: number;
+    leagueId: number;
+    _all: number;
+  };
+
+  export type ClubAvgAggregateInputType = {
+    id?: true;
+    countryId?: true;
+    leagueId?: true;
+  };
+
+  export type ClubSumAggregateInputType = {
+    id?: true;
+    countryId?: true;
+    leagueId?: true;
+  };
+
+  export type ClubMinAggregateInputType = {
+    id?: true;
+    name?: true;
+    countryId?: true;
+    leagueId?: true;
+  };
+
+  export type ClubMaxAggregateInputType = {
+    id?: true;
+    name?: true;
+    countryId?: true;
+    leagueId?: true;
+  };
+
+  export type ClubCountAggregateInputType = {
+    id?: true;
+    name?: true;
+    countryId?: true;
+    leagueId?: true;
+    _all?: true;
+  };
+
+  export type ClubAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Club to aggregate.
+     */
+    where?: ClubWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Clubs to fetch.
+     */
+    orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: ClubWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Clubs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Clubs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Clubs
+     **/
+    _count?: true | ClubCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: ClubAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: ClubSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: ClubMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: ClubMaxAggregateInputType;
+  };
+
+  export type GetClubAggregateType<T extends ClubAggregateArgs> = {
+    [P in keyof T & keyof AggregateClub]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClub[P]>
+      : GetScalarType<T[P], AggregateClub[P]>;
+  };
+
+  export type ClubGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      where?: ClubWhereInput;
+      orderBy?: ClubOrderByWithAggregationInput | ClubOrderByWithAggregationInput[];
+      by: ClubScalarFieldEnum[] | ClubScalarFieldEnum;
+      having?: ClubScalarWhereWithAggregatesInput;
+      take?: number;
+      skip?: number;
+      _count?: ClubCountAggregateInputType | true;
+      _avg?: ClubAvgAggregateInputType;
+      _sum?: ClubSumAggregateInputType;
+      _min?: ClubMinAggregateInputType;
+      _max?: ClubMaxAggregateInputType;
+    };
+
+  export type ClubGroupByOutputType = {
+    id: number;
+    name: string;
+    countryId: number;
+    leagueId: number;
+    _count: ClubCountAggregateOutputType | null;
+    _avg: ClubAvgAggregateOutputType | null;
+    _sum: ClubSumAggregateOutputType | null;
+    _min: ClubMinAggregateOutputType | null;
+    _max: ClubMaxAggregateOutputType | null;
+  };
+
+  type GetClubGroupByPayload<T extends ClubGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClubGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof ClubGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], ClubGroupByOutputType[P]>
+          : GetScalarType<T[P], ClubGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type ClubSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        name?: boolean;
+        countryId?: boolean;
+        leagueId?: boolean;
+        country?: boolean | CountryDefaultArgs<ExtArgs>;
+        league?: boolean | LeagueDefaultArgs<ExtArgs>;
+        players?: boolean | Club$playersArgs<ExtArgs>;
+        _count?: boolean | ClubCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['club']
+    >;
+
+  export type ClubSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      name?: boolean;
+      countryId?: boolean;
+      leagueId?: boolean;
+      country?: boolean | CountryDefaultArgs<ExtArgs>;
+      league?: boolean | LeagueDefaultArgs<ExtArgs>;
+    },
+    ExtArgs['result']['club']
+  >;
+
+  export type ClubSelectScalar = {
+    id?: boolean;
+    name?: boolean;
+    countryId?: boolean;
+    leagueId?: boolean;
+  };
+
+  export type ClubInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+    league?: boolean | LeagueDefaultArgs<ExtArgs>;
+    players?: boolean | Club$playersArgs<ExtArgs>;
+    _count?: boolean | ClubCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type ClubIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+    league?: boolean | LeagueDefaultArgs<ExtArgs>;
+  };
+
+  export type $ClubPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: 'Club';
+    objects: {
+      country: Prisma.$CountryPayload<ExtArgs>;
+      league: Prisma.$LeaguePayload<ExtArgs>;
+      players: Prisma.$PlayerPayload<ExtArgs>[];
+    };
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number;
+        name: string;
+        countryId: number;
+        leagueId: number;
+      },
+      ExtArgs['result']['club']
+    >;
+    composites: {};
+  };
+
+  type ClubGetPayload<S extends boolean | null | undefined | ClubDefaultArgs> = $Result.GetResult<
+    Prisma.$ClubPayload,
+    S
+  >;
+
+  type ClubCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    ClubFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: ClubCountAggregateInputType | true;
+  };
+
+  export interface ClubDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Club']; meta: { name: 'Club' } };
+    /**
+     * Find zero or one Club that matches the filter.
+     * @param {ClubFindUniqueArgs} args - Arguments to find a Club
+     * @example
+     * // Get one Club
+     * const club = await prisma.club.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClubFindUniqueArgs>(
+      args: SelectSubset<T, ClubFindUniqueArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Club that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClubFindUniqueOrThrowArgs} args - Arguments to find a Club
+     * @example
+     * // Get one Club
+     * const club = await prisma.club.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClubFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, ClubFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Club that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubFindFirstArgs} args - Arguments to find a Club
+     * @example
+     * // Get one Club
+     * const club = await prisma.club.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClubFindFirstArgs>(
+      args?: SelectSubset<T, ClubFindFirstArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Club that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubFindFirstOrThrowArgs} args - Arguments to find a Club
+     * @example
+     * // Get one Club
+     * const club = await prisma.club.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClubFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, ClubFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Clubs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clubs
+     * const clubs = await prisma.club.findMany()
+     *
+     * // Get first 10 Clubs
+     * const clubs = await prisma.club.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const clubWithIdOnly = await prisma.club.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends ClubFindManyArgs>(
+      args?: SelectSubset<T, ClubFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a Club.
+     * @param {ClubCreateArgs} args - Arguments to create a Club.
+     * @example
+     * // Create one Club
+     * const Club = await prisma.club.create({
+     *   data: {
+     *     // ... data to create a Club
+     *   }
+     * })
+     *
+     */
+    create<T extends ClubCreateArgs>(
+      args: SelectSubset<T, ClubCreateArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Clubs.
+     * @param {ClubCreateManyArgs} args - Arguments to create many Clubs.
+     * @example
+     * // Create many Clubs
+     * const club = await prisma.club.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends ClubCreateManyArgs>(
+      args?: SelectSubset<T, ClubCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Clubs and returns the data saved in the database.
+     * @param {ClubCreateManyAndReturnArgs} args - Arguments to create many Clubs.
+     * @example
+     * // Create many Clubs
+     * const club = await prisma.club.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Clubs and only return the `id`
+     * const clubWithIdOnly = await prisma.club.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends ClubCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, ClubCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a Club.
+     * @param {ClubDeleteArgs} args - Arguments to delete one Club.
+     * @example
+     * // Delete one Club
+     * const Club = await prisma.club.delete({
+     *   where: {
+     *     // ... filter to delete one Club
+     *   }
+     * })
+     *
+     */
+    delete<T extends ClubDeleteArgs>(
+      args: SelectSubset<T, ClubDeleteArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Club.
+     * @param {ClubUpdateArgs} args - Arguments to update one Club.
+     * @example
+     * // Update one Club
+     * const club = await prisma.club.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends ClubUpdateArgs>(
+      args: SelectSubset<T, ClubUpdateArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Clubs.
+     * @param {ClubDeleteManyArgs} args - Arguments to filter Clubs to delete.
+     * @example
+     * // Delete a few Clubs
+     * const { count } = await prisma.club.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends ClubDeleteManyArgs>(
+      args?: SelectSubset<T, ClubDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clubs
+     * const club = await prisma.club.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends ClubUpdateManyArgs>(
+      args: SelectSubset<T, ClubUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Club.
+     * @param {ClubUpsertArgs} args - Arguments to update or create a Club.
+     * @example
+     * // Update or create a Club
+     * const club = await prisma.club.upsert({
+     *   create: {
+     *     // ... data to create a Club
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Club we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClubUpsertArgs>(
+      args: SelectSubset<T, ClubUpsertArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Clubs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubCountArgs} args - Arguments to filter Clubs to count.
+     * @example
+     * // Count the number of Clubs
+     * const count = await prisma.club.count({
+     *   where: {
+     *     // ... the filter for the Clubs we want to count
+     *   }
+     * })
+     **/
+    count<T extends ClubCountArgs>(
+      args?: Subset<T, ClubCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClubCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Club.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends ClubAggregateArgs>(
+      args: Subset<T, ClubAggregateArgs>
+    ): Prisma.PrismaPromise<GetClubAggregateType<T>>;
+
+    /**
+     * Group by Club.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends ClubGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClubGroupByArgs['orderBy'] }
+        : { orderBy?: ClubGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, ClubGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetClubGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Club model
+     */
+    readonly fields: ClubFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Club.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClubClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    country<T extends CountryDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, CountryDefaultArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    league<T extends LeagueDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, LeagueDefaultArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    players<T extends Club$playersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Club$playersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Club model
+   */
+  interface ClubFieldRefs {
+    readonly id: FieldRef<'Club', 'Int'>;
+    readonly name: FieldRef<'Club', 'String'>;
+    readonly countryId: FieldRef<'Club', 'Int'>;
+    readonly leagueId: FieldRef<'Club', 'Int'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Club findUnique
+   */
+  export type ClubFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * Filter, which Club to fetch.
+     */
+    where: ClubWhereUniqueInput;
+  };
+
+  /**
+   * Club findUniqueOrThrow
+   */
+  export type ClubFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * Filter, which Club to fetch.
+     */
+    where: ClubWhereUniqueInput;
+  };
+
+  /**
+   * Club findFirst
+   */
+  export type ClubFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * Filter, which Club to fetch.
+     */
+    where?: ClubWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Clubs to fetch.
+     */
+    orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Clubs.
+     */
+    cursor?: ClubWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Clubs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Clubs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Clubs.
+     */
+    distinct?: ClubScalarFieldEnum | ClubScalarFieldEnum[];
+  };
+
+  /**
+   * Club findFirstOrThrow
+   */
+  export type ClubFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * Filter, which Club to fetch.
+     */
+    where?: ClubWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Clubs to fetch.
+     */
+    orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Clubs.
+     */
+    cursor?: ClubWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Clubs from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Clubs.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Clubs.
+     */
+    distinct?: ClubScalarFieldEnum | ClubScalarFieldEnum[];
+  };
+
+  /**
+   * Club findMany
+   */
+  export type ClubFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Club
+       */
+      select?: ClubSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: ClubInclude<ExtArgs> | null;
+      /**
+       * Filter, which Clubs to fetch.
+       */
+      where?: ClubWhereInput;
+      /**
+       * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+       *
+       * Determine the order of Clubs to fetch.
+       */
+      orderBy?: ClubOrderByWithRelationInput | ClubOrderByWithRelationInput[];
+      /**
+       * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+       *
+       * Sets the position for listing Clubs.
+       */
+      cursor?: ClubWhereUniqueInput;
+      /**
+       * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+       *
+       * Take `±n` Clubs from the position of the cursor.
+       */
+      take?: number;
+      /**
+       * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+       *
+       * Skip the first `n` Clubs.
+       */
+      skip?: number;
+      distinct?: ClubScalarFieldEnum | ClubScalarFieldEnum[];
+    };
+
+  /**
+   * Club create
+   */
+  export type ClubCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Club
+     */
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a Club.
+     */
+    data: XOR<ClubCreateInput, ClubUncheckedCreateInput>;
+  };
+
+  /**
+   * Club createMany
+   */
+  export type ClubCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Clubs.
+     */
+    data: ClubCreateManyInput | ClubCreateManyInput[];
     skipDuplicates?: boolean;
   };
 
   /**
-   * CompanionAppState update
+   * Club createManyAndReturn
    */
-  export type CompanionAppStateUpdateArgs<
+  export type ClubCreateManyAndReturnArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the Club
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: ClubSelectCreateManyAndReturn<ExtArgs> | null;
     /**
-     * The data needed to update a CompanionAppState.
+     * The data used to create many Clubs.
      */
-    data: XOR<CompanionAppStateUpdateInput, CompanionAppStateUncheckedUpdateInput>;
+    data: ClubCreateManyInput | ClubCreateManyInput[];
+    skipDuplicates?: boolean;
     /**
-     * Choose, which CompanionAppState to update.
+     * Choose, which related nodes to fetch as well
      */
-    where: CompanionAppStateWhereUniqueInput;
+    include?: ClubIncludeCreateManyAndReturn<ExtArgs> | null;
   };
 
   /**
-   * CompanionAppState updateMany
+   * Club update
    */
-  export type CompanionAppStateUpdateManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
+  export type ClubUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update CompanionAppStates.
+     * Select specific fields to fetch from the Club
      */
-    data: XOR<CompanionAppStateUpdateManyMutationInput, CompanionAppStateUncheckedUpdateManyInput>;
+    select?: ClubSelect<ExtArgs> | null;
     /**
-     * Filter which CompanionAppStates to update
+     * Choose, which related nodes to fetch as well
      */
-    where?: CompanionAppStateWhereInput;
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a Club.
+     */
+    data: XOR<ClubUpdateInput, ClubUncheckedUpdateInput>;
+    /**
+     * Choose, which Club to update.
+     */
+    where: ClubWhereUniqueInput;
   };
 
   /**
-   * CompanionAppState upsert
+   * Club updateMany
    */
-  export type CompanionAppStateUpsertArgs<
+  export type ClubUpdateManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * The data used to update Clubs.
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    data: XOR<ClubUpdateManyMutationInput, ClubUncheckedUpdateManyInput>;
     /**
-     * The filter to search for the CompanionAppState to update in case it exists.
+     * Filter which Clubs to update
      */
-    where: CompanionAppStateWhereUniqueInput;
-    /**
-     * In case the CompanionAppState found by the `where` argument doesn't exist, create a new CompanionAppState with this data.
-     */
-    create: XOR<CompanionAppStateCreateInput, CompanionAppStateUncheckedCreateInput>;
-    /**
-     * In case the CompanionAppState was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<CompanionAppStateUpdateInput, CompanionAppStateUncheckedUpdateInput>;
+    where?: ClubWhereInput;
   };
 
   /**
-   * CompanionAppState delete
+   * Club upsert
    */
-  export type CompanionAppStateDeleteArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
+  export type ClubUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Select specific fields to fetch from the Club
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    select?: ClubSelect<ExtArgs> | null;
     /**
-     * Filter which CompanionAppState to delete.
+     * Choose, which related nodes to fetch as well
      */
-    where: CompanionAppStateWhereUniqueInput;
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the Club to update in case it exists.
+     */
+    where: ClubWhereUniqueInput;
+    /**
+     * In case the Club found by the `where` argument doesn't exist, create a new Club with this data.
+     */
+    create: XOR<ClubCreateInput, ClubUncheckedCreateInput>;
+    /**
+     * In case the Club was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClubUpdateInput, ClubUncheckedUpdateInput>;
   };
 
   /**
-   * CompanionAppState deleteMany
+   * Club delete
    */
-  export type CompanionAppStateDeleteManyArgs<
-    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = {
+  export type ClubDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which CompanionAppStates to delete
+     * Select specific fields to fetch from the Club
      */
-    where?: CompanionAppStateWhereInput;
+    select?: ClubSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubInclude<ExtArgs> | null;
+    /**
+     * Filter which Club to delete.
+     */
+    where: ClubWhereUniqueInput;
   };
 
   /**
-   * CompanionAppState without action
+   * Club deleteMany
    */
-  export type CompanionAppStateDefaultArgs<
+  export type ClubDeleteManyArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
   > = {
     /**
-     * Select specific fields to fetch from the CompanionAppState
+     * Filter which Clubs to delete
      */
-    select?: CompanionAppStateSelect<ExtArgs> | null;
+    where?: ClubWhereInput;
+  };
+
+  /**
+   * Club.players
+   */
+  export type Club$playersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Player
+       */
+      select?: PlayerSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: PlayerInclude<ExtArgs> | null;
+      where?: PlayerWhereInput;
+      orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+      cursor?: PlayerWhereUniqueInput;
+      take?: number;
+      skip?: number;
+      distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+    };
+
+  /**
+   * Club without action
+   */
+  export type ClubDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Club
+       */
+      select?: ClubSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: ClubInclude<ExtArgs> | null;
+    };
+
+  /**
+   * Model Player
+   */
+
+  export type AggregatePlayer = {
+    _count: PlayerCountAggregateOutputType | null;
+    _avg: PlayerAvgAggregateOutputType | null;
+    _sum: PlayerSumAggregateOutputType | null;
+    _min: PlayerMinAggregateOutputType | null;
+    _max: PlayerMaxAggregateOutputType | null;
+  };
+
+  export type PlayerAvgAggregateOutputType = {
+    id: number | null;
+    qualityId: number | null;
+    rarityId: number | null;
+    ovr: number | null;
+    rating1: number | null;
+    rating2: number | null;
+    rating3: number | null;
+    rating4: number | null;
+    rating5: number | null;
+    rating6: number | null;
+    countryId: number | null;
+    clubId: number | null;
+    leagueId: number | null;
+  };
+
+  export type PlayerSumAggregateOutputType = {
+    id: number | null;
+    qualityId: number | null;
+    rarityId: number | null;
+    ovr: number | null;
+    rating1: number | null;
+    rating2: number | null;
+    rating3: number | null;
+    rating4: number | null;
+    rating5: number | null;
+    rating6: number | null;
+    countryId: number | null;
+    clubId: number | null;
+    leagueId: number | null;
+  };
+
+  export type PlayerMinAggregateOutputType = {
+    id: number | null;
+    displayName: string | null;
+    fullName: string | null;
+    qualityId: number | null;
+    rarityId: number | null;
+    ovr: number | null;
+    rating1: number | null;
+    rating2: number | null;
+    rating3: number | null;
+    rating4: number | null;
+    rating5: number | null;
+    rating6: number | null;
+    countryId: number | null;
+    clubId: number | null;
+    leagueId: number | null;
+  };
+
+  export type PlayerMaxAggregateOutputType = {
+    id: number | null;
+    displayName: string | null;
+    fullName: string | null;
+    qualityId: number | null;
+    rarityId: number | null;
+    ovr: number | null;
+    rating1: number | null;
+    rating2: number | null;
+    rating3: number | null;
+    rating4: number | null;
+    rating5: number | null;
+    rating6: number | null;
+    countryId: number | null;
+    clubId: number | null;
+    leagueId: number | null;
+  };
+
+  export type PlayerCountAggregateOutputType = {
+    id: number;
+    displayName: number;
+    fullName: number;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    _all: number;
+  };
+
+  export type PlayerAvgAggregateInputType = {
+    id?: true;
+    qualityId?: true;
+    rarityId?: true;
+    ovr?: true;
+    rating1?: true;
+    rating2?: true;
+    rating3?: true;
+    rating4?: true;
+    rating5?: true;
+    rating6?: true;
+    countryId?: true;
+    clubId?: true;
+    leagueId?: true;
+  };
+
+  export type PlayerSumAggregateInputType = {
+    id?: true;
+    qualityId?: true;
+    rarityId?: true;
+    ovr?: true;
+    rating1?: true;
+    rating2?: true;
+    rating3?: true;
+    rating4?: true;
+    rating5?: true;
+    rating6?: true;
+    countryId?: true;
+    clubId?: true;
+    leagueId?: true;
+  };
+
+  export type PlayerMinAggregateInputType = {
+    id?: true;
+    displayName?: true;
+    fullName?: true;
+    qualityId?: true;
+    rarityId?: true;
+    ovr?: true;
+    rating1?: true;
+    rating2?: true;
+    rating3?: true;
+    rating4?: true;
+    rating5?: true;
+    rating6?: true;
+    countryId?: true;
+    clubId?: true;
+    leagueId?: true;
+  };
+
+  export type PlayerMaxAggregateInputType = {
+    id?: true;
+    displayName?: true;
+    fullName?: true;
+    qualityId?: true;
+    rarityId?: true;
+    ovr?: true;
+    rating1?: true;
+    rating2?: true;
+    rating3?: true;
+    rating4?: true;
+    rating5?: true;
+    rating6?: true;
+    countryId?: true;
+    clubId?: true;
+    leagueId?: true;
+  };
+
+  export type PlayerCountAggregateInputType = {
+    id?: true;
+    displayName?: true;
+    fullName?: true;
+    qualityId?: true;
+    rarityId?: true;
+    ovr?: true;
+    rating1?: true;
+    rating2?: true;
+    rating3?: true;
+    rating4?: true;
+    rating5?: true;
+    rating6?: true;
+    countryId?: true;
+    clubId?: true;
+    leagueId?: true;
+    _all?: true;
+  };
+
+  export type PlayerAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Player to aggregate.
+     */
+    where?: PlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Players to fetch.
+     */
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: PlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Players from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Players.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned Players
+     **/
+    _count?: true | PlayerCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: PlayerAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: PlayerSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: PlayerMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: PlayerMaxAggregateInputType;
+  };
+
+  export type GetPlayerAggregateType<T extends PlayerAggregateArgs> = {
+    [P in keyof T & keyof AggregatePlayer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePlayer[P]>
+      : GetScalarType<T[P], AggregatePlayer[P]>;
+  };
+
+  export type PlayerGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: PlayerWhereInput;
+    orderBy?: PlayerOrderByWithAggregationInput | PlayerOrderByWithAggregationInput[];
+    by: PlayerScalarFieldEnum[] | PlayerScalarFieldEnum;
+    having?: PlayerScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: PlayerCountAggregateInputType | true;
+    _avg?: PlayerAvgAggregateInputType;
+    _sum?: PlayerSumAggregateInputType;
+    _min?: PlayerMinAggregateInputType;
+    _max?: PlayerMaxAggregateInputType;
+  };
+
+  export type PlayerGroupByOutputType = {
+    id: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    _count: PlayerCountAggregateOutputType | null;
+    _avg: PlayerAvgAggregateOutputType | null;
+    _sum: PlayerSumAggregateOutputType | null;
+    _min: PlayerMinAggregateOutputType | null;
+    _max: PlayerMaxAggregateOutputType | null;
+  };
+
+  type GetPlayerGroupByPayload<T extends PlayerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PlayerGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof PlayerGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], PlayerGroupByOutputType[P]>
+          : GetScalarType<T[P], PlayerGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type PlayerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        displayName?: boolean;
+        fullName?: boolean;
+        qualityId?: boolean;
+        rarityId?: boolean;
+        ovr?: boolean;
+        rating1?: boolean;
+        rating2?: boolean;
+        rating3?: boolean;
+        rating4?: boolean;
+        rating5?: boolean;
+        rating6?: boolean;
+        countryId?: boolean;
+        clubId?: boolean;
+        leagueId?: boolean;
+        positions?: boolean | Player$positionsArgs<ExtArgs>;
+        clubPlayers?: boolean | Player$clubPlayersArgs<ExtArgs>;
+        quality?: boolean | QualityDefaultArgs<ExtArgs>;
+        rarity?: boolean | RarityDefaultArgs<ExtArgs>;
+        country?: boolean | CountryDefaultArgs<ExtArgs>;
+        league?: boolean | LeagueDefaultArgs<ExtArgs>;
+        club?: boolean | ClubDefaultArgs<ExtArgs>;
+        _count?: boolean | PlayerCountOutputTypeDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['player']
+    >;
+
+  export type PlayerSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      displayName?: boolean;
+      fullName?: boolean;
+      qualityId?: boolean;
+      rarityId?: boolean;
+      ovr?: boolean;
+      rating1?: boolean;
+      rating2?: boolean;
+      rating3?: boolean;
+      rating4?: boolean;
+      rating5?: boolean;
+      rating6?: boolean;
+      countryId?: boolean;
+      clubId?: boolean;
+      leagueId?: boolean;
+      quality?: boolean | QualityDefaultArgs<ExtArgs>;
+      rarity?: boolean | RarityDefaultArgs<ExtArgs>;
+      country?: boolean | CountryDefaultArgs<ExtArgs>;
+      league?: boolean | LeagueDefaultArgs<ExtArgs>;
+      club?: boolean | ClubDefaultArgs<ExtArgs>;
+    },
+    ExtArgs['result']['player']
+  >;
+
+  export type PlayerSelectScalar = {
+    id?: boolean;
+    displayName?: boolean;
+    fullName?: boolean;
+    qualityId?: boolean;
+    rarityId?: boolean;
+    ovr?: boolean;
+    rating1?: boolean;
+    rating2?: boolean;
+    rating3?: boolean;
+    rating4?: boolean;
+    rating5?: boolean;
+    rating6?: boolean;
+    countryId?: boolean;
+    clubId?: boolean;
+    leagueId?: boolean;
+  };
+
+  export type PlayerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    positions?: boolean | Player$positionsArgs<ExtArgs>;
+    clubPlayers?: boolean | Player$clubPlayersArgs<ExtArgs>;
+    quality?: boolean | QualityDefaultArgs<ExtArgs>;
+    rarity?: boolean | RarityDefaultArgs<ExtArgs>;
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+    league?: boolean | LeagueDefaultArgs<ExtArgs>;
+    club?: boolean | ClubDefaultArgs<ExtArgs>;
+    _count?: boolean | PlayerCountOutputTypeDefaultArgs<ExtArgs>;
+  };
+  export type PlayerIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    quality?: boolean | QualityDefaultArgs<ExtArgs>;
+    rarity?: boolean | RarityDefaultArgs<ExtArgs>;
+    country?: boolean | CountryDefaultArgs<ExtArgs>;
+    league?: boolean | LeagueDefaultArgs<ExtArgs>;
+    club?: boolean | ClubDefaultArgs<ExtArgs>;
+  };
+
+  export type $PlayerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: 'Player';
+    objects: {
+      positions: Prisma.$PlayerPositionPayload<ExtArgs>[];
+      clubPlayers: Prisma.$ClubPlayerPayload<ExtArgs>[];
+      quality: Prisma.$QualityPayload<ExtArgs>;
+      rarity: Prisma.$RarityPayload<ExtArgs>;
+      country: Prisma.$CountryPayload<ExtArgs>;
+      league: Prisma.$LeaguePayload<ExtArgs>;
+      club: Prisma.$ClubPayload<ExtArgs>;
+    };
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number;
+        displayName: string;
+        fullName: string;
+        qualityId: number;
+        rarityId: number;
+        ovr: number;
+        rating1: number;
+        rating2: number;
+        rating3: number;
+        rating4: number;
+        rating5: number;
+        rating6: number;
+        countryId: number;
+        clubId: number;
+        leagueId: number;
+      },
+      ExtArgs['result']['player']
+    >;
+    composites: {};
+  };
+
+  type PlayerGetPayload<S extends boolean | null | undefined | PlayerDefaultArgs> =
+    $Result.GetResult<Prisma.$PlayerPayload, S>;
+
+  type PlayerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = Omit<
+    PlayerFindManyArgs,
+    'select' | 'include' | 'distinct'
+  > & {
+    select?: PlayerCountAggregateInputType | true;
+  };
+
+  export interface PlayerDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Player']; meta: { name: 'Player' } };
+    /**
+     * Find zero or one Player that matches the filter.
+     * @param {PlayerFindUniqueArgs} args - Arguments to find a Player
+     * @example
+     * // Get one Player
+     * const player = await prisma.player.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PlayerFindUniqueArgs>(
+      args: SelectSubset<T, PlayerFindUniqueArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one Player that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PlayerFindUniqueOrThrowArgs} args - Arguments to find a Player
+     * @example
+     * // Get one Player
+     * const player = await prisma.player.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PlayerFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, PlayerFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Player that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerFindFirstArgs} args - Arguments to find a Player
+     * @example
+     * // Get one Player
+     * const player = await prisma.player.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PlayerFindFirstArgs>(
+      args?: SelectSubset<T, PlayerFindFirstArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first Player that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerFindFirstOrThrowArgs} args - Arguments to find a Player
+     * @example
+     * // Get one Player
+     * const player = await prisma.player.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PlayerFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, PlayerFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more Players that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Players
+     * const players = await prisma.player.findMany()
+     *
+     * // Get first 10 Players
+     * const players = await prisma.player.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const playerWithIdOnly = await prisma.player.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends PlayerFindManyArgs>(
+      args?: SelectSubset<T, PlayerFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a Player.
+     * @param {PlayerCreateArgs} args - Arguments to create a Player.
+     * @example
+     * // Create one Player
+     * const Player = await prisma.player.create({
+     *   data: {
+     *     // ... data to create a Player
+     *   }
+     * })
+     *
+     */
+    create<T extends PlayerCreateArgs>(
+      args: SelectSubset<T, PlayerCreateArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many Players.
+     * @param {PlayerCreateManyArgs} args - Arguments to create many Players.
+     * @example
+     * // Create many Players
+     * const player = await prisma.player.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends PlayerCreateManyArgs>(
+      args?: SelectSubset<T, PlayerCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many Players and returns the data saved in the database.
+     * @param {PlayerCreateManyAndReturnArgs} args - Arguments to create many Players.
+     * @example
+     * // Create many Players
+     * const player = await prisma.player.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many Players and only return the `id`
+     * const playerWithIdOnly = await prisma.player.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends PlayerCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, PlayerCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a Player.
+     * @param {PlayerDeleteArgs} args - Arguments to delete one Player.
+     * @example
+     * // Delete one Player
+     * const Player = await prisma.player.delete({
+     *   where: {
+     *     // ... filter to delete one Player
+     *   }
+     * })
+     *
+     */
+    delete<T extends PlayerDeleteArgs>(
+      args: SelectSubset<T, PlayerDeleteArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one Player.
+     * @param {PlayerUpdateArgs} args - Arguments to update one Player.
+     * @example
+     * // Update one Player
+     * const player = await prisma.player.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends PlayerUpdateArgs>(
+      args: SelectSubset<T, PlayerUpdateArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more Players.
+     * @param {PlayerDeleteManyArgs} args - Arguments to filter Players to delete.
+     * @example
+     * // Delete a few Players
+     * const { count } = await prisma.player.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends PlayerDeleteManyArgs>(
+      args?: SelectSubset<T, PlayerDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more Players.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Players
+     * const player = await prisma.player.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends PlayerUpdateManyArgs>(
+      args: SelectSubset<T, PlayerUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one Player.
+     * @param {PlayerUpsertArgs} args - Arguments to update or create a Player.
+     * @example
+     * // Update or create a Player
+     * const player = await prisma.player.upsert({
+     *   create: {
+     *     // ... data to create a Player
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Player we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PlayerUpsertArgs>(
+      args: SelectSubset<T, PlayerUpsertArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of Players.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerCountArgs} args - Arguments to filter Players to count.
+     * @example
+     * // Count the number of Players
+     * const count = await prisma.player.count({
+     *   where: {
+     *     // ... the filter for the Players we want to count
+     *   }
+     * })
+     **/
+    count<T extends PlayerCountArgs>(
+      args?: Subset<T, PlayerCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PlayerCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a Player.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends PlayerAggregateArgs>(
+      args: Subset<T, PlayerAggregateArgs>
+    ): Prisma.PrismaPromise<GetPlayerAggregateType<T>>;
+
+    /**
+     * Group by Player.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PlayerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends PlayerGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PlayerGroupByArgs['orderBy'] }
+        : { orderBy?: PlayerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, PlayerGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetPlayerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the Player model
+     */
+    readonly fields: PlayerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Player.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PlayerClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    positions<T extends Player$positionsArgs<ExtArgs> = {}>(
+      args?: Subset<T, Player$positionsArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$PlayerPositionPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    clubPlayers<T extends Player$clubPlayersArgs<ExtArgs> = {}>(
+      args?: Subset<T, Player$clubPlayersArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findMany'> | Null
+    >;
+    quality<T extends QualityDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, QualityDefaultArgs<ExtArgs>>
+    ): Prisma__QualityClient<
+      $Result.GetResult<Prisma.$QualityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    rarity<T extends RarityDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, RarityDefaultArgs<ExtArgs>>
+    ): Prisma__RarityClient<
+      $Result.GetResult<Prisma.$RarityPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    country<T extends CountryDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, CountryDefaultArgs<ExtArgs>>
+    ): Prisma__CountryClient<
+      $Result.GetResult<Prisma.$CountryPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    league<T extends LeagueDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, LeagueDefaultArgs<ExtArgs>>
+    ): Prisma__LeagueClient<
+      $Result.GetResult<Prisma.$LeaguePayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    club<T extends ClubDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, ClubDefaultArgs<ExtArgs>>
+    ): Prisma__ClubClient<
+      $Result.GetResult<Prisma.$ClubPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the Player model
+   */
+  interface PlayerFieldRefs {
+    readonly id: FieldRef<'Player', 'Int'>;
+    readonly displayName: FieldRef<'Player', 'String'>;
+    readonly fullName: FieldRef<'Player', 'String'>;
+    readonly qualityId: FieldRef<'Player', 'Int'>;
+    readonly rarityId: FieldRef<'Player', 'Int'>;
+    readonly ovr: FieldRef<'Player', 'Int'>;
+    readonly rating1: FieldRef<'Player', 'Int'>;
+    readonly rating2: FieldRef<'Player', 'Int'>;
+    readonly rating3: FieldRef<'Player', 'Int'>;
+    readonly rating4: FieldRef<'Player', 'Int'>;
+    readonly rating5: FieldRef<'Player', 'Int'>;
+    readonly rating6: FieldRef<'Player', 'Int'>;
+    readonly countryId: FieldRef<'Player', 'Int'>;
+    readonly clubId: FieldRef<'Player', 'Int'>;
+    readonly leagueId: FieldRef<'Player', 'Int'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * Player findUnique
+   */
+  export type PlayerFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which Player to fetch.
+     */
+    where: PlayerWhereUniqueInput;
+  };
+
+  /**
+   * Player findUniqueOrThrow
+   */
+  export type PlayerFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which Player to fetch.
+     */
+    where: PlayerWhereUniqueInput;
+  };
+
+  /**
+   * Player findFirst
+   */
+  export type PlayerFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which Player to fetch.
+     */
+    where?: PlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Players to fetch.
+     */
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Players.
+     */
+    cursor?: PlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Players from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Players.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Players.
+     */
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Player findFirstOrThrow
+   */
+  export type PlayerFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which Player to fetch.
+     */
+    where?: PlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Players to fetch.
+     */
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for Players.
+     */
+    cursor?: PlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Players from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Players.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of Players.
+     */
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Player findMany
+   */
+  export type PlayerFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which Players to fetch.
+     */
+    where?: PlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of Players to fetch.
+     */
+    orderBy?: PlayerOrderByWithRelationInput | PlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing Players.
+     */
+    cursor?: PlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` Players from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` Players.
+     */
+    skip?: number;
+    distinct?: PlayerScalarFieldEnum | PlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Player create
+   */
+  export type PlayerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Player
+       */
+      select?: PlayerSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: PlayerInclude<ExtArgs> | null;
+      /**
+       * The data needed to create a Player.
+       */
+      data: XOR<PlayerCreateInput, PlayerUncheckedCreateInput>;
+    };
+
+  /**
+   * Player createMany
+   */
+  export type PlayerCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many Players.
+     */
+    data: PlayerCreateManyInput | PlayerCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * Player createManyAndReturn
+   */
+  export type PlayerCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many Players.
+     */
+    data: PlayerCreateManyInput | PlayerCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerIncludeCreateManyAndReturn<ExtArgs> | null;
+  };
+
+  /**
+   * Player update
+   */
+  export type PlayerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Player
+       */
+      select?: PlayerSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: PlayerInclude<ExtArgs> | null;
+      /**
+       * The data needed to update a Player.
+       */
+      data: XOR<PlayerUpdateInput, PlayerUncheckedUpdateInput>;
+      /**
+       * Choose, which Player to update.
+       */
+      where: PlayerWhereUniqueInput;
+    };
+
+  /**
+   * Player updateMany
+   */
+  export type PlayerUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update Players.
+     */
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyInput>;
+    /**
+     * Filter which Players to update
+     */
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Player upsert
+   */
+  export type PlayerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Player
+       */
+      select?: PlayerSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: PlayerInclude<ExtArgs> | null;
+      /**
+       * The filter to search for the Player to update in case it exists.
+       */
+      where: PlayerWhereUniqueInput;
+      /**
+       * In case the Player found by the `where` argument doesn't exist, create a new Player with this data.
+       */
+      create: XOR<PlayerCreateInput, PlayerUncheckedCreateInput>;
+      /**
+       * In case the Player was found with the provided `where` argument, update it with this data.
+       */
+      update: XOR<PlayerUpdateInput, PlayerUncheckedUpdateInput>;
+    };
+
+  /**
+   * Player delete
+   */
+  export type PlayerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    {
+      /**
+       * Select specific fields to fetch from the Player
+       */
+      select?: PlayerSelect<ExtArgs> | null;
+      /**
+       * Choose, which related nodes to fetch as well
+       */
+      include?: PlayerInclude<ExtArgs> | null;
+      /**
+       * Filter which Player to delete.
+       */
+      where: PlayerWhereUniqueInput;
+    };
+
+  /**
+   * Player deleteMany
+   */
+  export type PlayerDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which Players to delete
+     */
+    where?: PlayerWhereInput;
+  };
+
+  /**
+   * Player.positions
+   */
+  export type Player$positionsArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the PlayerPosition
+     */
+    select?: PlayerPositionSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerPositionInclude<ExtArgs> | null;
+    where?: PlayerPositionWhereInput;
+    orderBy?: PlayerPositionOrderByWithRelationInput | PlayerPositionOrderByWithRelationInput[];
+    cursor?: PlayerPositionWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: PlayerPositionScalarFieldEnum | PlayerPositionScalarFieldEnum[];
+  };
+
+  /**
+   * Player.clubPlayers
+   */
+  export type Player$clubPlayersArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    where?: ClubPlayerWhereInput;
+    orderBy?: ClubPlayerOrderByWithRelationInput | ClubPlayerOrderByWithRelationInput[];
+    cursor?: ClubPlayerWhereUniqueInput;
+    take?: number;
+    skip?: number;
+    distinct?: ClubPlayerScalarFieldEnum | ClubPlayerScalarFieldEnum[];
+  };
+
+  /**
+   * Player without action
+   */
+  export type PlayerDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the Player
+     */
+    select?: PlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PlayerInclude<ExtArgs> | null;
+  };
+
+  /**
+   * Model ClubPlayer
+   */
+
+  export type AggregateClubPlayer = {
+    _count: ClubPlayerCountAggregateOutputType | null;
+    _avg: ClubPlayerAvgAggregateOutputType | null;
+    _sum: ClubPlayerSumAggregateOutputType | null;
+    _min: ClubPlayerMinAggregateOutputType | null;
+    _max: ClubPlayerMaxAggregateOutputType | null;
+  };
+
+  export type ClubPlayerAvgAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+  };
+
+  export type ClubPlayerSumAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+  };
+
+  export type ClubPlayerMinAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    sbc: boolean | null;
+    squad: boolean | null;
+  };
+
+  export type ClubPlayerMaxAggregateOutputType = {
+    id: number | null;
+    playerId: number | null;
+    sbc: boolean | null;
+    squad: boolean | null;
+  };
+
+  export type ClubPlayerCountAggregateOutputType = {
+    id: number;
+    playerId: number;
+    sbc: number;
+    squad: number;
+    _all: number;
+  };
+
+  export type ClubPlayerAvgAggregateInputType = {
+    id?: true;
+    playerId?: true;
+  };
+
+  export type ClubPlayerSumAggregateInputType = {
+    id?: true;
+    playerId?: true;
+  };
+
+  export type ClubPlayerMinAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    sbc?: true;
+    squad?: true;
+  };
+
+  export type ClubPlayerMaxAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    sbc?: true;
+    squad?: true;
+  };
+
+  export type ClubPlayerCountAggregateInputType = {
+    id?: true;
+    playerId?: true;
+    sbc?: true;
+    squad?: true;
+    _all?: true;
+  };
+
+  export type ClubPlayerAggregateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which ClubPlayer to aggregate.
+     */
+    where?: ClubPlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ClubPlayers to fetch.
+     */
+    orderBy?: ClubPlayerOrderByWithRelationInput | ClubPlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the start position
+     */
+    cursor?: ClubPlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ClubPlayers from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ClubPlayers.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Count returned ClubPlayers
+     **/
+    _count?: true | ClubPlayerCountAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to average
+     **/
+    _avg?: ClubPlayerAvgAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to sum
+     **/
+    _sum?: ClubPlayerSumAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the minimum value
+     **/
+    _min?: ClubPlayerMinAggregateInputType;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     *
+     * Select which fields to find the maximum value
+     **/
+    _max?: ClubPlayerMaxAggregateInputType;
+  };
+
+  export type GetClubPlayerAggregateType<T extends ClubPlayerAggregateArgs> = {
+    [P in keyof T & keyof AggregateClubPlayer]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClubPlayer[P]>
+      : GetScalarType<T[P], AggregateClubPlayer[P]>;
+  };
+
+  export type ClubPlayerGroupByArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    where?: ClubPlayerWhereInput;
+    orderBy?: ClubPlayerOrderByWithAggregationInput | ClubPlayerOrderByWithAggregationInput[];
+    by: ClubPlayerScalarFieldEnum[] | ClubPlayerScalarFieldEnum;
+    having?: ClubPlayerScalarWhereWithAggregatesInput;
+    take?: number;
+    skip?: number;
+    _count?: ClubPlayerCountAggregateInputType | true;
+    _avg?: ClubPlayerAvgAggregateInputType;
+    _sum?: ClubPlayerSumAggregateInputType;
+    _min?: ClubPlayerMinAggregateInputType;
+    _max?: ClubPlayerMaxAggregateInputType;
+  };
+
+  export type ClubPlayerGroupByOutputType = {
+    id: number;
+    playerId: number;
+    sbc: boolean;
+    squad: boolean;
+    _count: ClubPlayerCountAggregateOutputType | null;
+    _avg: ClubPlayerAvgAggregateOutputType | null;
+    _sum: ClubPlayerSumAggregateOutputType | null;
+    _min: ClubPlayerMinAggregateOutputType | null;
+    _max: ClubPlayerMaxAggregateOutputType | null;
+  };
+
+  type GetClubPlayerGroupByPayload<T extends ClubPlayerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClubPlayerGroupByOutputType, T['by']> & {
+        [P in keyof T & keyof ClubPlayerGroupByOutputType]: P extends '_count'
+          ? T[P] extends boolean
+            ? number
+            : GetScalarType<T[P], ClubPlayerGroupByOutputType[P]>
+          : GetScalarType<T[P], ClubPlayerGroupByOutputType[P]>;
+      }
+    >
+  >;
+
+  export type ClubPlayerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    $Extensions.GetSelect<
+      {
+        id?: boolean;
+        playerId?: boolean;
+        sbc?: boolean;
+        squad?: boolean;
+        player?: boolean | PlayerDefaultArgs<ExtArgs>;
+      },
+      ExtArgs['result']['clubPlayer']
+    >;
+
+  export type ClubPlayerSelectCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = $Extensions.GetSelect<
+    {
+      id?: boolean;
+      playerId?: boolean;
+      sbc?: boolean;
+      squad?: boolean;
+      player?: boolean | PlayerDefaultArgs<ExtArgs>;
+    },
+    ExtArgs['result']['clubPlayer']
+  >;
+
+  export type ClubPlayerSelectScalar = {
+    id?: boolean;
+    playerId?: boolean;
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type ClubPlayerInclude<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    player?: boolean | PlayerDefaultArgs<ExtArgs>;
+  };
+  export type ClubPlayerIncludeCreateManyAndReturn<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    player?: boolean | PlayerDefaultArgs<ExtArgs>;
+  };
+
+  export type $ClubPlayerPayload<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    name: 'ClubPlayer';
+    objects: {
+      player: Prisma.$PlayerPayload<ExtArgs>;
+    };
+    scalars: $Extensions.GetPayloadResult<
+      {
+        id: number;
+        playerId: number;
+        sbc: boolean;
+        squad: boolean;
+      },
+      ExtArgs['result']['clubPlayer']
+    >;
+    composites: {};
+  };
+
+  type ClubPlayerGetPayload<S extends boolean | null | undefined | ClubPlayerDefaultArgs> =
+    $Result.GetResult<Prisma.$ClubPlayerPayload, S>;
+
+  type ClubPlayerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClubPlayerFindManyArgs, 'select' | 'include' | 'distinct'> & {
+      select?: ClubPlayerCountAggregateInputType | true;
+    };
+
+  export interface ClubPlayerDelegate<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > {
+    [K: symbol]: {
+      types: Prisma.TypeMap<ExtArgs>['model']['ClubPlayer'];
+      meta: { name: 'ClubPlayer' };
+    };
+    /**
+     * Find zero or one ClubPlayer that matches the filter.
+     * @param {ClubPlayerFindUniqueArgs} args - Arguments to find a ClubPlayer
+     * @example
+     * // Get one ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClubPlayerFindUniqueArgs>(
+      args: SelectSubset<T, ClubPlayerFindUniqueArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findUnique'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find one ClubPlayer that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClubPlayerFindUniqueOrThrowArgs} args - Arguments to find a ClubPlayer
+     * @example
+     * // Get one ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClubPlayerFindUniqueOrThrowArgs>(
+      args: SelectSubset<T, ClubPlayerFindUniqueOrThrowArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findUniqueOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first ClubPlayer that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerFindFirstArgs} args - Arguments to find a ClubPlayer
+     * @example
+     * // Get one ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClubPlayerFindFirstArgs>(
+      args?: SelectSubset<T, ClubPlayerFindFirstArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findFirst'> | null,
+      null,
+      ExtArgs
+    >;
+
+    /**
+     * Find the first ClubPlayer that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerFindFirstOrThrowArgs} args - Arguments to find a ClubPlayer
+     * @example
+     * // Get one ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClubPlayerFindFirstOrThrowArgs>(
+      args?: SelectSubset<T, ClubPlayerFindFirstOrThrowArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findFirstOrThrow'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Find zero or more ClubPlayers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ClubPlayers
+     * const clubPlayers = await prisma.clubPlayer.findMany()
+     *
+     * // Get first 10 ClubPlayers
+     * const clubPlayers = await prisma.clubPlayer.findMany({ take: 10 })
+     *
+     * // Only select the `id`
+     * const clubPlayerWithIdOnly = await prisma.clubPlayer.findMany({ select: { id: true } })
+     *
+     */
+    findMany<T extends ClubPlayerFindManyArgs>(
+      args?: SelectSubset<T, ClubPlayerFindManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'findMany'>>;
+
+    /**
+     * Create a ClubPlayer.
+     * @param {ClubPlayerCreateArgs} args - Arguments to create a ClubPlayer.
+     * @example
+     * // Create one ClubPlayer
+     * const ClubPlayer = await prisma.clubPlayer.create({
+     *   data: {
+     *     // ... data to create a ClubPlayer
+     *   }
+     * })
+     *
+     */
+    create<T extends ClubPlayerCreateArgs>(
+      args: SelectSubset<T, ClubPlayerCreateArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'create'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Create many ClubPlayers.
+     * @param {ClubPlayerCreateManyArgs} args - Arguments to create many ClubPlayers.
+     * @example
+     * // Create many ClubPlayers
+     * const clubPlayer = await prisma.clubPlayer.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     */
+    createMany<T extends ClubPlayerCreateManyArgs>(
+      args?: SelectSubset<T, ClubPlayerCreateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create many ClubPlayers and returns the data saved in the database.
+     * @param {ClubPlayerCreateManyAndReturnArgs} args - Arguments to create many ClubPlayers.
+     * @example
+     * // Create many ClubPlayers
+     * const clubPlayer = await prisma.clubPlayer.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *
+     * // Create many ClubPlayers and only return the `id`
+     * const clubPlayerWithIdOnly = await prisma.clubPlayer.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     *
+     */
+    createManyAndReturn<T extends ClubPlayerCreateManyAndReturnArgs>(
+      args?: SelectSubset<T, ClubPlayerCreateManyAndReturnArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'createManyAndReturn'>
+    >;
+
+    /**
+     * Delete a ClubPlayer.
+     * @param {ClubPlayerDeleteArgs} args - Arguments to delete one ClubPlayer.
+     * @example
+     * // Delete one ClubPlayer
+     * const ClubPlayer = await prisma.clubPlayer.delete({
+     *   where: {
+     *     // ... filter to delete one ClubPlayer
+     *   }
+     * })
+     *
+     */
+    delete<T extends ClubPlayerDeleteArgs>(
+      args: SelectSubset<T, ClubPlayerDeleteArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'delete'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Update one ClubPlayer.
+     * @param {ClubPlayerUpdateArgs} args - Arguments to update one ClubPlayer.
+     * @example
+     * // Update one ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    update<T extends ClubPlayerUpdateArgs>(
+      args: SelectSubset<T, ClubPlayerUpdateArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'update'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Delete zero or more ClubPlayers.
+     * @param {ClubPlayerDeleteManyArgs} args - Arguments to filter ClubPlayers to delete.
+     * @example
+     * // Delete a few ClubPlayers
+     * const { count } = await prisma.clubPlayer.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     *
+     */
+    deleteMany<T extends ClubPlayerDeleteManyArgs>(
+      args?: SelectSubset<T, ClubPlayerDeleteManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Update zero or more ClubPlayers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ClubPlayers
+     * const clubPlayer = await prisma.clubPlayer.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     *
+     */
+    updateMany<T extends ClubPlayerUpdateManyArgs>(
+      args: SelectSubset<T, ClubPlayerUpdateManyArgs<ExtArgs>>
+    ): Prisma.PrismaPromise<BatchPayload>;
+
+    /**
+     * Create or update one ClubPlayer.
+     * @param {ClubPlayerUpsertArgs} args - Arguments to update or create a ClubPlayer.
+     * @example
+     * // Update or create a ClubPlayer
+     * const clubPlayer = await prisma.clubPlayer.upsert({
+     *   create: {
+     *     // ... data to create a ClubPlayer
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ClubPlayer we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClubPlayerUpsertArgs>(
+      args: SelectSubset<T, ClubPlayerUpsertArgs<ExtArgs>>
+    ): Prisma__ClubPlayerClient<
+      $Result.GetResult<Prisma.$ClubPlayerPayload<ExtArgs>, T, 'upsert'>,
+      never,
+      ExtArgs
+    >;
+
+    /**
+     * Count the number of ClubPlayers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerCountArgs} args - Arguments to filter ClubPlayers to count.
+     * @example
+     * // Count the number of ClubPlayers
+     * const count = await prisma.clubPlayer.count({
+     *   where: {
+     *     // ... the filter for the ClubPlayers we want to count
+     *   }
+     * })
+     **/
+    count<T extends ClubPlayerCountArgs>(
+      args?: Subset<T, ClubPlayerCountArgs>
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClubPlayerCountAggregateOutputType>
+        : number
+    >;
+
+    /**
+     * Allows you to perform aggregations operations on a ClubPlayer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+     **/
+    aggregate<T extends ClubPlayerAggregateArgs>(
+      args: Subset<T, ClubPlayerAggregateArgs>
+    ): Prisma.PrismaPromise<GetClubPlayerAggregateType<T>>;
+
+    /**
+     * Group by ClubPlayer.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClubPlayerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     *
+     **/
+    groupBy<
+      T extends ClubPlayerGroupByArgs,
+      HasSelectOrTake extends Or<Extends<'skip', Keys<T>>, Extends<'take', Keys<T>>>,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClubPlayerGroupByArgs['orderBy'] }
+        : { orderBy?: ClubPlayerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+        ? `Error: "by" must not be empty.`
+        : HavingValid extends False
+          ? {
+              [P in HavingFields]: P extends ByFields
+                ? never
+                : P extends string
+                  ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+                  : [Error, 'Field ', P, ` in "having" needs to be provided in "by"`];
+            }[HavingFields]
+          : 'take' extends Keys<T>
+            ? 'orderBy' extends Keys<T>
+              ? ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields]
+              : 'Error: If you provide "take", you also need to provide "orderBy"'
+            : 'skip' extends Keys<T>
+              ? 'orderBy' extends Keys<T>
+                ? ByValid extends True
+                  ? {}
+                  : {
+                      [P in OrderFields]: P extends ByFields
+                        ? never
+                        : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                    }[OrderFields]
+                : 'Error: If you provide "skip", you also need to provide "orderBy"'
+              : ByValid extends True
+                ? {}
+                : {
+                    [P in OrderFields]: P extends ByFields
+                      ? never
+                      : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`;
+                  }[OrderFields],
+    >(
+      args: SubsetIntersection<T, ClubPlayerGroupByArgs, OrderByArg> & InputErrors
+    ): {} extends InputErrors ? GetClubPlayerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>;
+    /**
+     * Fields of the ClubPlayer model
+     */
+    readonly fields: ClubPlayerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ClubPlayer.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClubPlayerClient<
+    T,
+    Null = never,
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: 'PrismaPromise';
+    player<T extends PlayerDefaultArgs<ExtArgs> = {}>(
+      args?: Subset<T, PlayerDefaultArgs<ExtArgs>>
+    ): Prisma__PlayerClient<
+      $Result.GetResult<Prisma.$PlayerPayload<ExtArgs>, T, 'findUniqueOrThrow'> | Null,
+      Null,
+      ExtArgs
+    >;
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(
+      onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null,
+      onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null
+    ): $Utils.JsPromise<TResult1 | TResult2>;
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(
+      onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null
+    ): $Utils.JsPromise<T | TResult>;
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>;
+  }
+
+  /**
+   * Fields of the ClubPlayer model
+   */
+  interface ClubPlayerFieldRefs {
+    readonly id: FieldRef<'ClubPlayer', 'Int'>;
+    readonly playerId: FieldRef<'ClubPlayer', 'Int'>;
+    readonly sbc: FieldRef<'ClubPlayer', 'Boolean'>;
+    readonly squad: FieldRef<'ClubPlayer', 'Boolean'>;
+  }
+
+  // Custom InputTypes
+  /**
+   * ClubPlayer findUnique
+   */
+  export type ClubPlayerFindUniqueArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which ClubPlayer to fetch.
+     */
+    where: ClubPlayerWhereUniqueInput;
+  };
+
+  /**
+   * ClubPlayer findUniqueOrThrow
+   */
+  export type ClubPlayerFindUniqueOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which ClubPlayer to fetch.
+     */
+    where: ClubPlayerWhereUniqueInput;
+  };
+
+  /**
+   * ClubPlayer findFirst
+   */
+  export type ClubPlayerFindFirstArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which ClubPlayer to fetch.
+     */
+    where?: ClubPlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ClubPlayers to fetch.
+     */
+    orderBy?: ClubPlayerOrderByWithRelationInput | ClubPlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for ClubPlayers.
+     */
+    cursor?: ClubPlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ClubPlayers from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ClubPlayers.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of ClubPlayers.
+     */
+    distinct?: ClubPlayerScalarFieldEnum | ClubPlayerScalarFieldEnum[];
+  };
+
+  /**
+   * ClubPlayer findFirstOrThrow
+   */
+  export type ClubPlayerFindFirstOrThrowArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which ClubPlayer to fetch.
+     */
+    where?: ClubPlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ClubPlayers to fetch.
+     */
+    orderBy?: ClubPlayerOrderByWithRelationInput | ClubPlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for searching for ClubPlayers.
+     */
+    cursor?: ClubPlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ClubPlayers from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ClubPlayers.
+     */
+    skip?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     *
+     * Filter by unique combinations of ClubPlayers.
+     */
+    distinct?: ClubPlayerScalarFieldEnum | ClubPlayerScalarFieldEnum[];
+  };
+
+  /**
+   * ClubPlayer findMany
+   */
+  export type ClubPlayerFindManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter, which ClubPlayers to fetch.
+     */
+    where?: ClubPlayerWhereInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     *
+     * Determine the order of ClubPlayers to fetch.
+     */
+    orderBy?: ClubPlayerOrderByWithRelationInput | ClubPlayerOrderByWithRelationInput[];
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     *
+     * Sets the position for listing ClubPlayers.
+     */
+    cursor?: ClubPlayerWhereUniqueInput;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Take `±n` ClubPlayers from the position of the cursor.
+     */
+    take?: number;
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     *
+     * Skip the first `n` ClubPlayers.
+     */
+    skip?: number;
+    distinct?: ClubPlayerScalarFieldEnum | ClubPlayerScalarFieldEnum[];
+  };
+
+  /**
+   * ClubPlayer create
+   */
+  export type ClubPlayerCreateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * The data needed to create a ClubPlayer.
+     */
+    data: XOR<ClubPlayerCreateInput, ClubPlayerUncheckedCreateInput>;
+  };
+
+  /**
+   * ClubPlayer createMany
+   */
+  export type ClubPlayerCreateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to create many ClubPlayers.
+     */
+    data: ClubPlayerCreateManyInput | ClubPlayerCreateManyInput[];
+    skipDuplicates?: boolean;
+  };
+
+  /**
+   * ClubPlayer createManyAndReturn
+   */
+  export type ClubPlayerCreateManyAndReturnArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelectCreateManyAndReturn<ExtArgs> | null;
+    /**
+     * The data used to create many ClubPlayers.
+     */
+    data: ClubPlayerCreateManyInput | ClubPlayerCreateManyInput[];
+    skipDuplicates?: boolean;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerIncludeCreateManyAndReturn<ExtArgs> | null;
+  };
+
+  /**
+   * ClubPlayer update
+   */
+  export type ClubPlayerUpdateArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * The data needed to update a ClubPlayer.
+     */
+    data: XOR<ClubPlayerUpdateInput, ClubPlayerUncheckedUpdateInput>;
+    /**
+     * Choose, which ClubPlayer to update.
+     */
+    where: ClubPlayerWhereUniqueInput;
+  };
+
+  /**
+   * ClubPlayer updateMany
+   */
+  export type ClubPlayerUpdateManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * The data used to update ClubPlayers.
+     */
+    data: XOR<ClubPlayerUpdateManyMutationInput, ClubPlayerUncheckedUpdateManyInput>;
+    /**
+     * Filter which ClubPlayers to update
+     */
+    where?: ClubPlayerWhereInput;
+  };
+
+  /**
+   * ClubPlayer upsert
+   */
+  export type ClubPlayerUpsertArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * The filter to search for the ClubPlayer to update in case it exists.
+     */
+    where: ClubPlayerWhereUniqueInput;
+    /**
+     * In case the ClubPlayer found by the `where` argument doesn't exist, create a new ClubPlayer with this data.
+     */
+    create: XOR<ClubPlayerCreateInput, ClubPlayerUncheckedCreateInput>;
+    /**
+     * In case the ClubPlayer was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClubPlayerUpdateInput, ClubPlayerUncheckedUpdateInput>;
+  };
+
+  /**
+   * ClubPlayer delete
+   */
+  export type ClubPlayerDeleteArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
+    /**
+     * Filter which ClubPlayer to delete.
+     */
+    where: ClubPlayerWhereUniqueInput;
+  };
+
+  /**
+   * ClubPlayer deleteMany
+   */
+  export type ClubPlayerDeleteManyArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Filter which ClubPlayers to delete
+     */
+    where?: ClubPlayerWhereInput;
+  };
+
+  /**
+   * ClubPlayer without action
+   */
+  export type ClubPlayerDefaultArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = {
+    /**
+     * Select specific fields to fetch from the ClubPlayer
+     */
+    select?: ClubPlayerSelect<ExtArgs> | null;
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClubPlayerInclude<ExtArgs> | null;
   };
 
   /**
@@ -5342,53 +11887,95 @@ export namespace Prisma {
   export type TransactionIsolationLevel =
     (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel];
 
-  export const UserSessionScalarFieldEnum: {
+  export const QualityScalarFieldEnum: {
     id: 'id';
-    createdAt: 'createdAt';
-    updatedAt: 'updatedAt';
-    sessionId: 'sessionId';
-    data: 'data';
-  };
-
-  export type UserSessionScalarFieldEnum =
-    (typeof UserSessionScalarFieldEnum)[keyof typeof UserSessionScalarFieldEnum];
-
-  export const SbcChallengeScalarFieldEnum: {
-    id: 'id';
-    createdAt: 'createdAt';
-    updatedAt: 'updatedAt';
-    challengeId: 'challengeId';
     name: 'name';
-    requirements: 'requirements';
-    status: 'status';
   };
 
-  export type SbcChallengeScalarFieldEnum =
-    (typeof SbcChallengeScalarFieldEnum)[keyof typeof SbcChallengeScalarFieldEnum];
+  export type QualityScalarFieldEnum =
+    (typeof QualityScalarFieldEnum)[keyof typeof QualityScalarFieldEnum];
 
-  export const SbcSolutionScalarFieldEnum: {
+  export const RarityScalarFieldEnum: {
     id: 'id';
-    createdAt: 'createdAt';
-    challengeId: 'challengeId';
-    players: 'players';
-    cost: 'cost';
-    rating: 'rating';
-    isValid: 'isValid';
+    name: 'name';
   };
 
-  export type SbcSolutionScalarFieldEnum =
-    (typeof SbcSolutionScalarFieldEnum)[keyof typeof SbcSolutionScalarFieldEnum];
+  export type RarityScalarFieldEnum =
+    (typeof RarityScalarFieldEnum)[keyof typeof RarityScalarFieldEnum];
 
-  export const CompanionAppStateScalarFieldEnum: {
+  export const CountryScalarFieldEnum: {
     id: 'id';
-    createdAt: 'createdAt';
-    updatedAt: 'updatedAt';
-    state: 'state';
-    sessionId: 'sessionId';
+    name: 'name';
   };
 
-  export type CompanionAppStateScalarFieldEnum =
-    (typeof CompanionAppStateScalarFieldEnum)[keyof typeof CompanionAppStateScalarFieldEnum];
+  export type CountryScalarFieldEnum =
+    (typeof CountryScalarFieldEnum)[keyof typeof CountryScalarFieldEnum];
+
+  export const PositionScalarFieldEnum: {
+    id: 'id';
+    name: 'name';
+  };
+
+  export type PositionScalarFieldEnum =
+    (typeof PositionScalarFieldEnum)[keyof typeof PositionScalarFieldEnum];
+
+  export const PlayerPositionScalarFieldEnum: {
+    id: 'id';
+    playerId: 'playerId';
+    positionId: 'positionId';
+  };
+
+  export type PlayerPositionScalarFieldEnum =
+    (typeof PlayerPositionScalarFieldEnum)[keyof typeof PlayerPositionScalarFieldEnum];
+
+  export const LeagueScalarFieldEnum: {
+    id: 'id';
+    name: 'name';
+    countryId: 'countryId';
+  };
+
+  export type LeagueScalarFieldEnum =
+    (typeof LeagueScalarFieldEnum)[keyof typeof LeagueScalarFieldEnum];
+
+  export const ClubScalarFieldEnum: {
+    id: 'id';
+    name: 'name';
+    countryId: 'countryId';
+    leagueId: 'leagueId';
+  };
+
+  export type ClubScalarFieldEnum = (typeof ClubScalarFieldEnum)[keyof typeof ClubScalarFieldEnum];
+
+  export const PlayerScalarFieldEnum: {
+    id: 'id';
+    displayName: 'displayName';
+    fullName: 'fullName';
+    qualityId: 'qualityId';
+    rarityId: 'rarityId';
+    ovr: 'ovr';
+    rating1: 'rating1';
+    rating2: 'rating2';
+    rating3: 'rating3';
+    rating4: 'rating4';
+    rating5: 'rating5';
+    rating6: 'rating6';
+    countryId: 'countryId';
+    clubId: 'clubId';
+    leagueId: 'leagueId';
+  };
+
+  export type PlayerScalarFieldEnum =
+    (typeof PlayerScalarFieldEnum)[keyof typeof PlayerScalarFieldEnum];
+
+  export const ClubPlayerScalarFieldEnum: {
+    id: 'id';
+    playerId: 'playerId';
+    sbc: 'sbc';
+    squad: 'squad';
+  };
+
+  export type ClubPlayerScalarFieldEnum =
+    (typeof ClubPlayerScalarFieldEnum)[keyof typeof ClubPlayerScalarFieldEnum];
 
   export const SortOrder: {
     asc: 'asc';
@@ -5397,20 +11984,6 @@ export namespace Prisma {
 
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder];
 
-  export const NullableJsonNullValueInput: {
-    DbNull: typeof DbNull;
-    JsonNull: typeof JsonNull;
-  };
-
-  export type NullableJsonNullValueInput =
-    (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput];
-
-  export const JsonNullValueInput: {
-    JsonNull: typeof JsonNull;
-  };
-
-  export type JsonNullValueInput = (typeof JsonNullValueInput)[keyof typeof JsonNullValueInput];
-
   export const QueryMode: {
     default: 'default';
     insensitive: 'insensitive';
@@ -5418,62 +11991,9 @@ export namespace Prisma {
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode];
 
-  export const JsonNullValueFilter: {
-    DbNull: typeof DbNull;
-    JsonNull: typeof JsonNull;
-    AnyNull: typeof AnyNull;
-  };
-
-  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter];
-
-  export const NullsOrder: {
-    first: 'first';
-    last: 'last';
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder];
-
   /**
    * Field references
    */
-
-  /**
-   * Reference to a field of type 'String'
-   */
-  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>;
-
-  /**
-   * Reference to a field of type 'String[]'
-   */
-  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>;
-
-  /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>;
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<
-    $PrismaModel,
-    'DateTime[]'
-  >;
-
-  /**
-   * Reference to a field of type 'Json'
-   */
-  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>;
-
-  /**
-   * Reference to a field of type 'Float'
-   */
-  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>;
-
-  /**
-   * Reference to a field of type 'Float[]'
-   */
-  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>;
 
   /**
    * Reference to a field of type 'Int'
@@ -5486,519 +12006,1043 @@ export namespace Prisma {
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>;
 
   /**
+   * Reference to a field of type 'String'
+   */
+  export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>;
+
+  /**
+   * Reference to a field of type 'String[]'
+   */
+  export type ListStringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String[]'>;
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>;
 
   /**
+   * Reference to a field of type 'Float'
+   */
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>;
+
+  /**
+   * Reference to a field of type 'Float[]'
+   */
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>;
+
+  /**
    * Deep Input Types
    */
 
-  export type UserSessionWhereInput = {
-    AND?: UserSessionWhereInput | UserSessionWhereInput[];
-    OR?: UserSessionWhereInput[];
-    NOT?: UserSessionWhereInput | UserSessionWhereInput[];
-    id?: StringFilter<'UserSession'> | string;
-    createdAt?: DateTimeFilter<'UserSession'> | Date | string;
-    updatedAt?: DateTimeFilter<'UserSession'> | Date | string;
-    sessionId?: StringFilter<'UserSession'> | string;
-    data?: JsonNullableFilter<'UserSession'>;
+  export type QualityWhereInput = {
+    AND?: QualityWhereInput | QualityWhereInput[];
+    OR?: QualityWhereInput[];
+    NOT?: QualityWhereInput | QualityWhereInput[];
+    id?: IntFilter<'Quality'> | number;
+    name?: StringFilter<'Quality'> | string;
+    players?: PlayerListRelationFilter;
   };
 
-  export type UserSessionOrderByWithRelationInput = {
+  export type QualityOrderByWithRelationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
-    data?: SortOrderInput | SortOrder;
-  };
-
-  export type UserSessionWhereUniqueInput = Prisma.AtLeast<
-    {
-      id?: string;
-      sessionId?: string;
-      AND?: UserSessionWhereInput | UserSessionWhereInput[];
-      OR?: UserSessionWhereInput[];
-      NOT?: UserSessionWhereInput | UserSessionWhereInput[];
-      createdAt?: DateTimeFilter<'UserSession'> | Date | string;
-      updatedAt?: DateTimeFilter<'UserSession'> | Date | string;
-      data?: JsonNullableFilter<'UserSession'>;
-    },
-    'id' | 'sessionId'
-  >;
-
-  export type UserSessionOrderByWithAggregationInput = {
-    id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
-    data?: SortOrderInput | SortOrder;
-    _count?: UserSessionCountOrderByAggregateInput;
-    _max?: UserSessionMaxOrderByAggregateInput;
-    _min?: UserSessionMinOrderByAggregateInput;
-  };
-
-  export type UserSessionScalarWhereWithAggregatesInput = {
-    AND?: UserSessionScalarWhereWithAggregatesInput | UserSessionScalarWhereWithAggregatesInput[];
-    OR?: UserSessionScalarWhereWithAggregatesInput[];
-    NOT?: UserSessionScalarWhereWithAggregatesInput | UserSessionScalarWhereWithAggregatesInput[];
-    id?: StringWithAggregatesFilter<'UserSession'> | string;
-    createdAt?: DateTimeWithAggregatesFilter<'UserSession'> | Date | string;
-    updatedAt?: DateTimeWithAggregatesFilter<'UserSession'> | Date | string;
-    sessionId?: StringWithAggregatesFilter<'UserSession'> | string;
-    data?: JsonNullableWithAggregatesFilter<'UserSession'>;
-  };
-
-  export type SbcChallengeWhereInput = {
-    AND?: SbcChallengeWhereInput | SbcChallengeWhereInput[];
-    OR?: SbcChallengeWhereInput[];
-    NOT?: SbcChallengeWhereInput | SbcChallengeWhereInput[];
-    id?: StringFilter<'SbcChallenge'> | string;
-    createdAt?: DateTimeFilter<'SbcChallenge'> | Date | string;
-    updatedAt?: DateTimeFilter<'SbcChallenge'> | Date | string;
-    challengeId?: StringFilter<'SbcChallenge'> | string;
-    name?: StringFilter<'SbcChallenge'> | string;
-    requirements?: JsonFilter<'SbcChallenge'>;
-    status?: StringFilter<'SbcChallenge'> | string;
-    solutions?: SbcSolutionListRelationFilter;
-  };
-
-  export type SbcChallengeOrderByWithRelationInput = {
-    id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    challengeId?: SortOrder;
     name?: SortOrder;
-    requirements?: SortOrder;
-    status?: SortOrder;
-    solutions?: SbcSolutionOrderByRelationAggregateInput;
+    players?: PlayerOrderByRelationAggregateInput;
   };
 
-  export type SbcChallengeWhereUniqueInput = Prisma.AtLeast<
+  export type QualityWhereUniqueInput = Prisma.AtLeast<
     {
-      id?: string;
-      challengeId?: string;
-      AND?: SbcChallengeWhereInput | SbcChallengeWhereInput[];
-      OR?: SbcChallengeWhereInput[];
-      NOT?: SbcChallengeWhereInput | SbcChallengeWhereInput[];
-      createdAt?: DateTimeFilter<'SbcChallenge'> | Date | string;
-      updatedAt?: DateTimeFilter<'SbcChallenge'> | Date | string;
-      name?: StringFilter<'SbcChallenge'> | string;
-      requirements?: JsonFilter<'SbcChallenge'>;
-      status?: StringFilter<'SbcChallenge'> | string;
-      solutions?: SbcSolutionListRelationFilter;
+      id?: number;
+      name?: string;
+      AND?: QualityWhereInput | QualityWhereInput[];
+      OR?: QualityWhereInput[];
+      NOT?: QualityWhereInput | QualityWhereInput[];
+      players?: PlayerListRelationFilter;
     },
-    'id' | 'challengeId'
+    'id' | 'name'
   >;
 
-  export type SbcChallengeOrderByWithAggregationInput = {
+  export type QualityOrderByWithAggregationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    challengeId?: SortOrder;
     name?: SortOrder;
-    requirements?: SortOrder;
-    status?: SortOrder;
-    _count?: SbcChallengeCountOrderByAggregateInput;
-    _max?: SbcChallengeMaxOrderByAggregateInput;
-    _min?: SbcChallengeMinOrderByAggregateInput;
+    _count?: QualityCountOrderByAggregateInput;
+    _avg?: QualityAvgOrderByAggregateInput;
+    _max?: QualityMaxOrderByAggregateInput;
+    _min?: QualityMinOrderByAggregateInput;
+    _sum?: QualitySumOrderByAggregateInput;
   };
 
-  export type SbcChallengeScalarWhereWithAggregatesInput = {
-    AND?: SbcChallengeScalarWhereWithAggregatesInput | SbcChallengeScalarWhereWithAggregatesInput[];
-    OR?: SbcChallengeScalarWhereWithAggregatesInput[];
-    NOT?: SbcChallengeScalarWhereWithAggregatesInput | SbcChallengeScalarWhereWithAggregatesInput[];
-    id?: StringWithAggregatesFilter<'SbcChallenge'> | string;
-    createdAt?: DateTimeWithAggregatesFilter<'SbcChallenge'> | Date | string;
-    updatedAt?: DateTimeWithAggregatesFilter<'SbcChallenge'> | Date | string;
-    challengeId?: StringWithAggregatesFilter<'SbcChallenge'> | string;
-    name?: StringWithAggregatesFilter<'SbcChallenge'> | string;
-    requirements?: JsonWithAggregatesFilter<'SbcChallenge'>;
-    status?: StringWithAggregatesFilter<'SbcChallenge'> | string;
+  export type QualityScalarWhereWithAggregatesInput = {
+    AND?: QualityScalarWhereWithAggregatesInput | QualityScalarWhereWithAggregatesInput[];
+    OR?: QualityScalarWhereWithAggregatesInput[];
+    NOT?: QualityScalarWhereWithAggregatesInput | QualityScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Quality'> | number;
+    name?: StringWithAggregatesFilter<'Quality'> | string;
   };
 
-  export type SbcSolutionWhereInput = {
-    AND?: SbcSolutionWhereInput | SbcSolutionWhereInput[];
-    OR?: SbcSolutionWhereInput[];
-    NOT?: SbcSolutionWhereInput | SbcSolutionWhereInput[];
-    id?: StringFilter<'SbcSolution'> | string;
-    createdAt?: DateTimeFilter<'SbcSolution'> | Date | string;
-    challengeId?: StringFilter<'SbcSolution'> | string;
-    players?: JsonFilter<'SbcSolution'>;
-    cost?: FloatNullableFilter<'SbcSolution'> | number | null;
-    rating?: IntNullableFilter<'SbcSolution'> | number | null;
-    isValid?: BoolFilter<'SbcSolution'> | boolean;
-    challenge?: XOR<SbcChallengeRelationFilter, SbcChallengeWhereInput>;
+  export type RarityWhereInput = {
+    AND?: RarityWhereInput | RarityWhereInput[];
+    OR?: RarityWhereInput[];
+    NOT?: RarityWhereInput | RarityWhereInput[];
+    id?: IntFilter<'Rarity'> | number;
+    name?: StringFilter<'Rarity'> | string;
+    players?: PlayerListRelationFilter;
   };
 
-  export type SbcSolutionOrderByWithRelationInput = {
+  export type RarityOrderByWithRelationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    challengeId?: SortOrder;
-    players?: SortOrder;
-    cost?: SortOrderInput | SortOrder;
-    rating?: SortOrderInput | SortOrder;
-    isValid?: SortOrder;
-    challenge?: SbcChallengeOrderByWithRelationInput;
+    name?: SortOrder;
+    players?: PlayerOrderByRelationAggregateInput;
   };
 
-  export type SbcSolutionWhereUniqueInput = Prisma.AtLeast<
+  export type RarityWhereUniqueInput = Prisma.AtLeast<
     {
-      id?: string;
-      AND?: SbcSolutionWhereInput | SbcSolutionWhereInput[];
-      OR?: SbcSolutionWhereInput[];
-      NOT?: SbcSolutionWhereInput | SbcSolutionWhereInput[];
-      createdAt?: DateTimeFilter<'SbcSolution'> | Date | string;
-      challengeId?: StringFilter<'SbcSolution'> | string;
-      players?: JsonFilter<'SbcSolution'>;
-      cost?: FloatNullableFilter<'SbcSolution'> | number | null;
-      rating?: IntNullableFilter<'SbcSolution'> | number | null;
-      isValid?: BoolFilter<'SbcSolution'> | boolean;
-      challenge?: XOR<SbcChallengeRelationFilter, SbcChallengeWhereInput>;
+      id?: number;
+      name?: string;
+      AND?: RarityWhereInput | RarityWhereInput[];
+      OR?: RarityWhereInput[];
+      NOT?: RarityWhereInput | RarityWhereInput[];
+      players?: PlayerListRelationFilter;
     },
-    'id'
+    'id' | 'name'
   >;
 
-  export type SbcSolutionOrderByWithAggregationInput = {
+  export type RarityOrderByWithAggregationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    challengeId?: SortOrder;
-    players?: SortOrder;
-    cost?: SortOrderInput | SortOrder;
-    rating?: SortOrderInput | SortOrder;
-    isValid?: SortOrder;
-    _count?: SbcSolutionCountOrderByAggregateInput;
-    _avg?: SbcSolutionAvgOrderByAggregateInput;
-    _max?: SbcSolutionMaxOrderByAggregateInput;
-    _min?: SbcSolutionMinOrderByAggregateInput;
-    _sum?: SbcSolutionSumOrderByAggregateInput;
+    name?: SortOrder;
+    _count?: RarityCountOrderByAggregateInput;
+    _avg?: RarityAvgOrderByAggregateInput;
+    _max?: RarityMaxOrderByAggregateInput;
+    _min?: RarityMinOrderByAggregateInput;
+    _sum?: RaritySumOrderByAggregateInput;
   };
 
-  export type SbcSolutionScalarWhereWithAggregatesInput = {
-    AND?: SbcSolutionScalarWhereWithAggregatesInput | SbcSolutionScalarWhereWithAggregatesInput[];
-    OR?: SbcSolutionScalarWhereWithAggregatesInput[];
-    NOT?: SbcSolutionScalarWhereWithAggregatesInput | SbcSolutionScalarWhereWithAggregatesInput[];
-    id?: StringWithAggregatesFilter<'SbcSolution'> | string;
-    createdAt?: DateTimeWithAggregatesFilter<'SbcSolution'> | Date | string;
-    challengeId?: StringWithAggregatesFilter<'SbcSolution'> | string;
-    players?: JsonWithAggregatesFilter<'SbcSolution'>;
-    cost?: FloatNullableWithAggregatesFilter<'SbcSolution'> | number | null;
-    rating?: IntNullableWithAggregatesFilter<'SbcSolution'> | number | null;
-    isValid?: BoolWithAggregatesFilter<'SbcSolution'> | boolean;
+  export type RarityScalarWhereWithAggregatesInput = {
+    AND?: RarityScalarWhereWithAggregatesInput | RarityScalarWhereWithAggregatesInput[];
+    OR?: RarityScalarWhereWithAggregatesInput[];
+    NOT?: RarityScalarWhereWithAggregatesInput | RarityScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Rarity'> | number;
+    name?: StringWithAggregatesFilter<'Rarity'> | string;
   };
 
-  export type CompanionAppStateWhereInput = {
-    AND?: CompanionAppStateWhereInput | CompanionAppStateWhereInput[];
-    OR?: CompanionAppStateWhereInput[];
-    NOT?: CompanionAppStateWhereInput | CompanionAppStateWhereInput[];
-    id?: StringFilter<'CompanionAppState'> | string;
-    createdAt?: DateTimeFilter<'CompanionAppState'> | Date | string;
-    updatedAt?: DateTimeFilter<'CompanionAppState'> | Date | string;
-    state?: JsonFilter<'CompanionAppState'>;
-    sessionId?: StringNullableFilter<'CompanionAppState'> | string | null;
+  export type CountryWhereInput = {
+    AND?: CountryWhereInput | CountryWhereInput[];
+    OR?: CountryWhereInput[];
+    NOT?: CountryWhereInput | CountryWhereInput[];
+    id?: IntFilter<'Country'> | number;
+    name?: StringFilter<'Country'> | string;
+    clubs?: ClubListRelationFilter;
+    leagues?: LeagueListRelationFilter;
+    players?: PlayerListRelationFilter;
   };
 
-  export type CompanionAppStateOrderByWithRelationInput = {
+  export type CountryOrderByWithRelationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    state?: SortOrder;
-    sessionId?: SortOrderInput | SortOrder;
+    name?: SortOrder;
+    clubs?: ClubOrderByRelationAggregateInput;
+    leagues?: LeagueOrderByRelationAggregateInput;
+    players?: PlayerOrderByRelationAggregateInput;
   };
 
-  export type CompanionAppStateWhereUniqueInput = Prisma.AtLeast<
+  export type CountryWhereUniqueInput = Prisma.AtLeast<
     {
-      id?: string;
-      AND?: CompanionAppStateWhereInput | CompanionAppStateWhereInput[];
-      OR?: CompanionAppStateWhereInput[];
-      NOT?: CompanionAppStateWhereInput | CompanionAppStateWhereInput[];
-      createdAt?: DateTimeFilter<'CompanionAppState'> | Date | string;
-      updatedAt?: DateTimeFilter<'CompanionAppState'> | Date | string;
-      state?: JsonFilter<'CompanionAppState'>;
-      sessionId?: StringNullableFilter<'CompanionAppState'> | string | null;
+      id?: number;
+      name?: string;
+      AND?: CountryWhereInput | CountryWhereInput[];
+      OR?: CountryWhereInput[];
+      NOT?: CountryWhereInput | CountryWhereInput[];
+      clubs?: ClubListRelationFilter;
+      leagues?: LeagueListRelationFilter;
+      players?: PlayerListRelationFilter;
     },
-    'id'
+    'id' | 'name'
   >;
 
-  export type CompanionAppStateOrderByWithAggregationInput = {
+  export type CountryOrderByWithAggregationInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    state?: SortOrder;
-    sessionId?: SortOrderInput | SortOrder;
-    _count?: CompanionAppStateCountOrderByAggregateInput;
-    _max?: CompanionAppStateMaxOrderByAggregateInput;
-    _min?: CompanionAppStateMinOrderByAggregateInput;
+    name?: SortOrder;
+    _count?: CountryCountOrderByAggregateInput;
+    _avg?: CountryAvgOrderByAggregateInput;
+    _max?: CountryMaxOrderByAggregateInput;
+    _min?: CountryMinOrderByAggregateInput;
+    _sum?: CountrySumOrderByAggregateInput;
   };
 
-  export type CompanionAppStateScalarWhereWithAggregatesInput = {
+  export type CountryScalarWhereWithAggregatesInput = {
+    AND?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[];
+    OR?: CountryScalarWhereWithAggregatesInput[];
+    NOT?: CountryScalarWhereWithAggregatesInput | CountryScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Country'> | number;
+    name?: StringWithAggregatesFilter<'Country'> | string;
+  };
+
+  export type PositionWhereInput = {
+    AND?: PositionWhereInput | PositionWhereInput[];
+    OR?: PositionWhereInput[];
+    NOT?: PositionWhereInput | PositionWhereInput[];
+    id?: IntFilter<'Position'> | number;
+    name?: StringFilter<'Position'> | string;
+    players?: PlayerPositionListRelationFilter;
+  };
+
+  export type PositionOrderByWithRelationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    players?: PlayerPositionOrderByRelationAggregateInput;
+  };
+
+  export type PositionWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      name?: string;
+      AND?: PositionWhereInput | PositionWhereInput[];
+      OR?: PositionWhereInput[];
+      NOT?: PositionWhereInput | PositionWhereInput[];
+      players?: PlayerPositionListRelationFilter;
+    },
+    'id' | 'name'
+  >;
+
+  export type PositionOrderByWithAggregationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    _count?: PositionCountOrderByAggregateInput;
+    _avg?: PositionAvgOrderByAggregateInput;
+    _max?: PositionMaxOrderByAggregateInput;
+    _min?: PositionMinOrderByAggregateInput;
+    _sum?: PositionSumOrderByAggregateInput;
+  };
+
+  export type PositionScalarWhereWithAggregatesInput = {
+    AND?: PositionScalarWhereWithAggregatesInput | PositionScalarWhereWithAggregatesInput[];
+    OR?: PositionScalarWhereWithAggregatesInput[];
+    NOT?: PositionScalarWhereWithAggregatesInput | PositionScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Position'> | number;
+    name?: StringWithAggregatesFilter<'Position'> | string;
+  };
+
+  export type PlayerPositionWhereInput = {
+    AND?: PlayerPositionWhereInput | PlayerPositionWhereInput[];
+    OR?: PlayerPositionWhereInput[];
+    NOT?: PlayerPositionWhereInput | PlayerPositionWhereInput[];
+    id?: IntFilter<'PlayerPosition'> | number;
+    playerId?: IntFilter<'PlayerPosition'> | number;
+    positionId?: IntFilter<'PlayerPosition'> | number;
+    player?: XOR<PlayerRelationFilter, PlayerWhereInput>;
+    position?: XOR<PositionRelationFilter, PositionWhereInput>;
+  };
+
+  export type PlayerPositionOrderByWithRelationInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+    player?: PlayerOrderByWithRelationInput;
+    position?: PositionOrderByWithRelationInput;
+  };
+
+  export type PlayerPositionWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      playerId_positionId?: PlayerPositionPlayerIdPositionIdCompoundUniqueInput;
+      AND?: PlayerPositionWhereInput | PlayerPositionWhereInput[];
+      OR?: PlayerPositionWhereInput[];
+      NOT?: PlayerPositionWhereInput | PlayerPositionWhereInput[];
+      playerId?: IntFilter<'PlayerPosition'> | number;
+      positionId?: IntFilter<'PlayerPosition'> | number;
+      player?: XOR<PlayerRelationFilter, PlayerWhereInput>;
+      position?: XOR<PositionRelationFilter, PositionWhereInput>;
+    },
+    'id' | 'playerId_positionId'
+  >;
+
+  export type PlayerPositionOrderByWithAggregationInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+    _count?: PlayerPositionCountOrderByAggregateInput;
+    _avg?: PlayerPositionAvgOrderByAggregateInput;
+    _max?: PlayerPositionMaxOrderByAggregateInput;
+    _min?: PlayerPositionMinOrderByAggregateInput;
+    _sum?: PlayerPositionSumOrderByAggregateInput;
+  };
+
+  export type PlayerPositionScalarWhereWithAggregatesInput = {
     AND?:
-      | CompanionAppStateScalarWhereWithAggregatesInput
-      | CompanionAppStateScalarWhereWithAggregatesInput[];
-    OR?: CompanionAppStateScalarWhereWithAggregatesInput[];
+      | PlayerPositionScalarWhereWithAggregatesInput
+      | PlayerPositionScalarWhereWithAggregatesInput[];
+    OR?: PlayerPositionScalarWhereWithAggregatesInput[];
     NOT?:
-      | CompanionAppStateScalarWhereWithAggregatesInput
-      | CompanionAppStateScalarWhereWithAggregatesInput[];
-    id?: StringWithAggregatesFilter<'CompanionAppState'> | string;
-    createdAt?: DateTimeWithAggregatesFilter<'CompanionAppState'> | Date | string;
-    updatedAt?: DateTimeWithAggregatesFilter<'CompanionAppState'> | Date | string;
-    state?: JsonWithAggregatesFilter<'CompanionAppState'>;
-    sessionId?: StringNullableWithAggregatesFilter<'CompanionAppState'> | string | null;
+      | PlayerPositionScalarWhereWithAggregatesInput
+      | PlayerPositionScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'PlayerPosition'> | number;
+    playerId?: IntWithAggregatesFilter<'PlayerPosition'> | number;
+    positionId?: IntWithAggregatesFilter<'PlayerPosition'> | number;
   };
 
-  export type UserSessionCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    sessionId: string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type LeagueWhereInput = {
+    AND?: LeagueWhereInput | LeagueWhereInput[];
+    OR?: LeagueWhereInput[];
+    NOT?: LeagueWhereInput | LeagueWhereInput[];
+    id?: IntFilter<'League'> | number;
+    name?: StringFilter<'League'> | string;
+    countryId?: IntFilter<'League'> | number;
+    country?: XOR<CountryRelationFilter, CountryWhereInput>;
+    clubs?: ClubListRelationFilter;
+    players?: PlayerListRelationFilter;
   };
 
-  export type UserSessionUncheckedCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    sessionId: string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type LeagueOrderByWithRelationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    country?: CountryOrderByWithRelationInput;
+    clubs?: ClubOrderByRelationAggregateInput;
+    players?: PlayerOrderByRelationAggregateInput;
   };
 
-  export type UserSessionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    sessionId?: StringFieldUpdateOperationsInput | string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type LeagueWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      name_countryId?: LeagueNameCountryIdCompoundUniqueInput;
+      AND?: LeagueWhereInput | LeagueWhereInput[];
+      OR?: LeagueWhereInput[];
+      NOT?: LeagueWhereInput | LeagueWhereInput[];
+      name?: StringFilter<'League'> | string;
+      countryId?: IntFilter<'League'> | number;
+      country?: XOR<CountryRelationFilter, CountryWhereInput>;
+      clubs?: ClubListRelationFilter;
+      players?: PlayerListRelationFilter;
+    },
+    'id' | 'name_countryId'
+  >;
+
+  export type LeagueOrderByWithAggregationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    _count?: LeagueCountOrderByAggregateInput;
+    _avg?: LeagueAvgOrderByAggregateInput;
+    _max?: LeagueMaxOrderByAggregateInput;
+    _min?: LeagueMinOrderByAggregateInput;
+    _sum?: LeagueSumOrderByAggregateInput;
   };
 
-  export type UserSessionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    sessionId?: StringFieldUpdateOperationsInput | string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type LeagueScalarWhereWithAggregatesInput = {
+    AND?: LeagueScalarWhereWithAggregatesInput | LeagueScalarWhereWithAggregatesInput[];
+    OR?: LeagueScalarWhereWithAggregatesInput[];
+    NOT?: LeagueScalarWhereWithAggregatesInput | LeagueScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'League'> | number;
+    name?: StringWithAggregatesFilter<'League'> | string;
+    countryId?: IntWithAggregatesFilter<'League'> | number;
   };
 
-  export type UserSessionCreateManyInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    sessionId: string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type ClubWhereInput = {
+    AND?: ClubWhereInput | ClubWhereInput[];
+    OR?: ClubWhereInput[];
+    NOT?: ClubWhereInput | ClubWhereInput[];
+    id?: IntFilter<'Club'> | number;
+    name?: StringFilter<'Club'> | string;
+    countryId?: IntFilter<'Club'> | number;
+    leagueId?: IntFilter<'Club'> | number;
+    country?: XOR<CountryRelationFilter, CountryWhereInput>;
+    league?: XOR<LeagueRelationFilter, LeagueWhereInput>;
+    players?: PlayerListRelationFilter;
   };
 
-  export type UserSessionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    sessionId?: StringFieldUpdateOperationsInput | string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type ClubOrderByWithRelationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+    country?: CountryOrderByWithRelationInput;
+    league?: LeagueOrderByWithRelationInput;
+    players?: PlayerOrderByRelationAggregateInput;
   };
 
-  export type UserSessionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    sessionId?: StringFieldUpdateOperationsInput | string;
-    data?: NullableJsonNullValueInput | InputJsonValue;
+  export type ClubWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      name_leagueId?: ClubNameLeagueIdCompoundUniqueInput;
+      AND?: ClubWhereInput | ClubWhereInput[];
+      OR?: ClubWhereInput[];
+      NOT?: ClubWhereInput | ClubWhereInput[];
+      name?: StringFilter<'Club'> | string;
+      countryId?: IntFilter<'Club'> | number;
+      leagueId?: IntFilter<'Club'> | number;
+      country?: XOR<CountryRelationFilter, CountryWhereInput>;
+      league?: XOR<LeagueRelationFilter, LeagueWhereInput>;
+      players?: PlayerListRelationFilter;
+    },
+    'id' | 'name_leagueId'
+  >;
+
+  export type ClubOrderByWithAggregationInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+    _count?: ClubCountOrderByAggregateInput;
+    _avg?: ClubAvgOrderByAggregateInput;
+    _max?: ClubMaxOrderByAggregateInput;
+    _min?: ClubMinOrderByAggregateInput;
+    _sum?: ClubSumOrderByAggregateInput;
   };
 
-  export type SbcChallengeCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    challengeId: string;
+  export type ClubScalarWhereWithAggregatesInput = {
+    AND?: ClubScalarWhereWithAggregatesInput | ClubScalarWhereWithAggregatesInput[];
+    OR?: ClubScalarWhereWithAggregatesInput[];
+    NOT?: ClubScalarWhereWithAggregatesInput | ClubScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Club'> | number;
+    name?: StringWithAggregatesFilter<'Club'> | string;
+    countryId?: IntWithAggregatesFilter<'Club'> | number;
+    leagueId?: IntWithAggregatesFilter<'Club'> | number;
+  };
+
+  export type PlayerWhereInput = {
+    AND?: PlayerWhereInput | PlayerWhereInput[];
+    OR?: PlayerWhereInput[];
+    NOT?: PlayerWhereInput | PlayerWhereInput[];
+    id?: IntFilter<'Player'> | number;
+    displayName?: StringFilter<'Player'> | string;
+    fullName?: StringFilter<'Player'> | string;
+    qualityId?: IntFilter<'Player'> | number;
+    rarityId?: IntFilter<'Player'> | number;
+    ovr?: IntFilter<'Player'> | number;
+    rating1?: IntFilter<'Player'> | number;
+    rating2?: IntFilter<'Player'> | number;
+    rating3?: IntFilter<'Player'> | number;
+    rating4?: IntFilter<'Player'> | number;
+    rating5?: IntFilter<'Player'> | number;
+    rating6?: IntFilter<'Player'> | number;
+    countryId?: IntFilter<'Player'> | number;
+    clubId?: IntFilter<'Player'> | number;
+    leagueId?: IntFilter<'Player'> | number;
+    positions?: PlayerPositionListRelationFilter;
+    clubPlayers?: ClubPlayerListRelationFilter;
+    quality?: XOR<QualityRelationFilter, QualityWhereInput>;
+    rarity?: XOR<RarityRelationFilter, RarityWhereInput>;
+    country?: XOR<CountryRelationFilter, CountryWhereInput>;
+    league?: XOR<LeagueRelationFilter, LeagueWhereInput>;
+    club?: XOR<ClubRelationFilter, ClubWhereInput>;
+  };
+
+  export type PlayerOrderByWithRelationInput = {
+    id?: SortOrder;
+    displayName?: SortOrder;
+    fullName?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+    positions?: PlayerPositionOrderByRelationAggregateInput;
+    clubPlayers?: ClubPlayerOrderByRelationAggregateInput;
+    quality?: QualityOrderByWithRelationInput;
+    rarity?: RarityOrderByWithRelationInput;
+    country?: CountryOrderByWithRelationInput;
+    league?: LeagueOrderByWithRelationInput;
+    club?: ClubOrderByWithRelationInput;
+  };
+
+  export type PlayerWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      displayName_ovr_qualityId_rarityId?: PlayerDisplayNameOvrQualityIdRarityIdCompoundUniqueInput;
+      AND?: PlayerWhereInput | PlayerWhereInput[];
+      OR?: PlayerWhereInput[];
+      NOT?: PlayerWhereInput | PlayerWhereInput[];
+      displayName?: StringFilter<'Player'> | string;
+      fullName?: StringFilter<'Player'> | string;
+      qualityId?: IntFilter<'Player'> | number;
+      rarityId?: IntFilter<'Player'> | number;
+      ovr?: IntFilter<'Player'> | number;
+      rating1?: IntFilter<'Player'> | number;
+      rating2?: IntFilter<'Player'> | number;
+      rating3?: IntFilter<'Player'> | number;
+      rating4?: IntFilter<'Player'> | number;
+      rating5?: IntFilter<'Player'> | number;
+      rating6?: IntFilter<'Player'> | number;
+      countryId?: IntFilter<'Player'> | number;
+      clubId?: IntFilter<'Player'> | number;
+      leagueId?: IntFilter<'Player'> | number;
+      positions?: PlayerPositionListRelationFilter;
+      clubPlayers?: ClubPlayerListRelationFilter;
+      quality?: XOR<QualityRelationFilter, QualityWhereInput>;
+      rarity?: XOR<RarityRelationFilter, RarityWhereInput>;
+      country?: XOR<CountryRelationFilter, CountryWhereInput>;
+      league?: XOR<LeagueRelationFilter, LeagueWhereInput>;
+      club?: XOR<ClubRelationFilter, ClubWhereInput>;
+    },
+    'id' | 'displayName_ovr_qualityId_rarityId'
+  >;
+
+  export type PlayerOrderByWithAggregationInput = {
+    id?: SortOrder;
+    displayName?: SortOrder;
+    fullName?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+    _count?: PlayerCountOrderByAggregateInput;
+    _avg?: PlayerAvgOrderByAggregateInput;
+    _max?: PlayerMaxOrderByAggregateInput;
+    _min?: PlayerMinOrderByAggregateInput;
+    _sum?: PlayerSumOrderByAggregateInput;
+  };
+
+  export type PlayerScalarWhereWithAggregatesInput = {
+    AND?: PlayerScalarWhereWithAggregatesInput | PlayerScalarWhereWithAggregatesInput[];
+    OR?: PlayerScalarWhereWithAggregatesInput[];
+    NOT?: PlayerScalarWhereWithAggregatesInput | PlayerScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'Player'> | number;
+    displayName?: StringWithAggregatesFilter<'Player'> | string;
+    fullName?: StringWithAggregatesFilter<'Player'> | string;
+    qualityId?: IntWithAggregatesFilter<'Player'> | number;
+    rarityId?: IntWithAggregatesFilter<'Player'> | number;
+    ovr?: IntWithAggregatesFilter<'Player'> | number;
+    rating1?: IntWithAggregatesFilter<'Player'> | number;
+    rating2?: IntWithAggregatesFilter<'Player'> | number;
+    rating3?: IntWithAggregatesFilter<'Player'> | number;
+    rating4?: IntWithAggregatesFilter<'Player'> | number;
+    rating5?: IntWithAggregatesFilter<'Player'> | number;
+    rating6?: IntWithAggregatesFilter<'Player'> | number;
+    countryId?: IntWithAggregatesFilter<'Player'> | number;
+    clubId?: IntWithAggregatesFilter<'Player'> | number;
+    leagueId?: IntWithAggregatesFilter<'Player'> | number;
+  };
+
+  export type ClubPlayerWhereInput = {
+    AND?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
+    OR?: ClubPlayerWhereInput[];
+    NOT?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
+    id?: IntFilter<'ClubPlayer'> | number;
+    playerId?: IntFilter<'ClubPlayer'> | number;
+    sbc?: BoolFilter<'ClubPlayer'> | boolean;
+    squad?: BoolFilter<'ClubPlayer'> | boolean;
+    player?: XOR<PlayerRelationFilter, PlayerWhereInput>;
+  };
+
+  export type ClubPlayerOrderByWithRelationInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    sbc?: SortOrder;
+    squad?: SortOrder;
+    player?: PlayerOrderByWithRelationInput;
+  };
+
+  export type ClubPlayerWhereUniqueInput = Prisma.AtLeast<
+    {
+      id?: number;
+      playerId?: number;
+      AND?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
+      OR?: ClubPlayerWhereInput[];
+      NOT?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
+      sbc?: BoolFilter<'ClubPlayer'> | boolean;
+      squad?: BoolFilter<'ClubPlayer'> | boolean;
+      player?: XOR<PlayerRelationFilter, PlayerWhereInput>;
+    },
+    'id' | 'playerId'
+  >;
+
+  export type ClubPlayerOrderByWithAggregationInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    sbc?: SortOrder;
+    squad?: SortOrder;
+    _count?: ClubPlayerCountOrderByAggregateInput;
+    _avg?: ClubPlayerAvgOrderByAggregateInput;
+    _max?: ClubPlayerMaxOrderByAggregateInput;
+    _min?: ClubPlayerMinOrderByAggregateInput;
+    _sum?: ClubPlayerSumOrderByAggregateInput;
+  };
+
+  export type ClubPlayerScalarWhereWithAggregatesInput = {
+    AND?: ClubPlayerScalarWhereWithAggregatesInput | ClubPlayerScalarWhereWithAggregatesInput[];
+    OR?: ClubPlayerScalarWhereWithAggregatesInput[];
+    NOT?: ClubPlayerScalarWhereWithAggregatesInput | ClubPlayerScalarWhereWithAggregatesInput[];
+    id?: IntWithAggregatesFilter<'ClubPlayer'> | number;
+    playerId?: IntWithAggregatesFilter<'ClubPlayer'> | number;
+    sbc?: BoolWithAggregatesFilter<'ClubPlayer'> | boolean;
+    squad?: BoolWithAggregatesFilter<'ClubPlayer'> | boolean;
+  };
+
+  export type QualityCreateInput = {
     name: string;
-    requirements: JsonNullValueInput | InputJsonValue;
-    status?: string;
-    solutions?: SbcSolutionCreateNestedManyWithoutChallengeInput;
+    players?: PlayerCreateNestedManyWithoutQualityInput;
   };
 
-  export type SbcChallengeUncheckedCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    challengeId: string;
+  export type QualityUncheckedCreateInput = {
+    id?: number;
     name: string;
-    requirements: JsonNullValueInput | InputJsonValue;
-    status?: string;
-    solutions?: SbcSolutionUncheckedCreateNestedManyWithoutChallengeInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutQualityInput;
   };
 
-  export type SbcChallengeUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type QualityUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
-    solutions?: SbcSolutionUpdateManyWithoutChallengeNestedInput;
+    players?: PlayerUpdateManyWithoutQualityNestedInput;
   };
 
-  export type SbcChallengeUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type QualityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
-    solutions?: SbcSolutionUncheckedUpdateManyWithoutChallengeNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutQualityNestedInput;
   };
 
-  export type SbcChallengeCreateManyInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    challengeId: string;
+  export type QualityCreateManyInput = {
+    id?: number;
     name: string;
-    requirements: JsonNullValueInput | InputJsonValue;
-    status?: string;
   };
 
-  export type SbcChallengeUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type QualityUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type SbcChallengeUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type QualityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type SbcSolutionCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
-    challenge: SbcChallengeCreateNestedOneWithoutSolutionsInput;
+  export type RarityCreateInput = {
+    name: string;
+    players?: PlayerCreateNestedManyWithoutRarityInput;
   };
 
-  export type SbcSolutionUncheckedCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    challengeId: string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
+  export type RarityUncheckedCreateInput = {
+    id?: number;
+    name: string;
+    players?: PlayerUncheckedCreateNestedManyWithoutRarityInput;
   };
 
-  export type SbcSolutionUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
-    challenge?: SbcChallengeUpdateOneRequiredWithoutSolutionsNestedInput;
+  export type RarityUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    players?: PlayerUpdateManyWithoutRarityNestedInput;
   };
 
-  export type SbcSolutionUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type RarityUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    players?: PlayerUncheckedUpdateManyWithoutRarityNestedInput;
   };
 
-  export type SbcSolutionCreateManyInput = {
-    id?: string;
-    createdAt?: Date | string;
-    challengeId: string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
+  export type RarityCreateManyInput = {
+    id?: number;
+    name: string;
   };
 
-  export type SbcSolutionUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type RarityUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type SbcSolutionUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type RarityUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type CompanionAppStateCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    state: JsonNullValueInput | InputJsonValue;
-    sessionId?: string | null;
+  export type CountryCreateInput = {
+    name: string;
+    clubs?: ClubCreateNestedManyWithoutCountryInput;
+    leagues?: LeagueCreateNestedManyWithoutCountryInput;
+    players?: PlayerCreateNestedManyWithoutCountryInput;
   };
 
-  export type CompanionAppStateUncheckedCreateInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    state: JsonNullValueInput | InputJsonValue;
-    sessionId?: string | null;
+  export type CountryUncheckedCreateInput = {
+    id?: number;
+    name: string;
+    clubs?: ClubUncheckedCreateNestedManyWithoutCountryInput;
+    leagues?: LeagueUncheckedCreateNestedManyWithoutCountryInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutCountryInput;
   };
 
-  export type CompanionAppStateUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    state?: JsonNullValueInput | InputJsonValue;
-    sessionId?: NullableStringFieldUpdateOperationsInput | string | null;
+  export type CountryUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUpdateManyWithoutCountryNestedInput;
+    leagues?: LeagueUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUpdateManyWithoutCountryNestedInput;
   };
 
-  export type CompanionAppStateUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    state?: JsonNullValueInput | InputJsonValue;
-    sessionId?: NullableStringFieldUpdateOperationsInput | string | null;
+  export type CountryUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUncheckedUpdateManyWithoutCountryNestedInput;
+    leagues?: LeagueUncheckedUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutCountryNestedInput;
   };
 
-  export type CompanionAppStateCreateManyInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    state: JsonNullValueInput | InputJsonValue;
-    sessionId?: string | null;
+  export type CountryCreateManyInput = {
+    id?: number;
+    name: string;
   };
 
-  export type CompanionAppStateUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    state?: JsonNullValueInput | InputJsonValue;
-    sessionId?: NullableStringFieldUpdateOperationsInput | string | null;
+  export type CountryUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type CompanionAppStateUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    state?: JsonNullValueInput | InputJsonValue;
-    sessionId?: NullableStringFieldUpdateOperationsInput | string | null;
+  export type CountryUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type PositionCreateInput = {
+    name: string;
+    players?: PlayerPositionCreateNestedManyWithoutPositionInput;
+  };
+
+  export type PositionUncheckedCreateInput = {
+    id?: number;
+    name: string;
+    players?: PlayerPositionUncheckedCreateNestedManyWithoutPositionInput;
+  };
+
+  export type PositionUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    players?: PlayerPositionUpdateManyWithoutPositionNestedInput;
+  };
+
+  export type PositionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    players?: PlayerPositionUncheckedUpdateManyWithoutPositionNestedInput;
+  };
+
+  export type PositionCreateManyInput = {
+    id?: number;
+    name: string;
+  };
+
+  export type PositionUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type PositionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type PlayerPositionCreateInput = {
+    player: PlayerCreateNestedOneWithoutPositionsInput;
+    position: PositionCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerPositionUncheckedCreateInput = {
+    id?: number;
+    playerId: number;
+    positionId: number;
+  };
+
+  export type PlayerPositionUpdateInput = {
+    player?: PlayerUpdateOneRequiredWithoutPositionsNestedInput;
+    position?: PositionUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerPositionUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+    positionId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerPositionCreateManyInput = {
+    id?: number;
+    playerId: number;
+    positionId: number;
+  };
+
+  export type PlayerPositionUpdateManyMutationInput = {};
+
+  export type PlayerPositionUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+    positionId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type LeagueCreateInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutLeaguesInput;
+    clubs?: ClubCreateNestedManyWithoutLeagueInput;
+    players?: PlayerCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueUncheckedCreateInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    clubs?: ClubUncheckedCreateNestedManyWithoutLeagueInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutLeaguesNestedInput;
+    clubs?: ClubUpdateManyWithoutLeagueNestedInput;
+    players?: PlayerUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubs?: ClubUncheckedUpdateManyWithoutLeagueNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueCreateManyInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+  };
+
+  export type LeagueUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type LeagueUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type ClubCreateInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutClubsInput;
+    league: LeagueCreateNestedOneWithoutClubsInput;
+    players?: PlayerCreateNestedManyWithoutClubInput;
+  };
+
+  export type ClubUncheckedCreateInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    leagueId: number;
+    players?: PlayerUncheckedCreateNestedManyWithoutClubInput;
+  };
+
+  export type ClubUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutClubsNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutClubsNestedInput;
+    players?: PlayerUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    players?: PlayerUncheckedUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubCreateManyInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    leagueId: number;
+  };
+
+  export type ClubUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type ClubUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerCreateInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerUpdateInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerCreateManyInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+  };
+
+  export type PlayerUpdateManyMutationInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type ClubPlayerCreateInput = {
+    sbc?: boolean;
+    squad?: boolean;
+    player: PlayerCreateNestedOneWithoutClubPlayersInput;
+  };
+
+  export type ClubPlayerUncheckedCreateInput = {
+    id?: number;
+    playerId: number;
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type ClubPlayerUpdateInput = {
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+    player?: PlayerUpdateOneRequiredWithoutClubPlayersNestedInput;
+  };
+
+  export type ClubPlayerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+  };
+
+  export type ClubPlayerCreateManyInput = {
+    id?: number;
+    playerId: number;
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type ClubPlayerUpdateManyMutationInput = {
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+  };
+
+  export type ClubPlayerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+  };
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntFilter<$PrismaModel> | number;
   };
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6016,67 +13060,53 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string;
   };
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string;
-  };
-  export type JsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<JsonNullableFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<JsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type JsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
+  export type PlayerListRelationFilter = {
+    every?: PlayerWhereInput;
+    some?: PlayerWhereInput;
+    none?: PlayerWhereInput;
   };
 
-  export type SortOrderInput = {
-    sort: SortOrder;
-    nulls?: NullsOrder;
+  export type PlayerOrderByRelationAggregateInput = {
+    _count?: SortOrder;
   };
 
-  export type UserSessionCountOrderByAggregateInput = {
+  export type QualityCountOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
-    data?: SortOrder;
+    name?: SortOrder;
   };
 
-  export type UserSessionMaxOrderByAggregateInput = {
+  export type QualityAvgOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
   };
 
-  export type UserSessionMinOrderByAggregateInput = {
+  export type QualityMaxOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type QualityMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type QualitySumOrderByAggregateInput = {
+    id?: SortOrder;
+  };
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _avg?: NestedFloatFilter<$PrismaModel>;
+    _sum?: NestedIntFilter<$PrismaModel>;
+    _min?: NestedIntFilter<$PrismaModel>;
+    _max?: NestedIntFilter<$PrismaModel>;
   };
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6097,159 +13127,347 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>;
   };
 
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _min?: NestedDateTimeFilter<$PrismaModel>;
-    _max?: NestedDateTimeFilter<$PrismaModel>;
-  };
-  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedJsonNullableFilter<$PrismaModel>;
-    _max?: NestedJsonNullableFilter<$PrismaModel>;
-  };
-  export type JsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<JsonFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<JsonFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<JsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type JsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
+  export type RarityCountOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
   };
 
-  export type SbcSolutionListRelationFilter = {
-    every?: SbcSolutionWhereInput;
-    some?: SbcSolutionWhereInput;
-    none?: SbcSolutionWhereInput;
+  export type RarityAvgOrderByAggregateInput = {
+    id?: SortOrder;
   };
 
-  export type SbcSolutionOrderByRelationAggregateInput = {
+  export type RarityMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type RarityMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type RaritySumOrderByAggregateInput = {
+    id?: SortOrder;
+  };
+
+  export type ClubListRelationFilter = {
+    every?: ClubWhereInput;
+    some?: ClubWhereInput;
+    none?: ClubWhereInput;
+  };
+
+  export type LeagueListRelationFilter = {
+    every?: LeagueWhereInput;
+    some?: LeagueWhereInput;
+    none?: LeagueWhereInput;
+  };
+
+  export type ClubOrderByRelationAggregateInput = {
     _count?: SortOrder;
   };
 
-  export type SbcChallengeCountOrderByAggregateInput = {
+  export type LeagueOrderByRelationAggregateInput = {
+    _count?: SortOrder;
+  };
+
+  export type CountryCountOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    challengeId?: SortOrder;
     name?: SortOrder;
-    requirements?: SortOrder;
-    status?: SortOrder;
   };
 
-  export type SbcChallengeMaxOrderByAggregateInput = {
+  export type CountryAvgOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    challengeId?: SortOrder;
-    name?: SortOrder;
-    status?: SortOrder;
   };
 
-  export type SbcChallengeMinOrderByAggregateInput = {
+  export type CountryMaxOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    challengeId?: SortOrder;
     name?: SortOrder;
-    status?: SortOrder;
-  };
-  export type JsonWithAggregatesFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<JsonWithAggregatesFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<JsonWithAggregatesFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<JsonWithAggregatesFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type JsonWithAggregatesFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _min?: NestedJsonFilter<$PrismaModel>;
-    _max?: NestedJsonFilter<$PrismaModel>;
   };
 
-  export type FloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
+  export type CountryMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
   };
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
+  export type CountrySumOrderByAggregateInput = {
+    id?: SortOrder;
+  };
+
+  export type PlayerPositionListRelationFilter = {
+    every?: PlayerPositionWhereInput;
+    some?: PlayerPositionWhereInput;
+    none?: PlayerPositionWhereInput;
+  };
+
+  export type PlayerPositionOrderByRelationAggregateInput = {
+    _count?: SortOrder;
+  };
+
+  export type PositionCountOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type PositionAvgOrderByAggregateInput = {
+    id?: SortOrder;
+  };
+
+  export type PositionMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type PositionMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+  };
+
+  export type PositionSumOrderByAggregateInput = {
+    id?: SortOrder;
+  };
+
+  export type PlayerRelationFilter = {
+    is?: PlayerWhereInput;
+    isNot?: PlayerWhereInput;
+  };
+
+  export type PositionRelationFilter = {
+    is?: PositionWhereInput;
+    isNot?: PositionWhereInput;
+  };
+
+  export type PlayerPositionPlayerIdPositionIdCompoundUniqueInput = {
+    playerId: number;
+    positionId: number;
+  };
+
+  export type PlayerPositionCountOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+  };
+
+  export type PlayerPositionAvgOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+  };
+
+  export type PlayerPositionMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+  };
+
+  export type PlayerPositionMinOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+  };
+
+  export type PlayerPositionSumOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    positionId?: SortOrder;
+  };
+
+  export type CountryRelationFilter = {
+    is?: CountryWhereInput;
+    isNot?: CountryWhereInput;
+  };
+
+  export type LeagueNameCountryIdCompoundUniqueInput = {
+    name: string;
+    countryId: number;
+  };
+
+  export type LeagueCountOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+  };
+
+  export type LeagueAvgOrderByAggregateInput = {
+    id?: SortOrder;
+    countryId?: SortOrder;
+  };
+
+  export type LeagueMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+  };
+
+  export type LeagueMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+  };
+
+  export type LeagueSumOrderByAggregateInput = {
+    id?: SortOrder;
+    countryId?: SortOrder;
+  };
+
+  export type LeagueRelationFilter = {
+    is?: LeagueWhereInput;
+    isNot?: LeagueWhereInput;
+  };
+
+  export type ClubNameLeagueIdCompoundUniqueInput = {
+    name: string;
+    leagueId: number;
+  };
+
+  export type ClubCountOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type ClubAvgOrderByAggregateInput = {
+    id?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type ClubMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type ClubMinOrderByAggregateInput = {
+    id?: SortOrder;
+    name?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type ClubSumOrderByAggregateInput = {
+    id?: SortOrder;
+    countryId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type ClubPlayerListRelationFilter = {
+    every?: ClubPlayerWhereInput;
+    some?: ClubPlayerWhereInput;
+    none?: ClubPlayerWhereInput;
+  };
+
+  export type QualityRelationFilter = {
+    is?: QualityWhereInput;
+    isNot?: QualityWhereInput;
+  };
+
+  export type RarityRelationFilter = {
+    is?: RarityWhereInput;
+    isNot?: RarityWhereInput;
+  };
+
+  export type ClubRelationFilter = {
+    is?: ClubWhereInput;
+    isNot?: ClubWhereInput;
+  };
+
+  export type ClubPlayerOrderByRelationAggregateInput = {
+    _count?: SortOrder;
+  };
+
+  export type PlayerDisplayNameOvrQualityIdRarityIdCompoundUniqueInput = {
+    displayName: string;
+    ovr: number;
+    qualityId: number;
+    rarityId: number;
+  };
+
+  export type PlayerCountOrderByAggregateInput = {
+    id?: SortOrder;
+    displayName?: SortOrder;
+    fullName?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type PlayerAvgOrderByAggregateInput = {
+    id?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type PlayerMaxOrderByAggregateInput = {
+    id?: SortOrder;
+    displayName?: SortOrder;
+    fullName?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type PlayerMinOrderByAggregateInput = {
+    id?: SortOrder;
+    displayName?: SortOrder;
+    fullName?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
+  };
+
+  export type PlayerSumOrderByAggregateInput = {
+    id?: SortOrder;
+    qualityId?: SortOrder;
+    rarityId?: SortOrder;
+    ovr?: SortOrder;
+    rating1?: SortOrder;
+    rating2?: SortOrder;
+    rating3?: SortOrder;
+    rating4?: SortOrder;
+    rating5?: SortOrder;
+    rating6?: SortOrder;
+    countryId?: SortOrder;
+    clubId?: SortOrder;
+    leagueId?: SortOrder;
   };
 
   export type BoolFilter<$PrismaModel = never> = {
@@ -6257,79 +13475,35 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean;
   };
 
-  export type SbcChallengeRelationFilter = {
-    is?: SbcChallengeWhereInput;
-    isNot?: SbcChallengeWhereInput;
-  };
-
-  export type SbcSolutionCountOrderByAggregateInput = {
+  export type ClubPlayerCountOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    challengeId?: SortOrder;
-    players?: SortOrder;
-    cost?: SortOrder;
-    rating?: SortOrder;
-    isValid?: SortOrder;
+    playerId?: SortOrder;
+    sbc?: SortOrder;
+    squad?: SortOrder;
   };
 
-  export type SbcSolutionAvgOrderByAggregateInput = {
-    cost?: SortOrder;
-    rating?: SortOrder;
-  };
-
-  export type SbcSolutionMaxOrderByAggregateInput = {
+  export type ClubPlayerAvgOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    challengeId?: SortOrder;
-    cost?: SortOrder;
-    rating?: SortOrder;
-    isValid?: SortOrder;
+    playerId?: SortOrder;
   };
 
-  export type SbcSolutionMinOrderByAggregateInput = {
+  export type ClubPlayerMaxOrderByAggregateInput = {
     id?: SortOrder;
-    createdAt?: SortOrder;
-    challengeId?: SortOrder;
-    cost?: SortOrder;
-    rating?: SortOrder;
-    isValid?: SortOrder;
+    playerId?: SortOrder;
+    sbc?: SortOrder;
+    squad?: SortOrder;
   };
 
-  export type SbcSolutionSumOrderByAggregateInput = {
-    cost?: SortOrder;
-    rating?: SortOrder;
+  export type ClubPlayerMinOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
+    sbc?: SortOrder;
+    squad?: SortOrder;
   };
 
-  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedIntNullableFilter<$PrismaModel>;
-    _max?: NestedIntNullableFilter<$PrismaModel>;
+  export type ClubPlayerSumOrderByAggregateInput = {
+    id?: SortOrder;
+    playerId?: SortOrder;
   };
 
   export type BoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -6340,191 +13514,1044 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>;
   };
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null;
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    lt?: string | StringFieldRefInput<$PrismaModel>;
-    lte?: string | StringFieldRefInput<$PrismaModel>;
-    gt?: string | StringFieldRefInput<$PrismaModel>;
-    gte?: string | StringFieldRefInput<$PrismaModel>;
-    contains?: string | StringFieldRefInput<$PrismaModel>;
-    startsWith?: string | StringFieldRefInput<$PrismaModel>;
-    endsWith?: string | StringFieldRefInput<$PrismaModel>;
-    mode?: QueryMode;
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null;
+  export type PlayerCreateNestedManyWithoutQualityInput = {
+    create?:
+      | XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>
+      | PlayerCreateWithoutQualityInput[]
+      | PlayerUncheckedCreateWithoutQualityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutQualityInput
+      | PlayerCreateOrConnectWithoutQualityInput[];
+    createMany?: PlayerCreateManyQualityInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
   };
 
-  export type CompanionAppStateCountOrderByAggregateInput = {
-    id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    state?: SortOrder;
-    sessionId?: SortOrder;
-  };
-
-  export type CompanionAppStateMaxOrderByAggregateInput = {
-    id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
-  };
-
-  export type CompanionAppStateMinOrderByAggregateInput = {
-    id?: SortOrder;
-    createdAt?: SortOrder;
-    updatedAt?: SortOrder;
-    sessionId?: SortOrder;
-  };
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null;
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    lt?: string | StringFieldRefInput<$PrismaModel>;
-    lte?: string | StringFieldRefInput<$PrismaModel>;
-    gt?: string | StringFieldRefInput<$PrismaModel>;
-    gte?: string | StringFieldRefInput<$PrismaModel>;
-    contains?: string | StringFieldRefInput<$PrismaModel>;
-    startsWith?: string | StringFieldRefInput<$PrismaModel>;
-    endsWith?: string | StringFieldRefInput<$PrismaModel>;
-    mode?: QueryMode;
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedStringNullableFilter<$PrismaModel>;
-    _max?: NestedStringNullableFilter<$PrismaModel>;
+  export type PlayerUncheckedCreateNestedManyWithoutQualityInput = {
+    create?:
+      | XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>
+      | PlayerCreateWithoutQualityInput[]
+      | PlayerUncheckedCreateWithoutQualityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutQualityInput
+      | PlayerCreateOrConnectWithoutQualityInput[];
+    createMany?: PlayerCreateManyQualityInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
   };
 
   export type StringFieldUpdateOperationsInput = {
     set?: string;
   };
 
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string;
-  };
-
-  export type SbcSolutionCreateNestedManyWithoutChallengeInput = {
+  export type PlayerUpdateManyWithoutQualityNestedInput = {
     create?:
-      | XOR<SbcSolutionCreateWithoutChallengeInput, SbcSolutionUncheckedCreateWithoutChallengeInput>
-      | SbcSolutionCreateWithoutChallengeInput[]
-      | SbcSolutionUncheckedCreateWithoutChallengeInput[];
+      | XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>
+      | PlayerCreateWithoutQualityInput[]
+      | PlayerUncheckedCreateWithoutQualityInput[];
     connectOrCreate?:
-      | SbcSolutionCreateOrConnectWithoutChallengeInput
-      | SbcSolutionCreateOrConnectWithoutChallengeInput[];
-    createMany?: SbcSolutionCreateManyChallengeInputEnvelope;
-    connect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-  };
-
-  export type SbcSolutionUncheckedCreateNestedManyWithoutChallengeInput = {
-    create?:
-      | XOR<SbcSolutionCreateWithoutChallengeInput, SbcSolutionUncheckedCreateWithoutChallengeInput>
-      | SbcSolutionCreateWithoutChallengeInput[]
-      | SbcSolutionUncheckedCreateWithoutChallengeInput[];
-    connectOrCreate?:
-      | SbcSolutionCreateOrConnectWithoutChallengeInput
-      | SbcSolutionCreateOrConnectWithoutChallengeInput[];
-    createMany?: SbcSolutionCreateManyChallengeInputEnvelope;
-    connect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-  };
-
-  export type SbcSolutionUpdateManyWithoutChallengeNestedInput = {
-    create?:
-      | XOR<SbcSolutionCreateWithoutChallengeInput, SbcSolutionUncheckedCreateWithoutChallengeInput>
-      | SbcSolutionCreateWithoutChallengeInput[]
-      | SbcSolutionUncheckedCreateWithoutChallengeInput[];
-    connectOrCreate?:
-      | SbcSolutionCreateOrConnectWithoutChallengeInput
-      | SbcSolutionCreateOrConnectWithoutChallengeInput[];
+      | PlayerCreateOrConnectWithoutQualityInput
+      | PlayerCreateOrConnectWithoutQualityInput[];
     upsert?:
-      | SbcSolutionUpsertWithWhereUniqueWithoutChallengeInput
-      | SbcSolutionUpsertWithWhereUniqueWithoutChallengeInput[];
-    createMany?: SbcSolutionCreateManyChallengeInputEnvelope;
-    set?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    disconnect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    delete?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    connect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
+      | PlayerUpsertWithWhereUniqueWithoutQualityInput
+      | PlayerUpsertWithWhereUniqueWithoutQualityInput[];
+    createMany?: PlayerCreateManyQualityInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
     update?:
-      | SbcSolutionUpdateWithWhereUniqueWithoutChallengeInput
-      | SbcSolutionUpdateWithWhereUniqueWithoutChallengeInput[];
+      | PlayerUpdateWithWhereUniqueWithoutQualityInput
+      | PlayerUpdateWithWhereUniqueWithoutQualityInput[];
     updateMany?:
-      | SbcSolutionUpdateManyWithWhereWithoutChallengeInput
-      | SbcSolutionUpdateManyWithWhereWithoutChallengeInput[];
-    deleteMany?: SbcSolutionScalarWhereInput | SbcSolutionScalarWhereInput[];
+      | PlayerUpdateManyWithWhereWithoutQualityInput
+      | PlayerUpdateManyWithWhereWithoutQualityInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
   };
 
-  export type SbcSolutionUncheckedUpdateManyWithoutChallengeNestedInput = {
+  export type IntFieldUpdateOperationsInput = {
+    set?: number;
+    increment?: number;
+    decrement?: number;
+    multiply?: number;
+    divide?: number;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutQualityNestedInput = {
     create?:
-      | XOR<SbcSolutionCreateWithoutChallengeInput, SbcSolutionUncheckedCreateWithoutChallengeInput>
-      | SbcSolutionCreateWithoutChallengeInput[]
-      | SbcSolutionUncheckedCreateWithoutChallengeInput[];
+      | XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>
+      | PlayerCreateWithoutQualityInput[]
+      | PlayerUncheckedCreateWithoutQualityInput[];
     connectOrCreate?:
-      | SbcSolutionCreateOrConnectWithoutChallengeInput
-      | SbcSolutionCreateOrConnectWithoutChallengeInput[];
+      | PlayerCreateOrConnectWithoutQualityInput
+      | PlayerCreateOrConnectWithoutQualityInput[];
     upsert?:
-      | SbcSolutionUpsertWithWhereUniqueWithoutChallengeInput
-      | SbcSolutionUpsertWithWhereUniqueWithoutChallengeInput[];
-    createMany?: SbcSolutionCreateManyChallengeInputEnvelope;
-    set?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    disconnect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    delete?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
-    connect?: SbcSolutionWhereUniqueInput | SbcSolutionWhereUniqueInput[];
+      | PlayerUpsertWithWhereUniqueWithoutQualityInput
+      | PlayerUpsertWithWhereUniqueWithoutQualityInput[];
+    createMany?: PlayerCreateManyQualityInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
     update?:
-      | SbcSolutionUpdateWithWhereUniqueWithoutChallengeInput
-      | SbcSolutionUpdateWithWhereUniqueWithoutChallengeInput[];
+      | PlayerUpdateWithWhereUniqueWithoutQualityInput
+      | PlayerUpdateWithWhereUniqueWithoutQualityInput[];
     updateMany?:
-      | SbcSolutionUpdateManyWithWhereWithoutChallengeInput
-      | SbcSolutionUpdateManyWithWhereWithoutChallengeInput[];
-    deleteMany?: SbcSolutionScalarWhereInput | SbcSolutionScalarWhereInput[];
+      | PlayerUpdateManyWithWhereWithoutQualityInput
+      | PlayerUpdateManyWithWhereWithoutQualityInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
   };
 
-  export type SbcChallengeCreateNestedOneWithoutSolutionsInput = {
-    create?: XOR<
-      SbcChallengeCreateWithoutSolutionsInput,
-      SbcChallengeUncheckedCreateWithoutSolutionsInput
+  export type PlayerCreateNestedManyWithoutRarityInput = {
+    create?:
+      | XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>
+      | PlayerCreateWithoutRarityInput[]
+      | PlayerUncheckedCreateWithoutRarityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutRarityInput
+      | PlayerCreateOrConnectWithoutRarityInput[];
+    createMany?: PlayerCreateManyRarityInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type PlayerUncheckedCreateNestedManyWithoutRarityInput = {
+    create?:
+      | XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>
+      | PlayerCreateWithoutRarityInput[]
+      | PlayerUncheckedCreateWithoutRarityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutRarityInput
+      | PlayerCreateOrConnectWithoutRarityInput[];
+    createMany?: PlayerCreateManyRarityInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type PlayerUpdateManyWithoutRarityNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>
+      | PlayerCreateWithoutRarityInput[]
+      | PlayerUncheckedCreateWithoutRarityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutRarityInput
+      | PlayerCreateOrConnectWithoutRarityInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutRarityInput
+      | PlayerUpsertWithWhereUniqueWithoutRarityInput[];
+    createMany?: PlayerCreateManyRarityInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutRarityInput
+      | PlayerUpdateWithWhereUniqueWithoutRarityInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutRarityInput
+      | PlayerUpdateManyWithWhereWithoutRarityInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutRarityNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>
+      | PlayerCreateWithoutRarityInput[]
+      | PlayerUncheckedCreateWithoutRarityInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutRarityInput
+      | PlayerCreateOrConnectWithoutRarityInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutRarityInput
+      | PlayerUpsertWithWhereUniqueWithoutRarityInput[];
+    createMany?: PlayerCreateManyRarityInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutRarityInput
+      | PlayerUpdateWithWhereUniqueWithoutRarityInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutRarityInput
+      | PlayerUpdateManyWithWhereWithoutRarityInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type ClubCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>
+      | ClubCreateWithoutCountryInput[]
+      | ClubUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutCountryInput
+      | ClubCreateOrConnectWithoutCountryInput[];
+    createMany?: ClubCreateManyCountryInputEnvelope;
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+  };
+
+  export type LeagueCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>
+      | LeagueCreateWithoutCountryInput[]
+      | LeagueUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | LeagueCreateOrConnectWithoutCountryInput
+      | LeagueCreateOrConnectWithoutCountryInput[];
+    createMany?: LeagueCreateManyCountryInputEnvelope;
+    connect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+  };
+
+  export type PlayerCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>
+      | PlayerCreateWithoutCountryInput[]
+      | PlayerUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutCountryInput
+      | PlayerCreateOrConnectWithoutCountryInput[];
+    createMany?: PlayerCreateManyCountryInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type ClubUncheckedCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>
+      | ClubCreateWithoutCountryInput[]
+      | ClubUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutCountryInput
+      | ClubCreateOrConnectWithoutCountryInput[];
+    createMany?: ClubCreateManyCountryInputEnvelope;
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+  };
+
+  export type LeagueUncheckedCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>
+      | LeagueCreateWithoutCountryInput[]
+      | LeagueUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | LeagueCreateOrConnectWithoutCountryInput
+      | LeagueCreateOrConnectWithoutCountryInput[];
+    createMany?: LeagueCreateManyCountryInputEnvelope;
+    connect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+  };
+
+  export type PlayerUncheckedCreateNestedManyWithoutCountryInput = {
+    create?:
+      | XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>
+      | PlayerCreateWithoutCountryInput[]
+      | PlayerUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutCountryInput
+      | PlayerCreateOrConnectWithoutCountryInput[];
+    createMany?: PlayerCreateManyCountryInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type ClubUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>
+      | ClubCreateWithoutCountryInput[]
+      | ClubUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutCountryInput
+      | ClubCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | ClubUpsertWithWhereUniqueWithoutCountryInput
+      | ClubUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: ClubCreateManyCountryInputEnvelope;
+    set?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    disconnect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    delete?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    update?:
+      | ClubUpdateWithWhereUniqueWithoutCountryInput
+      | ClubUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | ClubUpdateManyWithWhereWithoutCountryInput
+      | ClubUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: ClubScalarWhereInput | ClubScalarWhereInput[];
+  };
+
+  export type LeagueUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>
+      | LeagueCreateWithoutCountryInput[]
+      | LeagueUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | LeagueCreateOrConnectWithoutCountryInput
+      | LeagueCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | LeagueUpsertWithWhereUniqueWithoutCountryInput
+      | LeagueUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: LeagueCreateManyCountryInputEnvelope;
+    set?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    disconnect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    delete?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    connect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    update?:
+      | LeagueUpdateWithWhereUniqueWithoutCountryInput
+      | LeagueUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | LeagueUpdateManyWithWhereWithoutCountryInput
+      | LeagueUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: LeagueScalarWhereInput | LeagueScalarWhereInput[];
+  };
+
+  export type PlayerUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>
+      | PlayerCreateWithoutCountryInput[]
+      | PlayerUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutCountryInput
+      | PlayerCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutCountryInput
+      | PlayerUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: PlayerCreateManyCountryInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutCountryInput
+      | PlayerUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutCountryInput
+      | PlayerUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type ClubUncheckedUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>
+      | ClubCreateWithoutCountryInput[]
+      | ClubUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutCountryInput
+      | ClubCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | ClubUpsertWithWhereUniqueWithoutCountryInput
+      | ClubUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: ClubCreateManyCountryInputEnvelope;
+    set?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    disconnect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    delete?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    update?:
+      | ClubUpdateWithWhereUniqueWithoutCountryInput
+      | ClubUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | ClubUpdateManyWithWhereWithoutCountryInput
+      | ClubUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: ClubScalarWhereInput | ClubScalarWhereInput[];
+  };
+
+  export type LeagueUncheckedUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>
+      | LeagueCreateWithoutCountryInput[]
+      | LeagueUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | LeagueCreateOrConnectWithoutCountryInput
+      | LeagueCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | LeagueUpsertWithWhereUniqueWithoutCountryInput
+      | LeagueUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: LeagueCreateManyCountryInputEnvelope;
+    set?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    disconnect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    delete?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    connect?: LeagueWhereUniqueInput | LeagueWhereUniqueInput[];
+    update?:
+      | LeagueUpdateWithWhereUniqueWithoutCountryInput
+      | LeagueUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | LeagueUpdateManyWithWhereWithoutCountryInput
+      | LeagueUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: LeagueScalarWhereInput | LeagueScalarWhereInput[];
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutCountryNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>
+      | PlayerCreateWithoutCountryInput[]
+      | PlayerUncheckedCreateWithoutCountryInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutCountryInput
+      | PlayerCreateOrConnectWithoutCountryInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutCountryInput
+      | PlayerUpsertWithWhereUniqueWithoutCountryInput[];
+    createMany?: PlayerCreateManyCountryInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutCountryInput
+      | PlayerUpdateWithWhereUniqueWithoutCountryInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutCountryInput
+      | PlayerUpdateManyWithWhereWithoutCountryInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type PlayerPositionCreateNestedManyWithoutPositionInput = {
+    create?:
+      | XOR<
+          PlayerPositionCreateWithoutPositionInput,
+          PlayerPositionUncheckedCreateWithoutPositionInput
+        >
+      | PlayerPositionCreateWithoutPositionInput[]
+      | PlayerPositionUncheckedCreateWithoutPositionInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPositionInput
+      | PlayerPositionCreateOrConnectWithoutPositionInput[];
+    createMany?: PlayerPositionCreateManyPositionInputEnvelope;
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+  };
+
+  export type PlayerPositionUncheckedCreateNestedManyWithoutPositionInput = {
+    create?:
+      | XOR<
+          PlayerPositionCreateWithoutPositionInput,
+          PlayerPositionUncheckedCreateWithoutPositionInput
+        >
+      | PlayerPositionCreateWithoutPositionInput[]
+      | PlayerPositionUncheckedCreateWithoutPositionInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPositionInput
+      | PlayerPositionCreateOrConnectWithoutPositionInput[];
+    createMany?: PlayerPositionCreateManyPositionInputEnvelope;
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+  };
+
+  export type PlayerPositionUpdateManyWithoutPositionNestedInput = {
+    create?:
+      | XOR<
+          PlayerPositionCreateWithoutPositionInput,
+          PlayerPositionUncheckedCreateWithoutPositionInput
+        >
+      | PlayerPositionCreateWithoutPositionInput[]
+      | PlayerPositionUncheckedCreateWithoutPositionInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPositionInput
+      | PlayerPositionCreateOrConnectWithoutPositionInput[];
+    upsert?:
+      | PlayerPositionUpsertWithWhereUniqueWithoutPositionInput
+      | PlayerPositionUpsertWithWhereUniqueWithoutPositionInput[];
+    createMany?: PlayerPositionCreateManyPositionInputEnvelope;
+    set?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    disconnect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    delete?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    update?:
+      | PlayerPositionUpdateWithWhereUniqueWithoutPositionInput
+      | PlayerPositionUpdateWithWhereUniqueWithoutPositionInput[];
+    updateMany?:
+      | PlayerPositionUpdateManyWithWhereWithoutPositionInput
+      | PlayerPositionUpdateManyWithWhereWithoutPositionInput[];
+    deleteMany?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+  };
+
+  export type PlayerPositionUncheckedUpdateManyWithoutPositionNestedInput = {
+    create?:
+      | XOR<
+          PlayerPositionCreateWithoutPositionInput,
+          PlayerPositionUncheckedCreateWithoutPositionInput
+        >
+      | PlayerPositionCreateWithoutPositionInput[]
+      | PlayerPositionUncheckedCreateWithoutPositionInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPositionInput
+      | PlayerPositionCreateOrConnectWithoutPositionInput[];
+    upsert?:
+      | PlayerPositionUpsertWithWhereUniqueWithoutPositionInput
+      | PlayerPositionUpsertWithWhereUniqueWithoutPositionInput[];
+    createMany?: PlayerPositionCreateManyPositionInputEnvelope;
+    set?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    disconnect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    delete?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    update?:
+      | PlayerPositionUpdateWithWhereUniqueWithoutPositionInput
+      | PlayerPositionUpdateWithWhereUniqueWithoutPositionInput[];
+    updateMany?:
+      | PlayerPositionUpdateManyWithWhereWithoutPositionInput
+      | PlayerPositionUpdateManyWithWhereWithoutPositionInput[];
+    deleteMany?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+  };
+
+  export type PlayerCreateNestedOneWithoutPositionsInput = {
+    create?: XOR<PlayerCreateWithoutPositionsInput, PlayerUncheckedCreateWithoutPositionsInput>;
+    connectOrCreate?: PlayerCreateOrConnectWithoutPositionsInput;
+    connect?: PlayerWhereUniqueInput;
+  };
+
+  export type PositionCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<PositionCreateWithoutPlayersInput, PositionUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: PositionCreateOrConnectWithoutPlayersInput;
+    connect?: PositionWhereUniqueInput;
+  };
+
+  export type PlayerUpdateOneRequiredWithoutPositionsNestedInput = {
+    create?: XOR<PlayerCreateWithoutPositionsInput, PlayerUncheckedCreateWithoutPositionsInput>;
+    connectOrCreate?: PlayerCreateOrConnectWithoutPositionsInput;
+    upsert?: PlayerUpsertWithoutPositionsInput;
+    connect?: PlayerWhereUniqueInput;
+    update?: XOR<
+      XOR<PlayerUpdateToOneWithWhereWithoutPositionsInput, PlayerUpdateWithoutPositionsInput>,
+      PlayerUncheckedUpdateWithoutPositionsInput
     >;
-    connectOrCreate?: SbcChallengeCreateOrConnectWithoutSolutionsInput;
-    connect?: SbcChallengeWhereUniqueInput;
   };
 
-  export type NullableFloatFieldUpdateOperationsInput = {
-    set?: number | null;
-    increment?: number;
-    decrement?: number;
-    multiply?: number;
-    divide?: number;
+  export type PositionUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<PositionCreateWithoutPlayersInput, PositionUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: PositionCreateOrConnectWithoutPlayersInput;
+    upsert?: PositionUpsertWithoutPlayersInput;
+    connect?: PositionWhereUniqueInput;
+    update?: XOR<
+      XOR<PositionUpdateToOneWithWhereWithoutPlayersInput, PositionUpdateWithoutPlayersInput>,
+      PositionUncheckedUpdateWithoutPlayersInput
+    >;
   };
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null;
-    increment?: number;
-    decrement?: number;
-    multiply?: number;
-    divide?: number;
+  export type CountryCreateNestedOneWithoutLeaguesInput = {
+    create?: XOR<CountryCreateWithoutLeaguesInput, CountryUncheckedCreateWithoutLeaguesInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutLeaguesInput;
+    connect?: CountryWhereUniqueInput;
+  };
+
+  export type ClubCreateNestedManyWithoutLeagueInput = {
+    create?:
+      | XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>
+      | ClubCreateWithoutLeagueInput[]
+      | ClubUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutLeagueInput
+      | ClubCreateOrConnectWithoutLeagueInput[];
+    createMany?: ClubCreateManyLeagueInputEnvelope;
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+  };
+
+  export type PlayerCreateNestedManyWithoutLeagueInput = {
+    create?:
+      | XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>
+      | PlayerCreateWithoutLeagueInput[]
+      | PlayerUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutLeagueInput
+      | PlayerCreateOrConnectWithoutLeagueInput[];
+    createMany?: PlayerCreateManyLeagueInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type ClubUncheckedCreateNestedManyWithoutLeagueInput = {
+    create?:
+      | XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>
+      | ClubCreateWithoutLeagueInput[]
+      | ClubUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutLeagueInput
+      | ClubCreateOrConnectWithoutLeagueInput[];
+    createMany?: ClubCreateManyLeagueInputEnvelope;
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+  };
+
+  export type PlayerUncheckedCreateNestedManyWithoutLeagueInput = {
+    create?:
+      | XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>
+      | PlayerCreateWithoutLeagueInput[]
+      | PlayerUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutLeagueInput
+      | PlayerCreateOrConnectWithoutLeagueInput[];
+    createMany?: PlayerCreateManyLeagueInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type CountryUpdateOneRequiredWithoutLeaguesNestedInput = {
+    create?: XOR<CountryCreateWithoutLeaguesInput, CountryUncheckedCreateWithoutLeaguesInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutLeaguesInput;
+    upsert?: CountryUpsertWithoutLeaguesInput;
+    connect?: CountryWhereUniqueInput;
+    update?: XOR<
+      XOR<CountryUpdateToOneWithWhereWithoutLeaguesInput, CountryUpdateWithoutLeaguesInput>,
+      CountryUncheckedUpdateWithoutLeaguesInput
+    >;
+  };
+
+  export type ClubUpdateManyWithoutLeagueNestedInput = {
+    create?:
+      | XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>
+      | ClubCreateWithoutLeagueInput[]
+      | ClubUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutLeagueInput
+      | ClubCreateOrConnectWithoutLeagueInput[];
+    upsert?:
+      | ClubUpsertWithWhereUniqueWithoutLeagueInput
+      | ClubUpsertWithWhereUniqueWithoutLeagueInput[];
+    createMany?: ClubCreateManyLeagueInputEnvelope;
+    set?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    disconnect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    delete?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    update?:
+      | ClubUpdateWithWhereUniqueWithoutLeagueInput
+      | ClubUpdateWithWhereUniqueWithoutLeagueInput[];
+    updateMany?:
+      | ClubUpdateManyWithWhereWithoutLeagueInput
+      | ClubUpdateManyWithWhereWithoutLeagueInput[];
+    deleteMany?: ClubScalarWhereInput | ClubScalarWhereInput[];
+  };
+
+  export type PlayerUpdateManyWithoutLeagueNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>
+      | PlayerCreateWithoutLeagueInput[]
+      | PlayerUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutLeagueInput
+      | PlayerCreateOrConnectWithoutLeagueInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutLeagueInput
+      | PlayerUpsertWithWhereUniqueWithoutLeagueInput[];
+    createMany?: PlayerCreateManyLeagueInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutLeagueInput
+      | PlayerUpdateWithWhereUniqueWithoutLeagueInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutLeagueInput
+      | PlayerUpdateManyWithWhereWithoutLeagueInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type ClubUncheckedUpdateManyWithoutLeagueNestedInput = {
+    create?:
+      | XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>
+      | ClubCreateWithoutLeagueInput[]
+      | ClubUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | ClubCreateOrConnectWithoutLeagueInput
+      | ClubCreateOrConnectWithoutLeagueInput[];
+    upsert?:
+      | ClubUpsertWithWhereUniqueWithoutLeagueInput
+      | ClubUpsertWithWhereUniqueWithoutLeagueInput[];
+    createMany?: ClubCreateManyLeagueInputEnvelope;
+    set?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    disconnect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    delete?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    connect?: ClubWhereUniqueInput | ClubWhereUniqueInput[];
+    update?:
+      | ClubUpdateWithWhereUniqueWithoutLeagueInput
+      | ClubUpdateWithWhereUniqueWithoutLeagueInput[];
+    updateMany?:
+      | ClubUpdateManyWithWhereWithoutLeagueInput
+      | ClubUpdateManyWithWhereWithoutLeagueInput[];
+    deleteMany?: ClubScalarWhereInput | ClubScalarWhereInput[];
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutLeagueNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>
+      | PlayerCreateWithoutLeagueInput[]
+      | PlayerUncheckedCreateWithoutLeagueInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutLeagueInput
+      | PlayerCreateOrConnectWithoutLeagueInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutLeagueInput
+      | PlayerUpsertWithWhereUniqueWithoutLeagueInput[];
+    createMany?: PlayerCreateManyLeagueInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutLeagueInput
+      | PlayerUpdateWithWhereUniqueWithoutLeagueInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutLeagueInput
+      | PlayerUpdateManyWithWhereWithoutLeagueInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type CountryCreateNestedOneWithoutClubsInput = {
+    create?: XOR<CountryCreateWithoutClubsInput, CountryUncheckedCreateWithoutClubsInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutClubsInput;
+    connect?: CountryWhereUniqueInput;
+  };
+
+  export type LeagueCreateNestedOneWithoutClubsInput = {
+    create?: XOR<LeagueCreateWithoutClubsInput, LeagueUncheckedCreateWithoutClubsInput>;
+    connectOrCreate?: LeagueCreateOrConnectWithoutClubsInput;
+    connect?: LeagueWhereUniqueInput;
+  };
+
+  export type PlayerCreateNestedManyWithoutClubInput = {
+    create?:
+      | XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>
+      | PlayerCreateWithoutClubInput[]
+      | PlayerUncheckedCreateWithoutClubInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutClubInput
+      | PlayerCreateOrConnectWithoutClubInput[];
+    createMany?: PlayerCreateManyClubInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type PlayerUncheckedCreateNestedManyWithoutClubInput = {
+    create?:
+      | XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>
+      | PlayerCreateWithoutClubInput[]
+      | PlayerUncheckedCreateWithoutClubInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutClubInput
+      | PlayerCreateOrConnectWithoutClubInput[];
+    createMany?: PlayerCreateManyClubInputEnvelope;
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+  };
+
+  export type CountryUpdateOneRequiredWithoutClubsNestedInput = {
+    create?: XOR<CountryCreateWithoutClubsInput, CountryUncheckedCreateWithoutClubsInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutClubsInput;
+    upsert?: CountryUpsertWithoutClubsInput;
+    connect?: CountryWhereUniqueInput;
+    update?: XOR<
+      XOR<CountryUpdateToOneWithWhereWithoutClubsInput, CountryUpdateWithoutClubsInput>,
+      CountryUncheckedUpdateWithoutClubsInput
+    >;
+  };
+
+  export type LeagueUpdateOneRequiredWithoutClubsNestedInput = {
+    create?: XOR<LeagueCreateWithoutClubsInput, LeagueUncheckedCreateWithoutClubsInput>;
+    connectOrCreate?: LeagueCreateOrConnectWithoutClubsInput;
+    upsert?: LeagueUpsertWithoutClubsInput;
+    connect?: LeagueWhereUniqueInput;
+    update?: XOR<
+      XOR<LeagueUpdateToOneWithWhereWithoutClubsInput, LeagueUpdateWithoutClubsInput>,
+      LeagueUncheckedUpdateWithoutClubsInput
+    >;
+  };
+
+  export type PlayerUpdateManyWithoutClubNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>
+      | PlayerCreateWithoutClubInput[]
+      | PlayerUncheckedCreateWithoutClubInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutClubInput
+      | PlayerCreateOrConnectWithoutClubInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutClubInput
+      | PlayerUpsertWithWhereUniqueWithoutClubInput[];
+    createMany?: PlayerCreateManyClubInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutClubInput
+      | PlayerUpdateWithWhereUniqueWithoutClubInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutClubInput
+      | PlayerUpdateManyWithWhereWithoutClubInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutClubNestedInput = {
+    create?:
+      | XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>
+      | PlayerCreateWithoutClubInput[]
+      | PlayerUncheckedCreateWithoutClubInput[];
+    connectOrCreate?:
+      | PlayerCreateOrConnectWithoutClubInput
+      | PlayerCreateOrConnectWithoutClubInput[];
+    upsert?:
+      | PlayerUpsertWithWhereUniqueWithoutClubInput
+      | PlayerUpsertWithWhereUniqueWithoutClubInput[];
+    createMany?: PlayerCreateManyClubInputEnvelope;
+    set?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    disconnect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    delete?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    connect?: PlayerWhereUniqueInput | PlayerWhereUniqueInput[];
+    update?:
+      | PlayerUpdateWithWhereUniqueWithoutClubInput
+      | PlayerUpdateWithWhereUniqueWithoutClubInput[];
+    updateMany?:
+      | PlayerUpdateManyWithWhereWithoutClubInput
+      | PlayerUpdateManyWithWhereWithoutClubInput[];
+    deleteMany?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+  };
+
+  export type PlayerPositionCreateNestedManyWithoutPlayerInput = {
+    create?:
+      | XOR<PlayerPositionCreateWithoutPlayerInput, PlayerPositionUncheckedCreateWithoutPlayerInput>
+      | PlayerPositionCreateWithoutPlayerInput[]
+      | PlayerPositionUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPlayerInput
+      | PlayerPositionCreateOrConnectWithoutPlayerInput[];
+    createMany?: PlayerPositionCreateManyPlayerInputEnvelope;
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+  };
+
+  export type ClubPlayerCreateNestedManyWithoutPlayerInput = {
+    create?:
+      | XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>
+      | ClubPlayerCreateWithoutPlayerInput[]
+      | ClubPlayerUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | ClubPlayerCreateOrConnectWithoutPlayerInput
+      | ClubPlayerCreateOrConnectWithoutPlayerInput[];
+    createMany?: ClubPlayerCreateManyPlayerInputEnvelope;
+    connect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+  };
+
+  export type QualityCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<QualityCreateWithoutPlayersInput, QualityUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: QualityCreateOrConnectWithoutPlayersInput;
+    connect?: QualityWhereUniqueInput;
+  };
+
+  export type RarityCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<RarityCreateWithoutPlayersInput, RarityUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: RarityCreateOrConnectWithoutPlayersInput;
+    connect?: RarityWhereUniqueInput;
+  };
+
+  export type CountryCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<CountryCreateWithoutPlayersInput, CountryUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutPlayersInput;
+    connect?: CountryWhereUniqueInput;
+  };
+
+  export type LeagueCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<LeagueCreateWithoutPlayersInput, LeagueUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: LeagueCreateOrConnectWithoutPlayersInput;
+    connect?: LeagueWhereUniqueInput;
+  };
+
+  export type ClubCreateNestedOneWithoutPlayersInput = {
+    create?: XOR<ClubCreateWithoutPlayersInput, ClubUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: ClubCreateOrConnectWithoutPlayersInput;
+    connect?: ClubWhereUniqueInput;
+  };
+
+  export type PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput = {
+    create?:
+      | XOR<PlayerPositionCreateWithoutPlayerInput, PlayerPositionUncheckedCreateWithoutPlayerInput>
+      | PlayerPositionCreateWithoutPlayerInput[]
+      | PlayerPositionUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPlayerInput
+      | PlayerPositionCreateOrConnectWithoutPlayerInput[];
+    createMany?: PlayerPositionCreateManyPlayerInputEnvelope;
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+  };
+
+  export type ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput = {
+    create?:
+      | XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>
+      | ClubPlayerCreateWithoutPlayerInput[]
+      | ClubPlayerUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | ClubPlayerCreateOrConnectWithoutPlayerInput
+      | ClubPlayerCreateOrConnectWithoutPlayerInput[];
+    createMany?: ClubPlayerCreateManyPlayerInputEnvelope;
+    connect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+  };
+
+  export type PlayerPositionUpdateManyWithoutPlayerNestedInput = {
+    create?:
+      | XOR<PlayerPositionCreateWithoutPlayerInput, PlayerPositionUncheckedCreateWithoutPlayerInput>
+      | PlayerPositionCreateWithoutPlayerInput[]
+      | PlayerPositionUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPlayerInput
+      | PlayerPositionCreateOrConnectWithoutPlayerInput[];
+    upsert?:
+      | PlayerPositionUpsertWithWhereUniqueWithoutPlayerInput
+      | PlayerPositionUpsertWithWhereUniqueWithoutPlayerInput[];
+    createMany?: PlayerPositionCreateManyPlayerInputEnvelope;
+    set?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    disconnect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    delete?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    update?:
+      | PlayerPositionUpdateWithWhereUniqueWithoutPlayerInput
+      | PlayerPositionUpdateWithWhereUniqueWithoutPlayerInput[];
+    updateMany?:
+      | PlayerPositionUpdateManyWithWhereWithoutPlayerInput
+      | PlayerPositionUpdateManyWithWhereWithoutPlayerInput[];
+    deleteMany?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+  };
+
+  export type ClubPlayerUpdateManyWithoutPlayerNestedInput = {
+    create?:
+      | XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>
+      | ClubPlayerCreateWithoutPlayerInput[]
+      | ClubPlayerUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | ClubPlayerCreateOrConnectWithoutPlayerInput
+      | ClubPlayerCreateOrConnectWithoutPlayerInput[];
+    upsert?:
+      | ClubPlayerUpsertWithWhereUniqueWithoutPlayerInput
+      | ClubPlayerUpsertWithWhereUniqueWithoutPlayerInput[];
+    createMany?: ClubPlayerCreateManyPlayerInputEnvelope;
+    set?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    disconnect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    delete?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    connect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    update?:
+      | ClubPlayerUpdateWithWhereUniqueWithoutPlayerInput
+      | ClubPlayerUpdateWithWhereUniqueWithoutPlayerInput[];
+    updateMany?:
+      | ClubPlayerUpdateManyWithWhereWithoutPlayerInput
+      | ClubPlayerUpdateManyWithWhereWithoutPlayerInput[];
+    deleteMany?: ClubPlayerScalarWhereInput | ClubPlayerScalarWhereInput[];
+  };
+
+  export type QualityUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<QualityCreateWithoutPlayersInput, QualityUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: QualityCreateOrConnectWithoutPlayersInput;
+    upsert?: QualityUpsertWithoutPlayersInput;
+    connect?: QualityWhereUniqueInput;
+    update?: XOR<
+      XOR<QualityUpdateToOneWithWhereWithoutPlayersInput, QualityUpdateWithoutPlayersInput>,
+      QualityUncheckedUpdateWithoutPlayersInput
+    >;
+  };
+
+  export type RarityUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<RarityCreateWithoutPlayersInput, RarityUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: RarityCreateOrConnectWithoutPlayersInput;
+    upsert?: RarityUpsertWithoutPlayersInput;
+    connect?: RarityWhereUniqueInput;
+    update?: XOR<
+      XOR<RarityUpdateToOneWithWhereWithoutPlayersInput, RarityUpdateWithoutPlayersInput>,
+      RarityUncheckedUpdateWithoutPlayersInput
+    >;
+  };
+
+  export type CountryUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<CountryCreateWithoutPlayersInput, CountryUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: CountryCreateOrConnectWithoutPlayersInput;
+    upsert?: CountryUpsertWithoutPlayersInput;
+    connect?: CountryWhereUniqueInput;
+    update?: XOR<
+      XOR<CountryUpdateToOneWithWhereWithoutPlayersInput, CountryUpdateWithoutPlayersInput>,
+      CountryUncheckedUpdateWithoutPlayersInput
+    >;
+  };
+
+  export type LeagueUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<LeagueCreateWithoutPlayersInput, LeagueUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: LeagueCreateOrConnectWithoutPlayersInput;
+    upsert?: LeagueUpsertWithoutPlayersInput;
+    connect?: LeagueWhereUniqueInput;
+    update?: XOR<
+      XOR<LeagueUpdateToOneWithWhereWithoutPlayersInput, LeagueUpdateWithoutPlayersInput>,
+      LeagueUncheckedUpdateWithoutPlayersInput
+    >;
+  };
+
+  export type ClubUpdateOneRequiredWithoutPlayersNestedInput = {
+    create?: XOR<ClubCreateWithoutPlayersInput, ClubUncheckedCreateWithoutPlayersInput>;
+    connectOrCreate?: ClubCreateOrConnectWithoutPlayersInput;
+    upsert?: ClubUpsertWithoutPlayersInput;
+    connect?: ClubWhereUniqueInput;
+    update?: XOR<
+      XOR<ClubUpdateToOneWithWhereWithoutPlayersInput, ClubUpdateWithoutPlayersInput>,
+      ClubUncheckedUpdateWithoutPlayersInput
+    >;
+  };
+
+  export type PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput = {
+    create?:
+      | XOR<PlayerPositionCreateWithoutPlayerInput, PlayerPositionUncheckedCreateWithoutPlayerInput>
+      | PlayerPositionCreateWithoutPlayerInput[]
+      | PlayerPositionUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | PlayerPositionCreateOrConnectWithoutPlayerInput
+      | PlayerPositionCreateOrConnectWithoutPlayerInput[];
+    upsert?:
+      | PlayerPositionUpsertWithWhereUniqueWithoutPlayerInput
+      | PlayerPositionUpsertWithWhereUniqueWithoutPlayerInput[];
+    createMany?: PlayerPositionCreateManyPlayerInputEnvelope;
+    set?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    disconnect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    delete?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    connect?: PlayerPositionWhereUniqueInput | PlayerPositionWhereUniqueInput[];
+    update?:
+      | PlayerPositionUpdateWithWhereUniqueWithoutPlayerInput
+      | PlayerPositionUpdateWithWhereUniqueWithoutPlayerInput[];
+    updateMany?:
+      | PlayerPositionUpdateManyWithWhereWithoutPlayerInput
+      | PlayerPositionUpdateManyWithWhereWithoutPlayerInput[];
+    deleteMany?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+  };
+
+  export type ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput = {
+    create?:
+      | XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>
+      | ClubPlayerCreateWithoutPlayerInput[]
+      | ClubPlayerUncheckedCreateWithoutPlayerInput[];
+    connectOrCreate?:
+      | ClubPlayerCreateOrConnectWithoutPlayerInput
+      | ClubPlayerCreateOrConnectWithoutPlayerInput[];
+    upsert?:
+      | ClubPlayerUpsertWithWhereUniqueWithoutPlayerInput
+      | ClubPlayerUpsertWithWhereUniqueWithoutPlayerInput[];
+    createMany?: ClubPlayerCreateManyPlayerInputEnvelope;
+    set?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    disconnect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    delete?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    connect?: ClubPlayerWhereUniqueInput | ClubPlayerWhereUniqueInput[];
+    update?:
+      | ClubPlayerUpdateWithWhereUniqueWithoutPlayerInput
+      | ClubPlayerUpdateWithWhereUniqueWithoutPlayerInput[];
+    updateMany?:
+      | ClubPlayerUpdateManyWithWhereWithoutPlayerInput
+      | ClubPlayerUpdateManyWithWhereWithoutPlayerInput[];
+    deleteMany?: ClubPlayerScalarWhereInput | ClubPlayerScalarWhereInput[];
+  };
+
+  export type PlayerCreateNestedOneWithoutClubPlayersInput = {
+    create?: XOR<PlayerCreateWithoutClubPlayersInput, PlayerUncheckedCreateWithoutClubPlayersInput>;
+    connectOrCreate?: PlayerCreateOrConnectWithoutClubPlayersInput;
+    connect?: PlayerWhereUniqueInput;
   };
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean;
   };
 
-  export type SbcChallengeUpdateOneRequiredWithoutSolutionsNestedInput = {
-    create?: XOR<
-      SbcChallengeCreateWithoutSolutionsInput,
-      SbcChallengeUncheckedCreateWithoutSolutionsInput
-    >;
-    connectOrCreate?: SbcChallengeCreateOrConnectWithoutSolutionsInput;
-    upsert?: SbcChallengeUpsertWithoutSolutionsInput;
-    connect?: SbcChallengeWhereUniqueInput;
+  export type PlayerUpdateOneRequiredWithoutClubPlayersNestedInput = {
+    create?: XOR<PlayerCreateWithoutClubPlayersInput, PlayerUncheckedCreateWithoutClubPlayersInput>;
+    connectOrCreate?: PlayerCreateOrConnectWithoutClubPlayersInput;
+    upsert?: PlayerUpsertWithoutClubPlayersInput;
+    connect?: PlayerWhereUniqueInput;
     update?: XOR<
-      XOR<
-        SbcChallengeUpdateToOneWithWhereWithoutSolutionsInput,
-        SbcChallengeUpdateWithoutSolutionsInput
-      >,
-      SbcChallengeUncheckedUpdateWithoutSolutionsInput
+      XOR<PlayerUpdateToOneWithWhereWithoutClubPlayersInput, PlayerUpdateWithoutClubPlayersInput>,
+      PlayerUncheckedUpdateWithoutClubPlayersInput
     >;
   };
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null;
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntFilter<$PrismaModel> | number;
   };
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -6541,15 +14568,31 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string;
   };
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string;
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>;
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
+    lt?: number | IntFieldRefInput<$PrismaModel>;
+    lte?: number | IntFieldRefInput<$PrismaModel>;
+    gt?: number | IntFieldRefInput<$PrismaModel>;
+    gte?: number | IntFieldRefInput<$PrismaModel>;
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number;
+    _count?: NestedIntFilter<$PrismaModel>;
+    _avg?: NestedFloatFilter<$PrismaModel>;
+    _sum?: NestedIntFilter<$PrismaModel>;
+    _min?: NestedIntFilter<$PrismaModel>;
+    _max?: NestedIntFilter<$PrismaModel>;
+  };
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>;
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>;
+    lt?: number | FloatFieldRefInput<$PrismaModel>;
+    lte?: number | FloatFieldRefInput<$PrismaModel>;
+    gt?: number | FloatFieldRefInput<$PrismaModel>;
+    gte?: number | FloatFieldRefInput<$PrismaModel>;
+    not?: NestedFloatFilter<$PrismaModel> | number;
   };
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -6569,138 +14612,9 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>;
   };
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntFilter<$PrismaModel> | number;
-  };
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>;
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>;
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string;
-    _count?: NestedIntFilter<$PrismaModel>;
-    _min?: NestedDateTimeFilter<$PrismaModel>;
-    _max?: NestedDateTimeFilter<$PrismaModel>;
-  };
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null;
-  };
-  export type NestedJsonNullableFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<NestedJsonNullableFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<NestedJsonNullableFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-  };
-  export type NestedJsonFilter<$PrismaModel = never> =
-    | PatchUndefined<
-        Either<
-          Required<NestedJsonFilterBase<$PrismaModel>>,
-          Exclude<keyof Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>
-        >,
-        Required<NestedJsonFilterBase<$PrismaModel>>
-      >
-    | OptionalFlat<Omit<Required<NestedJsonFilterBase<$PrismaModel>>, 'path'>>;
-
-  export type NestedJsonFilterBase<$PrismaModel = never> = {
-    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-    path?: string[];
-    string_contains?: string | StringFieldRefInput<$PrismaModel>;
-    string_starts_with?: string | StringFieldRefInput<$PrismaModel>;
-    string_ends_with?: string | StringFieldRefInput<$PrismaModel>;
-    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null;
-    lt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    lte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gt?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    gte?: InputJsonValue | JsonFieldRefInput<$PrismaModel>;
-    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter;
-  };
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null;
-  };
-
   export type NestedBoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>;
     not?: NestedBoolFilter<$PrismaModel> | boolean;
-  };
-
-  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null;
-    lt?: number | FloatFieldRefInput<$PrismaModel>;
-    lte?: number | FloatFieldRefInput<$PrismaModel>;
-    gt?: number | FloatFieldRefInput<$PrismaModel>;
-    gte?: number | FloatFieldRefInput<$PrismaModel>;
-    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedFloatNullableFilter<$PrismaModel>;
-    _min?: NestedFloatNullableFilter<$PrismaModel>;
-    _max?: NestedFloatNullableFilter<$PrismaModel>;
-  };
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null;
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null;
-    lt?: number | IntFieldRefInput<$PrismaModel>;
-    lte?: number | IntFieldRefInput<$PrismaModel>;
-    gt?: number | IntFieldRefInput<$PrismaModel>;
-    gte?: number | IntFieldRefInput<$PrismaModel>;
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _avg?: NestedFloatNullableFilter<$PrismaModel>;
-    _sum?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedIntNullableFilter<$PrismaModel>;
-    _max?: NestedIntNullableFilter<$PrismaModel>;
   };
 
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
@@ -6711,243 +14625,1748 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>;
   };
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null;
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    lt?: string | StringFieldRefInput<$PrismaModel>;
-    lte?: string | StringFieldRefInput<$PrismaModel>;
-    gt?: string | StringFieldRefInput<$PrismaModel>;
-    gte?: string | StringFieldRefInput<$PrismaModel>;
-    contains?: string | StringFieldRefInput<$PrismaModel>;
-    startsWith?: string | StringFieldRefInput<$PrismaModel>;
-    endsWith?: string | StringFieldRefInput<$PrismaModel>;
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null;
+  export type PlayerCreateWithoutQualityInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
   };
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null;
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null;
-    lt?: string | StringFieldRefInput<$PrismaModel>;
-    lte?: string | StringFieldRefInput<$PrismaModel>;
-    gt?: string | StringFieldRefInput<$PrismaModel>;
-    gte?: string | StringFieldRefInput<$PrismaModel>;
-    contains?: string | StringFieldRefInput<$PrismaModel>;
-    startsWith?: string | StringFieldRefInput<$PrismaModel>;
-    endsWith?: string | StringFieldRefInput<$PrismaModel>;
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null;
-    _count?: NestedIntNullableFilter<$PrismaModel>;
-    _min?: NestedStringNullableFilter<$PrismaModel>;
-    _max?: NestedStringNullableFilter<$PrismaModel>;
+  export type PlayerUncheckedCreateWithoutQualityInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
   };
 
-  export type SbcSolutionCreateWithoutChallengeInput = {
-    id?: string;
-    createdAt?: Date | string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
+  export type PlayerCreateOrConnectWithoutQualityInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>;
   };
 
-  export type SbcSolutionUncheckedCreateWithoutChallengeInput = {
-    id?: string;
-    createdAt?: Date | string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
-  };
-
-  export type SbcSolutionCreateOrConnectWithoutChallengeInput = {
-    where: SbcSolutionWhereUniqueInput;
-    create: XOR<
-      SbcSolutionCreateWithoutChallengeInput,
-      SbcSolutionUncheckedCreateWithoutChallengeInput
-    >;
-  };
-
-  export type SbcSolutionCreateManyChallengeInputEnvelope = {
-    data: SbcSolutionCreateManyChallengeInput | SbcSolutionCreateManyChallengeInput[];
+  export type PlayerCreateManyQualityInputEnvelope = {
+    data: PlayerCreateManyQualityInput | PlayerCreateManyQualityInput[];
     skipDuplicates?: boolean;
   };
 
-  export type SbcSolutionUpsertWithWhereUniqueWithoutChallengeInput = {
-    where: SbcSolutionWhereUniqueInput;
-    update: XOR<
-      SbcSolutionUpdateWithoutChallengeInput,
-      SbcSolutionUncheckedUpdateWithoutChallengeInput
-    >;
-    create: XOR<
-      SbcSolutionCreateWithoutChallengeInput,
-      SbcSolutionUncheckedCreateWithoutChallengeInput
-    >;
+  export type PlayerUpsertWithWhereUniqueWithoutQualityInput = {
+    where: PlayerWhereUniqueInput;
+    update: XOR<PlayerUpdateWithoutQualityInput, PlayerUncheckedUpdateWithoutQualityInput>;
+    create: XOR<PlayerCreateWithoutQualityInput, PlayerUncheckedCreateWithoutQualityInput>;
   };
 
-  export type SbcSolutionUpdateWithWhereUniqueWithoutChallengeInput = {
-    where: SbcSolutionWhereUniqueInput;
-    data: XOR<
-      SbcSolutionUpdateWithoutChallengeInput,
-      SbcSolutionUncheckedUpdateWithoutChallengeInput
-    >;
+  export type PlayerUpdateWithWhereUniqueWithoutQualityInput = {
+    where: PlayerWhereUniqueInput;
+    data: XOR<PlayerUpdateWithoutQualityInput, PlayerUncheckedUpdateWithoutQualityInput>;
   };
 
-  export type SbcSolutionUpdateManyWithWhereWithoutChallengeInput = {
-    where: SbcSolutionScalarWhereInput;
-    data: XOR<
-      SbcSolutionUpdateManyMutationInput,
-      SbcSolutionUncheckedUpdateManyWithoutChallengeInput
-    >;
+  export type PlayerUpdateManyWithWhereWithoutQualityInput = {
+    where: PlayerScalarWhereInput;
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyWithoutQualityInput>;
   };
 
-  export type SbcSolutionScalarWhereInput = {
-    AND?: SbcSolutionScalarWhereInput | SbcSolutionScalarWhereInput[];
-    OR?: SbcSolutionScalarWhereInput[];
-    NOT?: SbcSolutionScalarWhereInput | SbcSolutionScalarWhereInput[];
-    id?: StringFilter<'SbcSolution'> | string;
-    createdAt?: DateTimeFilter<'SbcSolution'> | Date | string;
-    challengeId?: StringFilter<'SbcSolution'> | string;
-    players?: JsonFilter<'SbcSolution'>;
-    cost?: FloatNullableFilter<'SbcSolution'> | number | null;
-    rating?: IntNullableFilter<'SbcSolution'> | number | null;
-    isValid?: BoolFilter<'SbcSolution'> | boolean;
+  export type PlayerScalarWhereInput = {
+    AND?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+    OR?: PlayerScalarWhereInput[];
+    NOT?: PlayerScalarWhereInput | PlayerScalarWhereInput[];
+    id?: IntFilter<'Player'> | number;
+    displayName?: StringFilter<'Player'> | string;
+    fullName?: StringFilter<'Player'> | string;
+    qualityId?: IntFilter<'Player'> | number;
+    rarityId?: IntFilter<'Player'> | number;
+    ovr?: IntFilter<'Player'> | number;
+    rating1?: IntFilter<'Player'> | number;
+    rating2?: IntFilter<'Player'> | number;
+    rating3?: IntFilter<'Player'> | number;
+    rating4?: IntFilter<'Player'> | number;
+    rating5?: IntFilter<'Player'> | number;
+    rating6?: IntFilter<'Player'> | number;
+    countryId?: IntFilter<'Player'> | number;
+    clubId?: IntFilter<'Player'> | number;
+    leagueId?: IntFilter<'Player'> | number;
   };
 
-  export type SbcChallengeCreateWithoutSolutionsInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    challengeId: string;
+  export type PlayerCreateWithoutRarityInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutRarityInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutRarityInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>;
+  };
+
+  export type PlayerCreateManyRarityInputEnvelope = {
+    data: PlayerCreateManyRarityInput | PlayerCreateManyRarityInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type PlayerUpsertWithWhereUniqueWithoutRarityInput = {
+    where: PlayerWhereUniqueInput;
+    update: XOR<PlayerUpdateWithoutRarityInput, PlayerUncheckedUpdateWithoutRarityInput>;
+    create: XOR<PlayerCreateWithoutRarityInput, PlayerUncheckedCreateWithoutRarityInput>;
+  };
+
+  export type PlayerUpdateWithWhereUniqueWithoutRarityInput = {
+    where: PlayerWhereUniqueInput;
+    data: XOR<PlayerUpdateWithoutRarityInput, PlayerUncheckedUpdateWithoutRarityInput>;
+  };
+
+  export type PlayerUpdateManyWithWhereWithoutRarityInput = {
+    where: PlayerScalarWhereInput;
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyWithoutRarityInput>;
+  };
+
+  export type ClubCreateWithoutCountryInput = {
     name: string;
-    requirements: JsonNullValueInput | InputJsonValue;
-    status?: string;
+    league: LeagueCreateNestedOneWithoutClubsInput;
+    players?: PlayerCreateNestedManyWithoutClubInput;
   };
 
-  export type SbcChallengeUncheckedCreateWithoutSolutionsInput = {
-    id?: string;
-    createdAt?: Date | string;
-    updatedAt?: Date | string;
-    challengeId: string;
+  export type ClubUncheckedCreateWithoutCountryInput = {
+    id?: number;
     name: string;
-    requirements: JsonNullValueInput | InputJsonValue;
-    status?: string;
+    leagueId: number;
+    players?: PlayerUncheckedCreateNestedManyWithoutClubInput;
   };
 
-  export type SbcChallengeCreateOrConnectWithoutSolutionsInput = {
-    where: SbcChallengeWhereUniqueInput;
+  export type ClubCreateOrConnectWithoutCountryInput = {
+    where: ClubWhereUniqueInput;
+    create: XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type ClubCreateManyCountryInputEnvelope = {
+    data: ClubCreateManyCountryInput | ClubCreateManyCountryInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type LeagueCreateWithoutCountryInput = {
+    name: string;
+    clubs?: ClubCreateNestedManyWithoutLeagueInput;
+    players?: PlayerCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueUncheckedCreateWithoutCountryInput = {
+    id?: number;
+    name: string;
+    clubs?: ClubUncheckedCreateNestedManyWithoutLeagueInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueCreateOrConnectWithoutCountryInput = {
+    where: LeagueWhereUniqueInput;
+    create: XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type LeagueCreateManyCountryInputEnvelope = {
+    data: LeagueCreateManyCountryInput | LeagueCreateManyCountryInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type PlayerCreateWithoutCountryInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutCountryInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    clubId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutCountryInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type PlayerCreateManyCountryInputEnvelope = {
+    data: PlayerCreateManyCountryInput | PlayerCreateManyCountryInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type ClubUpsertWithWhereUniqueWithoutCountryInput = {
+    where: ClubWhereUniqueInput;
+    update: XOR<ClubUpdateWithoutCountryInput, ClubUncheckedUpdateWithoutCountryInput>;
+    create: XOR<ClubCreateWithoutCountryInput, ClubUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type ClubUpdateWithWhereUniqueWithoutCountryInput = {
+    where: ClubWhereUniqueInput;
+    data: XOR<ClubUpdateWithoutCountryInput, ClubUncheckedUpdateWithoutCountryInput>;
+  };
+
+  export type ClubUpdateManyWithWhereWithoutCountryInput = {
+    where: ClubScalarWhereInput;
+    data: XOR<ClubUpdateManyMutationInput, ClubUncheckedUpdateManyWithoutCountryInput>;
+  };
+
+  export type ClubScalarWhereInput = {
+    AND?: ClubScalarWhereInput | ClubScalarWhereInput[];
+    OR?: ClubScalarWhereInput[];
+    NOT?: ClubScalarWhereInput | ClubScalarWhereInput[];
+    id?: IntFilter<'Club'> | number;
+    name?: StringFilter<'Club'> | string;
+    countryId?: IntFilter<'Club'> | number;
+    leagueId?: IntFilter<'Club'> | number;
+  };
+
+  export type LeagueUpsertWithWhereUniqueWithoutCountryInput = {
+    where: LeagueWhereUniqueInput;
+    update: XOR<LeagueUpdateWithoutCountryInput, LeagueUncheckedUpdateWithoutCountryInput>;
+    create: XOR<LeagueCreateWithoutCountryInput, LeagueUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type LeagueUpdateWithWhereUniqueWithoutCountryInput = {
+    where: LeagueWhereUniqueInput;
+    data: XOR<LeagueUpdateWithoutCountryInput, LeagueUncheckedUpdateWithoutCountryInput>;
+  };
+
+  export type LeagueUpdateManyWithWhereWithoutCountryInput = {
+    where: LeagueScalarWhereInput;
+    data: XOR<LeagueUpdateManyMutationInput, LeagueUncheckedUpdateManyWithoutCountryInput>;
+  };
+
+  export type LeagueScalarWhereInput = {
+    AND?: LeagueScalarWhereInput | LeagueScalarWhereInput[];
+    OR?: LeagueScalarWhereInput[];
+    NOT?: LeagueScalarWhereInput | LeagueScalarWhereInput[];
+    id?: IntFilter<'League'> | number;
+    name?: StringFilter<'League'> | string;
+    countryId?: IntFilter<'League'> | number;
+  };
+
+  export type PlayerUpsertWithWhereUniqueWithoutCountryInput = {
+    where: PlayerWhereUniqueInput;
+    update: XOR<PlayerUpdateWithoutCountryInput, PlayerUncheckedUpdateWithoutCountryInput>;
+    create: XOR<PlayerCreateWithoutCountryInput, PlayerUncheckedCreateWithoutCountryInput>;
+  };
+
+  export type PlayerUpdateWithWhereUniqueWithoutCountryInput = {
+    where: PlayerWhereUniqueInput;
+    data: XOR<PlayerUpdateWithoutCountryInput, PlayerUncheckedUpdateWithoutCountryInput>;
+  };
+
+  export type PlayerUpdateManyWithWhereWithoutCountryInput = {
+    where: PlayerScalarWhereInput;
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyWithoutCountryInput>;
+  };
+
+  export type PlayerPositionCreateWithoutPositionInput = {
+    player: PlayerCreateNestedOneWithoutPositionsInput;
+  };
+
+  export type PlayerPositionUncheckedCreateWithoutPositionInput = {
+    id?: number;
+    playerId: number;
+  };
+
+  export type PlayerPositionCreateOrConnectWithoutPositionInput = {
+    where: PlayerPositionWhereUniqueInput;
     create: XOR<
-      SbcChallengeCreateWithoutSolutionsInput,
-      SbcChallengeUncheckedCreateWithoutSolutionsInput
+      PlayerPositionCreateWithoutPositionInput,
+      PlayerPositionUncheckedCreateWithoutPositionInput
     >;
   };
 
-  export type SbcChallengeUpsertWithoutSolutionsInput = {
+  export type PlayerPositionCreateManyPositionInputEnvelope = {
+    data: PlayerPositionCreateManyPositionInput | PlayerPositionCreateManyPositionInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type PlayerPositionUpsertWithWhereUniqueWithoutPositionInput = {
+    where: PlayerPositionWhereUniqueInput;
     update: XOR<
-      SbcChallengeUpdateWithoutSolutionsInput,
-      SbcChallengeUncheckedUpdateWithoutSolutionsInput
+      PlayerPositionUpdateWithoutPositionInput,
+      PlayerPositionUncheckedUpdateWithoutPositionInput
     >;
     create: XOR<
-      SbcChallengeCreateWithoutSolutionsInput,
-      SbcChallengeUncheckedCreateWithoutSolutionsInput
+      PlayerPositionCreateWithoutPositionInput,
+      PlayerPositionUncheckedCreateWithoutPositionInput
     >;
-    where?: SbcChallengeWhereInput;
   };
 
-  export type SbcChallengeUpdateToOneWithWhereWithoutSolutionsInput = {
-    where?: SbcChallengeWhereInput;
+  export type PlayerPositionUpdateWithWhereUniqueWithoutPositionInput = {
+    where: PlayerPositionWhereUniqueInput;
     data: XOR<
-      SbcChallengeUpdateWithoutSolutionsInput,
-      SbcChallengeUncheckedUpdateWithoutSolutionsInput
+      PlayerPositionUpdateWithoutPositionInput,
+      PlayerPositionUncheckedUpdateWithoutPositionInput
     >;
   };
 
-  export type SbcChallengeUpdateWithoutSolutionsInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type PlayerPositionUpdateManyWithWhereWithoutPositionInput = {
+    where: PlayerPositionScalarWhereInput;
+    data: XOR<
+      PlayerPositionUpdateManyMutationInput,
+      PlayerPositionUncheckedUpdateManyWithoutPositionInput
+    >;
+  };
+
+  export type PlayerPositionScalarWhereInput = {
+    AND?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+    OR?: PlayerPositionScalarWhereInput[];
+    NOT?: PlayerPositionScalarWhereInput | PlayerPositionScalarWhereInput[];
+    id?: IntFilter<'PlayerPosition'> | number;
+    playerId?: IntFilter<'PlayerPosition'> | number;
+    positionId?: IntFilter<'PlayerPosition'> | number;
+  };
+
+  export type PlayerCreateWithoutPositionsInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutPositionsInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutPositionsInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutPositionsInput, PlayerUncheckedCreateWithoutPositionsInput>;
+  };
+
+  export type PositionCreateWithoutPlayersInput = {
+    name: string;
+  };
+
+  export type PositionUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+  };
+
+  export type PositionCreateOrConnectWithoutPlayersInput = {
+    where: PositionWhereUniqueInput;
+    create: XOR<PositionCreateWithoutPlayersInput, PositionUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type PlayerUpsertWithoutPositionsInput = {
+    update: XOR<PlayerUpdateWithoutPositionsInput, PlayerUncheckedUpdateWithoutPositionsInput>;
+    create: XOR<PlayerCreateWithoutPositionsInput, PlayerUncheckedCreateWithoutPositionsInput>;
+    where?: PlayerWhereInput;
+  };
+
+  export type PlayerUpdateToOneWithWhereWithoutPositionsInput = {
+    where?: PlayerWhereInput;
+    data: XOR<PlayerUpdateWithoutPositionsInput, PlayerUncheckedUpdateWithoutPositionsInput>;
+  };
+
+  export type PlayerUpdateWithoutPositionsInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutPositionsInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PositionUpsertWithoutPlayersInput = {
+    update: XOR<PositionUpdateWithoutPlayersInput, PositionUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<PositionCreateWithoutPlayersInput, PositionUncheckedCreateWithoutPlayersInput>;
+    where?: PositionWhereInput;
+  };
+
+  export type PositionUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: PositionWhereInput;
+    data: XOR<PositionUpdateWithoutPlayersInput, PositionUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type PositionUpdateWithoutPlayersInput = {
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type SbcChallengeUncheckedUpdateWithoutSolutionsInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    challengeId?: StringFieldUpdateOperationsInput | string;
+  export type PositionUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
     name?: StringFieldUpdateOperationsInput | string;
-    requirements?: JsonNullValueInput | InputJsonValue;
-    status?: StringFieldUpdateOperationsInput | string;
   };
 
-  export type SbcSolutionCreateManyChallengeInput = {
-    id?: string;
-    createdAt?: Date | string;
-    players: JsonNullValueInput | InputJsonValue;
-    cost?: number | null;
-    rating?: number | null;
-    isValid?: boolean;
+  export type CountryCreateWithoutLeaguesInput = {
+    name: string;
+    clubs?: ClubCreateNestedManyWithoutCountryInput;
+    players?: PlayerCreateNestedManyWithoutCountryInput;
   };
 
-  export type SbcSolutionUpdateWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type CountryUncheckedCreateWithoutLeaguesInput = {
+    id?: number;
+    name: string;
+    clubs?: ClubUncheckedCreateNestedManyWithoutCountryInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutCountryInput;
   };
 
-  export type SbcSolutionUncheckedUpdateWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type CountryCreateOrConnectWithoutLeaguesInput = {
+    where: CountryWhereUniqueInput;
+    create: XOR<CountryCreateWithoutLeaguesInput, CountryUncheckedCreateWithoutLeaguesInput>;
   };
 
-  export type SbcSolutionUncheckedUpdateManyWithoutChallengeInput = {
-    id?: StringFieldUpdateOperationsInput | string;
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string;
-    players?: JsonNullValueInput | InputJsonValue;
-    cost?: NullableFloatFieldUpdateOperationsInput | number | null;
-    rating?: NullableIntFieldUpdateOperationsInput | number | null;
-    isValid?: BoolFieldUpdateOperationsInput | boolean;
+  export type ClubCreateWithoutLeagueInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutClubsInput;
+    players?: PlayerCreateNestedManyWithoutClubInput;
+  };
+
+  export type ClubUncheckedCreateWithoutLeagueInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    players?: PlayerUncheckedCreateNestedManyWithoutClubInput;
+  };
+
+  export type ClubCreateOrConnectWithoutLeagueInput = {
+    where: ClubWhereUniqueInput;
+    create: XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>;
+  };
+
+  export type ClubCreateManyLeagueInputEnvelope = {
+    data: ClubCreateManyLeagueInput | ClubCreateManyLeagueInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type PlayerCreateWithoutLeagueInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutLeagueInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutLeagueInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>;
+  };
+
+  export type PlayerCreateManyLeagueInputEnvelope = {
+    data: PlayerCreateManyLeagueInput | PlayerCreateManyLeagueInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type CountryUpsertWithoutLeaguesInput = {
+    update: XOR<CountryUpdateWithoutLeaguesInput, CountryUncheckedUpdateWithoutLeaguesInput>;
+    create: XOR<CountryCreateWithoutLeaguesInput, CountryUncheckedCreateWithoutLeaguesInput>;
+    where?: CountryWhereInput;
+  };
+
+  export type CountryUpdateToOneWithWhereWithoutLeaguesInput = {
+    where?: CountryWhereInput;
+    data: XOR<CountryUpdateWithoutLeaguesInput, CountryUncheckedUpdateWithoutLeaguesInput>;
+  };
+
+  export type CountryUpdateWithoutLeaguesInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type CountryUncheckedUpdateWithoutLeaguesInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUncheckedUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type ClubUpsertWithWhereUniqueWithoutLeagueInput = {
+    where: ClubWhereUniqueInput;
+    update: XOR<ClubUpdateWithoutLeagueInput, ClubUncheckedUpdateWithoutLeagueInput>;
+    create: XOR<ClubCreateWithoutLeagueInput, ClubUncheckedCreateWithoutLeagueInput>;
+  };
+
+  export type ClubUpdateWithWhereUniqueWithoutLeagueInput = {
+    where: ClubWhereUniqueInput;
+    data: XOR<ClubUpdateWithoutLeagueInput, ClubUncheckedUpdateWithoutLeagueInput>;
+  };
+
+  export type ClubUpdateManyWithWhereWithoutLeagueInput = {
+    where: ClubScalarWhereInput;
+    data: XOR<ClubUpdateManyMutationInput, ClubUncheckedUpdateManyWithoutLeagueInput>;
+  };
+
+  export type PlayerUpsertWithWhereUniqueWithoutLeagueInput = {
+    where: PlayerWhereUniqueInput;
+    update: XOR<PlayerUpdateWithoutLeagueInput, PlayerUncheckedUpdateWithoutLeagueInput>;
+    create: XOR<PlayerCreateWithoutLeagueInput, PlayerUncheckedCreateWithoutLeagueInput>;
+  };
+
+  export type PlayerUpdateWithWhereUniqueWithoutLeagueInput = {
+    where: PlayerWhereUniqueInput;
+    data: XOR<PlayerUpdateWithoutLeagueInput, PlayerUncheckedUpdateWithoutLeagueInput>;
+  };
+
+  export type PlayerUpdateManyWithWhereWithoutLeagueInput = {
+    where: PlayerScalarWhereInput;
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyWithoutLeagueInput>;
+  };
+
+  export type CountryCreateWithoutClubsInput = {
+    name: string;
+    leagues?: LeagueCreateNestedManyWithoutCountryInput;
+    players?: PlayerCreateNestedManyWithoutCountryInput;
+  };
+
+  export type CountryUncheckedCreateWithoutClubsInput = {
+    id?: number;
+    name: string;
+    leagues?: LeagueUncheckedCreateNestedManyWithoutCountryInput;
+    players?: PlayerUncheckedCreateNestedManyWithoutCountryInput;
+  };
+
+  export type CountryCreateOrConnectWithoutClubsInput = {
+    where: CountryWhereUniqueInput;
+    create: XOR<CountryCreateWithoutClubsInput, CountryUncheckedCreateWithoutClubsInput>;
+  };
+
+  export type LeagueCreateWithoutClubsInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutLeaguesInput;
+    players?: PlayerCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueUncheckedCreateWithoutClubsInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    players?: PlayerUncheckedCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueCreateOrConnectWithoutClubsInput = {
+    where: LeagueWhereUniqueInput;
+    create: XOR<LeagueCreateWithoutClubsInput, LeagueUncheckedCreateWithoutClubsInput>;
+  };
+
+  export type PlayerCreateWithoutClubInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutClubInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+    clubPlayers?: ClubPlayerUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutClubInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>;
+  };
+
+  export type PlayerCreateManyClubInputEnvelope = {
+    data: PlayerCreateManyClubInput | PlayerCreateManyClubInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type CountryUpsertWithoutClubsInput = {
+    update: XOR<CountryUpdateWithoutClubsInput, CountryUncheckedUpdateWithoutClubsInput>;
+    create: XOR<CountryCreateWithoutClubsInput, CountryUncheckedCreateWithoutClubsInput>;
+    where?: CountryWhereInput;
+  };
+
+  export type CountryUpdateToOneWithWhereWithoutClubsInput = {
+    where?: CountryWhereInput;
+    data: XOR<CountryUpdateWithoutClubsInput, CountryUncheckedUpdateWithoutClubsInput>;
+  };
+
+  export type CountryUpdateWithoutClubsInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    leagues?: LeagueUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type CountryUncheckedUpdateWithoutClubsInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    leagues?: LeagueUncheckedUpdateManyWithoutCountryNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type LeagueUpsertWithoutClubsInput = {
+    update: XOR<LeagueUpdateWithoutClubsInput, LeagueUncheckedUpdateWithoutClubsInput>;
+    create: XOR<LeagueCreateWithoutClubsInput, LeagueUncheckedCreateWithoutClubsInput>;
+    where?: LeagueWhereInput;
+  };
+
+  export type LeagueUpdateToOneWithWhereWithoutClubsInput = {
+    where?: LeagueWhereInput;
+    data: XOR<LeagueUpdateWithoutClubsInput, LeagueUncheckedUpdateWithoutClubsInput>;
+  };
+
+  export type LeagueUpdateWithoutClubsInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutLeaguesNestedInput;
+    players?: PlayerUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueUncheckedUpdateWithoutClubsInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    players?: PlayerUncheckedUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type PlayerUpsertWithWhereUniqueWithoutClubInput = {
+    where: PlayerWhereUniqueInput;
+    update: XOR<PlayerUpdateWithoutClubInput, PlayerUncheckedUpdateWithoutClubInput>;
+    create: XOR<PlayerCreateWithoutClubInput, PlayerUncheckedCreateWithoutClubInput>;
+  };
+
+  export type PlayerUpdateWithWhereUniqueWithoutClubInput = {
+    where: PlayerWhereUniqueInput;
+    data: XOR<PlayerUpdateWithoutClubInput, PlayerUncheckedUpdateWithoutClubInput>;
+  };
+
+  export type PlayerUpdateManyWithWhereWithoutClubInput = {
+    where: PlayerScalarWhereInput;
+    data: XOR<PlayerUpdateManyMutationInput, PlayerUncheckedUpdateManyWithoutClubInput>;
+  };
+
+  export type PlayerPositionCreateWithoutPlayerInput = {
+    position: PositionCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerPositionUncheckedCreateWithoutPlayerInput = {
+    id?: number;
+    positionId: number;
+  };
+
+  export type PlayerPositionCreateOrConnectWithoutPlayerInput = {
+    where: PlayerPositionWhereUniqueInput;
+    create: XOR<
+      PlayerPositionCreateWithoutPlayerInput,
+      PlayerPositionUncheckedCreateWithoutPlayerInput
+    >;
+  };
+
+  export type PlayerPositionCreateManyPlayerInputEnvelope = {
+    data: PlayerPositionCreateManyPlayerInput | PlayerPositionCreateManyPlayerInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type ClubPlayerCreateWithoutPlayerInput = {
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type ClubPlayerUncheckedCreateWithoutPlayerInput = {
+    id?: number;
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type ClubPlayerCreateOrConnectWithoutPlayerInput = {
+    where: ClubPlayerWhereUniqueInput;
+    create: XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>;
+  };
+
+  export type ClubPlayerCreateManyPlayerInputEnvelope = {
+    data: ClubPlayerCreateManyPlayerInput | ClubPlayerCreateManyPlayerInput[];
+    skipDuplicates?: boolean;
+  };
+
+  export type QualityCreateWithoutPlayersInput = {
+    name: string;
+  };
+
+  export type QualityUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+  };
+
+  export type QualityCreateOrConnectWithoutPlayersInput = {
+    where: QualityWhereUniqueInput;
+    create: XOR<QualityCreateWithoutPlayersInput, QualityUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type RarityCreateWithoutPlayersInput = {
+    name: string;
+  };
+
+  export type RarityUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+  };
+
+  export type RarityCreateOrConnectWithoutPlayersInput = {
+    where: RarityWhereUniqueInput;
+    create: XOR<RarityCreateWithoutPlayersInput, RarityUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type CountryCreateWithoutPlayersInput = {
+    name: string;
+    clubs?: ClubCreateNestedManyWithoutCountryInput;
+    leagues?: LeagueCreateNestedManyWithoutCountryInput;
+  };
+
+  export type CountryUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+    clubs?: ClubUncheckedCreateNestedManyWithoutCountryInput;
+    leagues?: LeagueUncheckedCreateNestedManyWithoutCountryInput;
+  };
+
+  export type CountryCreateOrConnectWithoutPlayersInput = {
+    where: CountryWhereUniqueInput;
+    create: XOR<CountryCreateWithoutPlayersInput, CountryUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type LeagueCreateWithoutPlayersInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutLeaguesInput;
+    clubs?: ClubCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    clubs?: ClubUncheckedCreateNestedManyWithoutLeagueInput;
+  };
+
+  export type LeagueCreateOrConnectWithoutPlayersInput = {
+    where: LeagueWhereUniqueInput;
+    create: XOR<LeagueCreateWithoutPlayersInput, LeagueUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type ClubCreateWithoutPlayersInput = {
+    name: string;
+    country: CountryCreateNestedOneWithoutClubsInput;
+    league: LeagueCreateNestedOneWithoutClubsInput;
+  };
+
+  export type ClubUncheckedCreateWithoutPlayersInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+    leagueId: number;
+  };
+
+  export type ClubCreateOrConnectWithoutPlayersInput = {
+    where: ClubWhereUniqueInput;
+    create: XOR<ClubCreateWithoutPlayersInput, ClubUncheckedCreateWithoutPlayersInput>;
+  };
+
+  export type PlayerPositionUpsertWithWhereUniqueWithoutPlayerInput = {
+    where: PlayerPositionWhereUniqueInput;
+    update: XOR<
+      PlayerPositionUpdateWithoutPlayerInput,
+      PlayerPositionUncheckedUpdateWithoutPlayerInput
+    >;
+    create: XOR<
+      PlayerPositionCreateWithoutPlayerInput,
+      PlayerPositionUncheckedCreateWithoutPlayerInput
+    >;
+  };
+
+  export type PlayerPositionUpdateWithWhereUniqueWithoutPlayerInput = {
+    where: PlayerPositionWhereUniqueInput;
+    data: XOR<
+      PlayerPositionUpdateWithoutPlayerInput,
+      PlayerPositionUncheckedUpdateWithoutPlayerInput
+    >;
+  };
+
+  export type PlayerPositionUpdateManyWithWhereWithoutPlayerInput = {
+    where: PlayerPositionScalarWhereInput;
+    data: XOR<
+      PlayerPositionUpdateManyMutationInput,
+      PlayerPositionUncheckedUpdateManyWithoutPlayerInput
+    >;
+  };
+
+  export type ClubPlayerUpsertWithWhereUniqueWithoutPlayerInput = {
+    where: ClubPlayerWhereUniqueInput;
+    update: XOR<ClubPlayerUpdateWithoutPlayerInput, ClubPlayerUncheckedUpdateWithoutPlayerInput>;
+    create: XOR<ClubPlayerCreateWithoutPlayerInput, ClubPlayerUncheckedCreateWithoutPlayerInput>;
+  };
+
+  export type ClubPlayerUpdateWithWhereUniqueWithoutPlayerInput = {
+    where: ClubPlayerWhereUniqueInput;
+    data: XOR<ClubPlayerUpdateWithoutPlayerInput, ClubPlayerUncheckedUpdateWithoutPlayerInput>;
+  };
+
+  export type ClubPlayerUpdateManyWithWhereWithoutPlayerInput = {
+    where: ClubPlayerScalarWhereInput;
+    data: XOR<ClubPlayerUpdateManyMutationInput, ClubPlayerUncheckedUpdateManyWithoutPlayerInput>;
+  };
+
+  export type ClubPlayerScalarWhereInput = {
+    AND?: ClubPlayerScalarWhereInput | ClubPlayerScalarWhereInput[];
+    OR?: ClubPlayerScalarWhereInput[];
+    NOT?: ClubPlayerScalarWhereInput | ClubPlayerScalarWhereInput[];
+    id?: IntFilter<'ClubPlayer'> | number;
+    playerId?: IntFilter<'ClubPlayer'> | number;
+    sbc?: BoolFilter<'ClubPlayer'> | boolean;
+    squad?: BoolFilter<'ClubPlayer'> | boolean;
+  };
+
+  export type QualityUpsertWithoutPlayersInput = {
+    update: XOR<QualityUpdateWithoutPlayersInput, QualityUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<QualityCreateWithoutPlayersInput, QualityUncheckedCreateWithoutPlayersInput>;
+    where?: QualityWhereInput;
+  };
+
+  export type QualityUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: QualityWhereInput;
+    data: XOR<QualityUpdateWithoutPlayersInput, QualityUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type QualityUpdateWithoutPlayersInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type QualityUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type RarityUpsertWithoutPlayersInput = {
+    update: XOR<RarityUpdateWithoutPlayersInput, RarityUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<RarityCreateWithoutPlayersInput, RarityUncheckedCreateWithoutPlayersInput>;
+    where?: RarityWhereInput;
+  };
+
+  export type RarityUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: RarityWhereInput;
+    data: XOR<RarityUpdateWithoutPlayersInput, RarityUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type RarityUpdateWithoutPlayersInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type RarityUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type CountryUpsertWithoutPlayersInput = {
+    update: XOR<CountryUpdateWithoutPlayersInput, CountryUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<CountryCreateWithoutPlayersInput, CountryUncheckedCreateWithoutPlayersInput>;
+    where?: CountryWhereInput;
+  };
+
+  export type CountryUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: CountryWhereInput;
+    data: XOR<CountryUpdateWithoutPlayersInput, CountryUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type CountryUpdateWithoutPlayersInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUpdateManyWithoutCountryNestedInput;
+    leagues?: LeagueUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type CountryUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUncheckedUpdateManyWithoutCountryNestedInput;
+    leagues?: LeagueUncheckedUpdateManyWithoutCountryNestedInput;
+  };
+
+  export type LeagueUpsertWithoutPlayersInput = {
+    update: XOR<LeagueUpdateWithoutPlayersInput, LeagueUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<LeagueCreateWithoutPlayersInput, LeagueUncheckedCreateWithoutPlayersInput>;
+    where?: LeagueWhereInput;
+  };
+
+  export type LeagueUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: LeagueWhereInput;
+    data: XOR<LeagueUpdateWithoutPlayersInput, LeagueUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type LeagueUpdateWithoutPlayersInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutLeaguesNestedInput;
+    clubs?: ClubUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubs?: ClubUncheckedUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type ClubUpsertWithoutPlayersInput = {
+    update: XOR<ClubUpdateWithoutPlayersInput, ClubUncheckedUpdateWithoutPlayersInput>;
+    create: XOR<ClubCreateWithoutPlayersInput, ClubUncheckedCreateWithoutPlayersInput>;
+    where?: ClubWhereInput;
+  };
+
+  export type ClubUpdateToOneWithWhereWithoutPlayersInput = {
+    where?: ClubWhereInput;
+    data: XOR<ClubUpdateWithoutPlayersInput, ClubUncheckedUpdateWithoutPlayersInput>;
+  };
+
+  export type ClubUpdateWithoutPlayersInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutClubsNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutClubsNestedInput;
+  };
+
+  export type ClubUncheckedUpdateWithoutPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerCreateWithoutClubPlayersInput = {
+    displayName: string;
+    fullName: string;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    positions?: PlayerPositionCreateNestedManyWithoutPlayerInput;
+    quality: QualityCreateNestedOneWithoutPlayersInput;
+    rarity: RarityCreateNestedOneWithoutPlayersInput;
+    country: CountryCreateNestedOneWithoutPlayersInput;
+    league: LeagueCreateNestedOneWithoutPlayersInput;
+    club: ClubCreateNestedOneWithoutPlayersInput;
+  };
+
+  export type PlayerUncheckedCreateWithoutClubPlayersInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+    positions?: PlayerPositionUncheckedCreateNestedManyWithoutPlayerInput;
+  };
+
+  export type PlayerCreateOrConnectWithoutClubPlayersInput = {
+    where: PlayerWhereUniqueInput;
+    create: XOR<PlayerCreateWithoutClubPlayersInput, PlayerUncheckedCreateWithoutClubPlayersInput>;
+  };
+
+  export type PlayerUpsertWithoutClubPlayersInput = {
+    update: XOR<PlayerUpdateWithoutClubPlayersInput, PlayerUncheckedUpdateWithoutClubPlayersInput>;
+    create: XOR<PlayerCreateWithoutClubPlayersInput, PlayerUncheckedCreateWithoutClubPlayersInput>;
+    where?: PlayerWhereInput;
+  };
+
+  export type PlayerUpdateToOneWithWhereWithoutClubPlayersInput = {
+    where?: PlayerWhereInput;
+    data: XOR<PlayerUpdateWithoutClubPlayersInput, PlayerUncheckedUpdateWithoutClubPlayersInput>;
+  };
+
+  export type PlayerUpdateWithoutClubPlayersInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutClubPlayersInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerCreateManyQualityInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+  };
+
+  export type PlayerUpdateWithoutQualityInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutQualityInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutQualityInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerCreateManyRarityInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+    leagueId: number;
+  };
+
+  export type PlayerUpdateWithoutRarityInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutRarityInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutRarityInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type ClubCreateManyCountryInput = {
+    id?: number;
+    name: string;
+    leagueId: number;
+  };
+
+  export type LeagueCreateManyCountryInput = {
+    id?: number;
+    name: string;
+  };
+
+  export type PlayerCreateManyCountryInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    clubId: number;
+    leagueId: number;
+  };
+
+  export type ClubUpdateWithoutCountryInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    league?: LeagueUpdateOneRequiredWithoutClubsNestedInput;
+    players?: PlayerUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubUncheckedUpdateWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    players?: PlayerUncheckedUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubUncheckedUpdateManyWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type LeagueUpdateWithoutCountryInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUpdateManyWithoutLeagueNestedInput;
+    players?: PlayerUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueUncheckedUpdateWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    clubs?: ClubUncheckedUpdateManyWithoutLeagueNestedInput;
+    players?: PlayerUncheckedUpdateManyWithoutLeagueNestedInput;
+  };
+
+  export type LeagueUncheckedUpdateManyWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+  };
+
+  export type PlayerUpdateWithoutCountryInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutCountryInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerPositionCreateManyPositionInput = {
+    id?: number;
+    playerId: number;
+  };
+
+  export type PlayerPositionUpdateWithoutPositionInput = {
+    player?: PlayerUpdateOneRequiredWithoutPositionsNestedInput;
+  };
+
+  export type PlayerPositionUncheckedUpdateWithoutPositionInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerPositionUncheckedUpdateManyWithoutPositionInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    playerId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type ClubCreateManyLeagueInput = {
+    id?: number;
+    name: string;
+    countryId: number;
+  };
+
+  export type PlayerCreateManyLeagueInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    clubId: number;
+  };
+
+  export type ClubUpdateWithoutLeagueInput = {
+    name?: StringFieldUpdateOperationsInput | string;
+    country?: CountryUpdateOneRequiredWithoutClubsNestedInput;
+    players?: PlayerUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubUncheckedUpdateWithoutLeagueInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    players?: PlayerUncheckedUpdateManyWithoutClubNestedInput;
+  };
+
+  export type ClubUncheckedUpdateManyWithoutLeagueInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    name?: StringFieldUpdateOperationsInput | string;
+    countryId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerUpdateWithoutLeagueInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    club?: ClubUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutLeagueInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutLeagueInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    clubId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerCreateManyClubInput = {
+    id?: number;
+    displayName: string;
+    fullName: string;
+    qualityId: number;
+    rarityId: number;
+    ovr: number;
+    rating1: number;
+    rating2: number;
+    rating3: number;
+    rating4: number;
+    rating5: number;
+    rating6: number;
+    countryId: number;
+    leagueId: number;
+  };
+
+  export type PlayerUpdateWithoutClubInput = {
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUpdateManyWithoutPlayerNestedInput;
+    quality?: QualityUpdateOneRequiredWithoutPlayersNestedInput;
+    rarity?: RarityUpdateOneRequiredWithoutPlayersNestedInput;
+    country?: CountryUpdateOneRequiredWithoutPlayersNestedInput;
+    league?: LeagueUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateWithoutClubInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+    positions?: PlayerPositionUncheckedUpdateManyWithoutPlayerNestedInput;
+    clubPlayers?: ClubPlayerUncheckedUpdateManyWithoutPlayerNestedInput;
+  };
+
+  export type PlayerUncheckedUpdateManyWithoutClubInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    displayName?: StringFieldUpdateOperationsInput | string;
+    fullName?: StringFieldUpdateOperationsInput | string;
+    qualityId?: IntFieldUpdateOperationsInput | number;
+    rarityId?: IntFieldUpdateOperationsInput | number;
+    ovr?: IntFieldUpdateOperationsInput | number;
+    rating1?: IntFieldUpdateOperationsInput | number;
+    rating2?: IntFieldUpdateOperationsInput | number;
+    rating3?: IntFieldUpdateOperationsInput | number;
+    rating4?: IntFieldUpdateOperationsInput | number;
+    rating5?: IntFieldUpdateOperationsInput | number;
+    rating6?: IntFieldUpdateOperationsInput | number;
+    countryId?: IntFieldUpdateOperationsInput | number;
+    leagueId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerPositionCreateManyPlayerInput = {
+    id?: number;
+    positionId: number;
+  };
+
+  export type ClubPlayerCreateManyPlayerInput = {
+    id?: number;
+    sbc?: boolean;
+    squad?: boolean;
+  };
+
+  export type PlayerPositionUpdateWithoutPlayerInput = {
+    position?: PositionUpdateOneRequiredWithoutPlayersNestedInput;
+  };
+
+  export type PlayerPositionUncheckedUpdateWithoutPlayerInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    positionId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type PlayerPositionUncheckedUpdateManyWithoutPlayerInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    positionId?: IntFieldUpdateOperationsInput | number;
+  };
+
+  export type ClubPlayerUpdateWithoutPlayerInput = {
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+  };
+
+  export type ClubPlayerUncheckedUpdateWithoutPlayerInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
+  };
+
+  export type ClubPlayerUncheckedUpdateManyWithoutPlayerInput = {
+    id?: IntFieldUpdateOperationsInput | number;
+    sbc?: BoolFieldUpdateOperationsInput | boolean;
+    squad?: BoolFieldUpdateOperationsInput | boolean;
   };
 
   /**
    * Aliases for legacy arg types
    */
   /**
-   * @deprecated Use SbcChallengeCountOutputTypeDefaultArgs instead
+   * @deprecated Use QualityCountOutputTypeDefaultArgs instead
    */
-  export type SbcChallengeCountOutputTypeArgs<
+  export type QualityCountOutputTypeArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = SbcChallengeCountOutputTypeDefaultArgs<ExtArgs>;
+  > = QualityCountOutputTypeDefaultArgs<ExtArgs>;
   /**
-   * @deprecated Use UserSessionDefaultArgs instead
+   * @deprecated Use RarityCountOutputTypeDefaultArgs instead
    */
-  export type UserSessionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    UserSessionDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use SbcChallengeDefaultArgs instead
-   */
-  export type SbcChallengeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    SbcChallengeDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use SbcSolutionDefaultArgs instead
-   */
-  export type SbcSolutionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    SbcSolutionDefaultArgs<ExtArgs>;
-  /**
-   * @deprecated Use CompanionAppStateDefaultArgs instead
-   */
-  export type CompanionAppStateArgs<
+  export type RarityCountOutputTypeArgs<
     ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
-  > = CompanionAppStateDefaultArgs<ExtArgs>;
+  > = RarityCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use CountryCountOutputTypeDefaultArgs instead
+   */
+  export type CountryCountOutputTypeArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = CountryCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use PositionCountOutputTypeDefaultArgs instead
+   */
+  export type PositionCountOutputTypeArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = PositionCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use LeagueCountOutputTypeDefaultArgs instead
+   */
+  export type LeagueCountOutputTypeArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = LeagueCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use ClubCountOutputTypeDefaultArgs instead
+   */
+  export type ClubCountOutputTypeArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = ClubCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use PlayerCountOutputTypeDefaultArgs instead
+   */
+  export type PlayerCountOutputTypeArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = PlayerCountOutputTypeDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use QualityDefaultArgs instead
+   */
+  export type QualityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    QualityDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use RarityDefaultArgs instead
+   */
+  export type RarityArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    RarityDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use CountryDefaultArgs instead
+   */
+  export type CountryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    CountryDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use PositionDefaultArgs instead
+   */
+  export type PositionArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    PositionDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use PlayerPositionDefaultArgs instead
+   */
+  export type PlayerPositionArgs<
+    ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs,
+  > = PlayerPositionDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use LeagueDefaultArgs instead
+   */
+  export type LeagueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    LeagueDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use ClubDefaultArgs instead
+   */
+  export type ClubArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    ClubDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use PlayerDefaultArgs instead
+   */
+  export type PlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    PlayerDefaultArgs<ExtArgs>;
+  /**
+   * @deprecated Use ClubPlayerDefaultArgs instead
+   */
+  export type ClubPlayerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    ClubPlayerDefaultArgs<ExtArgs>;
 
   /**
    * Batch Payload for updateMany & deleteMany & createMany

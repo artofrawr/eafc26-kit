@@ -11,41 +11,112 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model UserSession {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  sessionId String   @unique
-  data      Json?
+model Quality {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  players Player[]
 }
 
-model SbcChallenge {
-  id          String   @id @default(cuid())
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  challengeId String   @unique
-  name        String
-  requirements Json
-  status      String   @default("pending") // pending, solving, solved, failed
-  solutions   SbcSolution[]
+model Rarity {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  players Player[]
 }
 
-model SbcSolution {
-  id          String      @id @default(cuid())
-  createdAt   DateTime    @default(now())
-  challengeId String
-  challenge   SbcChallenge @relation(fields: [challengeId], references: [id])
-  players     Json        // Array of player IDs/positions
-  cost        Float?
-  rating      Int?
-  isValid     Boolean     @default(false)
+model Country {
+  id      Int      @id @default(autoincrement())
+  name    String   @unique
+  clubs   Club[]
+  leagues League[]
+  players Player[]
 }
 
-model CompanionAppState {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  state     Json     // Current state of the companion app
-  sessionId String?
+model Position {
+  id      Int              @id @default(autoincrement())
+  name    String           @unique
+  players PlayerPosition[]
 }
 
+model PlayerPosition {
+  id         Int      @id @default(autoincrement())
+  playerId   Int
+  positionId Int
+  player     Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  position   Position @relation(fields: [positionId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId, positionId])
+  @@index([playerId])
+  @@index([positionId])
+}
+
+model League {
+  id        Int      @id @default(autoincrement())
+  name      String
+  countryId Int
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  clubs     Club[]
+  players   Player[]
+
+  @@unique([name, countryId])
+  @@index([countryId])
+}
+
+model Club {
+  id        Int      @id @default(autoincrement())
+  name      String
+  countryId Int
+  leagueId  Int
+  country   Country  @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  league    League   @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  players   Player[]
+
+  @@unique([name, leagueId])
+  @@index([countryId])
+  @@index([leagueId])
+}
+
+model Player {
+  id          Int              @id @default(autoincrement())
+  displayName String
+  fullName    String
+  qualityId   Int
+  rarityId    Int
+  ovr         Int
+  rating1     Int
+  rating2     Int
+  rating3     Int
+  rating4     Int
+  rating5     Int
+  rating6     Int
+  countryId   Int
+  clubId      Int
+  leagueId    Int
+  positions   PlayerPosition[]
+  clubPlayers ClubPlayer[]
+  quality     Quality          @relation(fields: [qualityId], references: [id], onDelete: Cascade)
+  rarity      Rarity           @relation(fields: [rarityId], references: [id], onDelete: Cascade)
+  country     Country          @relation(fields: [countryId], references: [id], onDelete: Cascade)
+  league      League           @relation(fields: [leagueId], references: [id], onDelete: Cascade)
+  club        Club             @relation(fields: [clubId], references: [id], onDelete: Cascade)
+
+  @@unique([displayName, ovr, qualityId, rarityId])
+  @@index([qualityId])
+  @@index([rarityId])
+  @@index([countryId])
+  @@index([clubId])
+  @@index([leagueId])
+  @@index([ovr])
+}
+
+model ClubPlayer {
+  id       Int     @id @default(autoincrement())
+  playerId Int
+  sbc      Boolean @default(false)
+  squad    Boolean @default(false)
+  player   Player  @relation(fields: [playerId], references: [id], onDelete: Cascade)
+
+  @@unique([playerId])
+  @@index([playerId])
+  @@index([sbc])
+  @@index([squad])
+}

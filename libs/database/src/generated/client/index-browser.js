@@ -118,40 +118,68 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable',
 });
 
-exports.Prisma.UserSessionScalarFieldEnum = {
+exports.Prisma.QualityScalarFieldEnum = {
   id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  sessionId: 'sessionId',
-  data: 'data',
-};
-
-exports.Prisma.SbcChallengeScalarFieldEnum = {
-  id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  challengeId: 'challengeId',
   name: 'name',
-  requirements: 'requirements',
-  status: 'status',
 };
 
-exports.Prisma.SbcSolutionScalarFieldEnum = {
+exports.Prisma.RarityScalarFieldEnum = {
   id: 'id',
-  createdAt: 'createdAt',
-  challengeId: 'challengeId',
-  players: 'players',
-  cost: 'cost',
-  rating: 'rating',
-  isValid: 'isValid',
+  name: 'name',
 };
 
-exports.Prisma.CompanionAppStateScalarFieldEnum = {
+exports.Prisma.CountryScalarFieldEnum = {
   id: 'id',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt',
-  state: 'state',
-  sessionId: 'sessionId',
+  name: 'name',
+};
+
+exports.Prisma.PositionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+};
+
+exports.Prisma.PlayerPositionScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  positionId: 'positionId',
+};
+
+exports.Prisma.LeagueScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  countryId: 'countryId',
+};
+
+exports.Prisma.ClubScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  countryId: 'countryId',
+  leagueId: 'leagueId',
+};
+
+exports.Prisma.PlayerScalarFieldEnum = {
+  id: 'id',
+  displayName: 'displayName',
+  fullName: 'fullName',
+  qualityId: 'qualityId',
+  rarityId: 'rarityId',
+  ovr: 'ovr',
+  rating1: 'rating1',
+  rating2: 'rating2',
+  rating3: 'rating3',
+  rating4: 'rating4',
+  rating5: 'rating5',
+  rating6: 'rating6',
+  countryId: 'countryId',
+  clubId: 'clubId',
+  leagueId: 'leagueId',
+};
+
+exports.Prisma.ClubPlayerScalarFieldEnum = {
+  id: 'id',
+  playerId: 'playerId',
+  sbc: 'sbc',
+  squad: 'squad',
 };
 
 exports.Prisma.SortOrder = {
@@ -159,36 +187,21 @@ exports.Prisma.SortOrder = {
   desc: 'desc',
 };
 
-exports.Prisma.NullableJsonNullValueInput = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull,
-};
-
-exports.Prisma.JsonNullValueInput = {
-  JsonNull: Prisma.JsonNull,
-};
-
 exports.Prisma.QueryMode = {
   default: 'default',
   insensitive: 'insensitive',
 };
 
-exports.Prisma.JsonNullValueFilter = {
-  DbNull: Prisma.DbNull,
-  JsonNull: Prisma.JsonNull,
-  AnyNull: Prisma.AnyNull,
-};
-
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last',
-};
-
 exports.Prisma.ModelName = {
-  UserSession: 'UserSession',
-  SbcChallenge: 'SbcChallenge',
-  SbcSolution: 'SbcSolution',
-  CompanionAppState: 'CompanionAppState',
+  Quality: 'Quality',
+  Rarity: 'Rarity',
+  Country: 'Country',
+  Position: 'Position',
+  PlayerPosition: 'PlayerPosition',
+  League: 'League',
+  Club: 'Club',
+  Player: 'Player',
+  ClubPlayer: 'ClubPlayer',
 };
 
 /**
