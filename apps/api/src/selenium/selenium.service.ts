@@ -224,6 +224,11 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
       await prisma.clubPlayer.deleteMany({});
       this.logger.log('ClubPlayer table cleared');
 
+      // ===== Navigate to Club Players =====
+      this.logger.log('Navigating to Club Players...');
+      await this.automation.navigation.navigateToClubPlayers();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // ===== Extract from Club Players =====
       this.logger.log('Starting extraction from Club Players...');
       const clubRoutine = new PlayerExtractionRoutine(driver, prisma, false);
