@@ -3,6 +3,7 @@ import { DriverService, DriverConfig } from './core/driver.service';
 import { AuthRoutine, LoginCredentials, SessionData } from './routines/auth.routine';
 import { NavigationRoutine } from './routines/navigation.routine';
 import { PlayerExtractionRoutine } from './routines/player-extraction.routine';
+import { SBCExtractionRoutine } from './routines/sbc-extraction.routine';
 
 /**
  * Main facade for Selenium automation
@@ -14,6 +15,7 @@ export class SeleniumAutomation {
   private authRoutine: AuthRoutine | null = null;
   private navigationRoutine: NavigationRoutine | null = null;
   private playerExtractionRoutine: PlayerExtractionRoutine | null = null;
+  private sbcExtractionRoutine: SBCExtractionRoutine | null = null;
 
   constructor(config: DriverConfig = {}) {
     this.driverService = new DriverService(config);
@@ -27,6 +29,7 @@ export class SeleniumAutomation {
     this.authRoutine = new AuthRoutine(driver);
     this.navigationRoutine = new NavigationRoutine(driver);
     this.playerExtractionRoutine = new PlayerExtractionRoutine(driver);
+    this.sbcExtractionRoutine = new SBCExtractionRoutine(driver);
   }
 
   /**
@@ -68,6 +71,16 @@ export class SeleniumAutomation {
   }
 
   /**
+   * Access SBC extraction routines
+   */
+  get sbcExtraction(): SBCExtractionRoutine {
+    if (!this.sbcExtractionRoutine) {
+      throw new Error('SeleniumAutomation not initialized. Call initialize() first.');
+    }
+    return this.sbcExtractionRoutine;
+  }
+
+  /**
    * Perform complete login flow
    */
   async login(
@@ -92,6 +105,7 @@ export class SeleniumAutomation {
     this.authRoutine = null;
     this.navigationRoutine = null;
     this.playerExtractionRoutine = null;
+    this.sbcExtractionRoutine = null;
   }
 
   /**

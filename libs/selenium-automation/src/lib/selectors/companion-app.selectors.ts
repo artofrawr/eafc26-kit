@@ -79,6 +79,16 @@ export const CompanionAppSelectors = {
   // SBC section
   sbc: {
     pageTitle: 'h1.title', // Should contain "SBC" when on SBC page
+
+    // Filter bar for Favourites tab
+    filterBar: '.ea-filter-bar',
+    filterBarItem: 'button.ea-filter-bar-item-view',
+
+    // SBC tiles
+    sbcTile: 'div.ut-sbc-set-tile-view',
+    tileTitle: '.tileTitle',
+
+    // Challenge details
     challengeList: '.sbc-challenge-list',
     challengeCard: (id: string) => `[data-challenge-id="${id}"]`,
     challengeName: '.challenge-name',
@@ -86,6 +96,27 @@ export const CompanionAppSelectors = {
     requirementsList: '.requirements-list',
     requirementItem: '.requirement-item',
     rewardsList: '.rewards-list',
+
+    // Squad Builder
+    useSquadBuilderButton: 'button.btn-standard', // Text: "Use Squad Builder"
+    buildButton: 'button.btn-standard', // Text: "Build"
+    actionTab: 'button.actionTab', // Opens rewards popup after building
+
+    // Toggle controls
+    toggleCellView: 'div.ut-toggle-cell-view',
+    toggledState: '.toggled', // Present when toggle is ON
+
+    // Dropdown controls
+    dropdownControl: '.ut-drop-down-control',
+    dropdownList: '.inline-list',
+
+    // Sort controls
+    sortByHeader: 'h4', // Text: "Sort By"
+
+    // Search filter controls (Quality, etc.)
+    searchFilterControl: 'div.ut-search-filter-control',
+    filterLabel: 'span.label',
+    filterList: 'ul.inline-list',
   },
 
   // Common elements

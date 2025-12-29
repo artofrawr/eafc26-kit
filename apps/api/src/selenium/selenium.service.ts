@@ -175,6 +175,55 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
     }
   }
 
+  async listSBCs(): Promise<{ success: boolean; message: string; sbcs?: any[] }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      this.logger.log('Starting SBC extraction...');
+      const sbcs = await this.automation.sbcExtraction.extractAllSBCs();
+
+      this.logger.log(`Extracted ${sbcs.length} SBCs from Favourites`);
+      return {
+        success: true,
+        message: `Successfully extracted ${sbcs.length} SBCs`,
+        sbcs,
+      };
+    } catch (error) {
+      this.logger.error('SBC extraction failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'SBC extraction failed',
+      };
+    }
+  }
+
+  async solveSBC(sbcName: string): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      this.logger.log(`Starting SBC solver for: ${sbcName}`);
+      const result = await this.automation.sbcExtraction.solveSBC(sbcName);
+
+      if (result.success) {
+        this.logger.log(`SBC solver completed: ${result.message}`);
+      } else {
+        this.logger.warn(`SBC solver failed: ${result.message}`);
+      }
+
+      return result;
+    } catch (error) {
+      this.logger.error('SBC solver failed', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'SBC solver failed',
+      };
+    }
+  }
+
   async getCurrentUrl(): Promise<{ url: string }> {
     if (!this.isInitialized) {
       await this.initialize();
