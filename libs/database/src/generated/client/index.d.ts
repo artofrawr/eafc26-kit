@@ -12548,15 +12548,15 @@ export namespace Prisma {
   export type ClubPlayerWhereUniqueInput = Prisma.AtLeast<
     {
       id?: number;
-      playerId?: number;
       AND?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
       OR?: ClubPlayerWhereInput[];
       NOT?: ClubPlayerWhereInput | ClubPlayerWhereInput[];
+      playerId?: IntFilter<'ClubPlayer'> | number;
       sbc?: BoolFilter<'ClubPlayer'> | boolean;
       squad?: BoolFilter<'ClubPlayer'> | boolean;
       player?: XOR<PlayerRelationFilter, PlayerWhereInput>;
     },
-    'id' | 'playerId'
+    'id'
   >;
 
   export type ClubPlayerOrderByWithAggregationInput = {
