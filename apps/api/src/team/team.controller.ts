@@ -15,7 +15,6 @@ export class TeamController {
       this.logger.log('Team update completed successfully');
       return {
         success: true,
-        message: 'Team updated successfully',
         ...result,
       };
     } catch (error) {

@@ -177,8 +177,8 @@ export class PlayerExtractionRoutine {
           await this.waitUtils.sleep(500); // Small delay to ensure drawer closes
         }
 
-        // Create/update ClubPlayer entry
-        await this.upsertClubPlayer(playerId, isInSquad);
+        // Create ClubPlayer entry (allows multiple entries per player)
+        await this.createClubPlayer(playerId, isInSquad);
       } catch (error) {
         console.error(`Failed to process player card ${i}:`, error);
 
@@ -666,25 +666,19 @@ export class PlayerExtractionRoutine {
   }
 
   /**
-   * Upsert ClubPlayer entry to track player ownership
+   * Create ClubPlayer entry to track player card ownership
+   * Allows multiple entries per player (e.g., duplicates in SBC storage)
    */
-  async upsertClubPlayer(playerId: number, isInSquad: boolean): Promise<void> {
+  async createClubPlayer(playerId: number, isInSquad: boolean): Promise<void> {
     if (!this.prisma) {
-      console.warn('No Prisma client provided, skipping ClubPlayer upsert');
+      console.warn('No Prisma client provided, skipping ClubPlayer creation');
       return;
     }
 
     try {
-      await this.prisma.clubPlayer.upsert({
-        where: {
+      await this.prisma.clubPlayer.create({
+        data: {
           playerId: playerId,
-        },
-        create: {
-          playerId: playerId,
-          sbc: this.isSbcPage,
-          squad: isInSquad,
-        },
-        update: {
           sbc: this.isSbcPage,
           squad: isInSquad,
         },
@@ -694,7 +688,7 @@ export class PlayerExtractionRoutine {
         `ClubPlayer entry ${isInSquad ? '(IN SQUAD) ' : ''}${this.isSbcPage ? '(SBC) ' : ''}created for player ID ${playerId}`
       );
     } catch (error) {
-      console.error('Failed to upsert ClubPlayer:', error);
+      console.error('Failed to create ClubPlayer:', error);
       throw error;
     }
   }
