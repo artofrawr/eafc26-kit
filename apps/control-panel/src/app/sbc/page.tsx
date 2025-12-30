@@ -17,6 +17,57 @@ export default function SBCPage() {
     loadSBCs();
   }, []);
 
+  const sortSBCs = (sbcs: SBC[]): SBC[] => {
+    const priorityOrder = [
+      'Daily Bronze Upgrade',
+      'Daily Silver Upgrade',
+      'Daily Common Gold Upgrade',
+      'Daily Rare Gold Upgrade',
+    ];
+
+    return [...sbcs].sort((a, b) => {
+      const aIndex = priorityOrder.indexOf(a.name);
+      const bIndex = priorityOrder.indexOf(b.name);
+
+      // Both are in priority list
+      if (aIndex !== -1 && bIndex !== -1) {
+        return aIndex - bIndex;
+      }
+
+      // Only a is in priority list
+      if (aIndex !== -1) {
+        return -1;
+      }
+
+      // Only b is in priority list
+      if (bIndex !== -1) {
+        return 1;
+      }
+
+      // Neither in priority list - check if they contain "daily"
+      const aHasDaily = a.name.toLowerCase().includes('daily');
+      const bHasDaily = b.name.toLowerCase().includes('daily');
+
+      // Both have "daily" - maintain original order
+      if (aHasDaily && bHasDaily) {
+        return 0;
+      }
+
+      // Only a has "daily"
+      if (aHasDaily) {
+        return -1;
+      }
+
+      // Only b has "daily"
+      if (bHasDaily) {
+        return 1;
+      }
+
+      // Neither has "daily" - maintain original order
+      return 0;
+    });
+  };
+
   const loadSBCs = async () => {
     setIsLoading(true);
     setError(null);
@@ -34,7 +85,8 @@ export default function SBCPage() {
         console.log('SBCs loaded:', data);
 
         if (data.success && data.sbcs) {
-          setSbcs(data.sbcs);
+          const sortedSbcs = sortSBCs(data.sbcs);
+          setSbcs(sortedSbcs);
         } else {
           setError(data.message || 'Failed to load SBCs');
         }

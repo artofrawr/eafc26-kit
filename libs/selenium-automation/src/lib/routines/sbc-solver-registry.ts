@@ -3,6 +3,7 @@ import { DailyBronzeUpgradeSolver } from './sbc-solvers/daily-bronze-upgrade.sol
 import { DailySilverUpgradeSolver } from './sbc-solvers/daily-silver-upgrade.solver';
 import { DailyCommonGoldUpgradeSolver } from './sbc-solvers/daily-common-gold-upgrade.solver';
 import { DailyRareGoldUpgradeSolver } from './sbc-solvers/daily-rare-gold-upgrade.solver';
+import { WWDailyLoginUpgradeSolver } from './sbc-solvers/ww-daily-login-upgrade.solver';
 
 /**
  * Interface that all SBC solvers must implement
@@ -25,6 +26,7 @@ export class SBCSolverRegistry {
     ['Daily Silver Upgrade', (driver: WebDriver) => new DailySilverUpgradeSolver(driver)],
     ['Daily Common Gold Upgrade', (driver: WebDriver) => new DailyCommonGoldUpgradeSolver(driver)],
     ['Daily Rare Gold Upgrade', (driver: WebDriver) => new DailyRareGoldUpgradeSolver(driver)],
+    ['WW Daily Login Upgrade', (driver: WebDriver) => new WWDailyLoginUpgradeSolver(driver)],
     // Add more SBC solvers here as they are implemented
     // ['Another SBC Name', (driver) => new AnotherSBCSolver(driver)],
   ]);
