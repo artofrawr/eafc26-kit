@@ -1,6 +1,8 @@
 import { WebDriver } from 'selenium-webdriver';
 import { DailyBronzeUpgradeSolver } from './sbc-solvers/daily-bronze-upgrade.solver';
 import { DailySilverUpgradeSolver } from './sbc-solvers/daily-silver-upgrade.solver';
+import { DailyCommonGoldUpgradeSolver } from './sbc-solvers/daily-common-gold-upgrade.solver';
+import { DailyRareGoldUpgradeSolver } from './sbc-solvers/daily-rare-gold-upgrade.solver';
 
 /**
  * Interface that all SBC solvers must implement
@@ -21,6 +23,8 @@ export class SBCSolverRegistry {
   private static solvers: Map<string, SolverFactory> = new Map<string, SolverFactory>([
     ['Daily Bronze Upgrade', (driver: WebDriver) => new DailyBronzeUpgradeSolver(driver)],
     ['Daily Silver Upgrade', (driver: WebDriver) => new DailySilverUpgradeSolver(driver)],
+    ['Daily Common Gold Upgrade', (driver: WebDriver) => new DailyCommonGoldUpgradeSolver(driver)],
+    ['Daily Rare Gold Upgrade', (driver: WebDriver) => new DailyRareGoldUpgradeSolver(driver)],
     // Add more SBC solvers here as they are implemented
     // ['Another SBC Name', (driver) => new AnotherSBCSolver(driver)],
   ]);

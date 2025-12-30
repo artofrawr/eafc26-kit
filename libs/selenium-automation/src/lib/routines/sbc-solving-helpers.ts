@@ -283,4 +283,105 @@ export class SBCSolvingHelpers {
 
     throw new Error('Quality filter control not found');
   }
+
+  /**
+   * Click on a squad slot by its index
+   * @param slotIndex The index attribute of the squad slot (e.g., "10")
+   */
+  async clickSquadSlot(slotIndex: string): Promise<void> {
+    console.log(`Looking for squad slot with index: ${slotIndex}`);
+
+    const slots = await this.driver.findElements({
+      css: 'div.ut-squad-slot-view',
+    });
+
+    for (const slot of slots) {
+      try {
+        const index = await slot.getAttribute('index');
+        if (index === slotIndex) {
+          console.log(`Found squad slot with index ${slotIndex}, clicking...`);
+          await slot.click();
+          await this.waitUtils.sleep(1000);
+          return;
+        }
+      } catch (error) {
+        continue;
+      }
+    }
+
+    throw new Error(`Squad slot with index "${slotIndex}" not found`);
+  }
+
+  /**
+   * Send current player to My Club and navigate to next player
+   * Repeats this action a specified number of times
+   * @param count Number of times to repeat
+   */
+  async sendPlayersToMyClub(count: number): Promise<void> {
+    console.log(`Sending ${count} players to My Club...`);
+
+    for (let i = 0; i < count; i++) {
+      console.log(`Processing player ${i + 1} of ${count}`);
+
+      // Find the DetailPanel
+      const detailPanel = await this.waitUtils.waitForElement('div.DetailPanel', 5000);
+
+      // Find the "Send to My Club" button
+      const buttons = await this.driver.findElements({
+        css: 'div.DetailPanel button',
+      });
+
+      let sendButton = null;
+      for (const button of buttons) {
+        try {
+          const spanElements = await button.findElements({ css: 'span.btn-text' });
+          for (const span of spanElements) {
+            const text = await span.getText();
+            if (text === 'Send to My Club') {
+              sendButton = button;
+              break;
+            }
+          }
+          if (sendButton) break;
+        } catch (error) {
+          continue;
+        }
+      }
+
+      if (!sendButton) {
+        throw new Error(`"Send to My Club" button not found for player ${i + 1}`);
+      }
+
+      console.log(`Clicking "Send to My Club" for player ${i + 1}`);
+      await sendButton.click();
+      await this.waitUtils.sleep(500);
+
+      // Find and click the tapRight anchor to move to next player
+      const carousel = await this.driver.findElement({ css: 'div.detail-carousel' });
+      const tapRight = await carousel.findElement({ css: 'a.tapRight' });
+
+      console.log(`Moving to next player...`);
+      await tapRight.click();
+      await this.waitUtils.sleep(500);
+    }
+
+    console.log(`Successfully sent ${count} players to My Club`);
+  }
+
+  /**
+   * Close the sidebar drawer
+   */
+  async closeSidebar(): Promise<void> {
+    console.log('Closing sidebar drawer...');
+
+    const sidebar = await this.driver.findElement({ css: 'div.sidebar-right' });
+    const navButton = await sidebar.findElement({
+      css: 'button.ut-navigation-button-control',
+    });
+
+    await navButton.click();
+    await this.waitUtils.sleep(1000);
+
+    console.log('Sidebar closed');
+  }
 }
