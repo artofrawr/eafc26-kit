@@ -1,135 +1,63 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
-interface SBC {
-  name: string;
-}
-
 export default function SBCPage() {
-  const [sbcs, setSbcs] = useState<SBC[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-  const [solvingIndex, setSolvingIndex] = useState<number | null>(null);
+  const [logs, setLogs] = useState<string[]>([]);
+  const [isSolving, setIsSolving] = useState(false);
+  const eventSourceRef = useRef<EventSource | null>(null);
 
+  // Cleanup on unmount
   useEffect(() => {
-    loadSBCs();
+    return () => {
+      if (eventSourceRef.current) {
+        eventSourceRef.current.close();
+      }
+    };
   }, []);
 
-  const sortSBCs = (sbcs: SBC[]): SBC[] => {
-    const priorityOrder = [
-      'Daily Bronze Upgrade',
-      'Daily Silver Upgrade',
-      'Daily Common Gold Upgrade',
-      'Daily Rare Gold Upgrade',
-    ];
+  const startSolvingDailies = () => {
+    setIsSolving(true);
+    setLogs([]);
 
-    return [...sbcs].sort((a, b) => {
-      const aIndex = priorityOrder.indexOf(a.name);
-      const bIndex = priorityOrder.indexOf(b.name);
+    // Connect to SSE endpoint
+    const eventSource = new EventSource('http://localhost:3001/sbc/solve-dailies-stream');
+    eventSourceRef.current = eventSource;
 
-      // Both are in priority list
-      if (aIndex !== -1 && bIndex !== -1) {
-        return aIndex - bIndex;
-      }
+    eventSource.onmessage = (event) => {
+      const logMessage = event.data;
+      setLogs((prev) => [logMessage, ...prev]); // Add to top
+    };
 
-      // Only a is in priority list
-      if (aIndex !== -1) {
-        return -1;
-      }
-
-      // Only b is in priority list
-      if (bIndex !== -1) {
-        return 1;
-      }
-
-      // Neither in priority list - check if they contain "daily"
-      const aHasDaily = a.name.toLowerCase().includes('daily');
-      const bHasDaily = b.name.toLowerCase().includes('daily');
-
-      // Both have "daily" - maintain original order
-      if (aHasDaily && bHasDaily) {
-        return 0;
-      }
-
-      // Only a has "daily"
-      if (aHasDaily) {
-        return -1;
-      }
-
-      // Only b has "daily"
-      if (bHasDaily) {
-        return 1;
-      }
-
-      // Neither has "daily" - maintain original order
-      return 0;
+    eventSource.addEventListener('complete', (event) => {
+      const data = JSON.parse(event.data);
+      setLogs((prev) => [data.message, ...prev]);
+      eventSource.close();
+      setIsSolving(false);
     });
+
+    eventSource.addEventListener('error', (event) => {
+      try {
+        const data = JSON.parse((event as MessageEvent).data);
+        setLogs((prev) => [`ERROR: ${data.error}`, ...prev]);
+      } catch {
+        setLogs((prev) => ['ERROR: Connection lost or error occurred', ...prev]);
+      }
+      eventSource.close();
+      setIsSolving(false);
+    });
+
+    eventSource.onerror = () => {
+      setLogs((prev) => ['ERROR: Connection lost', ...prev]);
+      eventSource.close();
+      setIsSolving(false);
+    };
   };
 
-  const loadSBCs = async () => {
-    setIsLoading(true);
-    setError(null);
-    try {
-      const response = await fetch('http://localhost:3001/sbc/list', {
-        method: 'GET',
-        cache: 'no-store',
-        headers: {
-          'Cache-Control': 'no-cache',
-        },
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        console.log('SBCs loaded:', data);
-
-        if (data.success && data.sbcs) {
-          const sortedSbcs = sortSBCs(data.sbcs);
-          setSbcs(sortedSbcs);
-        } else {
-          setError(data.message || 'Failed to load SBCs');
-        }
-      } else {
-        setError('Failed to load SBCs');
-        console.error('Failed to load SBCs');
-      }
-    } catch (error) {
-      console.error('Failed to load SBCs:', error);
-      setError('Network error: Failed to connect to API');
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSolveSBC = async (sbcName: string, index: number) => {
-    console.log('Solve SBC:', sbcName);
-    setSolvingIndex(index);
-
-    try {
-      const response = await fetch('http://localhost:3001/sbc/solve', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ sbcName }),
-      });
-
-      const data = await response.json();
-      console.log('Solve result:', data);
-
-      if (data.success) {
-        // Refresh the SBC list after successful solve
-        await loadSBCs();
-      } else {
-        alert(`Failed to solve "${sbcName}"\n\n${data.message}`);
-      }
-    } catch (error) {
-      console.error('Failed to solve SBC:', error);
-      alert(`Error solving "${sbcName}"\n\nNetwork error occurred`);
-    } finally {
-      setSolvingIndex(null);
-    }
+  const handleSolveSBC = () => {
+    // Placeholder for future implementation
+    alert('This feature is not yet implemented');
   };
 
   return (
@@ -142,62 +70,30 @@ export default function SBCPage() {
       <div className="rounded-lg border bg-card p-6">
         <div className="flex flex-col gap-4">
           <div>
-            <h2 className="text-xl font-semibold mb-2">Favourites</h2>
+            <h2 className="text-xl font-semibold mb-2">Daily SBC Solver</h2>
             <p className="text-sm text-muted-foreground mb-4">
-              Your favourite SBCs from the EA FC Companion App
+              Automatically solve all daily SBCs and open packs
             </p>
           </div>
 
-          {isLoading && (
-            <div className="flex items-center justify-center p-8">
-              <div className="text-muted-foreground">Loading SBCs...</div>
-            </div>
-          )}
+          <div className="flex gap-4">
+            <Button onClick={startSolvingDailies} disabled={isSolving} variant="default" size="lg">
+              {isSolving ? 'Solving Dailies...' : 'Solve Dailies'}
+            </Button>
+            <Button onClick={handleSolveSBC} variant="outline" size="lg" disabled>
+              Solve SBC
+            </Button>
+          </div>
 
-          {error && (
-            <div className="mt-4 p-4 rounded-lg bg-red-50 border border-red-200">
-              <p className="text-sm text-red-600">{error}</p>
-              <Button onClick={loadSBCs} size="sm" variant="outline" className="mt-2">
-                Retry
-              </Button>
-            </div>
-          )}
-
-          {!isLoading && !error && sbcs.length === 0 && (
-            <div className="text-center p-8 text-muted-foreground">
-              No SBCs found in Favourites. Make sure you have favorited SBCs in the EA FC Companion
-              App.
-            </div>
-          )}
-
-          {!isLoading && sbcs.length > 0 && (
-            <div>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-semibold">Available SBCs ({sbcs.length})</h3>
-                <Button onClick={loadSBCs} size="sm" variant="outline">
-                  Refresh
-                </Button>
-              </div>
-              <div className="space-y-2">
-                {sbcs.map((sbc, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center justify-between p-4 rounded-lg border bg-background hover:bg-accent transition-colors"
-                  >
-                    <span className="font-medium">{sbc.name}</span>
-                    <Button
-                      onClick={() => handleSolveSBC(sbc.name, index)}
-                      size="sm"
-                      variant="outline"
-                      disabled={solvingIndex !== null}
-                    >
-                      {solvingIndex === index ? 'Solving...' : 'Solve'}
-                    </Button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
+          <div className="mt-4">
+            <h3 className="text-lg font-semibold mb-2">Logs</h3>
+            <textarea
+              readOnly
+              value={logs.join('\n')}
+              className="w-full h-[400px] p-4 border rounded-md bg-background font-mono text-sm resize-none"
+              placeholder="Logs will appear here when solving dailies..."
+            />
+          </div>
         </div>
       </div>
     </div>

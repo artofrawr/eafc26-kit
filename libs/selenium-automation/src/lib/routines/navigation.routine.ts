@@ -70,6 +70,24 @@ export class NavigationRoutine {
   }
 
   /**
+   * Navigate to the Store section
+   */
+  async navigateToStore(): Promise<void> {
+    // First ensure we're on the tab bar (logged in)
+    await this.waitUtils.waitForElement(CompanionAppSelectors.navigation.tabBar, 10000);
+
+    // Click the Store tab button
+    const storeTab = await this.waitUtils.waitForElementClickable(
+      CompanionAppSelectors.navigation.storeTab,
+      15000
+    );
+    await storeTab.click();
+
+    // Wait for store page to load
+    await this.waitUtils.sleep(2000);
+  }
+
+  /**
    * Navigate to Club -> Players
    */
   async navigateToClubPlayers(): Promise<void> {

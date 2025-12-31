@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Logger } from '@nestjs/common';
+import { Controller, Get, Post, Body, Logger, Sse, MessageEvent } from '@nestjs/common';
+import { Observable } from 'rxjs';
 import { SBCService } from './sbc.service';
 
 @Controller('sbc')
@@ -40,5 +41,37 @@ export class SBCController {
         message: error instanceof Error ? error.message : 'Failed to solve SBC',
       };
     }
+  }
+
+  @Sse('solve-dailies-stream')
+  solveDailiesStream(): Observable<MessageEvent> {
+    return new Observable((observer) => {
+      this.logger.log('Starting solve dailies stream');
+
+      this.sbcService
+        .solveAllDailies({
+          onLog: (message: string) => {
+            observer.next({ data: message } as MessageEvent);
+          },
+          onComplete: (success: boolean, message: string) => {
+            observer.next({
+              type: 'complete',
+              data: JSON.stringify({ success, message }),
+            } as MessageEvent);
+            observer.complete();
+          },
+          onError: (error: string) => {
+            observer.next({
+              type: 'error',
+              data: JSON.stringify({ error }),
+            } as MessageEvent);
+            observer.error(new Error(error));
+          },
+        })
+        .catch((error) => {
+          this.logger.error('Solve dailies stream error:', error);
+          observer.error(error);
+        });
+    });
   }
 }

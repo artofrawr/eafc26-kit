@@ -42,6 +42,7 @@ export const CompanionAppSelectors = {
     sbcTab: 'button.icon-sbc', // In .ut-tab-bar
     transferMarketTab: 'button.icon-transfer',
     clubTab: 'button.icon-club', // In .ut-tab-bar
+    storeTab: 'button.icon-store', // In .ut-tab-bar
     menuButton: '.menu-button',
   },
 
@@ -117,6 +118,25 @@ export const CompanionAppSelectors = {
     searchFilterControl: 'div.ut-search-filter-control',
     filterLabel: 'span.label',
     filterList: 'ul.inline-list',
+  },
+
+  // Store section
+  store: {
+    tile: 'div.tile', // Store tiles
+    tileHeader: 'h1.tileHeader', // Tile header (e.g., "Packs")
+    menuContainer: 'div.menu-container', // Container for filter buttons
+    filterBarItem: 'button.ea-filter-bar-item-view', // Filter buttons (e.g., "My Packs")
+    primaryButton: 'button.primary', // Primary action buttons
+    buttonText: 'span.text', // Text within buttons
+  },
+
+  // Packs section
+  packs: {
+    sectionHeader: 'header.ut-section-header-view', // Pack opening header
+    title: 'h2.title', // Title within header (e.g., "Items")
+    ellipsisBtn: 'button.ellipsis-btn', // Ellipsis menu button
+    modal: 'div.view-modal-container', // Modal container for actions
+    buttonText: 'span.btn-text', // Text within modal buttons
   },
 
   // Common elements

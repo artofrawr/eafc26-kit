@@ -33,4 +33,30 @@ export class SBCService {
     this.logger.log('SBC solver routine completed');
     return result;
   }
+
+  async solveAllDailies(callbacks: {
+    onLog: (message: string) => void;
+    onComplete: (success: boolean, message: string) => void;
+    onError: (error: string) => void;
+  }): Promise<void> {
+    try {
+      callbacks.onLog('Starting daily SBC solver routine...');
+
+      const automation = this.selenium.getAutomation();
+      const driver = await automation.getDriver();
+
+      // Import and create the daily solver orchestration routine
+      const { DailySolverOrchestrationRoutine } = await import('@eafc26-kit/selenium-automation');
+
+      const routine = new DailySolverOrchestrationRoutine(driver, callbacks.onLog);
+      await routine.execute();
+
+      callbacks.onLog('All dailies completed successfully!');
+      callbacks.onComplete(true, 'All dailies solved and packs opened');
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error';
+      this.logger.error('Solve all dailies failed:', error);
+      callbacks.onError(errorMessage);
+    }
+  }
 }
