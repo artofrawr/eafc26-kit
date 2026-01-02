@@ -111,6 +111,99 @@ export class PlayerExtractionRoutine {
   }
 
   /**
+   * Process players from all pages with logging callback
+   */
+  async processPlayersFromCurrentPageWithLogging(log: (msg: string) => void): Promise<void> {
+    let currentPage = 1;
+    let hasNextPage = true;
+
+    while (hasNextPage) {
+      log(`Processing page ${currentPage}...`);
+
+      // Process all players on the current page
+      await this.processSinglePageWithLogging(log);
+
+      // Check if there's a next page
+      hasNextPage = await this.goToNextPage();
+
+      if (hasNextPage) {
+        log(`Moving to page ${currentPage + 1}...`);
+        currentPage++;
+        await this.waitUtils.sleep(1000);
+      } else {
+        log(`Completed processing ${currentPage} page(s)`);
+      }
+    }
+  }
+
+  /**
+   * Process all players on a single page with logging
+   */
+  async processSinglePageWithLogging(log: (msg: string) => void): Promise<void> {
+    // Wait for the player list to load
+    await this.waitUtils.waitForElement(CompanionAppSelectors.club.playerList, 10000);
+
+    const playerListElement = await this.driver.findElement({
+      css: CompanionAppSelectors.club.playerList,
+    });
+
+    const playerCards = await playerListElement.findElements({
+      css: CompanionAppSelectors.club.playerCard,
+    });
+
+    log(`Found ${playerCards.length} players on current page`);
+
+    // Process each player card
+    for (let i = 0; i < playerCards.length; i++) {
+      const card = playerCards[i];
+
+      try {
+        const isInSquad = await this.checkIsInSquad(card);
+        const player = await this.extractPlayerFromCard(card);
+
+        const squadFlag = isInSquad ? ' [SQUAD]' : '';
+        log(`  ${i + 1}. ${player.name} (${player.rating} OVR)${squadFlag}`);
+
+        // Check if player exists in database
+        const exists = await this.checkPlayerExists(player);
+
+        let playerId: number;
+
+        if (exists) {
+          log(`     ✓ Already in database`);
+          const existingPlayer = await this.getExistingPlayerId(player);
+          playerId = existingPlayer!;
+        } else {
+          log(`     → Extracting bio data...`);
+          await this.openPlayerBioDrawer(card);
+          const bioData = await this.extractPlayerBio();
+          const completePlayerData: CompletePlayerData = {
+            ...player,
+            bio: bioData,
+          };
+          playerId = await this.upsertPlayer(completePlayerData);
+          log(`     ✓ Added to database`);
+          await this.driver.actions().sendKeys('\uE00C').perform();
+          await this.waitUtils.sleep(500);
+        }
+
+        // Create ClubPlayer entry
+        await this.createClubPlayer(playerId, isInSquad);
+      } catch (error) {
+        log(`     ✗ ERROR processing player ${i + 1}: ${error instanceof Error ? error.message : 'Unknown error'}`);
+
+        // Try to close any open drawers
+        try {
+          await this.driver.actions().sendKeys('\uE00C').perform();
+          await this.waitUtils.sleep(500);
+        } catch (closeError) {
+          // Ignore close errors
+        }
+      }
+    }
+  }
+
+  /**
    * Process all players on a single page (public for testing)
    */
   async processSinglePage(): Promise<void> {

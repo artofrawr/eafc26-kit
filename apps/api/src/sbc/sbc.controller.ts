@@ -74,4 +74,52 @@ export class SBCController {
         });
     });
   }
+
+  @Sse('solve-generic-stream')
+  solveGenericStream(): Observable<MessageEvent> {
+    return new Observable((observer) => {
+      this.logger.log('Starting generic SBC solve stream');
+
+      this.sbcService
+        .solveGenericSBC({
+          onLog: (message: string) => {
+            observer.next({ data: message } as MessageEvent);
+          },
+          onComplete: (success: boolean, message: string, solution?: any) => {
+            observer.next({
+              type: 'complete',
+              data: JSON.stringify({ success, message, solution }),
+            } as MessageEvent);
+            observer.complete();
+          },
+          onError: (error: string) => {
+            observer.next({
+              type: 'error',
+              data: JSON.stringify({ error }),
+            } as MessageEvent);
+            observer.error(new Error(error));
+          },
+        })
+        .catch((error) => {
+          this.logger.error('Solve generic stream error:', error);
+          observer.error(error);
+        });
+    });
+  }
+
+  @Get('test-requirements')
+  async testRequirementExtraction() {
+    try {
+      this.logger.log('Testing requirement extraction from current SBC');
+      const result = await this.sbcService.testRequirementExtraction();
+      this.logger.log('Requirement extraction test completed');
+      return result;
+    } catch (error) {
+      this.logger.error('Failed to test requirement extraction', error);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Failed to extract requirements',
+      };
+    }
+  }
 }

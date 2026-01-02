@@ -3,7 +3,9 @@
 # Start a persistent Chrome instance for Selenium testing
 # This keeps Chrome open between test runs to avoid re-authentication
 
-PROFILE_DIR="/tmp/selenium-chrome-profile"
+# Get the project root directory (two levels up from this script)
+PROJECT_ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
+PROFILE_DIR="$PROJECT_ROOT/selenium-profile"
 DEBUG_PORT=9222
 
 echo "🚀 Starting persistent Chrome instance for Selenium..."

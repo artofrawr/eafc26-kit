@@ -54,7 +54,9 @@ export class DriverService {
 
   async close(): Promise<void> {
     if (this.driver) {
-      await this.driver.quit();
+      // NEVER quit the driver when using persistent Chrome
+      // Just set driver to null to disconnect
+      // Chrome will continue running independently
       this.driver = null;
     }
   }

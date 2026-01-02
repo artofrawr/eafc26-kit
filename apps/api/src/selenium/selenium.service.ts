@@ -10,28 +10,37 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
   private isInitialized = false;
 
   constructor() {
-    // Use persistent Chrome for development if configured
-    const debuggerAddress = process.env.SELENIUM_DEBUGGER_ADDRESS;
+    // Initialize with a placeholder - actual connection happens in initialize()
+    this.automation = null as any;
+  }
 
-    if (debuggerAddress) {
-      this.logger.log(`Using persistent Chrome at ${debuggerAddress}`);
-      this.automation = new SeleniumAutomation({
-        debuggerAddress,
-      });
-    } else {
-      // Use profile persistence
-      const profileDir =
-        process.env.SELENIUM_CHROME_PROFILE_DIR ||
-        path.join(os.tmpdir(), 'eafc26-selenium-profile');
+  /**
+   * Check if Chrome is running on a specific port
+   */
+  private async isPortOpen(port: number, host: string = 'localhost'): Promise<boolean> {
+    return new Promise((resolve) => {
+      const net = require('net');
+      const socket = new net.Socket();
 
-      this.logger.log(`Using Chrome profile at ${profileDir}`);
-      this.automation = new SeleniumAutomation({
-        headless: process.env.SELENIUM_HEADLESS === 'true',
-        userDataDir: profileDir,
-        profileDirectory: 'Default',
-        windowSize: { width: 1920, height: 1080 },
+      socket.setTimeout(1000);
+
+      socket.on('connect', () => {
+        socket.destroy();
+        resolve(true);
       });
-    }
+
+      socket.on('timeout', () => {
+        socket.destroy();
+        resolve(false);
+      });
+
+      socket.on('error', () => {
+        socket.destroy();
+        resolve(false);
+      });
+
+      socket.connect(port, host);
+    });
   }
 
   async onModuleInit() {
@@ -40,10 +49,11 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
   }
 
   async onModuleDestroy() {
-    // Clean up on module shutdown (only if not using persistent Chrome)
-    if (!process.env.SELENIUM_DEBUGGER_ADDRESS && this.isInitialized) {
-      this.logger.log('Shutting down Selenium...');
-      await this.automation.close();
+    // Never close Chrome - let it stay running for persistence
+    // User can manually close it using the stop-persistent-chrome.sh script
+    if (this.isInitialized) {
+      this.logger.log('Server shutting down. Chrome instance will remain running.');
+      this.logger.log('To stop Chrome: ./tools/scripts/stop-persistent-chrome.sh');
     }
   }
 
@@ -54,36 +64,35 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
 
     this.logger.log('Initializing Selenium WebDriver...');
 
-    // Create a fresh automation instance
-    const debuggerAddress = process.env.SELENIUM_DEBUGGER_ADDRESS;
+    // Check for persistent Chrome instance on port 9222
+    const persistentChromeRunning = await this.isPortOpen(9222);
+    const explicitDebuggerAddress = process.env.SELENIUM_DEBUGGER_ADDRESS;
 
-    if (debuggerAddress) {
-      this.logger.log(`Using persistent Chrome at ${debuggerAddress}`);
+    if (explicitDebuggerAddress) {
+      // Explicitly configured debugger address
+      this.logger.log(`Using configured persistent Chrome at ${explicitDebuggerAddress}`);
       this.automation = new SeleniumAutomation({
-        debuggerAddress,
+        debuggerAddress: explicitDebuggerAddress,
+      });
+    } else if (persistentChromeRunning) {
+      // Auto-detected persistent Chrome on port 9222
+      this.logger.log('Detected persistent Chrome on port 9222, connecting...');
+      this.automation = new SeleniumAutomation({
+        debuggerAddress: 'localhost:9222',
       });
     } else {
-      const profileDir =
-        process.env.SELENIUM_CHROME_PROFILE_DIR ||
-        path.join(os.tmpdir(), 'eafc26-selenium-profile');
-
-      this.logger.log(`Using Chrome profile at ${profileDir}`);
-      this.automation = new SeleniumAutomation({
-        headless: process.env.SELENIUM_HEADLESS === 'true',
-        userDataDir: profileDir,
-        profileDirectory: 'Default',
-        windowSize: { width: 1920, height: 1080 },
-      });
+      // No Chrome running - tell user to start it manually
+      throw new Error(
+        'No Chrome instance detected on port 9222. Please start Chrome manually:\n' +
+        './tools/scripts/start-persistent-chrome.sh\n' +
+        'Then try again.'
+      );
     }
 
     await this.automation.initialize();
     this.isInitialized = true;
     this.logger.log('Selenium initialized successfully');
-
-    // Navigate to EA FC app by default
-    const driver = await this.automation.getDriver();
-    await driver.get('https://www.ea.com/fifa/ultimate-team/web-app/');
-    this.logger.log('Navigated to EA FC Companion App');
+    this.logger.log('Connected to existing Chrome session');
   }
 
   async checkLoginStatus(): Promise<{ loggedIn: boolean }> {
@@ -249,10 +258,11 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
 
   async close(): Promise<void> {
     if (this.isInitialized) {
-      this.logger.log('Closing Selenium and Chrome...');
-      await this.automation.close();
+      this.logger.log('Disconnecting from Chrome (Chrome will remain running)...');
+      // Don't call automation.close() - just disconnect
+      // Chrome will remain running as a persistent process
       this.isInitialized = false;
-      this.logger.log('Chrome closed successfully');
+      this.logger.log('Disconnected from Chrome. Chrome is still running on port 9222.');
     }
   }
 
@@ -306,6 +316,59 @@ export class SeleniumService implements OnModuleInit, OnModuleDestroy {
       return {
         success: false,
         message: error instanceof Error ? error.message : 'Player extraction test failed',
+      };
+    }
+  }
+
+  async testPlayerExtractionWithLogging(callbacks: { onLog: (msg: string) => void }): Promise<{ success: boolean; message: string }> {
+    if (!this.isInitialized) {
+      await this.initialize();
+    }
+
+    try {
+      const driver = await this.automation.getDriver();
+      const { PlayerExtractionRoutine } = await import('@eafc26-kit/selenium-automation');
+      const { PrismaClient } = await import('@eafc26-kit/database');
+
+      const prisma = new PrismaClient();
+
+      // ===== Clear existing ClubPlayer entries =====
+      callbacks.onLog('Clearing existing ClubPlayer entries...');
+      await prisma.clubPlayer.deleteMany({});
+      callbacks.onLog('ClubPlayer table cleared');
+
+      // ===== Navigate to Club Players =====
+      callbacks.onLog('Navigating to Club Players page...');
+      await this.automation.navigation.navigateToClubPlayers();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // ===== Extract from Club Players =====
+      callbacks.onLog('Extracting players from Club Players...');
+      const clubRoutine = new PlayerExtractionRoutine(driver, prisma, false);
+      await clubRoutine.processPlayersFromCurrentPageWithLogging(callbacks.onLog);
+      callbacks.onLog('Club Players extraction completed');
+
+      // ===== Navigate to SBC Storage =====
+      callbacks.onLog('Navigating to SBC Storage page...');
+      await this.automation.navigation.navigateToSBCStorage();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
+      // ===== Extract from SBC Storage =====
+      callbacks.onLog('Extracting players from SBC Storage...');
+      const sbcRoutine = new PlayerExtractionRoutine(driver, prisma, true);
+      await sbcRoutine.processPlayersFromCurrentPageWithLogging(callbacks.onLog);
+      callbacks.onLog('SBC Storage extraction completed');
+
+      return {
+        success: true,
+        message: 'Full player extraction completed successfully',
+      };
+    } catch (error) {
+      this.logger.error('Player extraction failed', error);
+      callbacks.onLog(`ERROR: ${error instanceof Error ? error.message : 'Unknown error'}`);
+      return {
+        success: false,
+        message: error instanceof Error ? error.message : 'Player extraction failed',
       };
     }
   }

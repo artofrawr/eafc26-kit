@@ -9,7 +9,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "validate": "npm run format:check && npm run lint && npm run test",
-    "dev": "nx run-many --target=serve --projects=control-panel,api --parallel",
+    "dev": "nx run-many --target=serve --projects=control-panel,api,sbc-solver --parallel",
     "dev:control-panel": "nx serve control-panel",
     "dev:api": "nx serve api",
     "dev:solver": "nx run sbc-solver:serve",

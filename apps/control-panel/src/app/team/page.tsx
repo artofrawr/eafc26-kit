@@ -1,31 +1,58 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 
 export default function TeamPage() {
   const [isUpdating, setIsUpdating] = useState(false);
+  const [logs, setLogs] = useState<string[]>([]);
+  const eventSourceRef = useRef<EventSource | null>(null);
 
-  const handleUpdateTeam = async () => {
-    setIsUpdating(true);
-    try {
-      const response = await fetch('http://localhost:3001/team/update', {
-        method: 'POST',
-      });
-      if (response.ok) {
-        const data = await response.json();
-        console.log('Team updated:', data);
-        // TODO: Show success message
-      } else {
-        console.error('Failed to update team');
-        // TODO: Show error message
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      if (eventSourceRef.current) {
+        eventSourceRef.current.close();
       }
-    } catch (error) {
-      console.error('Failed to update team:', error);
-      // TODO: Show error message
-    } finally {
+    };
+  }, []);
+
+  const handleUpdateTeam = () => {
+    setIsUpdating(true);
+    setLogs([]);
+
+    // Connect to SSE endpoint
+    const eventSource = new EventSource('http://localhost:3001/team/update-stream');
+    eventSourceRef.current = eventSource;
+
+    eventSource.onmessage = (event) => {
+      const logMessage = event.data;
+      setLogs((prev) => [logMessage, ...prev]); // Add to top
+    };
+
+    eventSource.addEventListener('complete', (event) => {
+      const data = JSON.parse(event.data);
+      setLogs((prev) => [data.message, ...prev]);
+      eventSource.close();
       setIsUpdating(false);
-    }
+    });
+
+    eventSource.addEventListener('error', (event) => {
+      try {
+        const data = JSON.parse((event as MessageEvent).data);
+        setLogs((prev) => [`ERROR: ${data.error}`, ...prev]);
+      } catch {
+        setLogs((prev) => ['ERROR: Connection lost or error occurred', ...prev]);
+      }
+      eventSource.close();
+      setIsUpdating(false);
+    });
+
+    eventSource.onerror = () => {
+      setLogs((prev) => ['ERROR: Connection lost', ...prev]);
+      eventSource.close();
+      setIsUpdating(false);
+    };
   };
 
   return (
@@ -50,6 +77,19 @@ export default function TeamPage() {
           >
             {isUpdating ? 'Updating Team...' : 'Update Team'}
           </Button>
+
+          {/* Logs Display */}
+          {logs.length > 0 && (
+            <div className="mt-6">
+              <h3 className="text-lg font-semibold mb-2">Logs</h3>
+              <textarea
+                value={logs.join('\n')}
+                readOnly
+                className="w-full h-96 p-4 font-mono text-sm bg-muted rounded-md resize-none"
+                style={{ whiteSpace: 'pre-wrap' }}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

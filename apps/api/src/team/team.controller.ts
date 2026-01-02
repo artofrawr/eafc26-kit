@@ -1,4 +1,5 @@
-import { Controller, Post, Logger } from '@nestjs/common';
+import { Controller, Post, Logger, Sse, MessageEvent } from '@nestjs/common';
+import { Observable } from 'rxjs';
 import { TeamService } from './team.service';
 
 @Controller('team')
@@ -24,5 +25,44 @@ export class TeamController {
         message: error instanceof Error ? error.message : 'Failed to update team',
       };
     }
+  }
+
+  @Sse('update-stream')
+  updateTeamStream(): Observable<MessageEvent> {
+    this.logger.log('Starting team update stream');
+
+    return new Observable((subscriber) => {
+      const sendLog = (message: string) => {
+        subscriber.next({ data: message } as MessageEvent);
+      };
+
+      const sendComplete = (message: string) => {
+        subscriber.next({
+          type: 'complete',
+          data: JSON.stringify({ message }),
+        } as MessageEvent);
+        subscriber.complete();
+      };
+
+      const sendError = (error: string) => {
+        subscriber.next({
+          type: 'error',
+          data: JSON.stringify({ error }),
+        } as MessageEvent);
+        subscriber.complete();
+      };
+
+      // Run team update with logging callbacks
+      this.teamService
+        .updateTeamWithLogging({
+          onLog: sendLog,
+          onComplete: sendComplete,
+          onError: sendError,
+        })
+        .catch((error) => {
+          this.logger.error('Team update stream error:', error);
+          sendError(error instanceof Error ? error.message : 'Unknown error');
+        });
+    });
   }
 }

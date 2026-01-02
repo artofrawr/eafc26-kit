@@ -94,9 +94,31 @@ export const CompanionAppSelectors = {
     challengeCard: (id: string) => `[data-challenge-id="${id}"]`,
     challengeName: '.challenge-name',
     challengeDescription: '.challenge-description',
-    requirementsList: '.requirements-list',
-    requirementItem: '.requirement-item',
     rewardsList: '.rewards-list',
+
+    // Requirement extraction (Phase 3)
+    challengeRequirements: 'div.ut-sbc-challenge-requirements-view', // Container for challenge requirements (fallback)
+    requirementsList: 'section.ui-layout-right ul.sbc-requirements-checklist', // Requirements checklist
+    requirementItem: 'section.ui-layout-right ul.sbc-requirements-checklist li', // Individual requirement list item
+
+    // Squad position extraction
+    squadPitchView: '.ut-squad-pitch-view',
+    squadSlots: '.ut-squad-pitch-view .ut-squad-slot-view', // All squad slots
+    squadSlotLocked: '.locked', // Locked slot class
+    squadSlotPosition: 'span.label', // Position label within slot
+    requirementContainer: 'div.sbc-requirements', // Container for all requirements (fallback)
+    requirementRow: 'div.requirement-row', // Individual requirement row (fallback)
+    requirementText: 'span.requirement-text, .req-value, .requirement-value', // Text of requirement
+    requirementLabel: 'span.requirement-label, .req-label', // Label of requirement
+    squadSizeText: 'span.squad-size, .number-of-players', // Squad size requirement
+    ratingText: 'span.rating-requirement, .team-rating', // Team rating requirement
+    chemistryText: 'span.chemistry-requirement, .chemistry', // Chemistry requirement
+
+    // Squad details when viewing a challenge
+    squadView: 'div.ut-squad-view',
+    squadInfo: 'div.squad-info',
+    squadRating: 'span.squad-rating',
+    squadChemistry: 'span.squad-chemistry',
 
     // Squad Builder
     useSquadBuilderButton: 'button.btn-standard', // Text: "Use Squad Builder"
