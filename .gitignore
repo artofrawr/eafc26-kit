@@ -77,3 +77,6 @@ Thumbs.db
 
 # Selenium Chrome profile (contains session data)
 selenium-profile/
+
+# Prisma generated client
+libs/database/src/generated/
