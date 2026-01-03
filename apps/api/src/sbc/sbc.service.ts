@@ -223,7 +223,11 @@ export class SBCService {
               position: requiredPositions[index]?.position,
             }));
 
-            await additionRoutine.addPlayersToSquad(playersToAdd);
+            // TODO: To enable API-based population (much faster), we need to:
+            // 1. Extract SBC name from UI and find the matching challenge via CompanionAPI
+            // 2. Pass the challenge object: { useApi: true, challenge: loadedChallenge }
+            // For now, using UI approach (useApi: false) until challenge loading is implemented
+            await additionRoutine.addPlayersToSquad(playersToAdd, { useApi: false });
             callbacks.onLog('✅ All players added to SBC squad successfully!');
           } catch (addError) {
             const errorMsg = addError instanceof Error ? addError.message : 'Unknown error';

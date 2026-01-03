@@ -215,6 +215,166 @@ export const consoleStyles = {
 };
 
 /**
+ * Get a script for testing SBC squad population
+ * This finds the Bronze Upgrade SBC (or a specified SBC), loads it,
+ * searches for bronze players from the club, and populates the squad.
+ *
+ * @param sbcName - Name of the SBC to test (default: "Bronze Upgrade")
+ * @param dryRun - If true, don't actually submit (default: true)
+ */
+export function getSquadPopulationTestScript(sbcName = 'Bronze Upgrade', dryRun = true): string {
+  return `
+(async function testSquadPopulation() {
+  console.log('='.repeat(50));
+  console.log('SBC Squad Population Test');
+  console.log('Target SBC:', '${sbcName}');
+  console.log('Dry run:', ${dryRun});
+  console.log('='.repeat(50));
+
+  // Check if API is initialized
+  if (!window.CompanionAPI || !window.CompanionAPI._initialized) {
+    console.error('❌ CompanionAPI not initialized. Please inject it first.');
+    return { error: 'Not initialized' };
+  }
+
+  const results = { steps: [] };
+
+  try {
+    // Step 1: Get all SBC sets
+    console.log('\\n--- Step 1: Loading SBC Sets ---');
+    const sets = await window.CompanionAPI.sbc.requestSets();
+    console.log('✅ Found', sets.length, 'SBC sets');
+    results.steps.push({ step: 'getSets', success: true, count: sets.length });
+
+    // Step 2: Find the target SBC
+    console.log('\\n--- Step 2: Finding "${sbcName}" ---');
+    const targetSet = sets.find(s =>
+      s.name && s.name.toLowerCase().includes('${sbcName.toLowerCase()}')
+    );
+
+    if (!targetSet) {
+      console.error('❌ Could not find SBC:', '${sbcName}');
+      console.log('Available SBCs:', sets.map(s => s.name).slice(0, 20));
+      return { error: 'SBC not found', available: sets.map(s => s.name).slice(0, 20) };
+    }
+    console.log('✅ Found:', targetSet.name, '(ID:', targetSet.id, ')');
+    results.targetSet = targetSet;
+
+    // Step 3: Get challenges for the set
+    console.log('\\n--- Step 3: Loading Challenges ---');
+    const challenges = await window.CompanionAPI.sbc.requestChallengesForSet(targetSet);
+    console.log('✅ Found', challenges.length, 'challenges');
+
+    // Get the first uncompleted challenge
+    const challenge = challenges.find(c => !c.complete) || challenges[0];
+    console.log('Using challenge:', challenge.name || 'Challenge ' + challenge.id);
+    results.challenge = { id: challenge.id, name: challenge.name };
+
+    // Step 4: Load the challenge to get squad data
+    console.log('\\n--- Step 4: Loading Challenge Details ---');
+    const loadedChallenge = await window.CompanionAPI.sbc.loadChallenge(challenge);
+    console.log('✅ Challenge loaded');
+    console.log('   Squad slots:', loadedChallenge?.squad?.slots?.length || 'unknown');
+    results.loadedChallenge = loadedChallenge;
+
+    // Step 5: Search club for bronze players
+    console.log('\\n--- Step 5: Searching Club for Bronze Players ---');
+    const searchCriteria = {
+      type: 'player',
+      count: 50,
+      level: 'bronze', // Bronze quality
+      unassigned: false
+    };
+    const clubPlayers = await window.CompanionAPI.club.search(searchCriteria);
+    const playerList = clubPlayers?.itemData || clubPlayers || [];
+    console.log('✅ Found', playerList.length, 'bronze players in club');
+
+    if (playerList.length < 11) {
+      console.error('❌ Not enough bronze players (need 11, found ' + playerList.length + ')');
+      return { error: 'Not enough players', found: playerList.length };
+    }
+
+    // Take first 11 players
+    const playersToUse = playerList.slice(0, 11);
+    console.log('Using players:', playersToUse.map(p =>
+      (p._staticData?.name || p.name || 'Unknown') + ' (' + p.rating + ')'
+    ).join(', '));
+    results.players = playersToUse.map(p => ({
+      id: p.id,
+      name: p._staticData?.name || p.name,
+      rating: p.rating
+    }));
+
+    // Step 6: Populate the squad
+    console.log('\\n--- Step 6: Populating Squad ---');
+    const populateResult = await window.CompanionAPI.sbc.populateSquad(
+      loadedChallenge,
+      playersToUse
+    );
+    console.log('✅ Squad populated!');
+    console.log('   Result:', populateResult);
+    results.populateResult = populateResult;
+
+    // Step 7: Submit (unless dry run)
+    if (!${dryRun}) {
+      console.log('\\n--- Step 7: Submitting Challenge ---');
+      const submitResult = await window.CompanionAPI.sbc.submitChallenge(
+        loadedChallenge,
+        targetSet
+      );
+      console.log('✅ Challenge submitted!');
+      console.log('   Result:', submitResult);
+      results.submitResult = submitResult;
+    } else {
+      console.log('\\n--- Step 7: Skipping Submit (Dry Run) ---');
+      console.log('Set dryRun=false to actually submit');
+    }
+
+    console.log('\\n' + '='.repeat(50));
+    console.log('Test completed successfully!');
+    console.log('='.repeat(50));
+
+    return results;
+
+  } catch (e) {
+    console.error('❌ Test failed:', e.message);
+    console.error(e);
+    results.error = e.message;
+    return results;
+  }
+})();
+`;
+}
+
+/**
+ * Get a minimal script to verify populateSquad exists
+ */
+export function getPopulateSquadCheckScript(): string {
+  return `
+(function checkPopulateSquad() {
+  if (!window.CompanionAPI) {
+    return { available: false, reason: 'CompanionAPI not loaded' };
+  }
+
+  const hasMethod = typeof window.CompanionAPI.sbc.populateSquad === 'function';
+  const hasSubmitMethod = typeof window.CompanionAPI.sbc.populateAndSubmit === 'function';
+
+  console.log('populateSquad available:', hasMethod);
+  console.log('populateAndSubmit available:', hasSubmitMethod);
+
+  return {
+    available: hasMethod && hasSubmitMethod,
+    version: window.CompanionAPI._version,
+    methods: {
+      populateSquad: hasMethod,
+      populateAndSubmit: hasSubmitMethod
+    }
+  };
+})();
+`;
+}
+
+/**
  * Export helpers object for easy import
  */
 export const browserTestHelpers = {
@@ -222,5 +382,7 @@ export const browserTestHelpers = {
   getFullTestScript,
   getMethodTestScript,
   getServicesInspectionScript,
+  getSquadPopulationTestScript,
+  getPopulateSquadCheckScript,
   consoleStyles,
 };

@@ -16,10 +16,10 @@
     "baseUrl": ".",
     "paths": {
       "@eafc26-kit/api-client": ["libs/api-client/src/index.ts"],
+      "@eafc26-kit/companion-services": ["libs/companion-services/src/index.ts"],
       "@eafc26-kit/database": ["libs/database/src/index.ts"],
       "@eafc26-kit/selenium-automation": ["libs/selenium-automation/src/index.ts"],
-      "@eafc26-kit/shared-types": ["libs/shared-types/src/index.ts"],
-      "companion-services": ["libs/companion-services/src/index.ts"]
+      "@eafc26-kit/shared-types": ["libs/shared-types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

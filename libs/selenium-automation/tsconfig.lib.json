@@ -3,7 +3,15 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"]
+    "types": ["node"],
+    "baseUrl": ".",
+    "paths": {
+      "@eafc26-kit/api-client": ["../../libs/api-client/src/index.ts"],
+      "@eafc26-kit/companion-services": ["../../dist/libs/companion-services/src/index.d.ts"],
+      "@eafc26-kit/database": ["../../libs/database/src/index.ts"],
+      "@eafc26-kit/selenium-automation": ["../../libs/selenium-automation/src/index.ts"],
+      "@eafc26-kit/shared-types": ["../../libs/shared-types/src/index.ts"]
+    }
   },
   "include": ["src/**/*.ts"],
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"]

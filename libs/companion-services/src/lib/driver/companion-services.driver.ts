@@ -212,6 +212,36 @@ export class CompanionServicesDriver {
     return this.executeSync('sbc', 'resetCache');
   }
 
+  /**
+   * Populate an SBC squad with players directly (no UI interaction)
+   * This bypasses the slow UI-based player addition process
+   *
+   * @param challenge - The loaded SBC challenge with squad property
+   * @param players - Array of player items in slot order (indices 0-10)
+   */
+  async populateSquad(
+    challenge: SBCChallenge,
+    players: TransferItem[]
+  ): Promise<ServiceResponse<{ success: boolean; playersAdded: number }>> {
+    return this.executeAsync('sbc', 'populateSquad', [challenge, players]);
+  }
+
+  /**
+   * Populate and submit an SBC challenge in one call
+   * Combines populateSquad + submitChallenge for efficiency
+   *
+   * @param challenge - The loaded SBC challenge
+   * @param sbcSet - The parent SBC set
+   * @param players - Array of player items in slot order
+   */
+  async populateAndSubmitSBC(
+    challenge: SBCChallenge,
+    sbcSet: SBCSet,
+    players: TransferItem[]
+  ): Promise<ServiceResponse<unknown>> {
+    return this.executeAsync('sbc', 'populateAndSubmit', [challenge, sbcSet, players]);
+  }
+
   // ============================================
   // Item / Transfer Market Services
   // ============================================

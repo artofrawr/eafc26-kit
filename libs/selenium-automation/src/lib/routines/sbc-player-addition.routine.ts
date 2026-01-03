@@ -1,6 +1,8 @@
 import { WebDriver, By, until } from 'selenium-webdriver';
 import { WaitUtils } from '../core/wait.utils';
 import { CompanionAppSelectors } from '../selectors/companion-app.selectors';
+import { CompanionServicesDriver } from '@eafc26-kit/companion-services';
+import type { SBCChallenge, TransferItem } from '@eafc26-kit/companion-services';
 
 /**
  * Player data for SBC squad addition
@@ -14,26 +16,167 @@ export interface SBCPlayerData {
 }
 
 /**
+ * Options for adding players to squad
+ */
+export interface AddPlayersOptions {
+  /** Use API-based approach (much faster, ~2-3 seconds vs ~60 seconds) */
+  useApi?: boolean;
+  /** The loaded SBC challenge object (required for API approach) */
+  challenge?: SBCChallenge;
+}
+
+/**
  * SBC Player Addition Routine
  * Automatically adds players to SBC squad slots in the companion app
+ *
+ * Supports two approaches:
+ * 1. API-based (fast): Uses CompanionAPI to populate squad directly (~2-3 seconds)
+ * 2. UI-based (slow): Uses Selenium to click through UI (~55-66 seconds)
  */
 export class SBCPlayerAdditionRoutine {
   private waitUtils: WaitUtils;
+  private companionApi: CompanionServicesDriver;
 
   constructor(
     private driver: WebDriver,
     private log: (message: string) => void = console.log
   ) {
     this.waitUtils = new WaitUtils(driver);
+    this.companionApi = new CompanionServicesDriver(driver);
   }
 
   /**
    * Add multiple players to SBC squad
    * @param players Array of players with their target slot indices
+   * @param options Options for adding players (useApi, challenge)
    */
-  async addPlayersToSquad(players: SBCPlayerData[]): Promise<void> {
+  async addPlayersToSquad(
+    players: SBCPlayerData[],
+    options: AddPlayersOptions = {}
+  ): Promise<void> {
+    const { useApi = true, challenge } = options;
+
     this.log(`\n🔄 Starting automatic player addition to SBC squad...`);
     this.log(`Adding ${players.length} players to squad slots`);
+    this.log(`Approach: ${useApi ? 'API-based (fast)' : 'UI-based (slow)'}`);
+
+    // Try API approach first if enabled and challenge is provided
+    if (useApi && challenge) {
+      try {
+        await this.addPlayersViaApi(players, challenge);
+        return;
+      } catch (error) {
+        const errorMsg = error instanceof Error ? error.message : 'Unknown error';
+        this.log(`\n⚠️  API approach failed: ${errorMsg}`);
+        this.log('Falling back to UI-based approach...\n');
+      }
+    } else if (useApi && !challenge) {
+      this.log('⚠️  API approach requested but no challenge object provided');
+      this.log('Falling back to UI-based approach...\n');
+    }
+
+    // Fall back to UI-based approach
+    await this.addPlayersViaUI(players);
+  }
+
+  /**
+   * Add players via API (fast approach - ~2-3 seconds)
+   * @param players Array of players with their target slot indices
+   * @param challenge The loaded SBC challenge object
+   */
+  private async addPlayersViaApi(players: SBCPlayerData[], challenge: SBCChallenge): Promise<void> {
+    const startTime = Date.now();
+    this.log('\n📡 Using API-based squad population...');
+
+    // Step 1: Initialize CompanionAPI
+    this.log('  Initializing CompanionAPI...');
+    await this.companionApi.initialize();
+
+    // Step 2: Search club for matching players
+    this.log('  Searching club for matching players...');
+    const clubItems = await this.findClubItemsForPlayers(players);
+
+    if (clubItems.length !== players.length) {
+      throw new Error(
+        `Could not find all players in club. Expected ${players.length}, found ${clubItems.length}`
+      );
+    }
+
+    // Step 3: Populate squad via API
+    this.log('  Populating squad via API...');
+    const result = await this.companionApi.populateSquad(challenge, clubItems);
+
+    if (!result.success) {
+      throw new Error(result.error?.message || 'Failed to populate squad');
+    }
+
+    const elapsed = ((Date.now() - startTime) / 1000).toFixed(1);
+    this.log(`\n✅ Squad populated via API in ${elapsed}s!`);
+    this.log(`   Players added: ${result.data?.playersAdded || clubItems.length}`);
+  }
+
+  /**
+   * Find club item objects matching the given player data
+   * @param players Array of player data to find
+   * @returns Array of TransferItem objects from the club
+   */
+  private async findClubItemsForPlayers(players: SBCPlayerData[]): Promise<TransferItem[]> {
+    const foundItems: TransferItem[] = [];
+    const usedItemIds = new Set<number>();
+
+    for (const player of players) {
+      this.log(`  Looking for: ${player.displayName} (OVR: ${player.ovr})...`);
+
+      // Search club for this player
+      const searchResult = await this.companionApi.searchClub({
+        type: 'player',
+        count: 50,
+      });
+
+      if (!searchResult.success || !searchResult.data) {
+        throw new Error(`Failed to search club: ${searchResult.error?.message}`);
+      }
+
+      // Match by name and rating
+      const items = searchResult.data.items || [];
+      const matchingItem = items.find((item: TransferItem) => {
+        // Skip already used items
+        if (usedItemIds.has(item.id)) return false;
+
+        // Match by rating first
+        if (item.rating !== player.ovr) return false;
+
+        // Match by name (check various name fields)
+        const itemName =
+          (item as any)._staticData?.name || (item as any).name || (item as any)._item?.name || '';
+        const displayName = player.displayName.toLowerCase();
+        const fullName = player.fullName.toLowerCase();
+
+        return (
+          itemName.toLowerCase().includes(displayName) ||
+          itemName.toLowerCase().includes(fullName) ||
+          displayName.includes(itemName.toLowerCase())
+        );
+      });
+
+      if (!matchingItem) {
+        throw new Error(`Could not find ${player.displayName} (OVR: ${player.ovr}) in club`);
+      }
+
+      this.log(`    ✓ Found: ${(matchingItem as any)._staticData?.name || 'Unknown'}`);
+      foundItems.push(matchingItem);
+      usedItemIds.add(matchingItem.id);
+    }
+
+    return foundItems;
+  }
+
+  /**
+   * Add players via UI (slow approach - ~55-66 seconds)
+   * @param players Array of players with their target slot indices
+   */
+  private async addPlayersViaUI(players: SBCPlayerData[]): Promise<void> {
+    this.log('\n🖱️  Using UI-based squad population...');
 
     for (let i = 0; i < players.length; i++) {
       const player = players[i];

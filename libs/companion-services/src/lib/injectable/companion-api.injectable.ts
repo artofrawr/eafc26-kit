@@ -112,7 +112,7 @@ export const COMPANION_API_INJECTABLE = `
 
   window.CompanionAPI = {
     _initialized: true,
-    _version: '1.0.0',
+    _version: '1.1.0',
 
     // ----------------------------------------
     // SBC Services
@@ -181,6 +181,74 @@ export const COMPANION_API_INJECTABLE = `
         } catch (e) {
           return false;
         }
+      },
+
+      /**
+       * Populate an SBC squad with players directly (no UI interaction)
+       * @param {Object} challenge - The SBC challenge object with squad property
+       * @param {Array} players - Array of player item objects in slot order (0-10)
+       */
+      populateSquad: function(challenge, players) {
+        return new Promise(function(resolve, reject) {
+          try {
+            if (!challenge || !challenge.squad) {
+              reject(new CompanionServiceError('INVALID_CHALLENGE', 'Challenge must have a squad property'));
+              return;
+            }
+
+            if (!players || !Array.isArray(players)) {
+              reject(new CompanionServiceError('INVALID_PLAYERS', 'Players must be an array'));
+              return;
+            }
+
+            // Create squad controller and initialize with challenge's squad
+            var squadController = new UTSBCSquadOverviewViewController();
+            squadController.initWithSquad(challenge.squad);
+            var squad = squadController._squad;
+
+            // Clear existing players
+            squad.removeAllItems();
+
+            // Set all players at once
+            squad.setPlayers(players, true);
+
+            // Recalculate chemistry
+            getServices().Chemistry.requestChemistryProfiles().observe(this, function() {
+              // Update chemistry for all cached SBC squads
+              getServices().SBC.getCachedSBCSquads().map(function(s) {
+                s.updateChemistry();
+              });
+
+              resolve({
+                success: true,
+                playersAdded: players.length,
+                squad: squad
+              });
+            });
+          } catch (e) {
+            reject(new CompanionServiceError('POPULATE_FAILED', e.message || 'Failed to populate squad', e));
+          }
+        });
+      },
+
+      /**
+       * Populate and submit an SBC challenge in one call
+       * @param {Object} challenge - The SBC challenge object
+       * @param {Object} sbcSet - The parent SBC set
+       * @param {Array} players - Array of player item objects
+       */
+      populateAndSubmit: function(challenge, sbcSet, players) {
+        var self = this;
+        return this.populateSquad(challenge, players).then(function() {
+          return observeToPromise(
+            getServices().SBC.submitChallenge(
+              challenge,
+              sbcSet,
+              true,
+              getServices().Chemistry.isFeatureEnabled()
+            )
+          );
+        });
       }
     },
 
