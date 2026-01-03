@@ -75,6 +75,7 @@ export class PythonSolverClient {
     return {
       requirements: {
         squad_size: request.requirements.squadSize,
+        required_positions: request.requirements.requiredPositions,
         leagues: request.requirements.leagues?.map((l) => ({
           type: l.type,
           count: l.count,
@@ -88,7 +89,7 @@ export class PythonSolverClient {
         clubs: request.requirements.clubs?.map((c) => ({
           type: c.type,
           count: c.count,
-          club_id: c.clubId,
+          club_ids: c.clubIds,
         })),
         quality: request.requirements.quality?.map((q) => ({
           type: q.type,
@@ -112,6 +113,11 @@ export class PythonSolverClient {
               value: request.requirements.chemistry.value,
             }
           : undefined,
+        diversity: request.requirements.diversity?.map((d) => ({
+          type: d.type,
+          count: d.count,
+          attribute: d.attribute,
+        })),
       },
       available_players: request.availablePlayers.map((p) => ({
         id: p.id,

@@ -84,13 +84,13 @@ export interface CountryConstraint {
 
 /**
  * Club constraint for SBC requirements
- * - If clubId is specified: min/max/exact players from that specific club
- * - If clubId is undefined: min/max/exact players sharing the same club
+ * - If clubIds is specified: min/max/exact players from those specific clubs (OR logic)
+ * - If clubIds is undefined: min/max/exact players sharing the same club
  */
 export interface ClubConstraint {
   type: ConstraintType;
   count: number;
-  clubId?: number;
+  clubIds?: number[]; // Changed from clubId to clubIds to support OR constraints
 }
 
 /**
@@ -128,10 +128,21 @@ export interface ChemistryConstraint {
 }
 
 /**
+ * Diversity constraint for unique clubs/leagues/countries in squad
+ * Example: "Clubs in Squad: Max. 4" = at most 4 different clubs
+ */
+export interface DiversityConstraint {
+  type: ConstraintType;
+  count: number;
+  attribute: 'clubs' | 'leagues' | 'countries';
+}
+
+/**
  * Complete set of SBC requirements
  */
 export interface SBCRequirementSet {
   squadSize: number;
+  requiredPositions?: number[]; // Array of position IDs, one per squad slot
   leagues?: LeagueConstraint[];
   countries?: CountryConstraint[];
   clubs?: ClubConstraint[];
@@ -139,6 +150,7 @@ export interface SBCRequirementSet {
   rarity?: RarityConstraint[];
   teamRating?: RatingConstraint;
   chemistry?: ChemistryConstraint;
+  diversity?: DiversityConstraint[];
 }
 
 /**

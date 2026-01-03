@@ -72,8 +72,9 @@ export class SBCRequirementExtractionRoutine {
             const text = await item.getText();
             if (text && text.trim()) {
               const trimmedText = text.trim();
-              console.log(`  Extracted: "${trimmedText}"`);
-              requirements.push(trimmedText);
+              const cleanText = this.stripAnsiCodes(trimmedText);
+              console.log(`  Extracted: "${cleanText}"`);
+              requirements.push(cleanText);
             }
           } catch (error) {
             // Skip stale elements
@@ -148,7 +149,9 @@ export class SBCRequirementExtractionRoutine {
    * Extract requirement with both label and value
    * Some requirements may be structured as separate label and value elements
    */
-  private async extractLabeledRequirement(container: WebElement): Promise<ExtractedRequirement | null> {
+  private async extractLabeledRequirement(
+    container: WebElement
+  ): Promise<ExtractedRequirement | null> {
     try {
       // Try to find label and value separately
       const labelElements = await container.findElements({
@@ -244,6 +247,14 @@ export class SBCRequirementExtractionRoutine {
   }
 
   /**
+   * Strip ANSI color codes from text
+   */
+  private stripAnsiCodes(text: string): string {
+    // eslint-disable-next-line no-control-regex
+    return text.replace(/\x1B\[[0-9;]*[a-zA-Z]/g, '');
+  }
+
+  /**
    * Extract squad size from the challenge
    * This is often displayed prominently and may use different selectors
    */
@@ -253,24 +264,39 @@ export class SBCRequirementExtractionRoutine {
       const requirementTexts = await this.extractRequirementTexts();
 
       for (const text of requirementTexts) {
-        // Look for any line mentioning squad/players and extract the number
-        if (/(?:squad|number\s+of\s+players)/i.test(text)) {
+        // Strip ANSI color codes
+        const cleanText = this.stripAnsiCodes(text);
+        console.log(`[Squad Size Check] Checking requirement text: "${cleanText}"`);
+
+        // Look for lines specifically about squad size/number of players
+        // Must say "Number of Players" or "Squad Size", not just contain "squad"
+        const squadSizePattern =
+          /(?:number\s+of\s+players|squad\s+size|players\s+in\s+the\s+squad)/i;
+        if (squadSizePattern.test(cleanText)) {
+          console.log(`[Squad Size Check] ✓ Matched squad size pattern: "${cleanText}"`);
           // Extract the last number from the line (handles "Number of Players in the Squad: 1")
-          const numbers = text.match(/\d+/g);
+          const numbers = cleanText.match(/\d+/g);
           if (numbers && numbers.length > 0) {
             const squadSize = parseInt(numbers[numbers.length - 1], 10);
+            console.log(
+              `[Squad Size Check] Found numbers: ${numbers.join(', ')}, using last: ${squadSize}`
+            );
             if (squadSize >= 1 && squadSize <= 11) {
-              console.log(`Extracted squad size from "${text}": ${squadSize}`);
+              console.log(
+                `[Squad Size Check] ✓✓ Extracted squad size from "${cleanText}": ${squadSize}`
+              );
               return squadSize;
+            } else {
+              console.log(`[Squad Size Check] ✗ Squad size ${squadSize} out of range 1-11`);
             }
           }
         }
 
         // If text is just a number (likely squad size)
-        if (/^\d+$/.test(text.trim())) {
-          const num = parseInt(text.trim(), 10);
+        if (/^\d+$/.test(cleanText.trim())) {
+          const num = parseInt(cleanText.trim(), 10);
           if (num >= 1 && num <= 11) {
-            console.log(`Extracted squad size from number: ${num}`);
+            console.log(`[Squad Size Check] ✓✓ Extracted squad size from number: ${num}`);
             return num;
           }
         }

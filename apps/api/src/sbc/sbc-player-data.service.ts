@@ -45,6 +45,21 @@ export class SBCPlayerDataService {
   }
 
   /**
+   * Get position name to ID mapping from database
+   * Returns a map like { GK: 1, LB: 2, CB: 3, etc. }
+   */
+  async getPositionMap(): Promise<Record<string, number>> {
+    const positions = await this.prisma.position.findMany();
+    const map: Record<string, number> = {};
+
+    for (const position of positions) {
+      map[position.name] = position.id;
+    }
+
+    return map;
+  }
+
+  /**
    * Get all available players for SBC solving
    *
    * @param excludeSquadPlayers If true, excludes players in active squad (default: true)

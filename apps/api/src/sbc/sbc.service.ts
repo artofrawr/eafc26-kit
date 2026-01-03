@@ -110,7 +110,7 @@ export class SBCService {
       const requiredPositions = await extractionRoutine.extractRequiredPositions();
       if (requiredPositions.length > 0) {
         callbacks.onLog('\nRequired positions:');
-        requiredPositions.forEach(pos => {
+        requiredPositions.forEach((pos) => {
           callbacks.onLog(`  ${pos.index}: ${pos.position}`);
         });
       }
@@ -122,6 +122,27 @@ export class SBCService {
         squadSize || 11
       );
       callbacks.onLog(`Parsed requirements successfully`);
+
+      // Step 2.5: Convert position names to position IDs
+      if (requiredPositions.length > 0) {
+        const positionMap = await this.playerDataService.getPositionMap();
+        callbacks.onLog(`Position map: ${JSON.stringify(positionMap)}`);
+
+        const positionIds = requiredPositions
+          .map((pos) => {
+            const positionId = positionMap[pos.position];
+            if (!positionId) {
+              this.logger.warn(`Unknown position: ${pos.position}`);
+            }
+            return positionId;
+          })
+          .filter((id) => id !== undefined);
+
+        if (positionIds.length > 0) {
+          requirements.requiredPositions = positionIds;
+          callbacks.onLog(`Mapped ${positionIds.length} required positions to IDs`);
+        }
+      }
 
       // Step 3: Fetch available players from database
       callbacks.onLog('Fetching available club players...');
@@ -181,14 +202,35 @@ export class SBCService {
             const slotIndex = requiredPositions[index]?.index ?? index;
             const storageInfo = p.sbc ? ' [SBC]' : '';
             const squadInfo = p.squad ? ' [SQUAD]' : '';
-            callbacks.onLog(`  ${slotIndex}:${position} ${p.fullName} (OVR: ${p.ovr})${storageInfo}${squadInfo}`);
+            callbacks.onLog(
+              `  ${slotIndex}:${position} ${p.fullName} (OVR: ${p.ovr})${storageInfo}${squadInfo}`
+            );
           });
         }
 
         callbacks.onComplete(true, 'SBC solved successfully', solution);
       } else {
-        callbacks.onLog(`✗ Solver failed: ${solution.message}`);
-        callbacks.onError(solution.message || 'Unknown solver error');
+        // Solver returned a valid response, but no solution was found
+        // This is not an error - INFEASIBLE is a valid solver result
+        if (solution.status === 'INFEASIBLE') {
+          callbacks.onLog(`\n❌ No solution exists for this SBC with your current club`);
+          callbacks.onLog(`\n💡 Possible reasons:`);
+          callbacks.onLog(`   • Not enough variety of players (would need duplicates)`);
+          callbacks.onLog(`   • Missing players in required positions/countries/clubs`);
+          callbacks.onLog(`   • Chemistry requirement too high for available players`);
+          callbacks.onLog(`   • Consider acquiring more players to complete this SBC`);
+          callbacks.onComplete(false, 'SBC cannot be completed with current club', solution);
+        } else if (solution.status === 'TIMEOUT') {
+          callbacks.onLog(
+            `\n⏱️  Solver timeout - no solution found within ${solution.solveTime?.toFixed(0) || 60}s`
+          );
+          callbacks.onLog(`This SBC may be very difficult or impossible with your current club.`);
+          callbacks.onComplete(false, 'Solver timeout - try with more/better players', solution);
+        } else {
+          // Genuine error
+          callbacks.onLog(`✗ Solver error: ${solution.message}`);
+          callbacks.onError(solution.message || 'Unknown solver error');
+        }
       }
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';

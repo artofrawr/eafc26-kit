@@ -7,9 +7,9 @@ from typing import List, Optional, Literal, Dict
 from pydantic import BaseModel, Field
 
 # Type aliases
-ConstraintType = Literal['min', 'max', 'exact']
-QualityType = Literal['bronze', 'silver', 'gold', 'special']
-SolverStatus = Literal['OPTIMAL', 'FEASIBLE', 'INFEASIBLE', 'MODEL_INVALID', 'TIMEOUT']
+ConstraintType = Literal["min", "max", "exact"]
+QualityType = Literal["bronze", "silver", "gold", "special"]
+SolverStatus = Literal["OPTIMAL", "FEASIBLE", "INFEASIBLE", "MODEL_INVALID", "TIMEOUT"]
 
 
 class LeagueConstraint(BaseModel):
@@ -18,6 +18,7 @@ class LeagueConstraint(BaseModel):
     - If league_ids is specified: min/max/exact players from those specific leagues
     - If league_ids is None: min/max/exact players sharing the same league
     """
+
     type: ConstraintType
     count: int
     league_ids: Optional[List[int]] = None
@@ -29,6 +30,7 @@ class CountryConstraint(BaseModel):
     - If country_ids is specified: min/max/exact players from those specific countries
     - If country_ids is None: min/max/exact players sharing the same country
     """
+
     type: ConstraintType
     count: int
     country_ids: Optional[List[int]] = None
@@ -37,18 +39,20 @@ class CountryConstraint(BaseModel):
 class ClubConstraint(BaseModel):
     """
     Club constraint for SBC requirements
-    - If club_id is specified: min/max/exact players from that specific club
-    - If club_id is None: min/max/exact players sharing the same club
+    - If club_ids is specified: min/max/exact players from those specific clubs (OR logic)
+    - If club_ids is None: min/max/exact players sharing the same club
     """
+
     type: ConstraintType
     count: int
-    club_id: Optional[int] = None
+    club_ids: Optional[List[int]] = None
 
 
 class QualityConstraint(BaseModel):
     """
     Quality constraint (Bronze/Silver/Gold/Special)
     """
+
     type: ConstraintType
     count: int
     quality: QualityType
@@ -58,6 +62,7 @@ class RarityConstraint(BaseModel):
     """
     Rarity constraint (rare vs non-rare players)
     """
+
     type: ConstraintType
     count: int
     rare: bool
@@ -67,6 +72,7 @@ class RatingConstraint(BaseModel):
     """
     Squad rating constraint
     """
+
     type: ConstraintType
     value: int
 
@@ -75,15 +81,31 @@ class ChemistryConstraint(BaseModel):
     """
     Team chemistry constraint
     """
+
     type: ConstraintType
     value: int
+
+
+class DiversityConstraint(BaseModel):
+    """
+    Diversity constraint for unique clubs/leagues/countries in squad
+    Example: "Clubs in Squad: Max. 4" = at most 4 different clubs
+    """
+
+    type: ConstraintType
+    count: int
+    attribute: Literal["clubs", "leagues", "countries"]
 
 
 class SBCRequirementSet(BaseModel):
     """
     Complete set of SBC requirements
     """
+
     squad_size: int
+    required_positions: Optional[List[int]] = (
+        None  # Array of position IDs, one per squad slot
+    )
     leagues: Optional[List[LeagueConstraint]] = None
     countries: Optional[List[CountryConstraint]] = None
     clubs: Optional[List[ClubConstraint]] = None
@@ -91,6 +113,7 @@ class SBCRequirementSet(BaseModel):
     rarity: Optional[List[RarityConstraint]] = None
     team_rating: Optional[RatingConstraint] = None
     chemistry: Optional[ChemistryConstraint] = None
+    diversity: Optional[List[DiversityConstraint]] = None
 
 
 class SolverPlayer(BaseModel):
@@ -98,10 +121,11 @@ class SolverPlayer(BaseModel):
     Player data structure sent to solver
     Mirrors the Player + ClubPlayer database models
     """
+
     id: int  # ClubPlayer.id
-    player_id: int = Field(alias='playerId')  # Player.id
-    display_name: str = Field(alias='displayName')
-    full_name: str = Field(alias='fullName')
+    player_id: int = Field(alias="playerId")  # Player.id
+    display_name: str = Field(alias="displayName")
+    full_name: str = Field(alias="fullName")
     ovr: int  # Overall rating
     rating1: int
     rating2: int
@@ -109,11 +133,11 @@ class SolverPlayer(BaseModel):
     rating4: int
     rating5: int
     rating6: int
-    quality_id: int = Field(alias='qualityId')
-    rarity_id: int = Field(alias='rarityId')
-    country_id: int = Field(alias='countryId')
-    club_id: int = Field(alias='clubId')
-    league_id: int = Field(alias='leagueId')
+    quality_id: int = Field(alias="qualityId")
+    rarity_id: int = Field(alias="rarityId")
+    country_id: int = Field(alias="countryId")
+    club_id: int = Field(alias="clubId")
+    league_id: int = Field(alias="leagueId")
     positions: List[int]  # Position IDs
     sbc: bool  # From SBC storage?
     squad: bool  # In active squad?
@@ -126,19 +150,20 @@ class SolveSBCRequest(BaseModel):
     """
     Request to solve an SBC
     """
+
     requirements: SBCRequirementSet
     available_players: List[SolverPlayer]
     max_solve_time: int = Field(default=60, description="Maximum solve time in seconds")
-    no_improvement_time: int = Field(default=30, description="Stop if no improvement for this many seconds")
+    no_improvement_time: int = Field(
+        default=30, description="Stop if no improvement for this many seconds"
+    )
     quality_map: Optional[Dict[str, int]] = Field(
         default=None,
-        alias='qualityMap',
-        description="Maps quality name to database ID (e.g., {'bronze': 4, 'silver': 3})"
+        alias="qualityMap",
+        description="Maps quality name to database ID (e.g., {'bronze': 4, 'silver': 3})",
     )
     rarity_map: Optional[Dict[str, int]] = Field(
-        default=None,
-        alias='rarityMap',
-        description="Maps rarity name to database ID"
+        default=None, alias="rarityMap", description="Maps rarity name to database ID"
     )
 
     class Config:
@@ -149,6 +174,7 @@ class SolveSBCResponse(BaseModel):
     """
     Response from SBC solver
     """
+
     success: bool
     status: SolverStatus
     selected_player_ids: Optional[List[int]] = None

@@ -9,6 +9,7 @@ import {
   RarityConstraint,
   RatingConstraint,
   ChemistryConstraint,
+  DiversityConstraint,
   ConstraintType,
   QualityType,
 } from '@eafc26-kit/shared-types';
@@ -54,10 +55,7 @@ export class SBCRequirementParserService {
   /**
    * Parse a single requirement text and add to requirements object
    */
-  private async parseRequirementText(
-    text: string,
-    requirements: SBCRequirementSet
-  ): Promise<void> {
+  private async parseRequirementText(text: string, requirements: SBCRequirementSet): Promise<void> {
     const lowerText = text.toLowerCase().trim();
 
     // Try to parse squad size
@@ -81,7 +79,60 @@ export class SBCRequirementParserService {
       return;
     }
 
-    // Try to parse quality (bronze/silver/gold)
+    // Try to parse diversity constraints (Clubs/Leagues/Countries in Squad)
+    const diversityResult = this.parseDiversity(lowerText);
+    if (diversityResult) {
+      if (!requirements.diversity) requirements.diversity = [];
+      requirements.diversity.push(diversityResult);
+      return;
+    }
+
+    // Check for minimum quality threshold pattern first
+    const minQualityMatch = lowerText.match(
+      /player\s+quality[\s:]*(?:min\.?|minimum)[\s:.]*(bronze|silver|gold|special)/i
+    );
+    if (minQualityMatch) {
+      const minQuality = minQualityMatch[1].toLowerCase() as QualityType;
+      this.logger.log(`Adding minimum quality threshold: ${minQuality}`);
+
+      // Quality hierarchy: bronze < silver < gold < special
+      const qualityHierarchy: QualityType[] = ['bronze', 'silver', 'gold', 'special'];
+      const minIndex = qualityHierarchy.indexOf(minQuality);
+
+      if (!requirements.quality) requirements.quality = [];
+
+      // Exclude all qualities below the minimum by adding max 0 constraints
+      for (let i = 0; i < minIndex; i++) {
+        requirements.quality.push({
+          type: 'max',
+          count: 0,
+          quality: qualityHierarchy[i],
+        });
+        this.logger.log(`  Excluding ${qualityHierarchy[i]} (max 0)`);
+      }
+      return;
+    }
+
+    // Check for "Player Quality: Exactly X" pattern (without a number)
+    // This means ALL players must be that quality
+    const exactQualityMatch = lowerText.match(
+      /player\s+quality[\s:]*(?:exact(?:ly)?)?[\s:.]*(bronze|silver|gold|special)/i
+    );
+    if (exactQualityMatch) {
+      const quality = exactQualityMatch[1].toLowerCase() as QualityType;
+      this.logger.log(`Adding exact quality constraint: all players must be ${quality}`);
+
+      if (!requirements.quality) requirements.quality = [];
+      requirements.quality.push({
+        type: 'exact',
+        count: requirements.squadSize, // All players must be this quality
+        quality,
+      });
+      this.logger.log(`  Set to exact ${requirements.squadSize} ${quality} players`);
+      return;
+    }
+
+    // Try to parse quality (bronze/silver/gold) with specific count
     const qualityResult = this.parseQuality(lowerText);
     if (qualityResult) {
       if (!requirements.quality) requirements.quality = [];
@@ -129,10 +180,7 @@ export class SBCRequirementParserService {
    */
   private parseSquadSize(text: string): number | null {
     // Patterns: "11", "Squad Size: 11", "Number of Players: 11", "Players: 11"
-    const patterns = [
-      /(?:squad\s+size|number\s+of\s+players|players)[\s:]*(\d+)/i,
-      /^(\d+)$/,
-    ];
+    const patterns = [/(?:squad\s+size|number\s+of\s+players|players)[\s:]*(\d+)/i, /^(\d+)$/];
 
     for (const pattern of patterns) {
       const match = text.match(pattern);
@@ -151,8 +199,8 @@ export class SBCRequirementParserService {
    * Parse team rating constraint
    */
   private parseRating(text: string): RatingConstraint | null {
-    // Patterns: "Team Rating: Min 80", "Min Team Rating: 80", "Rating: 80+"
-    const minMatch = text.match(/(?:team\s+)?rating[\s:]*(?:min|minimum)[\s:]*(\d+)/i);
+    // Patterns: "Team Rating: Min 80", "Min Team Rating: 80", "Rating: 80+", "Team Rating: Min. 75"
+    const minMatch = text.match(/(?:team\s+)?rating[\s:]*(?:min\.?|minimum)[\s:]*(\d+)/i);
     if (minMatch && minMatch[1]) {
       return {
         type: 'min',
@@ -183,8 +231,8 @@ export class SBCRequirementParserService {
    * Parse chemistry constraint
    */
   private parseChemistry(text: string): ChemistryConstraint | null {
-    // Patterns: "Chemistry: 33", "Min Chemistry: 33", "Team Chemistry: 33"
-    const minMatch = text.match(/chemistry[\s:]*(?:min|minimum)[\s:]*(\d+)/i);
+    // Patterns: "Chemistry: 33", "Min Chemistry: 33", "Team Chemistry: 33", "Total Chemistry: Min. 22"
+    const minMatch = text.match(/(?:total\s+)?chemistry[\s:]*(?:min\.?|minimum)[\s:]*(\d+)/i);
     if (minMatch && minMatch[1]) {
       return {
         type: 'min',
@@ -192,7 +240,7 @@ export class SBCRequirementParserService {
       };
     }
 
-    const exactMatch = text.match(/chemistry[\s:]*(\d+)/i);
+    const exactMatch = text.match(/(?:total\s+)?chemistry[\s:]*(\d+)/i);
     if (exactMatch && exactMatch[1]) {
       return {
         type: 'min', // Default to min for chemistry
@@ -204,7 +252,35 @@ export class SBCRequirementParserService {
   }
 
   /**
+   * Parse diversity constraint (Clubs/Leagues/Countries in Squad)
+   */
+  private parseDiversity(text: string): DiversityConstraint | null {
+    // Patterns: "Clubs in Squad: Max. 4", "Leagues in Squad: Min. 2", "Countries in Squad: Max. 5"
+    const attributes: Array<{ pattern: RegExp; attribute: 'clubs' | 'leagues' | 'countries' }> = [
+      { pattern: /clubs?\s+in\s+squad/i, attribute: 'clubs' },
+      { pattern: /leagues?\s+in\s+squad/i, attribute: 'leagues' },
+      { pattern: /(?:countries|nations)\s+in\s+squad/i, attribute: 'countries' },
+    ];
+
+    for (const { pattern, attribute } of attributes) {
+      if (pattern.test(text)) {
+        const constraint = this.extractConstraintTypeAndCount(text);
+        if (constraint) {
+          return {
+            type: constraint.type,
+            count: constraint.count,
+            attribute,
+          };
+        }
+      }
+    }
+
+    return null;
+  }
+
+  /**
    * Parse quality constraint (bronze/silver/gold/special)
+   * Note: "Player Quality: Min. X" is handled separately in parseRequirementText
    */
   private parseQuality(text: string): QualityConstraint | null {
     const qualities: QualityType[] = ['bronze', 'silver', 'gold', 'special'];
@@ -221,12 +297,9 @@ export class SBCRequirementParserService {
           };
         }
 
-        // If just quality mentioned, assume exact 11
-        return {
-          type: 'exact',
-          count: 11,
-          quality,
-        };
+        // If just quality mentioned without a number, skip it
+        // (This likely means it's handled by the "Player Quality: Min. X" pattern)
+        return null;
       }
     }
 
@@ -267,18 +340,25 @@ export class SBCRequirementParserService {
       }
     }
 
-    // Check for specific league names
+    // Check for specific league names (supports OR - multiple leagues)
     const leagues = await this.prisma.league.findMany();
+    const matchedLeagueIds: number[] = [];
+
     for (const league of leagues) {
       if (text.toLowerCase().includes(league.name.toLowerCase())) {
-        const constraint = this.extractConstraintTypeAndCount(lowerText);
-        if (constraint) {
-          return {
-            type: constraint.type,
-            count: constraint.count,
-            leagueIds: [league.id],
-          };
-        }
+        matchedLeagueIds.push(league.id);
+      }
+    }
+
+    if (matchedLeagueIds.length > 0) {
+      const constraint = this.extractConstraintTypeAndCount(lowerText);
+      if (constraint) {
+        this.logger.log(`Matched ${matchedLeagueIds.length} leagues for requirement: "${text}"`);
+        return {
+          type: constraint.type,
+          count: constraint.count,
+          leagueIds: matchedLeagueIds,
+        };
       }
     }
 
@@ -289,8 +369,12 @@ export class SBCRequirementParserService {
    * Parse country constraint
    */
   private async parseCountry(text: string, lowerText: string): Promise<CountryConstraint | null> {
-    // Check for "same country" or "same nation" pattern
-    if (lowerText.includes('same country') || lowerText.includes('same nation')) {
+    // Check for "same country" or "same countries" or "same nation" pattern
+    if (
+      lowerText.includes('same countr') ||
+      lowerText.includes('same nation') ||
+      lowerText.includes('same region')
+    ) {
       const constraint = this.extractConstraintTypeAndCount(lowerText);
       if (constraint) {
         return {
@@ -301,18 +385,25 @@ export class SBCRequirementParserService {
       }
     }
 
-    // Check for specific country names
+    // Check for specific country names (supports OR - multiple countries)
     const countries = await this.prisma.country.findMany();
+    const matchedCountryIds: number[] = [];
+
     for (const country of countries) {
       if (text.toLowerCase().includes(country.name.toLowerCase())) {
-        const constraint = this.extractConstraintTypeAndCount(lowerText);
-        if (constraint) {
-          return {
-            type: constraint.type,
-            count: constraint.count,
-            countryIds: [country.id],
-          };
-        }
+        matchedCountryIds.push(country.id);
+      }
+    }
+
+    if (matchedCountryIds.length > 0) {
+      const constraint = this.extractConstraintTypeAndCount(lowerText);
+      if (constraint) {
+        this.logger.log(`Matched ${matchedCountryIds.length} countries for requirement: "${text}"`);
+        return {
+          type: constraint.type,
+          count: constraint.count,
+          countryIds: matchedCountryIds,
+        };
       }
     }
 
@@ -330,23 +421,30 @@ export class SBCRequirementParserService {
         return {
           type: constraint.type,
           count: constraint.count,
-          clubId: undefined, // undefined means "same club"
+          clubIds: undefined, // undefined means "same club"
         };
       }
     }
 
-    // Check for specific club names
+    // Check for specific club names (supports OR - multiple clubs)
     const clubs = await this.prisma.club.findMany();
+    const matchedClubIds: number[] = [];
+
     for (const club of clubs) {
       if (text.toLowerCase().includes(club.name.toLowerCase())) {
-        const constraint = this.extractConstraintTypeAndCount(lowerText);
-        if (constraint) {
-          return {
-            type: constraint.type,
-            count: constraint.count,
-            clubId: club.id,
-          };
-        }
+        matchedClubIds.push(club.id);
+      }
+    }
+
+    if (matchedClubIds.length > 0) {
+      const constraint = this.extractConstraintTypeAndCount(lowerText);
+      if (constraint) {
+        this.logger.log(`Matched ${matchedClubIds.length} clubs for requirement: "${text}"`);
+        return {
+          type: constraint.type,
+          count: constraint.count,
+          clubIds: matchedClubIds,
+        };
       }
     }
 
@@ -360,8 +458,8 @@ export class SBCRequirementParserService {
     type: ConstraintType;
     count: number;
   } | null {
-    // Try "Min X" pattern
-    const minMatch = text.match(/(?:min|minimum)[\s:]*(\d+)/i);
+    // Try "Min X" pattern (with optional period after min/max)
+    const minMatch = text.match(/(?:min\.?|minimum)[\s:]*(\d+)/i);
     if (minMatch && minMatch[1]) {
       return {
         type: 'min',
@@ -370,7 +468,7 @@ export class SBCRequirementParserService {
     }
 
     // Try "Max X" pattern
-    const maxMatch = text.match(/(?:max|maximum)[\s:]*(\d+)/i);
+    const maxMatch = text.match(/(?:max\.?|maximum)[\s:]*(\d+)/i);
     if (maxMatch && maxMatch[1]) {
       return {
         type: 'max',
@@ -379,7 +477,7 @@ export class SBCRequirementParserService {
     }
 
     // Try "Exactly X" or "X exactly" pattern
-    const exactMatch = text.match(/(?:exact(?:ly)?|precisely)[\s:]*(\d+)/i);
+    const exactMatch = text.match(/(?:exact(?:ly)?\.?|precisely)[\s:]*(\d+)/i);
     if (exactMatch && exactMatch[1]) {
       return {
         type: 'exact',
