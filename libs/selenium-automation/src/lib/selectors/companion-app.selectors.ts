@@ -140,6 +140,19 @@ export const CompanionAppSelectors = {
     searchFilterControl: 'div.ut-search-filter-control',
     filterLabel: 'span.label',
     filterList: 'ul.inline-list',
+
+    // Player addition to SBC squad
+    squadSlotView: '.ut-squad-slot-view', // Individual squad slot
+    detailPanel: 'div.DetailPanel', // Detail panel that appears
+    addPlayerButton: 'span.btn-text', // Button with text "Add Player"
+    playerSearchInput: 'div.ut-player-search-control--input-container input.ut-text-input-control',
+    playerSearchResults: '.ut-player-search-control .playerResultsList',
+    playerResultButton: 'button', // Button within player results
+    searchFilterControlActive: '.ut-search-filter-control.has-selection', // Active filter
+    clearFilterButton: 'button', // Clear button within active filter
+    searchButton: '.ui-layout-right .button-container button.primary', // Search button
+    searchResultsList: '.ui-layout-right .listFUTItem', // Search results list
+    addToSquadButton: 'button.btnAction.add', // Action button to add player to squad
   },
 
   // Store section

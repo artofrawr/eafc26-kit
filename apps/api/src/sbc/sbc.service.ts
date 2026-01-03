@@ -203,9 +203,33 @@ export class SBCService {
             const storageInfo = p.sbc ? ' [SBC]' : '';
             const squadInfo = p.squad ? ' [SQUAD]' : '';
             callbacks.onLog(
-              `  ${slotIndex}:${position} ${p.fullName} (OVR: ${p.ovr})${storageInfo}${squadInfo}`
+              `  ${slotIndex}:${position} ${p.displayName} (OVR: ${p.ovr})${storageInfo}${squadInfo}`
             );
           });
+
+          // Step 6: Automatically add players to SBC squad in companion app
+          try {
+            callbacks.onLog('\n🔄 Adding players to SBC squad...');
+
+            const { SBCPlayerAdditionRoutine } = await import('@eafc26-kit/selenium-automation');
+            const additionRoutine = new SBCPlayerAdditionRoutine(driver, callbacks.onLog);
+
+            // Prepare player data for addition
+            const playersToAdd = selectedPlayers.map((p, index) => ({
+              index: requiredPositions[index]?.index ?? index,
+              fullName: p.fullName,
+              displayName: p.displayName,
+              ovr: p.ovr,
+              position: requiredPositions[index]?.position,
+            }));
+
+            await additionRoutine.addPlayersToSquad(playersToAdd);
+            callbacks.onLog('✅ All players added to SBC squad successfully!');
+          } catch (addError) {
+            const errorMsg = addError instanceof Error ? addError.message : 'Unknown error';
+            callbacks.onLog(`⚠️  Failed to auto-add players: ${errorMsg}`);
+            callbacks.onLog('You can add players manually using the solution above.');
+          }
         }
 
         callbacks.onComplete(true, 'SBC solved successfully', solution);
